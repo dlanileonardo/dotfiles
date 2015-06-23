@@ -14,4 +14,4 @@ $ cd ~/.dotfiles
 $ ./install.sh
 ```
 
-* This script override all files conflicted.
+* This script will override all files conflicted.

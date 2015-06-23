@@ -5,6 +5,10 @@ rm ~/.vimrc 2> /dev/null
 ln -s $(pwd)/vimfiles/vimrc ~/.vimrc
 echo "Link to .vimrc created!"
 
+echo "Install Vundle in Vim"
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+echo "Vundle Installed"
+
 rm ~/.zshrc 2> /dev/null
 ln -s $(pwd)/.zshrc ~/.zshrc
 echo "Link to .zshrc created!"

@@ -1,3 +1,6 @@
 [submodule ".vimrc"]
 	path = .vimrc
 	url = git@github.com:dlanileonardo/vimfiles.git
+[submodule "vimfiles"]
+	path = vimfiles
+	url = git@github.com:dlanileonardo/vimfiles.git

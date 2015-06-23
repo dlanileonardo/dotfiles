@@ -17,6 +17,10 @@ rm ~/.bash_profile 2> /dev/null
 ln -s $(pwd)/.bash_profile ~/.bash_profile
 echo "Link to .bash_profile created!"
 
-echo "Criando arquivos do base16 ..."
+echo "Base16 files will be created ..."
 sh -c "cd base16-builder; ./base16 1> /dev/null; cd output; bash guake/base16-default.dark.sh; bash gnome-terminal/base16-default.dark.sh"
-echo "Cores base16 definidas no seu terminal!"
+echo "Base16 has defined with sucess!"
+
+echo "Install oh-my-zsh"
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+echo "The oh-my-zsh installed!"

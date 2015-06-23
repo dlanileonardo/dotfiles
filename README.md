@@ -13,5 +13,6 @@ $ git clone --recursive git@github.com:dlanileonardo/dotfiles.git ~/.dotfiles
 $ cd ~/.dotfiles
 $ ./install.sh
 ```
+> This script will override all files conflicted.
 
-* This script will override all files conflicted.
+> oh-my-zsh will be installed.

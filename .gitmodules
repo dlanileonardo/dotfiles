@@ -4,3 +4,6 @@
 [submodule "base16-builder"]
 	path = base16-builder
 	url = git@github.com:chriskempson/base16-builder.git
+[submodule "awesome-terminal-fonts"]
+	path = awesome-terminal-fonts
+	url = git@github.com:gabrielelana/awesome-terminal-fonts.git

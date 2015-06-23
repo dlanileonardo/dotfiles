@@ -13,6 +13,10 @@ rm ~/.bashrc 2> /dev/null
 ln -s $(pwd)/.bashrc ~/.bashrc
 echo "Link to .bashrc created!"
 
+rm ~/.secret_envs 2> /dev/null
+ln -s $(pwd)/.secret_envs ~/.secret_envs
+echo "Link to .secret_envs created!"
+
 rm ~/.bash_profile 2> /dev/null
 ln -s $(pwd)/.bash_profile ~/.bash_profile
 echo "Link to .bash_profile created!"
@@ -24,3 +28,11 @@ echo "Base16 has defined with sucess!"
 echo "Install oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 echo "The oh-my-zsh installed!"
+
+echo "Install powerlevel9k theme"
+sh -c "cd ~/.oh-my-zsh/custom; git clone https://github.com/bhilburn/powerlevel9k.git themes/powerlevel9k"
+echo "The powerlevel9k Installed!"
+
+echo "Install Awesome Fonts"
+sh -c "cd awesome-terminal-fonts; ./droid.sh"
+echo "Awsome Fonts Installed"

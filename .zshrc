@@ -13,8 +13,8 @@ POWERLEVEL9K_COLOR_SCHEME='dark'
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="fletcherm" # gnzh, fletcherm, bira, agnoster
-ZSH_THEME="powerlevel9k" # "braun", "juanghurtado", "wedisagree", "sonicradish", "fletcherm", "darkblood"
+# ZSH_THEME="powerlevel9k" # "braun", "juanghurtado", "wedisagree", "sonicradish", "fletcherm", "darkblood"
+ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -57,6 +57,7 @@ ZSH_THEME="powerlevel9k" # "braun", "juanghurtado", "wedisagree", "sonicradish",
 plugins=(git git-flow ruby themes colorize docker tmuxinator command-not-found web-search gem rbenv)
 
 source $ZSH/oh-my-zsh.sh
+source .secret_envs
 
 # User configuration
 
@@ -104,8 +105,6 @@ func set_tmux_pane_title() {
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-
-export PIVOTAL_TOKEN='55b3da09cf1435f2ce2a673ae7cddbfe'
 
 export RBENV_ROOT="${HOME}/.rbenv"
 

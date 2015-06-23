@@ -57,7 +57,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 plugins=(git git-flow ruby themes colorize docker tmuxinator command-not-found web-search gem rbenv)
 
 source $ZSH/oh-my-zsh.sh
-source .secret_envs
+source ~/.secret_envs
 
 # User configuration
 

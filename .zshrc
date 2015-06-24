@@ -1,13 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-POWERLEVEL9K_MODE='awesome-patched'
-# POWERLEVEL9K_MODE='flat'
-# POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-# export AWS_DEFAULT_PROFILE=<profile_name>
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time context)
-POWERLEVEL9K_COLOR_SCHEME='dark'
+source ~/.powerlevel9krc
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/

@@ -30,7 +30,7 @@ ln -s $(pwd)/.zshrc ~/.zshrc
 echo "Link to .zshrc created!"
 
 echo "Base16 files will be created ..."
-sh -c "cd base16-builder; ./base16 1> /dev/null; cd output; bash guake/base16-default.dark.sh; bash gnome-terminal/base16-default.dark.sh"
+sh -c "cd base16-builder; ./base16 1> /dev/null; cd output; bash guake/base16-google.dark.sh; bash gnome-terminal/base16-google.dark.sh"
 echo "Base16 has defined with sucess!"
 
 echo "Install oh-my-zsh"

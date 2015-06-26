@@ -1,0 +1,33 @@
+[color]
+  ui = auto
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+[user]
+  name = AUTHORNAME
+  email = AUTHOREMAIL
+[credential]
+  helper = GIT_CREDENTIAL_HELPER
+[alias]
+  co = checkout
+[push]
+  default = current
+[pull]
+  default = current
+[commit]
+  template = /home/dlani/.gitmessage.txt
+[core]
+  editor = nano
+[branch]
+  autosetuprebase = always
+[merge]
+  tool = meld
+[diff]
+  # tool = meld
+  # external = meld
+[gui]
+  editor = sublime_text
+[difftool]
+  prompt = true
+  external = meld

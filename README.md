@@ -11,8 +11,8 @@
 ```bash
 $ git clone --recursive git@github.com:dlanileonardo/dotfiles.git ~/.dotfiles
 $ cd ~/.dotfiles
-$ ./install.sh
+$ scripts/bootstrap
 ```
 > This script will override all files conflicted.
 
-> oh-my-zsh will be installed.
+> oh-my-zsh and others dependencies will be installed.

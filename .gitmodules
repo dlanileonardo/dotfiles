@@ -7,3 +7,6 @@
 [submodule "awesome-terminal-fonts"]
 	path = awesome-terminal-fonts
 	url = git@github.com:gabrielelana/awesome-terminal-fonts.git
+[submodule "powerlevel9k"]
+	path = powerlevel9k
+	url = git@github.com:bhilburn/powerlevel9k.git

@@ -145,7 +145,7 @@ install_dependencies () {
   sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh 1> /dev/null)"
   success "The oh-my-zsh installed!"
 
-  sh -c "cd base16-builder; ./base16 1> /dev/null; cd output; bash guake/base16-google.dark.sh; bash gnome-terminal/base16-google.dark.sh"
+  sh -c "cd base16-builder; ./base16 1> /dev/null; cd output; bash guake/base16-twilight.dark.sh; bash gnome-terminal/base16-twilight.dark.sh"
   success "Base16 has defined with sucess!"
 
   sh -c "cd awesome-terminal-fonts; ./droid.sh >/dev/null 2>&1"
@@ -154,9 +154,15 @@ install_dependencies () {
   link_file $DOTFILES_ROOT/powerlevel9k ~/.oh-my-zsh/custom/themes/powerlevel9k
 }
 
+install_vimplugins () {
+  sh -c "vim +BundleInstall +qall"
+  success "Vim Plugins Installed"
+}
+
 setup_gitconfig
 install_dependencies
 install_dotfiles
+install_vimplugins
 
 echo ''
 echo '  All installed!'

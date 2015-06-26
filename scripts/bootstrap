@@ -155,8 +155,13 @@ install_dependencies () {
 }
 
 install_vimplugins () {
-  sh -c "vim +BundleInstall +qall"
+  info "installing vimplugins"
+
+  local overwrite_all=false backup_all=false skip_all=false
+  sh -c "vim +PluginInstall +qall >/dev/null 2>&1"
   success "Vim Plugins Installed"
+
+  link_file ~/.vim/bundle/base16-vim/colors ~/.vim/colors
 }
 
 setup_gitconfig

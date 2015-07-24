@@ -17,8 +17,10 @@ $ scripts/bootstrap
 
 > oh-my-zsh and others dependencies will be installed.
 
-Shell
+# Screenshots
+
+## Shell
 ![Shell](https://raw.github.com/dlanileonardo/dotfiles/master/screenshots/shell.png)
 
-Vim
+## Vim
 ![Vim](https://raw.github.com/dlanileonardo/dotfiles/master/screenshots/vim.png)

@@ -16,3 +16,9 @@ $ scripts/bootstrap
 > This script will override all files conflicted.
 
 > oh-my-zsh and others dependencies will be installed.
+
+Shell
+![Shell](https://raw.github.com/dlanileonardo/dotfiles/master/screenshots/shell.png)
+
+Vim
+![Vim](https://raw.github.com/dlanileonardo/dotfiles/master/screenshots/vim.png)

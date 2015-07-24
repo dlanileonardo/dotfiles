@@ -88,6 +88,10 @@ alias motox-umount="sudo fusermount -u /media/dlani/MotoX"
 alias motox-repair-playlists="~/bin/repair-playlists"
 alias kodi-repair-playlists="~/bin/repair-playlists-kodi"
 
+alias xbmc-mount="mount /media/dlani/xbmc"
+alias xbmc-umount="sudo fusermount -u /media/dlani/xbmc"
+
+
 # tmux
 export TERM="xterm-256color"
 export EDITOR="vim"

@@ -83,14 +83,6 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # export PATH="$HOME/.azk/bin:$PATH"
-alias motox-mount="mount /media/dlani/MotoX"
-alias motox-umount="sudo fusermount -u /media/dlani/MotoX"
-alias motox-repair-playlists="~/bin/repair-playlists"
-alias kodi-repair-playlists="~/bin/repair-playlists-kodi"
-
-alias xbmc-mount="mount /media/dlani/xbmc"
-alias xbmc-umount="sudo fusermount -u /media/dlani/xbmc"
-
 
 # tmux
 export TERM="xterm-256color"
@@ -120,3 +112,6 @@ fi
 # Go Lang
 export GOPATH=$HOME/.gocode
 export GOBIN=$GOPATH/bin
+
+# Sources
+for f in ~/.dotfiles/sources/*; do source $f; done

@@ -27,6 +27,13 @@ fail () {
   exit
 }
 
+require_sudo() {
+  if [ $EUID != 0 ]; then
+    sudo "$0" "$@"
+    exit $?
+  fi
+}
+
 setup_gitconfig () {
   if ! [ -f git/gitconfig.symlink ]
   then
@@ -164,6 +171,7 @@ install_vimplugins () {
   link_file ~/.vim/bundle/base16-vim/colors ~/.vim/colors
 }
 
+require_sudo
 setup_gitconfig
 install_dependencies
 install_dotfiles

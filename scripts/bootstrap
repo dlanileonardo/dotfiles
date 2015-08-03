@@ -56,7 +56,6 @@ setup_gitconfig () {
   fi
 }
 
-
 link_file () {
   local src=$1 dst=$2
 
@@ -177,5 +176,5 @@ install_dependencies
 install_dotfiles
 install_vimplugins
 
-echo ''
-echo '  All installed!'
+success "All installed!"
+echo ""

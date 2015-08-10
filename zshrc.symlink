@@ -107,7 +107,6 @@ if [ -d "$HOME/bin" ] ; then
     export PATH="$HOME/bin:${PATH}"
 fi
 
-
 # Go Lang
 export GOPATH=$HOME/.gocode
 export GOBIN=$GOPATH/bin

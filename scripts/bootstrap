@@ -168,6 +168,8 @@ install_vimplugins () {
   success "Vim Plugins Installed"
 
   link_file ~/.vim/bundle/base16-vim/colors ~/.vim/colors
+
+  link_file ~/.dotfiles/vimfiles/doc ~/.vim/doc
 }
 
 require_sudo

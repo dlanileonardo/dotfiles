@@ -148,28 +148,34 @@ install_dependencies () {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh 1> /dev/null)"
+  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   success "The oh-my-zsh installed!"
 
-  sh -c "cd base16-builder; ./base16 1> /dev/null; cd output; bash guake/base16-twilight.dark.sh; bash gnome-terminal/base16-twilight.dark.sh"
+  sh -c "cd base16-builder; ./base16 1> /dev/null; cd output; chmod a+x -R .; bash guake/base16-twilight.dark.sh; bash gnome-terminal/base16-twilight.dark.sh"
   success "Base16 has defined with sucess!"
 
   sh -c "cd awesome-terminal-fonts; ./droid.sh >/dev/null 2>&1"
   success "Awsome Fonts Installed"
 
+  mkdir -p ~/.oh-my-zsh/custom/themes/
   link_file $DOTFILES_ROOT/powerlevel9k ~/.oh-my-zsh/custom/themes/powerlevel9k
 }
 
 install_vimplugins () {
-  info "installing vimplugins"
+  info "cloning Vundle.vim"
+  if [ ! -d ~/.vim/bundle/Vundle.vim ]
+  then
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  fi
 
+  info "installing vimplugins"
   local overwrite_all=false backup_all=false skip_all=false
-  sh -c "vim +PluginInstall +qall >/dev/null 2>&1"
+  sh -c "vim +PluginInstall +qall"
   success "Vim Plugins Installed"
 
   link_file ~/.vim/bundle/base16-vim/colors ~/.vim/colors
-
   link_file ~/.dotfiles/vimfiles/doc ~/.vim/doc
+  mkdir -p ~/.vim/.cache/unite
 }
 
 require_sudo

@@ -1,0 +1,2 @@
+alias azk-ruby="azk shell --image azukiapp/ruby --shell /bin/bash"
+alias azk-yo="azk shell --image silarsis/yeoman --shell /bin/bash"

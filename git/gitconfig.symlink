@@ -10,7 +10,11 @@
 [credential]
   helper = cache
 [alias]
+  cl = clone
   co = checkout
+  ci = commit
+  pu = pull
+  ps = push
 [push]
   default = current
 [pull]
@@ -18,7 +22,7 @@
 [commit]
   template = /home/dlani/.gitmessage.txt
 [core]
-  editor = nano
+  editor = vim
 [branch]
   autosetuprebase = always
 [merge]

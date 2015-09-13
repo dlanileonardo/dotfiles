@@ -5,6 +5,9 @@
 cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd)
 
+BUNDLE_DIR=~/.vim/bundle
+NEOBUNDLE_INSTALL_DIR="$BUNDLE_DIR/neobundle.vim"
+
 set -e
 
 echo ''
@@ -131,6 +134,18 @@ link_file () {
   fi
 }
 
+setup_bootstrap() {
+  run_cmd "rm -rf log/*"
+}
+
+run_cmd() {
+  sh -c "(${1}) 1>> log/logs 2>> log/logs"
+}
+
+run_apt_get() {
+  sh -c "sudo apt-get install -y $1"
+}
+
 install_dotfiles () {
   info 'installing dotfiles'
 
@@ -148,13 +163,14 @@ install_dependencies () {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  run_cmd "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   success "The oh-my-zsh installed!"
 
-  sh -c "cd base16-builder; ./base16 1> /dev/null; cd output; chmod a+x -R .; bash guake/base16-twilight.dark.sh; bash gnome-terminal/base16-twilight.dark.sh"
+  run_cmd "cd base16-builder; ./base16; cd output; chmod a+x -R .;bash guake/base16-twilight.dark.sh; bash gnome-terminal/base16-twilight.dark.sh"
   success "Base16 has defined with sucess!"
 
-  sh -c "cd awesome-terminal-fonts; ./droid.sh >/dev/null 2>&1"
+  run_apt_get "python-fontforge"
+  run_cmd "cd awesome-terminal-fonts; ./droid.sh"
   success "Awsome Fonts Installed"
 
   mkdir -p ~/.oh-my-zsh/custom/themes/
@@ -162,15 +178,19 @@ install_dependencies () {
 }
 
 install_vimplugins () {
-  info "cloning Vundle.vim"
-  if [ ! -d ~/.vim/bundle/Vundle.vim ]
-  then
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  info "install Plugin neobundle.vim"
+  run_cmd 'curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > install.sh'
+  if [ ! -d "$NEOBUNDLE_INSTALL_DIR" ];
+    then
+    run_cmd 'sh ./install.sh'
+    run_cmd 'rm install.sh'
   fi
+
+  success "Plugin neobundle.vim Installed"
 
   info "installing vimplugins"
   local overwrite_all=false backup_all=false skip_all=false
-  sh -c "vim +PluginInstall +qall"
+  run_cmd '~/.vim/bundle/neobundle.vim/bin/neoinstall'
   success "Vim Plugins Installed"
 
   link_file ~/.vim/bundle/base16-vim/colors ~/.vim/colors
@@ -178,7 +198,8 @@ install_vimplugins () {
   mkdir -p ~/.vim/.cache/unite
 }
 
-require_sudo
+# require_sudo
+setup_bootstrap
 setup_gitconfig
 install_dependencies
 install_dotfiles

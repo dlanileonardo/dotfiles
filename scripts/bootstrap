@@ -7,6 +7,7 @@ DOTFILES_ROOT=$(pwd)
 
 BUNDLE_DIR=~/.vim/bundle
 NEOBUNDLE_INSTALL_DIR="$BUNDLE_DIR/neobundle.vim"
+PERSONAL_USER=$1
 
 set -e
 
@@ -30,9 +31,26 @@ fail () {
   exit
 }
 
+setup_bootstrap() {
+  run_cmd_with_user "rm -rf ${DOTFILES_ROOT}/log/*"
+}
+
+run_cmd_with_user() {
+  run_cmd "runuser -l ${PERSONAL_USER} -c \"${1}\" "
+}
+
+run_cmd() {
+  sh -c "(${1}) 1>> ${DOTFILES_ROOT}/log/log.info 2>> ${DOTFILES_ROOT}/log/log.error"
+}
+
+run_apt_get() {
+  sh -c "apt-get install -y $1 1>> log/logs 2>> log/logs"
+}
+
 require_sudo() {
   if [ $EUID != 0 ]; then
-    sudo "$0" "$@"
+    PERSONAL_USER=`whoami`
+    sudo "$0" "$@" $PERSONAL_USER
     exit $?
   fi
 }
@@ -111,13 +129,13 @@ link_file () {
 
     if [ "$overwrite" == "true" ]
     then
-      rm -rf "$dst"
+      run_cmd_with_user "rm -rf ${dst}"
       success "removed $dst"
     fi
 
     if [ "$backup" == "true" ]
     then
-      mv "$dst" "${dst}.backup"
+      run_cmd_with_user "mv ${dst} ${dst}.backup"
       success "moved $dst to ${dst}.backup"
     fi
 
@@ -129,22 +147,11 @@ link_file () {
 
   if [ "$skip" != "true" ]  # "false" or empty
   then
-    ln -s "$1" "$2"
+    run_cmd_with_user "ln -s ${1} ${2}"
     success "linked $1 to $2"
   fi
 }
 
-setup_bootstrap() {
-  run_cmd "rm -rf log/*"
-}
-
-run_cmd() {
-  sh -c "(${1}) 1>> log/logs 2>> log/logs"
-}
-
-run_apt_get() {
-  sh -c "sudo apt-get install -y $1"
-}
 
 install_dotfiles () {
   info 'installing dotfiles'
@@ -166,44 +173,53 @@ install_dependencies () {
   run_cmd "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   success "The oh-my-zsh installed!"
 
-  run_cmd "cd base16-builder; ./base16; cd output; chmod a+x -R .;bash guake/base16-twilight.dark.sh; bash gnome-terminal/base16-twilight.dark.sh"
+  run_cmd_with_user "cd ${DOTFILES_ROOT}/base16-builder && ./base16 && cd output && chmod a+x -R . && bash guake/base16-twilight.dark.sh && bash gnome-terminal/base16-twilight.dark.sh"
   success "Base16 has defined with sucess!"
 
   run_apt_get "python-fontforge"
-  run_cmd "cd awesome-terminal-fonts; ./droid.sh"
+  run_cmd_with_user "cd ${DOTFILES_ROOT}/awesome-terminal-fonts && ./droid.sh"
   success "Awsome Fonts Installed"
 
-  mkdir -p ~/.oh-my-zsh/custom/themes/
+  run_cmd_with_user "mkdir -p ~/.oh-my-zsh/custom/themes/"
   link_file $DOTFILES_ROOT/powerlevel9k ~/.oh-my-zsh/custom/themes/powerlevel9k
 }
 
 install_vimplugins () {
   info "install Plugin neobundle.vim"
-  run_cmd 'curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > install.sh'
+  run_cmd_with_user 'curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > install.sh'
   if [ ! -d "$NEOBUNDLE_INSTALL_DIR" ];
     then
-    run_cmd 'sh ./install.sh'
-    run_cmd 'rm install.sh'
+    run_cmd_with_user 'sh ./install.sh'
+    run_cmd_with_user 'rm install.sh'
   fi
 
   success "Plugin neobundle.vim Installed"
 
   info "installing vimplugins"
   local overwrite_all=false backup_all=false skip_all=false
-  run_cmd '~/.vim/bundle/neobundle.vim/bin/neoinstall'
+  run_cmd_with_user '~/.vim/bundle/neobundle.vim/bin/neoinstall'
   success "Vim Plugins Installed"
 
+  info "installing codesearch"
+  run_cmd_with_user "wget  https://github.com/junkblocker/codesearch/releases/download/v2/codesearch_v2_linux_amd64.tar.gz"
+  run_cmd_with_user "tar zxvf codesearch_v2_linux_amd64.tar.gz -C ~/bin --strip-components 1"
+  run_cmd_with_user "rm codesearch_v2_linux_amd64.tar.gz"
+  success "Codesearch installed"
+
   link_file ~/.vim/bundle/base16-vim/colors ~/.vim/colors
-  link_file ~/.dotfiles/vimfiles/doc ~/.vim/doc
-  mkdir -p ~/.vim/.cache/unite
+  link_file $DOTFILES_ROOT/vimfiles/doc ~/.vim/doc
+  link_file $DOTFILES_ROOT/vimfiles/unite-menus/ ~/.vim/unite-menus
+  run_cmd_with_user "mkdir -p ~/.vim/.cache/unite"
+
 }
 
-# require_sudo
+require_sudo
 setup_bootstrap
 setup_gitconfig
 install_dependencies
 install_dotfiles
 install_vimplugins
+
 
 success "All installed!"
 echo ""

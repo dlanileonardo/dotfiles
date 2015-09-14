@@ -2,3 +2,4 @@ sources/*
 *.swp
 
 log/*
+install.sh

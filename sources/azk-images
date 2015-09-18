@@ -1,2 +1,6 @@
 alias azk-ruby="azk shell --image azukiapp/ruby --shell /bin/bash"
+alias azk-node="azk shell --image azukiapp/node" --shell /bin/bash
 alias azk-yo="azk shell --image silarsis/yeoman --shell /bin/bash"
+alias azk-ember="azk shell --image visualjeff/ember-cli --shell /bin/bash"
+alias azk-nbg="azk shell --image digitallyseamless/nodejs-bower-grunt --shell /bin/bash"
+alias azk-python="azk shell --image python --shell /bin/bash"

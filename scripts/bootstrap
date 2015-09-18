@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 #
 # bootstrap installs things.
-
 cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd)
 
@@ -36,7 +35,7 @@ setup_bootstrap() {
 }
 
 run_cmd_with_user() {
-  run_cmd "runuser -l ${PERSONAL_USER} -c \"${1}\" "
+  run_cmd "${1}"
 }
 
 run_cmd() {
@@ -44,7 +43,9 @@ run_cmd() {
 }
 
 run_apt_get() {
-  sh -c "apt-get install -y $1 1>> log/logs 2>> log/logs"
+  user "Instalação do pacote ${1} via apt-get "
+  sh -c "sudo apt-get install -y $1 1>> ${DOTFILES_ROOT}/log/info 2>> ${DOTFILES_ROOT}/log/error"
+  success "Pacote ${1} instalado com sucesso!"
 }
 
 require_sudo() {
@@ -213,7 +214,7 @@ install_vimplugins () {
 
 }
 
-require_sudo
+# require_sudo
 setup_bootstrap
 setup_gitconfig
 install_dependencies

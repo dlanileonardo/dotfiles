@@ -210,6 +210,7 @@ install_vimplugins () {
   link_file ~/.vim/bundle/base16-vim/colors ~/.vim/colors
   link_file $DOTFILES_ROOT/vimfiles/doc ~/.vim/doc
   link_file $DOTFILES_ROOT/vimfiles/unite-menus/ ~/.vim/unite-menus
+  link_file $DOTFILES_ROOT/vimfiles/snippets/ ~/.vim/snippets
   run_cmd_with_user "mkdir -p ~/.vim/.cache/unite"
 
 }

@@ -1,4 +1,6 @@
 alias azk-ruby="azk shell --image azukiapp/ruby --shell /bin/bash"
+alias azk-go="azk shell --image golang --shell /bin/bash"
+alias azk-php="azk shell --image php --shell /bin/bash"
 alias azk-node="azk shell --image azukiapp/node" --shell /bin/bash
 alias azk-yo="azk shell --image silarsis/yeoman --shell /bin/bash"
 alias azk-ember="azk shell --image visualjeff/ember-cli --shell /bin/bash"

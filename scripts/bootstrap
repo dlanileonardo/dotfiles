@@ -177,9 +177,12 @@ install_dependencies () {
   run_cmd_with_user "cd ${DOTFILES_ROOT}/base16-builder && ./base16 && cd output && chmod a+x -R . && bash guake/base16-twilight.dark.sh && bash gnome-terminal/base16-twilight.dark.sh"
   success "Base16 has defined with sucess!"
 
-  run_apt_get "python-fontforge"
+  run_apt_get "python-fontforge htop"
   run_cmd_with_user "cd ${DOTFILES_ROOT}/awesome-terminal-fonts && ./droid.sh"
   success "Awsome Fonts Installed"
+
+  run_cmd "curl -sSL http://git.io/git-extras-setup | sudo bash /dev/stdin"
+  success "Git Extras installed"
 
   run_cmd_with_user "mkdir -p ~/.oh-my-zsh/custom/themes/"
   link_file $DOTFILES_ROOT/powerlevel9k ~/.oh-my-zsh/custom/themes/powerlevel9k

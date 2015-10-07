@@ -174,7 +174,8 @@ install_dependencies () {
   run_cmd "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   success "The oh-my-zsh installed!"
 
-  run_cmd_with_user "cd ${DOTFILES_ROOT}/base16-builder && ./base16 && cd output && chmod a+x -R . && bash guake/base16-twilight.dark.sh && bash gnome-terminal/base16-twilight.dark.sh"
+  BASE16_THEME="base16-twilight.dark"
+  run_cmd_with_user "cd ${DOTFILES_ROOT}/base16-builder && ./base16 && cd output && chmod a+x -R . && bash guake/${BASE16_THEME}.sh && bash gnome-terminal/${BASE16_THEME}.sh"
   success "Base16 has defined with sucess!"
 
   run_apt_get "python-fontforge htop"
@@ -214,8 +215,9 @@ install_vimplugins () {
   link_file $DOTFILES_ROOT/vimfiles/doc ~/.vim/doc
   link_file $DOTFILES_ROOT/vimfiles/unite-menus/ ~/.vim/unite-menus
   link_file $DOTFILES_ROOT/vimfiles/snippets/ ~/.vim/snippets
+  link_file $DOTFILES_ROOT/vimfiles/vimrc.d/ ~/.vim/vimrc.d
+  link_file $DOTFILES_ROOT/vimfiles/vimrc.plugins/ ~/.vim/vimrc.plugins
   run_cmd_with_user "mkdir -p ~/.vim/.cache/unite"
-
 }
 
 # require_sudo

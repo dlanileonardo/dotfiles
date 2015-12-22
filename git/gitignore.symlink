@@ -46,3 +46,8 @@ Thumbs.db
 _builds/
 _projects/
 _steps/
+
+# Atom #
+########
+
+.imdone/

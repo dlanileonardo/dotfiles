@@ -180,10 +180,13 @@ install_dependencies () {
 
   run_apt_get "python-fontforge htop"
   run_cmd_with_user "cd ${DOTFILES_ROOT}/awesome-terminal-fonts && ./droid.sh"
-  success "Awsome Fonts Installed"
+  success "Awsome Fonts Installed!"
+
+  run_cmd_with_user "cd ${DOTFILES_ROOT}/powerline-fonts && ./install.sh"
+  success "PowerLine Fonts Installed!"
 
   run_cmd "curl -sSL http://git.io/git-extras-setup | sudo bash /dev/stdin"
-  success "Git Extras installed"
+  success "Git Extras installed!"
 
   run_cmd_with_user "mkdir -p ~/.oh-my-zsh/custom/themes/"
   link_file $DOTFILES_ROOT/powerlevel9k ~/.oh-my-zsh/custom/themes/powerlevel9k

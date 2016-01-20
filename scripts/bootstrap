@@ -190,6 +190,11 @@ install_dependencies () {
 
   run_cmd_with_user "mkdir -p ~/.oh-my-zsh/custom/themes/"
   link_file $DOTFILES_ROOT/powerlevel9k ~/.oh-my-zsh/custom/themes/powerlevel9k
+  success "PowerLevel9k installed!"
+
+  run_cmd_with_user "mkdir -p ~/.themes/"
+  link_file $DOTFILES_ROOT/flatabulous ~/.themes/flatabulous
+  success "Flatabulous Theme installed!"
 }
 
 install_vimplugins () {

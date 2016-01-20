@@ -13,3 +13,6 @@
 [submodule "powerline-fonts"]
 	path = powerline-fonts
 	url = git@github.com:powerline/fonts.git
+[submodule "flatabulous"]
+	path = flatabulous
+	url = git@github.com:anmoljagetia/Flatabulous.git

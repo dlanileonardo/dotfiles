@@ -8,3 +8,5 @@ alias azk-nbg="azk shell --image digitallyseamless/nodejs-bower-grunt --shell /b
 alias azk-python="azk shell --image python --shell /bin/bash"
 alias azk-elixir="azk shell --image msaraiva/elixir"
 alias azk-phoenix="azk shell --image marcelocg/phoenix"
+alias azk-gulp="azk shell --image neo9polska/nodejs-bower-gulp"
+alias azk-middleman="azk shell --image tenstartups/middleman"

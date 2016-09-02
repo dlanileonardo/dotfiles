@@ -5,6 +5,9 @@
 * Zsh
 * Vim
 * Guake
+* Git
+* Git-extras
+* Tmux
 
 ## Install
 

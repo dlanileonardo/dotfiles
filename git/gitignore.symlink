@@ -51,3 +51,9 @@ _steps/
 ########
 
 .imdone/
+
+# VScode #
+##########
+
+.vscode/
+jsconfig.json

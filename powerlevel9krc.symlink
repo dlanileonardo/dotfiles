@@ -1,9 +1,3 @@
-POWERLEVEL9K_CUSTOM_AZK="echo azk: \$(azk status --text | grep 1 | wc -l | awk '{print $0}')"
-
-POWERLEVEL9K_CUSTOM_DOCKER='echo "\uf299 $(docker ps -a | grep Up | wc -l)"' # \uf299 is 
-POWERLEVEL9K_CUSTOM_DOCKER_FOREGROUND="white"
-POWERLEVEL9K_CUSTOM_DOCKER_BACKGROUND="blue"
-
 POWERLEVEL9K_MODE='awesome-patched'
 # POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_COLOR_SCHEME='dark'

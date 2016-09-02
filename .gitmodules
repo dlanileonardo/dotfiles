@@ -16,3 +16,6 @@
 [submodule "flatabulous"]
 	path = flatabulous
 	url = git@github.com:anmoljagetia/Flatabulous.git
+[submodule "zsh-autosuggestions"]
+	path = zsh-autosuggestions
+	url = git://github.com/zsh-users/zsh-autosuggestions

@@ -1,3 +1,4 @@
 alias git-prune="git fetch -p"
+alias git-prune-merged="git branch --merged master | grep -v 'master$' | xargs git branch -d"
 git-squash () { git rebase -i HEAD~$1 }
 alias git-sync-fork="git fetch upstream && git checkout master && git rebase upstream/master"

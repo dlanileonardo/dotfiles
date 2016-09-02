@@ -22,8 +22,8 @@
 [commit]
   template = /home/dlani/.gitmessage.txt
 [core]
-  editor = vim
-	excludesfile = /home/dlani/.gitignore
+  excludesfile = /home/dlani/.gitignore
+	editor = nano
 [branch]
   autosetuprebase = always
 [merge]

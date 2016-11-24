@@ -102,6 +102,9 @@ if [ -d "${RBENV_ROOT}" ]; then
   eval "$(rbenv init -)"
 fi
 
+export PATH="$HOME/.ndenv/bin:$PATH"
+eval "$(ndenv init -)"
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     export PATH="$HOME/bin:${PATH}"
@@ -118,3 +121,4 @@ export PATH="$HOME/.ndenv/bin:$PATH"
 eval "$(ndenv init -)"
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=4'
+ZSH_AUTOSUGGEST_STRATEGY='match_prev_cmd'

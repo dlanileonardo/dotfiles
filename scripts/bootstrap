@@ -149,7 +149,7 @@ link_file () {
   if [ "$skip" != "true" ]  # "false" or empty
   then
     run_cmd_with_user "ln -s ${1} ${2}"
-    success "linked $1 to $2"
+    success "linked $src to $dst"
   fi
 }
 
@@ -174,15 +174,16 @@ install_dependencies () {
   run_cmd "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   success "The oh-my-zsh installed!"
 
-  link_file "$DOTFILES_ROOT/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+  link_file $DOTFILES_ROOT/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
   success "zsh-autosuggestions installed!"
 
-  BASE16_THEME="base16-twilight.dark"
+  BASE16_THEME="base16-default.dark"
   run_cmd_with_user "cd ${DOTFILES_ROOT}/base16-builder && ./base16 && cd output && chmod a+x -R . && bash guake/${BASE16_THEME}.sh && bash gnome-terminal/${BASE16_THEME}.sh"
   success "Base16 has defined with sucess!"
 
   run_apt_get "python-fontforge htop"
   run_cmd_with_user "cd ${DOTFILES_ROOT}/awesome-terminal-fonts && ./droid.sh"
+  # run_cmd_with_user "cd ${DOTFILES_ROOT}/awesome-terminal-fonts && ./build.sh && cp build/* ~/.fonts"
   success "Awsome Fonts Installed!"
 
   run_cmd_with_user "cd ${DOTFILES_ROOT}/powerline-fonts && ./install.sh"

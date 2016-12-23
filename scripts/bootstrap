@@ -174,20 +174,33 @@ install_dependencies () {
   run_cmd "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   success "The oh-my-zsh installed!"
 
-  link_file $DOTFILES_ROOT/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+  link_file $DOTFILES_ROOT/zsh-plugins/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
   success "zsh-autosuggestions installed!"
 
-  BASE16_THEME="base16-default.dark"
+  link_file $DOTFILES_ROOT/zsh-plugins/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+  success "zsh-syntax-highlighting installed!"
+
+  run_cmd_with_user "mkdir -p ~/.local/share/fonts/NerdFonts && cd ~/.local/share/fonts/NerdFonts"
+  run_cmd_with_user 'cd ~/.local/share/fonts/NerdFonts && curl -fLo "Sauce Code Pro Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf?raw=true'
+  run_cmd_with_user 'cd ~/.local/share/fonts/NerdFonts && curl -fLo "Sauce Code Pro ExtraLight Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Extra-Light/complete/Sauce%20Code%20Pro%20ExtraLight%20Nerd%20Font%20Complete.ttf?raw=true'
+  run_cmd_with_user 'cd ~/.local/share/fonts/NerdFonts && curl -fLo "Sauce Code Pro Light Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Light/complete/Sauce%20Code%20Pro%20Light%20Nerd%20Font%20Complete.ttf?raw=true'
+  run_cmd_with_user 'cd ~/.local/share/fonts/NerdFonts && curl -fLo "Sauce Code Pro Medium Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Medium/complete/Sauce%20Code%20Pro%20Medium%20Nerd%20Font%20Complete.ttf?raw=true'
+  run_cmd_with_user 'cd ~/.local/share/fonts/NerdFonts && curl -fLo "Sauce Code Pro Semibold Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Semibold/complete/Sauce%20Code%20Pro%20Semibold%20Nerd%20Font%20Complete.ttf?raw=true'
+  run_cmd_with_user 'cd ~/.local/share/fonts/NerdFonts && curl -fLo "Sauce Code Pro Bold Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Bold/complete/Sauce%20Code%20Pro%20Bold%20Nerd%20Font%20Complete.ttf?raw=true'
+  run_cmd_with_user 'cd ~/.local/share/fonts/NerdFonts && curl -fLo "Sauce Code Pro Black Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Black/complete/Sauce%20Code%20Pro%20Black%20Nerd%20Font%20Complete.ttf?raw=true'
+  run_cmd_with_user 'fc-cache -vf "~/.local/share/fonts/NerdFonts"'
+  success "Sauce Code Pro Nerd Font Installed!"
+
+  BASE16_THEME="base16-twilight.dark"
   run_cmd_with_user "cd ${DOTFILES_ROOT}/base16-builder && ./base16 && cd output && chmod a+x -R . && bash guake/${BASE16_THEME}.sh && bash gnome-terminal/${BASE16_THEME}.sh"
   success "Base16 has defined with sucess!"
 
-  run_apt_get "python-fontforge htop"
-  run_cmd_with_user "cd ${DOTFILES_ROOT}/awesome-terminal-fonts && ./droid.sh"
-  # run_cmd_with_user "cd ${DOTFILES_ROOT}/awesome-terminal-fonts && ./build.sh && cp build/* ~/.fonts"
-  success "Awsome Fonts Installed!"
+  # run_apt_get "python-fontforge htop"
+  # run_cmd_with_user "cd ${DOTFILES_ROOT}/awesome-terminal-fonts && ./droid.sh"
+  # success "Awsome Fonts Installed!"
 
-  run_cmd_with_user "cd ${DOTFILES_ROOT}/powerline-fonts && ./install.sh"
-  success "PowerLine Fonts Installed!"
+  # run_cmd_with_user "cd ${DOTFILES_ROOT}/powerline-fonts && ./install.sh"
+  # success "PowerLine Fonts Installed!"
 
   run_cmd "curl -sSL http://git.io/git-extras-setup | sudo bash /dev/stdin"
   success "Git Extras installed!"

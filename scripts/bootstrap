@@ -180,6 +180,10 @@ install_dependencies () {
   link_file $DOTFILES_ROOT/zsh-plugins/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
   success "zsh-syntax-highlighting installed!"
 
+  run_apt_get "asciinema"
+  link_file $DOTFILES_ROOT/asciinema ~/.asciinema
+  success "Asciinema installed!"
+
   run_cmd_with_user "mkdir -p ~/.local/share/fonts/NerdFonts && cd ~/.local/share/fonts/NerdFonts"
   run_cmd_with_user 'cd ~/.local/share/fonts/NerdFonts && curl -fLo "Sauce Code Pro Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf?raw=true'
   run_cmd_with_user 'cd ~/.local/share/fonts/NerdFonts && curl -fLo "Sauce Code Pro ExtraLight Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Extra-Light/complete/Sauce%20Code%20Pro%20ExtraLight%20Nerd%20Font%20Complete.ttf?raw=true'

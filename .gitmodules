@@ -34,3 +34,6 @@
 [submodule "zsh-plugins/history-search-multi-word"]
 	path = zsh-plugins/history-search-multi-word
 	url = git@github.com:psprint/history-search-multi-word.git
+[submodule "zsh-plugins/git-prune"]
+	path = zsh-plugins/git-prune
+	url = git@github.com:Seinh/git-prune.git

@@ -186,6 +186,9 @@ install_dependencies () {
   link_file $DOTFILES_ROOT/zsh-plugins/history-search-multi-word ~/.oh-my-zsh/custom/plugins/history-search-multi-word
   success "history-search-multi-word installed!"
 
+  link_file $DOTFILES_ROOT/zsh-plugins/git-prune ~/.oh-my-zsh/custom/plugins/git-prune
+  success "git-prune installed!"
+
   run_apt_get "asciinema"
   link_file $DOTFILES_ROOT/asciinema ~/.asciinema
   success "Asciinema installed!"

@@ -1,4 +1,5 @@
 alias azk.start="azk start ${1}"
+alias azk.stop="azk stop ${1}"
 alias azk.restart="azk restart ${1}"
 alias azk.shell="azk shell ${1}"
 alias azk.status="azk status"

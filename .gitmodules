@@ -28,3 +28,9 @@
 [submodule "zsh-plugins/zsh-autosuggestions"]
 	path = zsh-plugins/zsh-autosuggestions
 	url = git@github.com:zsh-users/zsh-autosuggestions.git
+[submodule "zsh-plugins/alias-tips"]
+	path = zsh-plugins/alias-tips
+	url = git@github.com:djui/alias-tips.git
+[submodule "zsh-plugins/history-search-multi-word"]
+	path = zsh-plugins/history-search-multi-word
+	url = git@github.com:psprint/history-search-multi-word.git

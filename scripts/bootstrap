@@ -180,6 +180,12 @@ install_dependencies () {
   link_file $DOTFILES_ROOT/zsh-plugins/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
   success "zsh-syntax-highlighting installed!"
 
+  link_file $DOTFILES_ROOT/zsh-plugins/alias-tips ~/.oh-my-zsh/custom/plugins/alias-tips
+  success "alias-tips installed!"
+
+  link_file $DOTFILES_ROOT/zsh-plugins/history-search-multi-word ~/.oh-my-zsh/custom/plugins/history-search-multi-word
+  success "history-search-multi-word installed!"
+
   run_apt_get "asciinema"
   link_file $DOTFILES_ROOT/asciinema ~/.asciinema
   success "Asciinema installed!"

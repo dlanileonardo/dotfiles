@@ -1,3 +1,5 @@
-alias azs="azk start"
-alias azr="azk restart"
-alias azsh="azk shell"
+alias azk.start="azk start ${1}"
+alias azk.restart="azk restart ${1}"
+alias azk.shell="azk shell ${1}"
+alias azk.bundler="azk shell ${1} -c 'bundle'"
+alias azk.run="azk shell ${2} -c ${1}"

@@ -189,6 +189,9 @@ install_dependencies () {
   link_file $DOTFILES_ROOT/zsh-plugins/git-prune ~/.oh-my-zsh/custom/plugins/git-prune
   success "git-prune installed!"
 
+  link_file $DOTFILES_ROOT/zsh-plugins/oh-my-zsh-reminder ~/.oh-my-zsh/custom/plugins/reminder
+  success "oh-my-zsh-reminder installed!"
+
   run_apt_get "asciinema"
   link_file $DOTFILES_ROOT/asciinema ~/.asciinema
   success "Asciinema installed!"

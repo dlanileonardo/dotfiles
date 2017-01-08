@@ -37,3 +37,6 @@
 [submodule "zsh-plugins/git-prune"]
 	path = zsh-plugins/git-prune
 	url = git@github.com:Seinh/git-prune.git
+[submodule "zsh-plugins/oh-my-zsh-reminder"]
+	path = zsh-plugins/oh-my-zsh-reminder
+	url = git@github.com:AlexisBRENON/oh-my-zsh-reminder.git

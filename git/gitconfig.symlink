@@ -23,7 +23,7 @@
   template = /home/dlani/.gitmessage.txt
 [core]
   excludesfile = /home/dlani/.gitignore
-	editor = nano
+  editor = nano
 [branch]
   autosetuprebase = always
 [merge]

@@ -20,9 +20,9 @@
 [pull]
   default = current
 [commit]
-  template = /home/dlani/.gitmessage.txt
+  template = ~/.gitmessage.txt
 [core]
-  excludesfile = /home/dlani/.gitignore
+  excludesfile = ~/.gitignore
   editor = nano
 [branch]
   autosetuprebase = always

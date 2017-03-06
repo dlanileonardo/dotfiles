@@ -54,6 +54,5 @@ _steps/
 
 # VScode #
 ##########
-
-.vscode/
+.vscode
 jsconfig.json

@@ -36,3 +36,5 @@
 [difftool]
   prompt = true
   external = meld
+[apply]
+   whitespace = nowarn

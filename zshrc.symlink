@@ -52,7 +52,7 @@ plugins=(
   git git-extras ruby themes colorize docker tmux tmuxinator 
   command-not-found web-search gem rbenv ubuntu docker docker-compose cp 
   extract zsh-autosuggestions zsh-syntax-highlighting alias-tips
-  history-search-multi-word git-prune kubectl brew aws
+  history-search-multi-word git-prune kubectl brew aws heroku
 )
 
 source $ZSH/oh-my-zsh.sh

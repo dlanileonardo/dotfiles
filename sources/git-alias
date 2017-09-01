@@ -4,6 +4,7 @@ git-squash () { git rebase -i HEAD~$1 }
 alias git-sync-fork="git fetch upstream && git checkout master && git rebase upstream/master"
 alias git-tag-rm-remote="git tag -l | xargs -n 1 git push --delete origin"
 alias git-tag-rm-local="git tag | xargs git tag -d"
-alias git-submodule-update="git submodule foreach git pull"
-alias git-submodule-status="git submodule status --recursive"
-alias git-submodule-branchs="git submodule foreach git describe --all"
+alias git-submodules-update="git submodule foreach git pull"
+alias git-submodules-status="git submodule status --recursive"
+alias git-submodules-branchs="git submodule foreach git describe --all"
+git-submodules-co-branch() { git submodule foreach --recursive 'git checkout $(git config -f $toplevel/.gitmodules submodule.$name.branch || echo master)' }

@@ -192,6 +192,9 @@ install_dependencies () {
   link_file $DOTFILES_ROOT/zsh-plugins/oh-my-zsh-reminder ~/.oh-my-zsh/custom/plugins/reminder
   success "oh-my-zsh-reminder installed!"
 
+  link_file $DOTFILES_ROOT/zsh-plugins/almostontop ~/.oh-my-zsh/custom/plugins/almostontop
+  success "almostontop installed!"
+
   run_apt_get "asciinema"
   link_file $DOTFILES_ROOT/asciinema ~/.asciinema
   success "Asciinema installed!"

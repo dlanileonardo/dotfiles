@@ -40,3 +40,6 @@
 [submodule "zsh-plugins/oh-my-zsh-reminder"]
 	path = zsh-plugins/oh-my-zsh-reminder
 	url = git@github.com:AlexisBRENON/oh-my-zsh-reminder.git
+[submodule "zsh-plugins/almostontop"]
+	path = zsh-plugins/almostontop
+	url = git@github.com:Valiev/almostontop.git

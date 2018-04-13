@@ -207,7 +207,8 @@ install_dependencies () {
   run_cmd_with_user 'cd ~/Library/Fonts && curl -fLo "Sauce Code Pro Semibold Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Semibold/complete/Sauce%20Code%20Pro%20Semibold%20Nerd%20Font%20Complete.ttf?raw=true'
   run_cmd_with_user 'cd ~/Library/Fonts && curl -fLo "Sauce Code Pro Bold Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Bold/complete/Sauce%20Code%20Pro%20Bold%20Nerd%20Font%20Complete.ttf?raw=true'
   run_cmd_with_user 'cd ~/Library/Fonts && curl -fLo "Sauce Code Pro Black Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Black/complete/Sauce%20Code%20Pro%20Black%20Nerd%20Font%20Complete.ttf?raw=true'
-  success "Sauce Code Pro Nerd Font Installed!"
+
+  success "Nerd Font Installed!"
 
   BASE16_THEME="base16-twilight.dark"
   run_cmd_with_user "cd ${DOTFILES_ROOT}/base16-builder && ./base16 && open output/terminal-app"

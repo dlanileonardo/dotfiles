@@ -50,8 +50,8 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git git-extras ruby themes colorize docker
-  web-search gem rbenv docker docker-compose cp
-  extract brew aws heroku osx jsontools
+  gem rbenv docker docker-compose cp
+  extract brew aws osx jsontools
   history-search-multi-word zsh-autosuggestions zsh-syntax-highlighting git-prune yarn
 )
 
@@ -127,6 +127,8 @@ export PATH="$HOME/.ndenv/bin:$PATH"
 export PATH="$HOME/.flutter-sdk/bin:$PATH"
 # eval "$(ndenv init -)"
 
+ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=4'
 ZSH_AUTOSUGGEST_STRATEGY='match_prev_cmd'
 export JAVA_HOME=$(/usr/libexec/java_home)
+

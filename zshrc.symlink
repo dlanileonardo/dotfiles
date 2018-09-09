@@ -130,4 +130,6 @@ export PATH="$HOME/.flutter-sdk/bin:$PATH"
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=4'
 ZSH_AUTOSUGGEST_STRATEGY='match_prev_cmd'
+
 export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH="/usr/local/sbin:$PATH"

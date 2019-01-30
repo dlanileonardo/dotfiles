@@ -43,3 +43,6 @@
 [submodule "zsh-plugins/almostontop"]
 	path = zsh-plugins/almostontop
 	url = git@github.com:Valiev/almostontop.git
+[submodule "zsh-plugins/bash-insulter"]
+	path = zsh-plugins/bash-insulter
+	url = git@github.com:hkbakke/bash-insulter.git

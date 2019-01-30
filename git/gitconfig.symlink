@@ -5,8 +5,8 @@
   interactive = auto
   status = auto
 [user]
-  name = Dlani Mendes
-  email = dlanileonardo@gmail.com
+	name = Dlani Mendes
+	email = dlanileonardo@gmail.com
 [credential]
   helper = cache
 [alias]
@@ -28,7 +28,7 @@
 [branch]
   autosetuprebase = always
 [merge]
-  tool = meld
+	tool = meld
 [diff]
   # tool = meld
   # external = meld
@@ -39,3 +39,10 @@
   external = meld
 [apply]
    whitespace = nowarn
+[bulkworkspaces]
+	achievemore = /Users/dlani/projetos/rails/achievemore-bundle
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

@@ -51,9 +51,12 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 plugins=(
   git git-extras ruby themes colorize docker
   gem rbenv docker docker-compose cp
-  extract brew aws osx jsontools
-  history-search-multi-word zsh-autosuggestions zsh-syntax-highlighting git-prune yarn
+  extract brew aws osx jsontools yarn
+  history-search-multi-word zsh-autosuggestions zsh-syntax-highlighting git-prune
 )
+
+# Completion git-extras
+# source /private/tmp/git-extras/etc/git-extras-completion.zsh
 
 source $ZSH/oh-my-zsh.sh
 

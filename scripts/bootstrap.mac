@@ -57,7 +57,7 @@ require_sudo() {
 }
 
 setup_gitconfig () {
-  if ! [ -f git/gitconfig.symlink ]
+  if ! [ -f symlinks/.gitconfig ]
   then
     info 'setup gitconfig'
 
@@ -72,7 +72,7 @@ setup_gitconfig () {
     user ' - What is your github author email?'
     read -e git_authoremail
 
-    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.symlink.example > git/gitconfig.symlink
+    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.example > symlinks/gitconfig
 
     success 'gitconfig'
   fi
@@ -159,9 +159,9 @@ install_dotfiles () {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink')
+  for src in $(find -H "$DOTFILES_ROOT/symlinks" -maxdepth 1 -name '*')
   do
-    dst="$HOME/.$(basename "${src%.*}")"
+    dst="$HOME/$(basename "${src}")"
     link_file "$src" "$dst"
   done
 }
@@ -211,19 +211,27 @@ install_dependencies () {
   success "Nerd Font Installed!"
 
   BASE16_THEME="base16-twilight.dark"
-  run_cmd_with_user "cd ${DOTFILES_ROOT}/base16-builder && ./base16 && open output/terminal-app"
+  run_cmd_with_user "cd ${DOTFILES_ROOT}/themes/base16-builder && ./base16 && open output/terminal-app"
   success "Base16 has defined with sucess!"
 
   run_cmd "curl -sSL http://git.io/git-extras-setup | sudo bash /dev/stdin"
   success "Git Extras installed!"
 
+  run_cmd_with_user "pip install --user powerline-status"
+  success "Powerline installed!"
+
   run_cmd_with_user "mkdir -p ~/.oh-my-zsh/custom/themes/"
-  link_file $DOTFILES_ROOT/powerlevel9k ~/.oh-my-zsh/custom/themes/powerlevel9k
+  link_file $DOTFILES_ROOT/dependencies/powerlevel9k ~/.oh-my-zsh/custom/themes/powerlevel9k
   success "PowerLevel9k installed!"
 
   # run_cmd_with_user "mkdir -p ~/.themes/"
   # link_file $DOTFILES_ROOT/flatabulous ~/.themes/flatabulous
   # success "Flatabulous Theme installed!"
+}
+
+install_powerline_config () {
+  info "install Powerline config"
+  link_file $DOTFILES_ROOT/themes/powerline ~/.config/powerline
 }
 
 install_vimplugins () {
@@ -243,18 +251,16 @@ install_vimplugins () {
   success "Vim Plugins Installed"
 
   info "installing codesearch"
-  run_cmd_with_user "wget https://github.com/junkblocker/codesearch-pre-github/releases/download/v3/codesearch_v3_darwin_amd64.zip"
-  run_cmd_with_user "unzip -n codesearch_v3_darwin_amd64.zip -d ~/bin && mv ~/bin/codesearch_v3_darwin_amd64/* ~/bin && rm -rf ~/bin/codesearch_v3_darwin_amd64"
-  run_cmd_with_user "chmod a+x ~/bin/*"
-  run_cmd_with_user "rm codesearch_v3_darwin_amd64.zip"
+  run_cmd_with_user "wget -O codesearch.zip https://github.com/junkblocker/codesearch/releases/download/v5/codesearch_v5_darwin_amd64.zip"
+  run_cmd_with_user "unzip -j -n codesearch.zip -d ~/bin && chmod a+x ~/bin/* && rm codesearch.zip"
   success "Codesearch installed"
 
   link_file ~/.vim/bundle/base16-vim/colors ~/.vim/colors
-  link_file $DOTFILES_ROOT/vimfiles/doc ~/.vim/doc
-  link_file $DOTFILES_ROOT/vimfiles/unite-menus/ ~/.vim/unite-menus
-  link_file $DOTFILES_ROOT/vimfiles/snippets/ ~/.vim/snippets
-  link_file $DOTFILES_ROOT/vimfiles/vimrc.d/ ~/.vim/vimrc.d
-  link_file $DOTFILES_ROOT/vimfiles/vimrc.plugins/ ~/.vim/vimrc.plugins
+  link_file $DOTFILES_ROOT/dependencies/vimfiles/doc ~/.vim/doc
+  link_file $DOTFILES_ROOT/dependencies/vimfiles/unite-menus/ ~/.vim/unite-menus
+  link_file $DOTFILES_ROOT/dependencies/vimfiles/snippets/ ~/.vim/snippets
+  link_file $DOTFILES_ROOT/dependencies/vimfiles/vimrc.d/ ~/.vim/vimrc.d
+  link_file $DOTFILES_ROOT/dependencies/vimfiles/vimrc.plugins/ ~/.vim/vimrc.plugins
   run_cmd_with_user "mkdir -p ~/.vim/.cache/unite"
 }
 
@@ -264,6 +270,7 @@ setup_gitconfig
 install_dependencies
 install_dotfiles
 install_vimplugins
+install_powerline_config
 
 
 success "All installed!"

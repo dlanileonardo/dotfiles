@@ -7,3 +7,5 @@ install.sh
 *.bak
 
 .DS_Store
+
+config/tmuxinator/*.yml

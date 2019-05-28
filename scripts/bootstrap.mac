@@ -159,9 +159,21 @@ install_dotfiles () {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  for src in $(find -H "$DOTFILES_ROOT/symlinks" -maxdepth 1 -name '*')
+  for src in $(find -H "$DOTFILES_ROOT/symlinks" -maxdepth 1 -mindepth 1 -name '*')
   do
     dst="$HOME/$(basename "${src}")"
+    link_file "$src" "$dst"
+  done
+}
+
+install_configs () {
+  info 'installing configs'
+
+  local overwrite_all=false backup_all=false skip_all=false
+
+  for src in $(find -H "$DOTFILES_ROOT/config" -maxdepth 1 -mindepth 1 -name '*')
+  do
+    dst="$HOME/.config/$(basename "${src}")"
     link_file "$src" "$dst"
   done
 }
@@ -196,7 +208,6 @@ install_dependencies () {
   success "almostontop installed!"
 
   run_apt_get "asciinema"
-  link_file $DOTFILES_ROOT/asciinema ~/.asciinema
   success "Asciinema installed!"
 
   run_cmd_with_user "cd ~/Library/Fonts"
@@ -227,11 +238,6 @@ install_dependencies () {
   # run_cmd_with_user "mkdir -p ~/.themes/"
   # link_file $DOTFILES_ROOT/flatabulous ~/.themes/flatabulous
   # success "Flatabulous Theme installed!"
-}
-
-install_powerline_config () {
-  info "install Powerline config"
-  link_file $DOTFILES_ROOT/themes/powerline ~/.config/powerline
 }
 
 install_vimplugins () {
@@ -269,9 +275,8 @@ setup_bootstrap
 setup_gitconfig
 install_dependencies
 install_dotfiles
+install_configs
 install_vimplugins
-install_powerline_config
-
 
 success "All installed!"
 echo ""

@@ -3,3 +3,7 @@ sources/*
 
 log/*
 install.sh
+
+*.bak
+
+.DS_Store

@@ -61,3 +61,11 @@
 [submodule "zsh-plugins/bash-insulter"]
 	path = zsh-plugins/bash-insulter
 	url = git@github.com:hkbakke/bash-insulter.git
+
+[submodule "dependencies/awesome-terminal-fonts"]
+	path = dependencies/awesome-terminal-fonts
+	url = git@github.com:gabrielelana/awesome-terminal-fonts.git
+
+[submodule "themes/flatabulous"]
+	path = themes/flatabulous
+	url = git@github.com:anmoljagetia/Flatabulous.git

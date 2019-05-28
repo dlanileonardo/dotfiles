@@ -3,3 +3,5 @@ sources/*
 
 log/*
 install.sh
+
+*.bak

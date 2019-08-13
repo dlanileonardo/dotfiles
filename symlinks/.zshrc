@@ -9,7 +9,7 @@ source ~/.powerlevel9krc
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell" # "braun", "juanghurtado", "wedisagree", "sonicradish", "fletcherm", "darkblood"
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -136,9 +136,22 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH="/usr/local/sbin:$PATH"
 
 # Powerline
-export PATH="$HOME/Library/Python/2.7/bin:$PATH"
+export PATH="$HOME/Library/Python/3.7/bin:$PATH"
 # export POWERLINE_CONFIG_COMMAND=powerline-config
 # . ~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # BASE16_SHELL="$HOME/.dotfiles/base16-builder/output/shell/base16-pop.dark.sh"
 # [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+# fzf https://github.com/junegunn/fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export FD_OPTIONS="--follow --exlude .git --exclude --node_modules --exclude bower_components"
+export FZF_DEFAULT_OPTS="--no-mouse --inline-info --height 100% --layout=reverse --preview='[[ \$(file --mime {}) =~ binary ]] &&
+                 echo {} is a binary file || (bat --style=numbers --color=always {} || coderay {} || cat {}) 2> /dev/null | head -500'"
+export FZF_DEFAULT_COMMAND='fd --type f --type d'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export BAT_PAGER="less -R"
+
+eval "$(nodenv init -)"
+export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"

@@ -210,6 +210,15 @@ install_dependencies () {
   run_apt_get "asciinema"
   success "Asciinema installed!"
 
+  run_apt_get "fzf"
+  success "fzf installed!"
+
+  run_apt_get "bat"
+  success "bat installed!"
+
+  run_apt_get "fd"
+  success "fd installed!"
+
   run_cmd_with_user "cd ~/Library/Fonts"
   run_cmd_with_user 'cd ~/Library/Fonts && curl -fLo "Sauce Code Pro Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf?raw=true'
   run_cmd_with_user 'cd ~/Library/Fonts && curl -fLo "Sauce Code Pro ExtraLight Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Extra-Light/complete/Sauce%20Code%20Pro%20ExtraLight%20Nerd%20Font%20Complete.ttf?raw=true'

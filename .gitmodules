@@ -69,3 +69,6 @@
 [submodule "themes/flatabulous"]
 	path = themes/flatabulous
 	url = git@github.com:anmoljagetia/Flatabulous.git
+[submodule "dependencies/powerlevel10k"]
+	path = dependencies/powerlevel10k
+	url = git@github.com:romkatv/powerlevel10k.git

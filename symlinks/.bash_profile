@@ -7,4 +7,4 @@ fi
 
 export PATH="$PATH:$(yarn global bin)"
 export PATH="$HOME/.ndenv/bin:$PATH"
-eval "$(ndenv init -)"
+# eval "$(ndenv init -)"

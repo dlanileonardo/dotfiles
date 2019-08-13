@@ -155,3 +155,4 @@ export BAT_PAGER="less -R"
 
 eval "$(nodenv init -)"
 export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
+export PATH="$PATH":"$HOME/.pub-cache/bin"

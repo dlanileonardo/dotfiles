@@ -116,3 +116,5 @@ alias android-connect="mtpfs -o allow_other /media/Moto X"
 alias android-disconnect="fusermount -u /media/Moto X"export PATH="$HOME/.rbenv/bin:$PATH"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# export PS1="\u@\W $ "

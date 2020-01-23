@@ -156,3 +156,9 @@ export BAT_PAGER="less -R"
 eval "$(nodenv init -)"
 export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH="/usr/local/opt/flutter/bin:$PATH"
+
+export FLUTTER_ROOT=/usr/local/Cellar/flutter/stable
+export PATH="$HOME/.fastlane/bin:$PATH"
+
+export PATH="/Users/dlani/Library/Android/sdk/tools:$PATH"

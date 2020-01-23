@@ -9,3 +9,4 @@ install.sh
 .DS_Store
 
 config/tmuxinator/*.yml
+symlinks/.gnupg

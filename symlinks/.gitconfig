@@ -5,10 +5,11 @@
   interactive = auto
   status = auto
 [user]
-	name = Dlani Mendes
-	email = dlanileonardo@gmail.com
+  name = Dlani Mendes
+  email = dlanileonardo@gmail.com
+  signingkey = DAFAEB02C16393DE
 [credential]
-  helper = cache
+  helper = osxkeychain
 [alias]
   cl = clone
   co = checkout
@@ -21,6 +22,7 @@
   default = current
 [commit]
   template = ~/.gitmessage.txt
+  gpgsign = true
 [core]
   excludesfile = ~/.gitignore
   editor = nano
@@ -28,21 +30,24 @@
 [branch]
   autosetuprebase = always
 [merge]
-	tool = meld
+  tool = meld
 [diff]
   # tool = meld
   # external = meld
 [gui]
   editor = sublime_text
+	recentrepo = /Volumes/Workspace/mobile/achievemore
 [difftool]
   prompt = true
   external = meld
 [apply]
    whitespace = nowarn
 [bulkworkspaces]
-	achievemore = /Users/dlani/projetos/rails/achievemore-bundle
+  achievemore = /Users/dlani/projetos/rails/achievemore-bundle
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
 	required = true
+[gpg]
+  program = gpg

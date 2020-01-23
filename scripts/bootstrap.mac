@@ -2,8 +2,8 @@
 #
 # bootstrap installs things.
 cd "$(dirname "$0")/.."
-DOTFILES_ROOT=$(pwd)
 
+DOTFILES_ROOT=$(pwd)
 BUNDLE_DIR=~/.vim/bundle
 NEOBUNDLE_INSTALL_DIR="$BUNDLE_DIR/neobundle.vim"
 PERSONAL_USER=$1
@@ -11,6 +11,10 @@ PERSONAL_USER=$1
 set -e
 
 echo ''
+
+header () {
+  printf "  ==> ${1}\n"
+}
 
 info () {
   printf "  [ \033[00;34m..\033[0m ] $1"
@@ -21,13 +25,18 @@ user () {
 }
 
 success () {
-  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+  printf "\r\033[2K  [ \033[00;32m✓\033[0m ] $1\n"
 }
 
 fail () {
-  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+  printf "\r\033[2K  [\033[0;31mFAIL\033[0m ] $1\n"
   echo ''
   exit
+}
+
+warning () {
+  # printf "\n\033[2K  [ \033[00;33m⍻\033[0m ] $1\n"
+  printf "\n         \e[33m► $1\033[0m\n"
 }
 
 setup_bootstrap() {
@@ -39,7 +48,7 @@ run_cmd_with_user() {
 }
 
 run_cmd() {
-  sh -c "(${1}) 1>> ${DOTFILES_ROOT}/log/log.info 2>> ${DOTFILES_ROOT}/log/log.error"
+  sh -c "(${1}) 1>> ${DOTFILES_ROOT}/log/log.info 2>> ${DOTFILES_ROOT}/log/log.error" || warning "Ocorreu algum erro!"
 }
 
 run_apt_get() {
@@ -179,13 +188,14 @@ install_configs () {
 }
 
 install_dependencies () {
-  info 'installing dependencies'
+  header 'installing dependencies'
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  run_cmd "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  success "The oh-my-zsh installed!"
+  info "Installing oh-my-zsh"
+  run_cmd "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "The oh-my-zsh installed!"
 
+  info "Installing zsh-autosuggestions"
   link_file $DOTFILES_ROOT/zsh-plugins/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
   success "zsh-autosuggestions installed!"
 
@@ -227,7 +237,6 @@ install_dependencies () {
   run_cmd_with_user 'cd ~/Library/Fonts && curl -fLo "Sauce Code Pro Semibold Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Semibold/complete/Sauce%20Code%20Pro%20Semibold%20Nerd%20Font%20Complete.ttf?raw=true'
   run_cmd_with_user 'cd ~/Library/Fonts && curl -fLo "Sauce Code Pro Bold Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Bold/complete/Sauce%20Code%20Pro%20Bold%20Nerd%20Font%20Complete.ttf?raw=true'
   run_cmd_with_user 'cd ~/Library/Fonts && curl -fLo "Sauce Code Pro Black Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Black/complete/Sauce%20Code%20Pro%20Black%20Nerd%20Font%20Complete.ttf?raw=true'
-
   success "Nerd Font Installed!"
 
   BASE16_THEME="base16-twilight.dark"
@@ -243,10 +252,6 @@ install_dependencies () {
   run_cmd_with_user "mkdir -p ~/.oh-my-zsh/custom/themes/"
   link_file $DOTFILES_ROOT/dependencies/powerlevel9k ~/.oh-my-zsh/custom/themes/powerlevel9k
   success "PowerLevel9k installed!"
-
-  # run_cmd_with_user "mkdir -p ~/.themes/"
-  # link_file $DOTFILES_ROOT/flatabulous ~/.themes/flatabulous
-  # success "Flatabulous Theme installed!"
 }
 
 install_vimplugins () {

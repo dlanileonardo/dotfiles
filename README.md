@@ -39,9 +39,21 @@ Of course, no one template will serve all projects since your needs may be diffe
 A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
 ### Built With
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+
 * [zsh](https://getbootstrap.com)
-* [ohmyzsh](https://ohmyz.sh/)
+  * [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+  * [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+  * [oh-my-zsh](https://ohmyz.sh/)
+  * [git-prune](https://github.com/diazod/git-prune)
+  * [alias-tips](https://github.com/djui/alias-tips)
+* [powerlevel10k](https://github.com/romkatv/powerlevel10k)
+* [oh-my-zsh-reminder](https://github.com/AlexisBRENON/oh-my-zsh-reminder)
+* [awesome-terminal-fonts](https://github.com/gabrielelana/awesome-terminal-fonts)
+* [powerline-fonts](https://github.com/powerline/fonts)
+* [base16-builder](https://github.com/base16-builder/base16-builder)
+* [almostontop](https://github.com/Valiev/almostontop)
+* [history-search-multi-wor](https://github.com/zdharma/history-search-multi-word)
+
 
 <!-- GETTING STARTED -->
 ## Getting Started

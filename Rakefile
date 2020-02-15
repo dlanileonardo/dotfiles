@@ -145,12 +145,19 @@ namespace "dot" do
     link_file "#{DOTFILES_ROOT}/zsh-plugins/git-prune", "~/.oh-my-zsh/custom/plugins/git-prune", lvl: 1
     link_file "#{DOTFILES_ROOT}/zsh-plugins/oh-my-zsh-reminder", "~/.oh-my-zsh/custom/plugins/reminder", lvl: 1
     link_file "#{DOTFILES_ROOT}/zsh-plugins/almostontop", "~/.oh-my-zsh/custom/plugins/almostontop", lvl: 1
+    link_file "#{DOTFILES_ROOT}/zsh-plugins/zsh-autoenv", "~/.oh-my-zsh/custom/plugins/autoenv", lvl: 1
 
     run_apt_get "asciinema", lvl: 1
     run_apt_get "fzf", lvl: 1
     run_apt_get "bat", lvl: 1
     run_apt_get "fd", lvl: 1
     run_apt_get "git-extras", lvl: 1
+
+    run_cmd 'gem install cocoapods bundler shenzhen fastlane'
+    run_cmd 'gem install rubocop ruby-debug-ide ruby-lint reek fasterer debride solargraph rake rcodetools rb-readline'
+    run cmd 'gem install did_you_mean github_changelog_generator tmuxinator colorize'
+    run_cmd 'gem install docker-sync'
+    run_cmd 'gem install rest-client multipart-post bumpversion nokogiri docker-compose'
 
     run_cmd 'cd ~/Library/Fonts && curl -sfLo "Sauce Code Pro Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf?raw=true', lvl: 1
     run_cmd 'cd ~/Library/Fonts && curl -sfLo "Sauce Code Pro ExtraLight Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Extra-Light/complete/Sauce%20Code%20Pro%20ExtraLight%20Nerd%20Font%20Complete.ttf?raw=true', lvl: 1

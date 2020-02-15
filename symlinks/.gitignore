@@ -56,3 +56,6 @@ _steps/
 ##########
 # .vscode
 jsconfig.json
+
+# DOTENV
+.env

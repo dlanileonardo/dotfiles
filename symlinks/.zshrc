@@ -1,9 +1,50 @@
+##########################
+# PATHS
+##########################
+
+# SBIN
+export PATH="/usr/local/sbin:$PATH"
+
+# PYTHON
+export PATH="$HOME/Library/Python/3.7/bin:$PATH"
+
+# RUBY
+eval "$(rbenv init -)"
+
+# SPHINX
+export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
+
+# FLUTTER
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH="/usr/local/opt/flutter/bin:$PATH"
+export FLUTTER_ROOT=/usr/local/Cellar/flutter/stable
+
+# FASTLANE
+export PATH="$HOME/.fastlane/bin:$PATH"
+
+# ANDROID
+export PATH="/Users/dlani/Library/Android/sdk/tools:$PATH"
+
+# NODE
+export PATH="$HOME/.ndenv/bin:$PATH"
+eval "$(nodenv init -)"
+
+# YARN
+export PATH="$PATH:$(yarn global bin)"
+
+### HEROKU
+export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+
+# USER BIN
+if [ -d "$HOME/bin" ] ; then
+    export PATH="$HOME/bin:${PATH}"
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
 source ~/.powerlevel9krc
-
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -50,10 +91,12 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git git-extras ruby themes colorize docker
+  git git-extras ruby themes colorize docker rbenv
   gem rbenv docker docker-compose cp
   extract brew aws osx jsontools yarn
-  history-search-multi-word zsh-autosuggestions zsh-syntax-highlighting git-prune
+  history-search-multi-word zsh-autosuggestions
+  zsh-syntax-highlighting git-prune
+  alias-tips dotenv
 )
 
 # Completion git-extras
@@ -63,7 +106,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+# export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -101,47 +144,22 @@ func set_tmux_pane_title() {
   printf "\033]2;%s\033\\" "$*";
 }
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-export PATH="/usr/local/bin:$PATH"
-export RBENV_ROOT="${HOME}/.rbenv"
-rbenv shell $(rbenv global)
-
-if [ -d "${RBENV_ROOT}" ]; then
-  export PATH="${RBENV_ROOT}/bin:${PATH}"
-  eval "$(rbenv init -)"
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    export PATH="$HOME/bin:${PATH}"
-fi
-
 # Go Lang
 export GOPATH=$HOME/.gocode
 export GOBIN=$GOPATH/bin
 
 # Sources
 for f in ~/.dotfiles/sources/*; do source $f; done
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/.ndenv/bin:$PATH"
-export PATH="$HOME/.flutter-sdk/bin:$PATH"
-# eval "$(ndenv init -)"
+
+# autoenv
+# source $(brew --prefix autoenv)/activate.sh
 
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=4'
 ZSH_AUTOSUGGEST_STRATEGY='match_prev_cmd'
 
+# JAVAHOME
 export JAVA_HOME=$(/usr/libexec/java_home)
-export PATH="/usr/local/sbin:$PATH"
-
-# Powerline
-export PATH="$HOME/Library/Python/3.7/bin:$PATH"
-# export POWERLINE_CONFIG_COMMAND=powerline-config
-# . ~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
-
-# BASE16_SHELL="$HOME/.dotfiles/base16-builder/output/shell/base16-pop.dark.sh"
-# [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # fzf https://github.com/junegunn/fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -152,13 +170,3 @@ export FZF_DEFAULT_OPTS="--no-mouse --inline-info --height 100% --layout=reverse
 export FZF_DEFAULT_COMMAND='fd --type f --type d'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export BAT_PAGER="less -R"
-
-eval "$(nodenv init -)"
-export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
-export PATH="$PATH":"$HOME/.pub-cache/bin"
-export PATH="/usr/local/opt/flutter/bin:$PATH"
-
-export FLUTTER_ROOT=/usr/local/Cellar/flutter/stable
-export PATH="$HOME/.fastlane/bin:$PATH"
-
-export PATH="/Users/dlani/Library/Android/sdk/tools:$PATH"

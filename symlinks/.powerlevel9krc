@@ -4,7 +4,7 @@ POWERLEVEL9K_MODE='nerdfont-complete'
 # POWERLEVEL9K_MODE='awesome-fontconfig'
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh dir vcs dir_writable)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status docker_machine ram root_indicator background_jobs time rbenv)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status asdf rbenv ram background_jobs)
 
 # POWERLEVEL9K_STATUS_VERBOSE=true
 # POWERLEVEL9K_SHOW_CHANGESET=true

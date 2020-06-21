@@ -17,20 +17,13 @@ export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
 # FLUTTER
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH="/usr/local/opt/flutter/bin:$PATH"
-export FLUTTER_ROOT=/usr/local/Cellar/flutter/stable
+export FLUTTER_ROOT=$(asdf where flutter)
 
 # FASTLANE
 export PATH="$HOME/.fastlane/bin:$PATH"
 
 # ANDROID
 export PATH="/Users/dlani/Library/Android/sdk/tools:$PATH"
-
-# NODE
-export PATH="$HOME/.ndenv/bin:$PATH"
-eval "$(nodenv init -)"
-
-# YARN
-export PATH="$PATH:$(yarn global bin)"
 
 ### HEROKU
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -43,6 +36,17 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+
+. $(brew --prefix asdf)/asdf.sh
+
+# YARN
+export PATH="$PATH:$(yarn global bin)"
+
+export INTEL_HAXM_HOME=/usr/local/Caskroom/intel-haxm
+# export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
+export ANDROID_HOME="/Users/${USER}/Library/Android/sdk"
+export PATH="${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools"
+export PATH="${PATH}:/Users/dlani/Library/Android/sdk/cmdline-tools/1.0/bin"
 
 source ~/.powerlevel9krc
 # Set name of the theme to load.
@@ -96,7 +100,7 @@ plugins=(
   extract brew aws osx jsontools yarn
   history-search-multi-word zsh-autosuggestions
   zsh-syntax-highlighting git-prune
-  alias-tips dotenv
+  alias-tips dotenv heroku asdf
 )
 
 # Completion git-extras
@@ -170,3 +174,11 @@ export FZF_DEFAULT_OPTS="--no-mouse --inline-info --height 100% --layout=reverse
 export FZF_DEFAULT_COMMAND='fd --type f --type d'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export BAT_PAGER="less -R"
+
+# Autocomplete
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi

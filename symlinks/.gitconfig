@@ -5,8 +5,8 @@
   interactive = auto
   status = auto
 [user]
-  name = Dlani Mendes
-  email = dlanileonardo@gmail.com
+	name = Dlani Mendes
+	email = dlanileonardo@gmail.com
   signingkey = DAFAEB02C16393DE
 [credential]
   helper = osxkeychain
@@ -21,10 +21,10 @@
 [pull]
   default = current
 [commit]
-  template = ~/.gitmessage.txt
+	template = ~/.gitmessage.txt
   gpgsign = true
 [core]
-  excludesfile = ~/.gitignore
+	excludesfile = /Users/dlani/.gitignore
   editor = nano
   autocrlf = input
 [branch]
@@ -51,3 +51,9 @@
 	required = true
 [gpg]
   program = gpg
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

@@ -1,7 +1,6 @@
 ##########################
 # PATHS
 ##########################
-
 # SBIN
 export PATH="/usr/local/sbin:$PATH"
 
@@ -9,7 +8,7 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/Library/Python/3.7/bin:$PATH"
 
 # RUBY
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 # SPHINX
 export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
@@ -41,12 +40,16 @@ export ZSH=$HOME/.oh-my-zsh
 
 # YARN
 export PATH="$PATH:$(yarn global bin)"
+export PATH=~/.composer/vendor/bin:$PATH
 
 export INTEL_HAXM_HOME=/usr/local/Caskroom/intel-haxm
 # export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
 export ANDROID_HOME="/Users/${USER}/Library/Android/sdk"
 export PATH="${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools"
 export PATH="${PATH}:/Users/dlani/Library/Android/sdk/cmdline-tools/1.0/bin"
+
+# Sources
+for f in ~/.dotfiles/custom_segments/*; do source $f; done
 
 source ~/.powerlevel9krc
 # Set name of the theme to load.
@@ -95,8 +98,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git git-extras ruby themes colorize docker rbenv
-  gem rbenv docker docker-compose cp
+  git git-extras ruby themes colorize docker
+  gem docker docker-compose cp
   extract brew aws osx jsontools yarn
   history-search-multi-word zsh-autosuggestions
   zsh-syntax-highlighting git-prune

@@ -20,6 +20,7 @@
   default = current
 [pull]
   default = current
+	rebase = true
 [commit]
 	template = ~/.gitmessage.txt
   gpgsign = true
@@ -28,7 +29,7 @@
   editor = nano
   autocrlf = input
 [branch]
-  autosetuprebase = always
+	autosetuprebase = always
 [merge]
   tool = meld
 [diff]

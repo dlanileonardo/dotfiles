@@ -72,3 +72,6 @@
 [submodule "dependencies/powerlevel10k"]
 	path = dependencies/powerlevel10k
 	url = git@github.com:romkatv/powerlevel10k.git
+[submodule "dependencies/zsh-async"]
+	path = dependencies/zsh-async
+	url = git@github.com:mafredri/zsh-async.git

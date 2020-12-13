@@ -51,7 +51,7 @@
   process = git-lfs filter-process
 	required = true
 [gpg]
-  program = gpg
+	program = /usr/local/bin/gpg
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 

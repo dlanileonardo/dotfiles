@@ -48,6 +48,9 @@ export ANDROID_HOME="/Users/${USER}/Library/Android/sdk"
 export PATH="${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools"
 export PATH="${PATH}:/Users/dlani/Library/Android/sdk/cmdline-tools/1.0/bin"
 
+# export python
+export PATH="${PATH}:/Users/${USER}/.asdf/installs/python/3.8.5/bin"
+
 # Sources
 for f in ~/.dotfiles/custom_segments/*; do source $f; done
 

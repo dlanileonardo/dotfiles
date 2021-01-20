@@ -170,7 +170,7 @@ namespace "dot" do
     BASE16_THEME="base16-twilight.dark"
 
     run_cmd "cd #{DOTFILES_ROOT}/themes/base16-builder && ./base16 && open output/terminal-app", lvl: 1
-    run_cmd "pip install --user powerline-status", lvl: 1
+    # run_cmd "pip install --user powerline-status", lvl: 1
     run_cmd "mkdir -p ~/.oh-my-zsh/custom/themes/", lvl: 1
 
     link_file "#{$DOTFILES_ROOT}/dependencies/powerlevel9k", "~/.oh-my-zsh/custom/themes/powerlevel9k", lvl: 1

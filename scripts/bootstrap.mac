@@ -246,8 +246,8 @@ install_dependencies () {
   run_cmd "curl -sSL http://git.io/git-extras-setup | sudo bash /dev/stdin"
   success "Git Extras installed!"
 
-  run_cmd_with_user "pip install --user powerline-status"
-  success "Powerline installed!"
+  # run_cmd_with_user "pip install --user powerline-status"
+  # success "Powerline installed!"
 
   run_cmd_with_user "mkdir -p ~/.oh-my-zsh/custom/themes/"
   link_file $DOTFILES_ROOT/dependencies/powerlevel9k ~/.oh-my-zsh/custom/themes/powerlevel9k

@@ -59,7 +59,7 @@ source ~/.powerlevel9krc
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="robbyrussell" # "braun", "juanghurtado", "wedisagree", "sonicradish", "fletcherm", "darkblood"
+ZSH_THEME="robbyrussell" # "braun", "juanghurtado", "wedisagree", "sonicradish", "fletcherm", "darkblood"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -101,12 +101,12 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git git-extras ruby themes colorize docker
+  git git-extras ruby themes colorize
   gem docker docker-compose cp
-  extract brew aws osx jsontools yarn
+  brew aws yarn
   history-search-multi-word zsh-autosuggestions
   zsh-syntax-highlighting git-prune
-  alias-tips dotenv heroku asdf
+  alias-tips dotenv asdf
 )
 
 # Completion git-extras

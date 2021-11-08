@@ -2,7 +2,7 @@
 # PATHS
 ##########################
 # SBIN
-export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/sbin:$PATH:/usr/local/bin/"
 
 # PYTHON
 export PATH="$HOME/Library/Python/3.7/bin:$PATH"
@@ -42,11 +42,12 @@ export ZSH=$HOME/.oh-my-zsh
 export PATH="$PATH:$(yarn global bin)"
 export PATH=~/.composer/vendor/bin:$PATH
 
-export INTEL_HAXM_HOME=/usr/local/Caskroom/intel-haxm
-# export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
-export ANDROID_HOME="/Users/${USER}/Library/Android/sdk"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
+export INTEL_HAXM_HOME="/usr/local/Caskroom/intel-haxm"
+export ANDROID_SDK_ROOT="/Users/dlani/Library/Android/sdk"
+export ANDROID_HOME="/Users/dlani/Library/Android/sdk"
 export PATH="${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools"
-export PATH="${PATH}:/Users/dlani/Library/Android/sdk/cmdline-tools/1.0/bin"
+export PATH="${PATH}:${ANDROID_HOME}/cmdline-tools/latest/bin"
 
 # export python
 export PATH="${PATH}:/Users/${USER}/.asdf/installs/python/3.8.5/bin"
@@ -54,13 +55,13 @@ export PATH="${PATH}:/Users/${USER}/.asdf/installs/python/3.8.5/bin"
 # Sources
 for f in ~/.dotfiles/custom_segments/*; do source $f; done
 
-source ~/.powerlevel9krc
+# source ~/.powerlevel9krc
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell" # "braun", "juanghurtado", "wedisagree", "sonicradish", "fletcherm", "darkblood"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="af-magic" # "braun", "juanghurtado", "wedisagree", "sonicradish", "fletcherm", "darkblood"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -188,3 +189,31 @@ if type brew &>/dev/null; then
   autoload -Uz compinit
   compinit
 fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+export GPG_TTY=$(tty)
+
+if [ -z "$SSH_AUTH_SOCK" ]; then
+   # Check for a currently running instance of the agent
+   RUNNING_AGENT="`ps -ax | grep 'ssh-agent -s' | grep -v grep | wc -l | tr -d '[:space:]'`"
+   if [ "$RUNNING_AGENT" = "0" ]; then
+        # Launch a new instance of the agent
+        ssh-agent -s &> $HOME/.ssh/ssh-agent
+   fi
+   eval `cat $HOME/.ssh/ssh-agent`
+fi
+

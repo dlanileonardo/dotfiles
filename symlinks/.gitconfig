@@ -5,9 +5,9 @@
   interactive = auto
   status = auto
 [user]
-	name = Dlani Mendes
+	name = Dlani
 	email = dlanileonardo@gmail.com
-  signingkey = DAFAEB02C16393DE
+	signingkey = C8B858EE
 [credential]
   helper = osxkeychain
 [alias]
@@ -23,7 +23,7 @@
 	rebase = true
 [commit]
 	template = ~/.gitmessage.txt
-  gpgsign = true
+	gpgsign = true
 [core]
 	excludesfile = /Users/dlani/.gitignore
   editor = nano
@@ -58,3 +58,5 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[init]
+	defaultBranch = master

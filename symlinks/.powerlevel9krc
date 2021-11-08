@@ -5,7 +5,7 @@ POWERLEVEL9K_MODE='nerdfont-complete'
 # Temporary
 # POWERLEVEL9K_MODE='awesome-fontconfig'
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh dir vcs dir_writable)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh dir dir_writable)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status my_docker_compose asdf rbenv ram background_jobs)
 
 # POWERLEVEL9K_STATUS_VERBOSE=true

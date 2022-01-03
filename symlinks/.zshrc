@@ -36,7 +36,7 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-. $(brew --prefix asdf)/asdf.sh
+. $(brew --prefix asdf)/libexec/asdf.sh
 
 # YARN
 export PATH="$PATH:$(yarn global bin)"
@@ -49,9 +49,6 @@ export ANDROID_HOME="/Users/dlani/Library/Android/sdk"
 export PATH="${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools"
 export PATH="${PATH}:${ANDROID_HOME}/cmdline-tools/latest/bin"
 
-# export python
-export PATH="${PATH}:/Users/${USER}/.asdf/installs/python/3.8.5/bin"
-
 # Sources
 for f in ~/.dotfiles/custom_segments/*; do source $f; done
 
@@ -61,6 +58,7 @@ for f in ~/.dotfiles/custom_segments/*; do source $f; done
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="af-magic" # "braun", "juanghurtado", "wedisagree", "sonicradish", "fletcherm", "darkblood"
+# ZSH_THEME="agnoster"
 # ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -107,13 +105,18 @@ plugins=(
   brew aws yarn
   history-search-multi-word zsh-autosuggestions
   zsh-syntax-highlighting git-prune
-  alias-tips dotenv asdf
+  alias-tips conda-zsh-completion
 )
 
 # Completion git-extras
 # source /private/tmp/git-extras/etc/git-extras-completion.zsh
 
 source $ZSH/oh-my-zsh.sh
+
+# Conda
+autoload -U compinit && compinit
+zstyle ':completion::complete:*' use-cache 1
+zstyle ":conda_zsh_completion:*" use-groups true
 
 # User configuration
 

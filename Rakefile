@@ -138,6 +138,7 @@ namespace "dot" do
     sp1.auto_spin
 
     run_cmd 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"', lvl: 1
+    link_file "#{DOTFILES_ROOT}/zsh-plugins/conda-zsh-completion", "~/.oh-my-zsh/custom/plugins/conda-zsh-completion", lvl: 1
     link_file "#{DOTFILES_ROOT}/zsh-plugins/zsh-autosuggestions", "~/.oh-my-zsh/custom/plugins/zsh-autosuggestions", lvl: 1
     link_file "#{DOTFILES_ROOT}/zsh-plugins/zsh-syntax-highlighting", "~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting", lvl: 1
     link_file "#{DOTFILES_ROOT}/zsh-plugins/alias-tips", "~/.oh-my-zsh/custom/plugins/alias-tips", lvl: 1
@@ -153,11 +154,11 @@ namespace "dot" do
     run_apt_get "fd", lvl: 1
     run_apt_get "git-extras", lvl: 1
 
-    run_cmd 'gem install cocoapods bundler shenzhen fastlane'
-    run_cmd 'gem install rubocop ruby-debug-ide ruby-lint reek fasterer debride solargraph rake rcodetools rb-readline'
-    run cmd 'gem install did_you_mean github_changelog_generator tmuxinator colorize'
-    run_cmd 'gem install docker-sync'
-    run_cmd 'gem install rest-client multipart-post bumpversion nokogiri docker-compose'
+    # run_cmd 'gem install cocoapods bundler shenzhen fastlane'
+    # run_cmd 'gem install rubocop ruby-debug-ide ruby-lint reek fasterer debride solargraph rake rcodetools rb-readline'
+    # run cmd 'gem install did_you_mean github_changelog_generator tmuxinator colorize'
+    # run_cmd 'gem install docker-sync'
+    # run_cmd 'gem install rest-client multipart-post bumpversion nokogiri docker-compose'
 
     run_cmd 'cd ~/Library/Fonts && curl -sfLo "Sauce Code Pro Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf?raw=true', lvl: 1
     run_cmd 'cd ~/Library/Fonts && curl -sfLo "Sauce Code Pro ExtraLight Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Extra-Light/complete/Sauce%20Code%20Pro%20ExtraLight%20Nerd%20Font%20Complete.ttf?raw=true', lvl: 1

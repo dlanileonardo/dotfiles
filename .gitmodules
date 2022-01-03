@@ -42,10 +42,6 @@
 	path = zsh-plugins/alias-tips
 	url = git@github.com:djui/alias-tips.git
 
-[submodule "zsh-plugins/history-search-multi-word"]
-	path = zsh-plugins/history-search-multi-word
-	url = git@github.com:psprint/history-search-multi-word.git
-
 [submodule "zsh-plugins/git-prune"]
 	path = zsh-plugins/git-prune
 	url = git@github.com:Seinh/git-prune.git
@@ -69,9 +65,15 @@
 [submodule "themes/flatabulous"]
 	path = themes/flatabulous
 	url = git@github.com:anmoljagetia/Flatabulous.git
+
 [submodule "dependencies/powerlevel10k"]
 	path = dependencies/powerlevel10k
 	url = git@github.com:romkatv/powerlevel10k.git
+
 [submodule "dependencies/zsh-async"]
 	path = dependencies/zsh-async
 	url = git@github.com:mafredri/zsh-async.git
+
+[submodule "zsh-plugins/conda-zsh-completion"]
+	path = zsh-plugins/conda-zsh-completion
+	url = git@github.com:esc/conda-zsh-completion.git

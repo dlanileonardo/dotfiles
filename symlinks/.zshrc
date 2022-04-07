@@ -36,7 +36,7 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-. $(brew --prefix asdf)/libexec/asdf.sh
+# . $(brew --prefix asdf)/libexec/asdf.sh
 
 # YARN
 export PATH="$PATH:$(yarn global bin)"
@@ -106,6 +106,7 @@ plugins=(
   history-search-multi-word zsh-autosuggestions
   zsh-syntax-highlighting git-prune
   alias-tips conda-zsh-completion
+  asdf
 )
 
 # Completion git-extras
@@ -220,3 +221,4 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
    eval `cat $HOME/.ssh/ssh-agent`
 fi
 
+export HOMEBREW_NO_ENV_HINTS=true

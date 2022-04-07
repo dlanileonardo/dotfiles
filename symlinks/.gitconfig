@@ -5,9 +5,9 @@
   interactive = auto
   status = auto
 [user]
-	name = Dlani
-	email = dlanileonardo@gmail.com
-	signingkey = C8B858EE
+  name = Dlani
+  email = dlanileonardo@gmail.com
+  signingkey = C8B858EE
 [credential]
   helper = osxkeychain
 [alias]
@@ -20,16 +20,16 @@
   default = current
 [pull]
   default = current
-	rebase = true
+  rebase = true
 [commit]
-	template = ~/.gitmessage.txt
-	gpgsign = true
+  template = ~/.gitmessage.txt
+  gpgsign = true
 [core]
-	excludesfile = /Users/dlani/.gitignore
+  excludesfile = /Users/dlani/.gitignore
   editor = nano
   autocrlf = input
 [branch]
-	autosetuprebase = always
+  autosetuprebase = always
 [merge]
   tool = meld
 [diff]
@@ -37,7 +37,7 @@
   # external = meld
 [gui]
   editor = sublime_text
-	recentrepo = /Volumes/Workspace/mobile/achievemore
+  recentrepo = /Volumes/Workspace/mobile/achievemore
 [difftool]
   prompt = true
   external = meld
@@ -49,14 +49,14 @@
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
-	required = true
+  required = true
 [gpg]
-	program = /usr/local/bin/gpg
+  program = /usr/local/bin/gpg
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
 [init]
-	defaultBranch = master
+  defaultBranch = master

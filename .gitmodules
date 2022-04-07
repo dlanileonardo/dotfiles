@@ -58,6 +58,3 @@
 [submodule "zsh-plugins/conda-zsh-completion"]
 	path = zsh-plugins/conda-zsh-completion
 	url = git@github.com:esc/conda-zsh-completion.git
-[submodule "zsh-plugins/history-search-multi-word"]
-	path = zsh-plugins/history-search-multi-word
-	url = git@github.com:matthewnessworthy/history-search-multi-word.git

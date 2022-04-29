@@ -85,7 +85,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   NeoBundle 'MattesGroeger/vim-bookmarks' " Vim bookmark plugin
   NeoBundle 'Raimondi/delimitMate' " Vim plugin, provides insert mode auto-completion for quotes, parens, brackets, etc.
   NeoBundle 'Lokaltog/vim-easymotion' " Vim motions on speed!
-  NeoBundle 'Yggdroot/indentLine' " A vim plugin to display the indention levels with thin vertical lines
+  " NeoBundle 'Yggdroot/indentLine' " A vim plugin to display the indention levels with thin vertical lines
   NeoBundle 'compactcode/open.vim' " Open files that were found by an external command.
   NeoBundle 'vim-scripts/SQLUtilities' " SQL utilities - Formatting, generate - columns lists, procedures for databases
   NeoBundle 'vim-scripts/Align' " Help folks to align text, eqns, declarations, tables, etc

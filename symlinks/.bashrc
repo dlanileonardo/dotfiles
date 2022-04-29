@@ -118,3 +118,4 @@ alias android-disconnect="fusermount -u /media/Moto X"export PATH="$HOME/.rbenv/
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # export PS1="\u@\W $ "
+. "$HOME/.cargo/env"

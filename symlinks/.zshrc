@@ -103,7 +103,7 @@ plugins=(
   git git-extras ruby themes colorize
   gem docker docker-compose cp
   brew aws yarn
-  history-search-multi-word zsh-autosuggestions
+  zsh-autosuggestions
   zsh-syntax-highlighting git-prune
   alias-tips conda-zsh-completion
   asdf

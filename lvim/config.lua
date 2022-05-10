@@ -13,7 +13,7 @@ vim.opt.shell = "/bin/sh"
 
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "tokyonight"
+lvim.colorscheme = "shades_of_purple"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -83,6 +83,7 @@ lvim.builtin.treesitter.ensure_installed = {
   "rust",
   "java",
   "yaml",
+  "dart",
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
@@ -121,9 +122,11 @@ lvim.autocommands.custom_groups = {
   { "BufWinEnter", "*.*", "setlocal foldmethod=indent" },
 }
 
-vim.api.nvim_set_keymap('n', 'F', "<cmd>lua require'hop'.hint_char1({ current_line_only = true })<cr>", {})
-vim.api.nvim_set_keymap('n', 'ff', "<cmd>lua require'hop'.hint_words({ })<cr>", {})
-vim.api.nvim_set_keymap('n', 'f', "<cmd>lua require'hop'.hint_words({ current_line_only = true })<cr>", {})
+vim.api.nvim_set_keymap('n', 'ff', ":HopWord<cr>", { silent = true })
+vim.api.nvim_set_keymap('n', 'fp', ":HopPattern<cr>", { silent = true })
+vim.api.nvim_set_keymap('n', 'fd', "<cmd>lua require'hop'.hint_words({ current_line_only = true })<cr>", { silent = true })
+vim.api.nvim_set_keymap('n', 'fs', ":HopLineStart<cr>", { silent = true })
+vim.api.nvim_set_keymap('n', 'fl', ":HopLine<cr>", { silent = true })
 
 vim.opt.timeoutlen = 500
 
@@ -195,9 +198,13 @@ lvim.plugins = {
   { 'onsails/lspkind.nvim' },
   { "lunarvim/colorschemes" },
   { "folke/tokyonight.nvim" },
+  { 'shaunsingh/nord.nvim' },
+  { 'shaunsingh/moonlight.nvim' },
+  { 'bluz71/vim-nightfly-guicolors' },
   { 'morhetz/gruvbox' },
   { 'Rigellute/shades-of-purple.vim' },
   { "p00f/nvim-ts-rainbow" },
+  { "sainnhe/sonokai" },
   {
     'nacro90/numb.nvim',
     config = function()
@@ -211,13 +218,14 @@ lvim.plugins = {
         extra_keymaps = true,
         default_keymaps = true,
         centered = true,
+        scroll_limit = 100,
+        default_delay = 0,
       }
     end
   },
   { "yamatsum/nvim-cursorline" },
   { 'norcalli/nvim_utils' },
   { "folke/trouble.nvim", cmd = "TroubleToggle", },
-  { 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim' },
   { 'anuvyklack/pretty-fold.nvim',
     requires = 'anuvyklack/nvim-keymap-amend',
     config = function()
@@ -246,9 +254,9 @@ lvim.plugins = {
   { "SmiteshP/nvim-gps",
     requires = "nvim-treesitter/nvim-treesitter"
   },
-  { 'ojroques/nvim-hardline',
-    requires = "lewis6991/gitsigns.nvim"
-  },
+  -- { 'ojroques/nvim-hardline',
+  --   requires = "lewis6991/gitsigns.nvim"
+  -- },
   { 'phaazon/hop.nvim',
     branch = 'v1', -- optional but strongly recommended
     config = function()
@@ -269,16 +277,6 @@ lvim.plugins = {
   --     }
   --   end
   -- },
-  -- {
-  --   'wfxr/minimap.vim',
-  --   run = "cargo install --locked code-minimap",
-  --   -- cmd = { "Minimap", "MinimapClose", "MinimapToggle", "MinimapRefresh", "MinimapUpdateHighlight" },
-  --   config = function()
-  --     vim.cmd("let g:minimap_width = 10")
-  --     vim.cmd("let g:minimap_auto_start = 1")
-  --     vim.cmd("let g:minimap_auto_start_win_enter = 1")
-  --   end,
-  -- }
   {
     'kevinhwang91/nvim-hlslens',
     config = function()
@@ -311,56 +309,82 @@ lvim.plugins = {
       })
     end
   },
+  {
+    'akinsho/flutter-tools.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    -- ft = "dartls",
+    config = function()
+      require "telescope".load_extension("flutter")
+    end,
+  },
 }
 
--- require('hardline').setup({
---   sections = {
---     { class = 'session', item = require('auto-session-library').current_session_name }
---   }
--- })
-
--- require('lualine').setup {
---   sections = { lualine_c = { require('auto-session-library').current_session_name } }
--- }
+require("flutter-tools").setup {
+  decorations = {
+    statusline = {
+      app_version = true,
+      device = true,
+    }
+  },
+  lsp = {
+    on_attach = require("lvim.lsp").common_on_attach,
+  },
+  flutter_lookup_cmd = "asdf where flutter",
+}
 
 require("nvim-treesitter.configs").setup {
-  -- highlight = {
-  -- },
   rainbow = {
     enable = true,
-    -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-    max_file_lines = nil, -- Do not enable for files with more than n lines, int
-    -- colors = {}, -- table of hex strings
-    -- termcolors = {} -- table of colour name strings
+    extended_mode = true,
+    max_file_lines = nil,
   }
 }
 
 require("nvim-gps").setup()
 local gps = require("nvim-gps")
 
-require('hardline').setup {
-  bufferline = false, -- enable bufferline
-  bufferline_settings = {
-    exclude_terminal = false, -- don't show terminal buffers in bufferline
-    show_index = false, -- show buffer indexes (not the actual buffer numbers) in bufferline
+-- require('lualine').setup {
+--   options = {
+--     icons_enabled = true,
+--     theme = 'auto',
+--     component_separators = { left = '', right = '' },
+--     section_separators = { left = '', right = '' },
+--     disabled_filetypes = {},
+--     always_divide_middle = true,
+--     globalstatus = false,
+--   },
+--   sections = {
+--     lualine_a = { 'mode' },
+--     lualine_b = { 'branch', 'diff', 'diagnostics' },
+--     lualine_c = { 'filename' },
+--     lualine_x = { 'encoding', 'fileformat', 'filetype' },
+--     lualine_y = { 'progress' },
+--     lualine_z = { 'location' }
+--   },
+--   inactive_sections = {
+--     lualine_a = {},
+--     lualine_b = {},
+--     lualine_c = { 'filename' },
+--     lualine_x = { 'location' },
+--     lualine_y = {},
+--     lualine_z = {}
+--   },
+--   tabline = {},
+--   extensions = {}
+-- }
+
+lvim.builtin.lualine.style = "default"
+lvim.builtin.lualine.sections = {
+  lualine_a = { "mode" },
+  lualine_b = { "branch", "diff", "diagnostics" },
+  lualine_c = {
+    -- { require('auto-session-library').current_session_name },
+    "filename",
+    { gps.get_location, cond = gps.is_available }
   },
-  theme = 'default', -- change theme
-  sections = { -- define sections
-    { class = 'mode', item = require('hardline.parts.mode').get_item },
-    { class = 'med', item = require('hardline.parts.git').get_item, hide = 100 },
-    { class = 'high', item = require('hardline.parts.filename').get_item },
-    { class = 'med', item = gps.get_location, cond = gps.is_available },
-    '%<',
-    { class = 'med', item = '%=' },
-    { class = 'low', item = require('hardline.parts.wordcount').get_item, hide = 100 },
-    { class = 'error', item = require('hardline.parts.lsp').get_error },
-    { class = 'warning', item = require('hardline.parts.lsp').get_warning },
-    { class = 'warning', item = require('hardline.parts.whitespace').get_item },
-    { class = 'high', item = require('hardline.parts.filetype').get_item, hide = 60 },
-    -- { class = 'med', item = require('auto-session-library').current_session_name },
-    { class = 'mode', item = require('hardline.parts.line').get_item },
-  },
+  lualine_x = { "encoding", "fileformat", "filetype" },
+  lualine_y = { "progress" },
+  lualine_z = { "location" },
 }
 
 require('nvim-cursorline').setup {
@@ -378,35 +402,9 @@ require('nvim-cursorline').setup {
 
 -- Plugins
 
-require("flutter-tools").setup {
-  decorations = {
-    statusline = {
-      app_version = true,
-      device = true,
-    }
-  },
-  flutter_lookup_cmd = "asdf where flutter",
-}
-
-require("telescope").load_extension("flutter")
 
 
--- require('neoscroll').setup({
---   -- All these keys will be mapped to their corresponding default scrolling animation
---   mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>',
---     '<C-y>', '<C-e>', 'zt', 'zz', 'zb' },
---   hide_cursor = true, -- Hide cursor while scrolling
---   stop_eof = true, -- Stop at <EOF> when scrolling downwards
---   use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
---   respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
---   cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
---   easing_function = nil, -- Default easing function
---   pre_hook = nil, -- Function to run before the scrolling animation starts
---   post_hook = nil, -- Function to run after the scrolling animation ends
---   performance_mode = false,
--- })
-
--- require('gitsigns').setup()
+-- lvim.builtin.telescope.extensions = { "flutter" }
 
 -- LSP Config
 --Enable (broadcasting) snippet capability for completion
@@ -421,3 +419,8 @@ require 'lspconfig'.jsonls.setup {
 -- require 'lspconfig'.dartls.setup {
 --   cmd = { "dart", "/Users/dlani/.asdf/installs/flutter/2.10.4-stable/bin/cache/dart-sdk/bin/snapshots/analysis_server.dart.snapshot", "--lsp" }
 -- }
+
+
+vim.cmd [[
+ au BufRead,BufNewFile Fastfile set filetype=ruby
+]]

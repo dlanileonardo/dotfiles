@@ -13,7 +13,8 @@ vim.opt.shell = "/bin/sh"
 
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "shades_of_purple"
+lvim.lint_on_save = true
+lvim.colorscheme = "kanagawa"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -22,12 +23,12 @@ lvim.leader = "space"
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<C-l>"] = ":bn<cr>"
 lvim.keys.normal_mode["<C-h>"] = ":bp<cr>"
-lvim.keys.normal_mode["<C-j>"] = ":bd<cr>"
+-- lvim.keys.normal_mode["<C-j>"] = ":bd<cr>"
 
 -- unmap a default keymapping
 lvim.keys.normal_mode["<C-Up>"] = false
 -- edit a default keymapping
--- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
+lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
@@ -48,7 +49,14 @@ lvim.keys.normal_mode["<C-Up>"] = false
 -- }
 
 -- Use which-key to add extra bindings with the leader-key prefix
--- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
+lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
+
+lvim.builtin.which_key.mappings["b"]["n"] = { "<cmd>:bnext<cr>", "Next Buffer" }
+lvim.builtin.which_key.mappings["b"]["1"] = { "<cmd>:bfirst<cr>", "First Buffer" }
+lvim.builtin.which_key.mappings["b"]["0"] = { "<cmd>:blast<cr>", "Last Buffer" }
+
+lvim.builtin.which_key.mappings["L"]["h"] = { "<cmd>:CheckHealth<cr>", "Check Health" }
+
 lvim.builtin.which_key.mappings["t"] = {
   name = "+Trouble",
   t = { "<cmd>:TroubleToggle<cr>", "Toggle" },
@@ -89,13 +97,6 @@ lvim.builtin.treesitter.ensure_installed = {
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
--- vim.api.nvim_exec([[ :highlight Normal guibg=none ]], false)
--- vim.api.nvim_exec([[ :highlight NonText guibg=none ]], false)
--- vim.api.nvim_eval(expr: :highlight Normal guibg=none)
-
-
--- autocmd ColorScheme * highlight Normal guibg=none
--- autocmd ColorScheme * highlight NonText guibg=none
 vim.cmd([[
   setlocal foldmethod=indent
   set nofoldenable
@@ -112,6 +113,15 @@ lvim.builtin.which_key.mappings['r'] = {
   e = { "<cmd>:HopPattern<CR>", "Search by Pattern" },
   f = { "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", "After Cursor" },
   F = { "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", "Before Cursor" },
+}
+
+lvim.builtin.which_key.mappings['s']['e'] = { "<cmd>lua require('spectre').open()<cr>", "Spectre" }
+
+lvim.builtin.which_key.mappings["S"] = {
+  name = "Session",
+  c = { "<cmd>lua require('persistence').load()<cr>", "Restore last session for current dir" },
+  l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore last session" },
+  Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -194,7 +204,9 @@ vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "dartls" })
 
 -- Additional Plugins
 lvim.plugins = {
-  -- { 'lewis6991/gitsigns.nvim' },
+  { "rebelot/kanagawa.nvim" },
+  { 'cpea2506/one_monokai.nvim' },
+  { 'tiagovla/tokyodark.nvim' },
   { 'onsails/lspkind.nvim' },
   { "lunarvim/colorschemes" },
   { "folke/tokyonight.nvim" },
@@ -205,27 +217,120 @@ lvim.plugins = {
   { 'Rigellute/shades-of-purple.vim' },
   { "p00f/nvim-ts-rainbow" },
   { "sainnhe/sonokai" },
+  { "yamatsum/nvim-cursorline" },
+  { 'norcalli/nvim_utils' },
+  { 'famiu/bufdelete.nvim' },
+  { "folke/trouble.nvim", cmd = "TroubleToggle", },
+  -- {
+  --   'rmagatti/goto-preview',
+  --   config = function()
+  --     require('goto-preview').setup {
+  --       width = 120; -- Width of the floating window
+  --       height = 25; -- Height of the floating window
+  --       default_mappings = false; -- Bind default mappings
+  --       debug = false; -- Print debug information
+  --       opacity = nil; -- 0-100 opacity level of the floating window where 100 is fully transparent.
+  --       post_open_hook = nil; -- A function taking two arguments, a buffer and a window to be ran as a hook.
+  --       -- You can use "default_mappings = true" setup option
+  --       -- Or explicitly set keybindings
+  --       vim.cmd("nnoremap gpd <cmd>lua require('goto-preview').goto_preview_definition()<CR>");
+  --       vim.cmd("nnoremap gpi <cmd>lua require('goto-preview').goto_preview_implementation()<CR>");
+  --       vim.cmd("nnoremap gP <cmd>lua require('goto-preview').close_all_win()<CR>");
+  --     }
+  --   end
+  -- },
+  -- {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   event = "BufRead",
+  --   setup = function()
+  --     vim.g.indentLine_enabled = 1
+  --     vim.g.indent_blankline_char = "▏"
+  --     vim.g.indent_blankline_filetype_exclude = { "help", "terminal", "dashboard" }
+  --     vim.g.indent_blankline_buftype_exclude = { "terminal" }
+  --     vim.g.indent_blankline_show_trailing_blankline_indent = false
+  --     vim.g.indent_blankline_show_first_indent_level = false
+  --     vim.g.indent_blankline_use_treesitter = false
+  --   end
+  -- },
+  { 'ludovicchabant/vim-gutentags',
+    config = function()
+      vim.g.gutentags_ctags_exclude = { '.venv', '.mypy_cache', '.git' }
+      vim.g.gutentags_project_root = { '.gutentags' }
+      vim.g.gutentags_modules = { 'ctags' }
+      vim.g.gutentags_cache_dir = '~/.cache/lvim/ctags/'
+      vim.g.gutentags_generate_on_new = true
+      vim.g.gutentags_generate_on_missing = true
+      vim.g.gutentags_generate_on_write = true
+      vim.g.gutentags_generate_on_empty_buffer = 0
+      vim.g.gutentags_ctags_extra_args = { '--fields=+ailmnS' }
+    end
+  },
+  { "SmiteshP/nvim-gps",
+    requires = "nvim-treesitter/nvim-treesitter"
+  },
+  {
+    "nvim-telescope/telescope-project.nvim",
+    event = "BufWinEnter",
+    setup = function()
+      vim.cmd [[packadd telescope.nvim]]
+    end,
+  },
+  {
+    "windwp/nvim-spectre",
+    event = "BufRead",
+    config = function()
+      require("spectre").setup()
+    end,
+  },
   {
     'nacro90/numb.nvim',
     config = function()
       require('numb').setup()
     end
   },
+  { 'phaazon/hop.nvim',
+    branch = 'v1',
+    config = function()
+      require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+    end
+  },
+  {
+    'kevinhwang91/nvim-hlslens',
+    config = function()
+      require('hlslens').setup()
+    end
+  },
+  {
+    'petertriho/nvim-scrollbar',
+    config = function()
+      require("scrollbar").setup()
+      require("scrollbar.handlers.search").setup()
+    end
+  },
+  {
+    'akinsho/flutter-tools.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    -- ft = "dartls",
+    config = function()
+      require "telescope".load_extension("flutter")
+    end,
+  },
   {
     'declancm/cinnamon.nvim',
     config = function()
-      require('cinnamon').setup {
-        extra_keymaps = true,
-        default_keymaps = true,
-        centered = true,
-        scroll_limit = 100,
-        default_delay = 0,
-      }
     end
   },
-  { "yamatsum/nvim-cursorline" },
-  { 'norcalli/nvim_utils' },
-  { "folke/trouble.nvim", cmd = "TroubleToggle", },
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre",
+    module = "persistence",
+    config = function()
+      require("persistence").setup {
+        dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"),
+        options = { "buffers", "curdir", "tabpages", "winsize" },
+      }
+    end,
+  },
   { 'anuvyklack/pretty-fold.nvim',
     requires = 'anuvyklack/nvim-keymap-amend',
     config = function()
@@ -242,52 +347,6 @@ lvim.plugins = {
         }
       })
       require('pretty-fold.preview').setup()
-    end
-  },
-  {
-    "nvim-telescope/telescope-project.nvim",
-    event = "BufWinEnter",
-    setup = function()
-      vim.cmd [[packadd telescope.nvim]]
-    end,
-  },
-  { "SmiteshP/nvim-gps",
-    requires = "nvim-treesitter/nvim-treesitter"
-  },
-  -- { 'ojroques/nvim-hardline',
-  --   requires = "lewis6991/gitsigns.nvim"
-  -- },
-  { 'phaazon/hop.nvim',
-    branch = 'v1', -- optional but strongly recommended
-    config = function()
-      -- you can configure Hop the way you like here; see :h hop-config
-      require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-    end
-  },
-  {
-    'famiu/bufdelete.nvim'
-  },
-  -- {
-  --   'rmagatti/auto-session',
-  --   config = function()
-  --     require('auto-session').setup {
-  --       log_level = 'info',
-  --       auto_session_suppress_dirs = { '~/' },
-  --       auto_session_use_git_branch = true,
-  --     }
-  --   end
-  -- },
-  {
-    'kevinhwang91/nvim-hlslens',
-    config = function()
-      require('hlslens').setup()
-    end
-  },
-  {
-    'petertriho/nvim-scrollbar',
-    config = function()
-      require("scrollbar").setup()
-      require("scrollbar.handlers.search").setup()
     end
   },
   {
@@ -309,14 +368,14 @@ lvim.plugins = {
       })
     end
   },
-  {
-    'akinsho/flutter-tools.nvim',
-    requires = 'nvim-lua/plenary.nvim',
-    -- ft = "dartls",
-    config = function()
-      require "telescope".load_extension("flutter")
-    end,
-  },
+}
+
+require('cinnamon').setup {
+  default_keymaps = true,
+  extra_keymaps = true,
+  centered = true,
+  scroll_limit = 150,
+  default_delay = 7,
 }
 
 require("flutter-tools").setup {
@@ -342,36 +401,6 @@ require("nvim-treesitter.configs").setup {
 
 require("nvim-gps").setup()
 local gps = require("nvim-gps")
-
--- require('lualine').setup {
---   options = {
---     icons_enabled = true,
---     theme = 'auto',
---     component_separators = { left = '', right = '' },
---     section_separators = { left = '', right = '' },
---     disabled_filetypes = {},
---     always_divide_middle = true,
---     globalstatus = false,
---   },
---   sections = {
---     lualine_a = { 'mode' },
---     lualine_b = { 'branch', 'diff', 'diagnostics' },
---     lualine_c = { 'filename' },
---     lualine_x = { 'encoding', 'fileformat', 'filetype' },
---     lualine_y = { 'progress' },
---     lualine_z = { 'location' }
---   },
---   inactive_sections = {
---     lualine_a = {},
---     lualine_b = {},
---     lualine_c = { 'filename' },
---     lualine_x = { 'location' },
---     lualine_y = {},
---     lualine_z = {}
---   },
---   tabline = {},
---   extensions = {}
--- }
 
 lvim.builtin.lualine.style = "default"
 lvim.builtin.lualine.sections = {
@@ -402,8 +431,6 @@ require('nvim-cursorline').setup {
 
 -- Plugins
 
-
-
 -- lvim.builtin.telescope.extensions = { "flutter" }
 
 -- LSP Config
@@ -420,7 +447,55 @@ require 'lspconfig'.jsonls.setup {
 --   cmd = { "dart", "/Users/dlani/.asdf/installs/flutter/2.10.4-stable/bin/cache/dart-sdk/bin/snapshots/analysis_server.dart.snapshot", "--lsp" }
 -- }
 
+-- Mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+-- local opts = { noremap = true, silent = true }
+-- vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+-- vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+-- vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+-- vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+-- local on_attach = function(client, bufnr)
+--   -- Enable completion triggered by <c-x><c-o>
+--   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+--   -- Mappings.
+--   -- See `:help vim.lsp.*` for documentation on any of the below functions
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+--   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+--   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+--   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+--   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+--   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+--   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+--   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+-- end
+
+
+lvim.builtin.which_key.mappings['l']['K'] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" }
+
+local servers = { 'solargraph', 'dartls', 'tsserver' }
+for _, lsp in pairs(servers) do
+  require('lspconfig')[lsp].setup {
+    -- on_attach = on_attach,
+    flags = {
+      -- This will be the default in neovim 0.7+
+      debounce_text_changes = 150,
+    }
+  }
+end
+
 
 vim.cmd [[
- au BufRead,BufNewFile Fastfile set filetype=ruby
+  au BufRead,BufNewFile Fastfile set filetype=ruby
+  set cmdheight=1
+  set tags=tags
+  let g:easytags_cmd = "/usd/local/bin/ctags"
 ]]

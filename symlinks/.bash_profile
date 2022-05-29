@@ -15,3 +15,5 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 . "$HOME/.cargo/env"
+
+complete -C /usr/local/bin/mc mc

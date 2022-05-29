@@ -8,3 +8,7 @@ lspconfig.emmet_ls.setup({
   capabilities = capabilities,
   filetypes = { "html", "css", "typescriptreact", "javascriptreact" },
 })
+
+require 'lspconfig'.html.setup {
+  capabilities = capabilities,
+}

@@ -222,3 +222,6 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
 fi
 
 export HOMEBREW_NO_ENV_HINTS=true
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/mc mc

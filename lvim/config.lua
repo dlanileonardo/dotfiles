@@ -14,7 +14,7 @@ vim.opt.shell = "/bin/sh"
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
-lvim.colorscheme = "kanagawa"
+lvim.colorscheme = "tokyonight"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -49,7 +49,9 @@ lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
 -- }
 
 -- Use which-key to add extra bindings with the leader-key prefix
-lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
+lvim.builtin.which_key.mappings["e"] = { "<cmd>Telescope file_browser<CR>", "Telescope Explorer" }
+lvim.builtin.which_key.mappings["s"]["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
+lvim.builtin.which_key.mappings["s"]["E"] = { "<cmd>Telescope file_browser<CR>", "Telescope Explorer" }
 
 lvim.builtin.which_key.mappings["b"]["n"] = { "<cmd>:bnext<cr>", "Next Buffer" }
 lvim.builtin.which_key.mappings["b"]["1"] = { "<cmd>:bfirst<cr>", "First Buffer" }
@@ -125,12 +127,15 @@ lvim.builtin.which_key.mappings["S"] = {
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
-lvim.autocommands.custom_groups = {
-  -- { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
-  -- { "BufWinEnter", "*.js", "setlocal ts=4 sw=4" },
-  -- { "InsertEnter", "*", ":normal zz" },
-  { "BufWinEnter", "*.*", "setlocal foldmethod=indent" },
-}
+vim.api.nvim_create_autocmd({ 'InsertEnter' }, {
+  pattern = { "*" },
+  command = ":normal zz",
+})
+
+vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
+  pattern = { "*.*" },
+  command = "setlocal foldmethod=indent"
+})
 
 vim.api.nvim_set_keymap('n', 'ff', ":HopWord<cr>", { silent = true })
 vim.api.nvim_set_keymap('n', 'fp', ":HopPattern<cr>", { silent = true })
@@ -138,12 +143,15 @@ vim.api.nvim_set_keymap('n', 'fd', "<cmd>lua require'hop'.hint_words({ current_l
 vim.api.nvim_set_keymap('n', 'fs', ":HopLineStart<cr>", { silent = true })
 vim.api.nvim_set_keymap('n', 'fl', ":HopLine<cr>", { silent = true })
 
+vim.api.nvim_set_keymap('n', '<C-p>', ":Telescope find_files<CR>", { silent = true })
+vim.api.nvim_set_keymap('n', '<C-M-p>', ":Telescope command_center<CR>", { silent = true })
+
 vim.opt.timeoutlen = 500
 
 -- generic LSP settings
 
 -- ---@usage disable automatic installation of servers
--- lvim.lsp.automatic_servers_installation = false
+lvim.lsp.automatic_servers_installation = true
 -- ---configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
 -- ---see the full default list `:lua print(vim.inspect(lvim.lsp.automatic_configuration.skipped_servers))`
 -- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
@@ -204,6 +212,7 @@ vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "dartls" })
 
 -- Additional Plugins
 lvim.plugins = {
+  -- THEMES
   { "rebelot/kanagawa.nvim" },
   { 'cpea2506/one_monokai.nvim' },
   { 'tiagovla/tokyodark.nvim' },
@@ -215,55 +224,35 @@ lvim.plugins = {
   { 'bluz71/vim-nightfly-guicolors' },
   { 'morhetz/gruvbox' },
   { 'Rigellute/shades-of-purple.vim' },
+  { 'Mofiqul/dracula.nvim' },
   { "p00f/nvim-ts-rainbow" },
   { "sainnhe/sonokai" },
-  { "yamatsum/nvim-cursorline" },
+  -- PLUGINS
+  -- { "yamatsum/nvim-cursorline" },
+  { "RRethy/vim-illuminate" },
   { 'norcalli/nvim_utils' },
   { 'famiu/bufdelete.nvim' },
   { "folke/trouble.nvim", cmd = "TroubleToggle", },
-  -- {
-  --   'rmagatti/goto-preview',
-  --   config = function()
-  --     require('goto-preview').setup {
-  --       width = 120; -- Width of the floating window
-  --       height = 25; -- Height of the floating window
-  --       default_mappings = false; -- Bind default mappings
-  --       debug = false; -- Print debug information
-  --       opacity = nil; -- 0-100 opacity level of the floating window where 100 is fully transparent.
-  --       post_open_hook = nil; -- A function taking two arguments, a buffer and a window to be ran as a hook.
-  --       -- You can use "default_mappings = true" setup option
-  --       -- Or explicitly set keybindings
-  --       vim.cmd("nnoremap gpd <cmd>lua require('goto-preview').goto_preview_definition()<CR>");
-  --       vim.cmd("nnoremap gpi <cmd>lua require('goto-preview').goto_preview_implementation()<CR>");
-  --       vim.cmd("nnoremap gP <cmd>lua require('goto-preview').close_all_win()<CR>");
-  --     }
-  --   end
-  -- },
-  -- {
-  --   "lukas-reineke/indent-blankline.nvim",
-  --   event = "BufRead",
-  --   setup = function()
-  --     vim.g.indentLine_enabled = 1
-  --     vim.g.indent_blankline_char = "▏"
-  --     vim.g.indent_blankline_filetype_exclude = { "help", "terminal", "dashboard" }
-  --     vim.g.indent_blankline_buftype_exclude = { "terminal" }
-  --     vim.g.indent_blankline_show_trailing_blankline_indent = false
-  --     vim.g.indent_blankline_show_first_indent_level = false
-  --     vim.g.indent_blankline_use_treesitter = false
-  --   end
-  -- },
-  { 'ludovicchabant/vim-gutentags',
+  { "gfeiyou/command-center.nvim" },
+  { 'nvim-telescope/telescope-ui-select.nvim' },
+  { 'mg979/vim-visual-multi', branch = "master" },
+  {
+    "andymass/vim-matchup",
+    event = "CursorMoved",
     config = function()
-      vim.g.gutentags_ctags_exclude = { '.venv', '.mypy_cache', '.git' }
-      vim.g.gutentags_project_root = { '.gutentags' }
-      vim.g.gutentags_modules = { 'ctags' }
-      vim.g.gutentags_cache_dir = '~/.cache/lvim/ctags/'
-      vim.g.gutentags_generate_on_new = true
-      vim.g.gutentags_generate_on_missing = true
-      vim.g.gutentags_generate_on_write = true
-      vim.g.gutentags_generate_on_empty_buffer = 0
-      vim.g.gutentags_ctags_extra_args = { '--fields=+ailmnS' }
-    end
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+    end,
+  },
+  {
+    "nvim-telescope/telescope-frecency.nvim",
+    config = function()
+    end,
+    requires = { "tami5/sqlite.lua" }
+  },
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    config = function()
+    end,
   },
   { "SmiteshP/nvim-gps",
     requires = "nvim-treesitter/nvim-treesitter"
@@ -359,7 +348,7 @@ lvim.plugins = {
         sort = true;
         run_on_every_keystroke = true;
         snippet_placeholder = '..';
-        ignored_file_types = { -- default is not to ignore
+        ignored_file_types = {
           -- uncomment to ignore in lua:
           -- lua = true
           html = true
@@ -370,9 +359,10 @@ lvim.plugins = {
   },
 }
 
+
 require('cinnamon').setup {
   default_keymaps = true,
-  extra_keymaps = true,
+  extra_keymaps = false,
   centered = true,
   scroll_limit = 150,
   default_delay = 7,
@@ -416,86 +406,137 @@ lvim.builtin.lualine.sections = {
   lualine_z = { "location" },
 }
 
-require('nvim-cursorline').setup {
-  cursorline = {
-    enable = true,
-    timeout = 1000,
-    number = false,
-  },
-  cursorword = {
-    enable = true,
-    min_length = 3,
-    hl = { underline = true },
+-- require('nvim-cursorline').setup {
+--   cursorline = {
+--     enable = true,
+--     timeout = 1000,
+--     number = false,
+--   },
+--   cursorword = {
+--     enable = true,
+--     min_length = 3,
+--     hl = { underline = true },
+--   }
+-- }
+
+local opts = {
+  extensions = {
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown {
+        -- even more opts
+      }
+    },
+
+    file_browser = {
+      hidden = true,
+      respect_gitignore = false,
+    },
+    frecency = {
+      show_scores = true,
+      -- devicons_disabled = true,
+      workspaces = {
+        ["conf"] = "/Users/dlani/.config/",
+        ["projects"] = "/Volumes/Workspace/",
+        ["achievemore"] = "/Volumes/Workspace/achievemore/",
+        ["crypto"] = "/Volumes/Workspace/crypto/"
+      }
+    }
   }
 }
+lvim.builtin.telescope.extensions = vim.tbl_extend("force", lvim.builtin.telescope.extensions, opts.extensions)
 
 -- Plugins
-
--- lvim.builtin.telescope.extensions = { "flutter" }
+lvim.builtin.telescope.on_config_done = function(tele)
+  tele.load_extension('command_center')
+  tele.load_extension("frecency")
+  tele.load_extension("file_browser")
+  tele.load_extension("ui-select")
+  -- tele.setup(opts.extensions)
+  -- require('telescope').setup(lvim.builtin.telescope)
+end
 
 -- LSP Config
 --Enable (broadcasting) snippet capability for completion
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require 'lspconfig'.jsonls.setup {
-  capabilities = capabilities,
-  cmd = { "/Users/dlani/.asdf/shims/vscode-json-languageserver", "--stdio" }
-}
+-- require 'lspconfig'.jsonls.setup {
+--   capabilities = capabilities,
+--   cmd = { "/Users/dlani/.asdf/shims/vscode-json-languageserver", "--stdio" }
+-- }
 
 -- require 'lspconfig'.dartls.setup {
 --   cmd = { "dart", "/Users/dlani/.asdf/installs/flutter/2.10.4-stable/bin/cache/dart-sdk/bin/snapshots/analysis_server.dart.snapshot", "--lsp" }
 -- }
 
--- Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
--- local opts = { noremap = true, silent = true }
--- vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
--- vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
--- vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
--- vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
--- local on_attach = function(client, bufnr)
---   -- Enable completion triggered by <c-x><c-o>
---   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
---   -- Mappings.
---   -- See `:help vim.lsp.*` for documentation on any of the below functions
---   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
---   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
---   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
---   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
---   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
---   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
---   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
---   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
---   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
---   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
---   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
---   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
---   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
--- end
-
+-- require 'lspconfig'.rome.setup {}
+require 'lspconfig'.tsserver.setup {}
 
 lvim.builtin.which_key.mappings['l']['K'] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" }
-
-local servers = { 'solargraph', 'dartls', 'tsserver' }
-for _, lsp in pairs(servers) do
-  require('lspconfig')[lsp].setup {
-    -- on_attach = on_attach,
-    flags = {
-      -- This will be the default in neovim 0.7+
-      debounce_text_changes = 150,
-    }
-  }
-end
-
 
 vim.cmd [[
   au BufRead,BufNewFile Fastfile set filetype=ruby
   set cmdheight=1
-  set tags=tags
-  let g:easytags_cmd = "/usd/local/bin/ctags"
 ]]
+
+
+local command_center = require("command_center")
+local noremap = { noremap = true }
+local silent_noremap = { noremap = true, silent = true }
+
+command_center.add({
+  { description = "Save File",
+    cmd = "<CMD>w <CR>",
+  },
+  { description = "Find files",
+    cmd = "<CMD>Telescope find_files<CR>",
+  },
+  { description = "Search inside current buffer",
+    cmd = "<CMD>Telescope current_buffer_fuzzy_find<CR>",
+  },
+  { description = "Find hidden files",
+    cmd = "<CMD>Telescope find_files hidden=true<CR>",
+  },
+  { description = "Show document symbols",
+    cmd = "<CMD>Telescope lsp_document_symbols<CR>",
+  },
+  { description = "Code Actions",
+    cmd = "<CMD>lua vim.lsp.buf.code_action()<CR>",
+  },
+  { description = "Telescope File Explorer",
+    cmd = "<CMD>lua require'telescope'.extensions.file_browser.file_browser()<CR>",
+  },
+  { description = "Telescope File Browser",
+    cmd = "<CMD>lua require('telescope.builtin').find_files()<CR>",
+  },
+  { description = "Telescope Search Word",
+    cmd = "<CMD>lua require('telescope.builtin').live_grep()<CR>",
+  },
+  { description = "Telescope git Files",
+    cmd = "<CMD>lua require('telescope.builtin').git_files()<CR>",
+  },
+  { description = "Telescope Files",
+    cmd = "<CMD>lua require('telescope.builtin').find_files()<CR>",
+  },
+  { description = "Telescope Buffers",
+    cmd = "<CMD>lua require('telescope.builtin').buffers()<CR>",
+  },
+  { description = "Telescope Keymaps",
+    cmd = "<CMD>lua require('telescope.builtin').keymaps()<CR>"
+  },
+  { description = "Check Health",
+    cmd = "<CMD>checkhealth<CR>",
+  },
+  { description = "Update LunarVim",
+    cmd = "<CMD>LvimUpdate<CR>",
+  },
+  { description = "View Notification",
+    cmd = "<cmd>Telescope notify<cr>",
+  },
+  { description = "Reload LunarVim's configuration",
+    cmd = "<cmd>LvimReload<cr>",
+  },
+  { description = "Open Config File",
+    cmd = "<cmd>edit " .. get_config_dir() .. "/config.lua<cr>"
+  }
+}, command_center.mode.ADD_ONLY)

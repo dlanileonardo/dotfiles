@@ -58,3 +58,12 @@
 [submodule "zsh-plugins/conda-zsh-completion"]
 	path = zsh-plugins/conda-zsh-completion
 	url = git@github.com:esc/conda-zsh-completion.git
+[submodule "dependencies/tmux.gpa"]
+	path = dependencies/tmux.gpa
+	url = git@github.com:gpakosz/.tmux.git
+[submodule "dependencies/tpm"]
+	path = dependencies/tpm
+	url = git@github.com:tmux-plugins/tpm.git
+[submodule "dependencies/nord-dircolors"]
+	path = dependencies/nord-dircolors
+	url = git@github.com:arcticicestudio/nord-dircolors.git

@@ -14,21 +14,13 @@ vim.opt.shell = "/bin/sh"
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
-lvim.colorscheme = "tokyonight"
+lvim.colorscheme = "nord"
+lvim.transparent_window = true
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
 
-lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-lvim.keys.normal_mode["<C-l>"] = ":bn<cr>"
-lvim.keys.normal_mode["<C-h>"] = ":bp<cr>"
--- lvim.keys.normal_mode["<C-j>"] = ":bd<cr>"
-
--- unmap a default keymapping
-lvim.keys.normal_mode["<C-Up>"] = false
--- edit a default keymapping
-lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
@@ -105,9 +97,6 @@ vim.cmd([[
   set foldlevel=99
 ]])
 
--- transparencia
-lvim.transparent_window = true
-
 -- keymappings hop
 lvim.builtin.which_key.mappings['r'] = {
   name = "Hop",
@@ -117,7 +106,7 @@ lvim.builtin.which_key.mappings['r'] = {
   F = { "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", "Before Cursor" },
 }
 
-lvim.builtin.which_key.mappings['s']['e'] = { "<cmd>lua require('spectre').open()<cr>", "Spectre" }
+-- lvim.builtin.which_key.mappings['s']['e'] = { "<cmd>lua require('spectre').open()<cr>", "Spectre" }
 
 lvim.builtin.which_key.mappings["S"] = {
   name = "Session",
@@ -127,10 +116,10 @@ lvim.builtin.which_key.mappings["S"] = {
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
-vim.api.nvim_create_autocmd({ 'InsertEnter' }, {
-  pattern = { "*" },
-  command = ":normal zz",
-})
+-- vim.api.nvim_create_autocmd({ 'InsertEnter' }, {
+--   pattern = { "*" },
+--   command = ":normal zz",
+-- })
 
 vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
   pattern = { "*.*" },
@@ -152,6 +141,8 @@ vim.opt.timeoutlen = 500
 
 -- ---@usage disable automatic installation of servers
 lvim.lsp.automatic_servers_installation = true
+lvim.lsp.document_highlight = true
+
 -- ---configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
 -- ---see the full default list `:lua print(vim.inspect(lvim.lsp.automatic_configuration.skipped_servers))`
 -- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
@@ -213,36 +204,41 @@ vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "dartls" })
 -- Additional Plugins
 lvim.plugins = {
   -- THEMES
-  { "rebelot/kanagawa.nvim" },
-  { 'cpea2506/one_monokai.nvim' },
   { 'tiagovla/tokyodark.nvim' },
-  { 'onsails/lspkind.nvim' },
-  { "lunarvim/colorschemes" },
   { "folke/tokyonight.nvim" },
+  -- { "rebelot/kanagawa.nvim" },
+  -- { 'cpea2506/one_monokai.nvim' },
+  -- { 'onsails/lspkind.nvim' },
+  { "lunarvim/colorschemes" },
   { 'shaunsingh/nord.nvim' },
-  { 'shaunsingh/moonlight.nvim' },
-  { 'bluz71/vim-nightfly-guicolors' },
+  -- { 'shaunsingh/moonlight.nvim' },
+  -- { 'bluz71/vim-nightfly-guicolors' },
   { 'morhetz/gruvbox' },
-  { 'Rigellute/shades-of-purple.vim' },
-  { 'Mofiqul/dracula.nvim' },
-  { "p00f/nvim-ts-rainbow" },
-  { "sainnhe/sonokai" },
+  -- { 'Rigellute/shades-of-purple.vim' },
+  -- { 'Mofiqul/dracula.nvim' },
+  -- { "sainnhe/sonokai" },
+
   -- PLUGINS
+  {
+    "sindrets/diffview.nvim",
+    requires = 'nvim-lua/plenary.nvim'
+  },
   -- { "yamatsum/nvim-cursorline" },
-  { "RRethy/vim-illuminate" },
+  -- { "RRethy/vim-illuminate" },
+  { "p00f/nvim-ts-rainbow" },
   { 'norcalli/nvim_utils' },
   { 'famiu/bufdelete.nvim' },
   { "folke/trouble.nvim", cmd = "TroubleToggle", },
   { "gfeiyou/command-center.nvim" },
   { 'nvim-telescope/telescope-ui-select.nvim' },
   { 'mg979/vim-visual-multi', branch = "master" },
-  {
-    "andymass/vim-matchup",
-    event = "CursorMoved",
-    config = function()
-      vim.g.matchup_matchparen_offscreen = { method = "popup" }
-    end,
-  },
+  -- {
+  --   "andymass/vim-matchup",
+  --   event = "CursorMoved",
+  --   config = function()
+  --     vim.g.matchup_matchparen_offscreen = { method = "popup" }
+  --   end,
+  -- },
   {
     "nvim-telescope/telescope-frecency.nvim",
     config = function()
@@ -264,13 +260,13 @@ lvim.plugins = {
       vim.cmd [[packadd telescope.nvim]]
     end,
   },
-  {
-    "windwp/nvim-spectre",
-    event = "BufRead",
-    config = function()
-      require("spectre").setup()
-    end,
-  },
+  -- {
+  --   "windwp/nvim-spectre",
+  --   event = "BufRead",
+  --   config = function()
+  --     require("spectre").setup()
+  --   end,
+  -- },
   {
     'nacro90/numb.nvim',
     config = function()
@@ -299,10 +295,23 @@ lvim.plugins = {
   {
     'akinsho/flutter-tools.nvim',
     requires = 'nvim-lua/plenary.nvim',
+    -- module = "flutter-tools",
+    event = "BufRead pubspec.yaml",
     -- ft = "dartls",
     config = function()
-      require "telescope".load_extension("flutter")
-    end,
+      require("flutter-tools").setup {
+        decorations = {
+          statusline = {
+            app_version = true,
+            device = true,
+          }
+        },
+        lsp = {
+          on_attach = require("lvim.lsp").common_on_attach,
+        },
+        flutter_lookup_cmd = "asdf where flutter",
+      }
+    end
   },
   {
     'declancm/cinnamon.nvim',
@@ -315,6 +324,7 @@ lvim.plugins = {
     module = "persistence",
     config = function()
       require("persistence").setup {
+        ---@diagnostic disable-next-line: missing-parameter
         dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"),
         options = { "buffers", "curdir", "tabpages", "winsize" },
       }
@@ -338,57 +348,42 @@ lvim.plugins = {
       require('pretty-fold.preview').setup()
     end
   },
-  {
-    'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp',
-    config = function()
-      local tabnine = require('cmp_tabnine.config')
-      tabnine:setup({
-        max_lines = 1000;
-        max_num_results = 20;
-        sort = true;
-        run_on_every_keystroke = true;
-        snippet_placeholder = '..';
-        ignored_file_types = {
-          -- uncomment to ignore in lua:
-          -- lua = true
-          html = true
-        };
-        show_prediction_strength = false;
-      })
-    end
-  },
+  -- {
+  --   'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp',
+  --   config = function()
+  --     local tabnine = require('cmp_tabnine.config')
+  --     tabnine:setup({
+  --       max_lines = 1000;
+  --       max_num_results = 20;
+  --       sort = true;
+  --       run_on_every_keystroke = true;
+  --       snippet_placeholder = '..';
+  --       ignored_file_types = {
+  --         -- uncomment to ignore in lua:
+  --         -- lua = true
+  --         html = true
+  --       };
+  --       show_prediction_strength = false;
+  --     })
+  --   end
+  -- },
 }
 
-
+-- CINNAMON
 require('cinnamon').setup {
   default_keymaps = true,
-  extra_keymaps = false,
+  extra_keymaps = true,
   centered = true,
-  scroll_limit = 150,
-  default_delay = 7,
+  scroll_limit = 300,
+  default_delay = 10,
 }
 
-require("flutter-tools").setup {
-  decorations = {
-    statusline = {
-      app_version = true,
-      device = true,
-    }
-  },
-  lsp = {
-    on_attach = require("lvim.lsp").common_on_attach,
-  },
-  flutter_lookup_cmd = "asdf where flutter",
-}
 
-require("nvim-treesitter.configs").setup {
-  rainbow = {
-    enable = true,
-    extended_mode = true,
-    max_file_lines = nil,
-  }
-}
+-- RAINBOW
+lvim.builtin.treesitter.rainbow.enable = true
+lvim.builtin.treesitter.rainbow.extended_mode = true
 
+-- LUALINE
 require("nvim-gps").setup()
 local gps = require("nvim-gps")
 
@@ -406,19 +401,6 @@ lvim.builtin.lualine.sections = {
   lualine_z = { "location" },
 }
 
--- require('nvim-cursorline').setup {
---   cursorline = {
---     enable = true,
---     timeout = 1000,
---     number = false,
---   },
---   cursorword = {
---     enable = true,
---     min_length = 3,
---     hl = { underline = true },
---   }
--- }
-
 local opts = {
   extensions = {
     ["ui-select"] = {
@@ -428,7 +410,7 @@ local opts = {
     },
 
     file_browser = {
-      hidden = true,
+      -- hidden = true,
       respect_gitignore = false,
     },
     frecency = {
@@ -451,11 +433,15 @@ lvim.builtin.telescope.on_config_done = function(tele)
   tele.load_extension("frecency")
   tele.load_extension("file_browser")
   tele.load_extension("ui-select")
+  -- tele.load_extension("flutter")
   -- tele.setup(opts.extensions)
   -- require('telescope').setup(lvim.builtin.telescope)
 end
 
 -- LSP Config
+
+-- FLUTTER
+
 --Enable (broadcasting) snippet capability for completion
 -- local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -481,62 +467,160 @@ vim.cmd [[
 
 
 local command_center = require("command_center")
-local noremap = { noremap = true }
-local silent_noremap = { noremap = true, silent = true }
+-- local noremap = { noremap = true }
+-- local silent_noremap = { noremap = true, silent = true }
+
+
+-- lvim.keys.normal_mode["<C-s>"] = ":w<CR>"
+-- lvim.keys.normal_mode["<C-l>"] = ":bn<CR>"
+-- lvim.keys.normal_mode["<C-h>"] = ":bp<CR>"
+-- lvim.keys.normal_mode["<M-w>"] = ":tabclose<CR>"
+-- lvim.keys.normal_mode["<C-j>"] = ":bd<cr>"
+
+-- unmap a default keymapping
+lvim.keys.normal_mode["<C-Up>"] = false
+-- edit a default keymapping
+-- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
 
 command_center.add({
-  { description = "Save File",
+  {
+    description = "Save File",
     cmd = "<CMD>w <CR>",
+    keybindings = { "n", "<C-s>" },
   },
-  { description = "Find files",
+  {
+    description = "Buffer Next",
+    cmd = "<CMD>:bn<CR>",
+    keybindings = { "n", "<C-l>" },
+  },
+  {
+    description = "Buffer Previous",
+    cmd = "<CMD>:bp<CR>",
+    keybindings = { "n", "<C-h>" },
+  },
+  {
+    description = "Tab Close",
+    cmd = "<CMD>:tabclose<CR>",
+    keybindings = { "n", "<M-w>" },
+  },
+  {
+    description = "Exit Vim",
+    cmd = "<CMD>:q<CR>",
+    keybindings = { "n", "<C-q>" },
+  },
+  {
+    description = "Find files",
     cmd = "<CMD>Telescope find_files<CR>",
   },
-  { description = "Search inside current buffer",
+  {
+    description = "Search inside current buffer",
     cmd = "<CMD>Telescope current_buffer_fuzzy_find<CR>",
   },
-  { description = "Find hidden files",
+  {
+    description = "Find hidden files",
     cmd = "<CMD>Telescope find_files hidden=true<CR>",
   },
-  { description = "Show document symbols",
+  {
+    description = "Show document symbols",
     cmd = "<CMD>Telescope lsp_document_symbols<CR>",
   },
-  { description = "Code Actions",
+  {
+    description = "Code Actions",
     cmd = "<CMD>lua vim.lsp.buf.code_action()<CR>",
   },
-  { description = "Telescope File Explorer",
+  {
+    description = "Telescope File Explorer",
     cmd = "<CMD>lua require'telescope'.extensions.file_browser.file_browser()<CR>",
   },
-  { description = "Telescope File Browser",
+  {
+    description = "Telescope File Browser",
     cmd = "<CMD>lua require('telescope.builtin').find_files()<CR>",
   },
-  { description = "Telescope Search Word",
+  {
+    description = "Telescope Search Word",
     cmd = "<CMD>lua require('telescope.builtin').live_grep()<CR>",
   },
-  { description = "Telescope git Files",
+  {
+    description = "Telescope git Files",
     cmd = "<CMD>lua require('telescope.builtin').git_files()<CR>",
   },
-  { description = "Telescope Files",
+  {
+    description = "Telescope Files",
     cmd = "<CMD>lua require('telescope.builtin').find_files()<CR>",
   },
-  { description = "Telescope Buffers",
+  {
+    description = "Telescope Buffers",
     cmd = "<CMD>lua require('telescope.builtin').buffers()<CR>",
   },
-  { description = "Telescope Keymaps",
+  {
+    description = "Telescope Keymaps",
     cmd = "<CMD>lua require('telescope.builtin').keymaps()<CR>"
   },
-  { description = "Check Health",
+  {
+    description = "Check Health",
     cmd = "<CMD>checkhealth<CR>",
   },
-  { description = "Update LunarVim",
+  {
+    description = "Update LunarVim",
     cmd = "<CMD>LvimUpdate<CR>",
   },
-  { description = "View Notification",
+  {
+    description = "View Notification",
     cmd = "<cmd>Telescope notify<cr>",
   },
-  { description = "Reload LunarVim's configuration",
+  {
+    description = "Reload LunarVim's configuration",
     cmd = "<cmd>LvimReload<cr>",
   },
-  { description = "Open Config File",
+  {
+    description = "Open Config File",
     cmd = "<cmd>edit " .. get_config_dir() .. "/config.lua<cr>"
+  },
+  {
+    description = "Git - History",
+    cmd = "<CMD>:DiffviewFileHistory<CR>",
+  },
+  {
+    description = "Git - Diff",
+    cmd = "<CMD>:DiffviewOpen<CR>",
+  },
+  {
+    description = "Flutter - Outline Toggle",
+    cmd = "<CMD>:FlutterOutlineToggle<CR>",
+  },
+  {
+    description = "Flutter - Outline Open",
+    cmd = "<CMD>:FlutterOutlineOpen<CR>",
+  },
+  {
+    description = "Flutter Run",
+    cmd = "<CMD>:FlutterRun<CR>",
+  },
+  {
+    description = "Flutter Reload",
+    cmd = "<CMD>:FlutterReload<CR>",
+  },
+  {
+    description = "Flutter Restart",
+    cmd = "<CMD>:FlutterRestart<CR>",
+  },
+  {
+    description = "Flutter Quit",
+    cmd = "<CMD>:FlutterQuit<CR>",
+  },
+  {
+    description = "Surround with \"",
+    cmd = "ciw\"\"<Esc>P",
+    keybindings = { "n", "cs\"" },
+  },
+  {
+    description = "Surround with \'",
+    cmd = "ciw''<Esc>P",
+    keybindings = { "n", "cs'" },
+  },
+  {
+    description = "Unsurround",
+    cmd = "mpeld bhd `ph",
+    keybindings = { "n", "csd" }
   }
-}, command_center.mode.ADD_ONLY)
+})

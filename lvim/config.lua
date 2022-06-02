@@ -14,7 +14,7 @@ vim.opt.shell = "/bin/sh"
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
-lvim.colorscheme = "nord"
+lvim.colorscheme = "catppuccin"
 lvim.transparent_window = true
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
@@ -69,7 +69,7 @@ lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 0
+lvim.builtin.nvimtree.show_icons.git = 1
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -140,8 +140,9 @@ vim.opt.timeoutlen = 500
 -- generic LSP settings
 
 -- ---@usage disable automatic installation of servers
-lvim.lsp.automatic_servers_installation = true
+lvim.lsp.automatic_servers_installation = false
 lvim.lsp.document_highlight = true
+lvim.lsp.templates_dir = join_paths(get_runtime_dir(), "after", "ftplugin")
 
 -- ---configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
 -- ---see the full default list `:lua print(vim.inspect(lvim.lsp.automatic_configuration.skipped_servers))`
@@ -199,29 +200,36 @@ lvim.lsp.document_highlight = true
 --   },
 -- }
 
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "dartls" })
+-- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "dartls" })
 
 -- Additional Plugins
 lvim.plugins = {
   -- THEMES
-  { 'tiagovla/tokyodark.nvim' },
+  { "lunarvim/colorschemes" },
   { "folke/tokyonight.nvim" },
+  { "catppuccin/nvim", as = "catppuccin" },
+  -- { 'tiagovla/tokyodark.nvim' },
   -- { "rebelot/kanagawa.nvim" },
   -- { 'cpea2506/one_monokai.nvim' },
   -- { 'onsails/lspkind.nvim' },
-  { "lunarvim/colorschemes" },
-  { 'shaunsingh/nord.nvim' },
+  -- { 'shaunsingh/nord.nvim' },
   -- { 'shaunsingh/moonlight.nvim' },
   -- { 'bluz71/vim-nightfly-guicolors' },
-  { 'morhetz/gruvbox' },
+  -- { 'morhetz/gruvbox' },
   -- { 'Rigellute/shades-of-purple.vim' },
   -- { 'Mofiqul/dracula.nvim' },
   -- { "sainnhe/sonokai" },
-
+  -- { 'yashguptaz/calvera-dark.nvim' },
+  -- { "rafamadriz/neon" },
+  -- { "RRethy/nvim-base16" },
+  -- { 'Soares/base16.nvim' },
   -- PLUGINS
   {
     "sindrets/diffview.nvim",
     requires = 'nvim-lua/plenary.nvim'
+  },
+  {
+    'simrat39/symbols-outline.nvim'
   },
   -- { "yamatsum/nvim-cursorline" },
   -- { "RRethy/vim-illuminate" },
@@ -295,28 +303,14 @@ lvim.plugins = {
   {
     'akinsho/flutter-tools.nvim',
     requires = 'nvim-lua/plenary.nvim',
-    -- module = "flutter-tools",
-    event = "BufRead pubspec.yaml",
-    -- ft = "dartls",
-    config = function()
-      require("flutter-tools").setup {
-        decorations = {
-          statusline = {
-            app_version = true,
-            device = true,
-          }
-        },
-        lsp = {
-          on_attach = require("lvim.lsp").common_on_attach,
-        },
-        flutter_lookup_cmd = "asdf where flutter",
-      }
-    end
   },
+  -- {
+  --   'declancm/cinnamon.nvim',
+  --   config = function()
+  --   end
+  -- },
   {
-    'declancm/cinnamon.nvim',
-    config = function()
-    end
+    "karb94/neoscroll.nvim",
   },
   {
     "folke/persistence.nvim",
@@ -370,14 +364,30 @@ lvim.plugins = {
 }
 
 -- CINNAMON
-require('cinnamon').setup {
-  default_keymaps = true,
-  extra_keymaps = true,
-  centered = true,
-  scroll_limit = 300,
-  default_delay = 10,
-}
+-- require('cinnamon').setup {
+--   default_keymaps = true,
+--   extra_keymaps = true,
+--   centered = false,
+--   -- scroll_limit = 300,
+--   default_delay = 3,
+-- }
 
+-- vim.cmd [[
+--   nnoremap <PageUp> <C-b>
+--   nnoremap <PageDown> <C-f>
+-- ]]
+
+require('neoscroll').setup({
+  easing_function = "quadratic",
+  mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb', '<PageUp>', 'PageDown', },
+  performance_mode = true,
+})
+
+vim.g.symbols_outline = {
+  auto_preview = false,
+  preview_bg_highlight = "Pmenu",
+  highlight_hovered_item = true,
+}
 
 -- RAINBOW
 lvim.builtin.treesitter.rainbow.enable = true
@@ -386,6 +396,9 @@ lvim.builtin.treesitter.rainbow.extended_mode = true
 -- LUALINE
 require("nvim-gps").setup()
 local gps = require("nvim-gps")
+
+vim.g.tokyonight_style = "storm"
+vim.g.catppuccin_flavour = "mocha"
 
 lvim.builtin.lualine.style = "default"
 lvim.builtin.lualine.sections = {
@@ -400,6 +413,7 @@ lvim.builtin.lualine.sections = {
   lualine_y = { "progress" },
   lualine_z = { "location" },
 }
+lvim.builtin.lualine.options.theme = "tokyonight"
 
 local opts = {
   extensions = {
@@ -437,26 +451,6 @@ lvim.builtin.telescope.on_config_done = function(tele)
   -- tele.setup(opts.extensions)
   -- require('telescope').setup(lvim.builtin.telescope)
 end
-
--- LSP Config
-
--- FLUTTER
-
---Enable (broadcasting) snippet capability for completion
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities.textDocument.completion.completionItem.snippetSupport = true
-
--- require 'lspconfig'.jsonls.setup {
---   capabilities = capabilities,
---   cmd = { "/Users/dlani/.asdf/shims/vscode-json-languageserver", "--stdio" }
--- }
-
--- require 'lspconfig'.dartls.setup {
---   cmd = { "dart", "/Users/dlani/.asdf/installs/flutter/2.10.4-stable/bin/cache/dart-sdk/bin/snapshots/analysis_server.dart.snapshot", "--lsp" }
--- }
-
--- require 'lspconfig'.rome.setup {}
-require 'lspconfig'.tsserver.setup {}
 
 lvim.builtin.which_key.mappings['l']['K'] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" }
 
@@ -529,6 +523,11 @@ command_center.add({
     cmd = "<CMD>lua vim.lsp.buf.code_action()<CR>",
   },
   {
+    description = "LSP Hover",
+    cmd = "<cmd>lua vim.lsp.buf.hover()<cr>",
+    keybindings = { "n", "K" }
+  },
+  {
     description = "Telescope File Explorer",
     cmd = "<CMD>lua require'telescope'.extensions.file_browser.file_browser()<CR>",
   },
@@ -585,30 +584,6 @@ command_center.add({
     cmd = "<CMD>:DiffviewOpen<CR>",
   },
   {
-    description = "Flutter - Outline Toggle",
-    cmd = "<CMD>:FlutterOutlineToggle<CR>",
-  },
-  {
-    description = "Flutter - Outline Open",
-    cmd = "<CMD>:FlutterOutlineOpen<CR>",
-  },
-  {
-    description = "Flutter Run",
-    cmd = "<CMD>:FlutterRun<CR>",
-  },
-  {
-    description = "Flutter Reload",
-    cmd = "<CMD>:FlutterReload<CR>",
-  },
-  {
-    description = "Flutter Restart",
-    cmd = "<CMD>:FlutterRestart<CR>",
-  },
-  {
-    description = "Flutter Quit",
-    cmd = "<CMD>:FlutterQuit<CR>",
-  },
-  {
     description = "Surround with \"",
     cmd = "ciw\"\"<Esc>P",
     keybindings = { "n", "cs\"" },
@@ -622,5 +597,19 @@ command_center.add({
     description = "Unsurround",
     cmd = "mpeld bhd `ph",
     keybindings = { "n", "csd" }
+  },
+  {
+    description = "Outline",
+    cmd = "<CMD>SymbolsOutline<CR>",
+  },
+  {
+    description = "NvimTree - Toggle",
+    cmd = "<CMD>:NvimTreeToggle<CR>",
+    keybindings = { "n", "<M-b>" }
+  },
+
+  {
+    description = "NvimTree - Find File",
+    cmd = "<CMD>:NvimTreeFindFile<CR>",
   }
 })

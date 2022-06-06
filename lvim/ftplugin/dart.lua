@@ -33,7 +33,7 @@ require("flutter-tools").setup {
     auto_open = true
   },
   widget_guides = {
-    enabled = true,
+    enabled = false,
   },
   -- lsp = {
   --   on_attach = require("lvim.lsp").common_on_attach,

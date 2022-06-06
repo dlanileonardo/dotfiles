@@ -92,7 +92,6 @@ lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
 vim.cmd([[
-  setlocal foldmethod=indent
   set nofoldenable
   set foldlevel=99
 ]])
@@ -125,6 +124,7 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
   pattern = { "*.*" },
   command = "setlocal foldmethod=indent"
 })
+
 
 vim.api.nvim_set_keymap('n', 'ff', ":HopWord<cr>", { silent = true })
 vim.api.nvim_set_keymap('n', 'fp', ":HopPattern<cr>", { silent = true })
@@ -211,7 +211,6 @@ lvim.plugins = {
   -- { 'tiagovla/tokyodark.nvim' },
   -- { "rebelot/kanagawa.nvim" },
   -- { 'cpea2506/one_monokai.nvim' },
-  -- { 'onsails/lspkind.nvim' },
   -- { 'shaunsingh/nord.nvim' },
   -- { 'shaunsingh/moonlight.nvim' },
   -- { 'bluz71/vim-nightfly-guicolors' },
@@ -234,6 +233,7 @@ lvim.plugins = {
   -- { "yamatsum/nvim-cursorline" },
   -- { "RRethy/vim-illuminate" },
   { "p00f/nvim-ts-rainbow" },
+  { 'onsails/lspkind.nvim' },
   { 'norcalli/nvim_utils' },
   { 'famiu/bufdelete.nvim' },
   { "folke/trouble.nvim", cmd = "TroubleToggle", },
@@ -268,13 +268,6 @@ lvim.plugins = {
       vim.cmd [[packadd telescope.nvim]]
     end,
   },
-  -- {
-  --   "windwp/nvim-spectre",
-  --   event = "BufRead",
-  --   config = function()
-  --     require("spectre").setup()
-  --   end,
-  -- },
   {
     'nacro90/numb.nvim',
     config = function()
@@ -304,11 +297,6 @@ lvim.plugins = {
     'akinsho/flutter-tools.nvim',
     requires = 'nvim-lua/plenary.nvim',
   },
-  -- {
-  --   'declancm/cinnamon.nvim',
-  --   config = function()
-  --   end
-  -- },
   {
     "karb94/neoscroll.nvim",
   },
@@ -342,25 +330,30 @@ lvim.plugins = {
       require('pretty-fold.preview').setup()
     end
   },
-  -- {
-  --   'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp',
-  --   config = function()
-  --     local tabnine = require('cmp_tabnine.config')
-  --     tabnine:setup({
-  --       max_lines = 1000;
-  --       max_num_results = 20;
-  --       sort = true;
-  --       run_on_every_keystroke = true;
-  --       snippet_placeholder = '..';
-  --       ignored_file_types = {
-  --         -- uncomment to ignore in lua:
-  --         -- lua = true
-  --         html = true
-  --       };
-  --       show_prediction_strength = false;
-  --     })
-  --   end
-  -- },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+    end
+  },
+  {
+    'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp',
+    config = function()
+      local tabnine = require('cmp_tabnine.config')
+      tabnine:setup({
+        max_lines = 1000;
+        max_num_results = 20;
+        sort = true;
+        run_on_every_keystroke = true;
+        snippet_placeholder = '..';
+        ignored_file_types = {
+          -- uncomment to ignore in lua:
+          -- lua = true
+          html = true
+        };
+        show_prediction_strength = false;
+      })
+    end
+  },
 }
 
 -- CINNAMON
@@ -376,6 +369,28 @@ lvim.plugins = {
 --   nnoremap <PageUp> <C-b>
 --   nnoremap <PageDown> <C-f>
 -- ]]
+
+vim.opt.list = true
+-- vim.opt.listchars:append("space:⋅")
+-- vim.opt.listchars:append("eol:↴")
+
+vim.cmd [[
+  au BufRead,BufNewFile *.* hi IndentBlanklineContextChar guifg=grey gui=nocombine
+]]
+
+require("indent_blankline").setup {
+  char = '|',
+  char_blankline = '┊',
+  -- char_list = { '|', '¦', '┆', '┊' },
+  space_char_blankline = " ",
+  show_current_context = true,
+  show_current_context_start = true,
+  show_end_of_line = false,
+  show_first_indent_level = true,
+  filetype_exclude = { "help", "terminal", "dashboard", "man", "checkhealth", "packer" },
+  buftype_exclude = { "terminal", "nofile", "quickfix" },
+  show_trailing_blankline_indent = false,
+}
 
 require('neoscroll').setup({
   easing_function = "quadratic",

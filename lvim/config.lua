@@ -17,6 +17,8 @@ lvim.lint_on_save = true
 lvim.colorscheme = "catppuccin"
 lvim.transparent_window = true
 
+-- lvim.builtin.dap.active = true
+
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
@@ -335,25 +337,25 @@ lvim.plugins = {
     config = function()
     end
   },
-  {
-    'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp',
-    config = function()
-      local tabnine = require('cmp_tabnine.config')
-      tabnine:setup({
-        max_lines = 1000;
-        max_num_results = 20;
-        sort = true;
-        run_on_every_keystroke = true;
-        snippet_placeholder = '..';
-        ignored_file_types = {
-          -- uncomment to ignore in lua:
-          -- lua = true
-          html = true
-        };
-        show_prediction_strength = false;
-      })
-    end
-  },
+  -- {
+  --   'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp',
+  --   config = function()
+  --     local tabnine = require('cmp_tabnine.config')
+  --     tabnine:setup({
+  --       max_lines = 1000;
+  --       max_num_results = 20;
+  --       sort = true;
+  --       run_on_every_keystroke = true;
+  --       snippet_placeholder = '..';
+  --       ignored_file_types = {
+  --         -- uncomment to ignore in lua:
+  --         -- lua = true
+  --         html = true
+  --       };
+  --       show_prediction_strength = false;
+  --     })
+  --   end
+  -- },
 }
 
 -- CINNAMON
@@ -628,3 +630,68 @@ command_center.add({
     cmd = "<CMD>:NvimTreeFindFile<CR>",
   }
 })
+
+-- local dap = require('dap')
+-- dap.adapters.chrome = {
+--   type = "executable",
+--   command = "node",
+--   args = { os.getenv("HOME") .. "/.local/share/nvim/dapinstall/chrome/vscode-chrome-debug/out/src/chromeDebug.js" }
+-- }
+
+-- dap.configurations.javascript = { -- change this to javascript if needed
+--   {
+--     type = "chrome",
+--     request = "attach",
+--     program = "${file}",
+--     cwd = vim.fn.getcwd(),
+--     sourceMaps = true,
+--     protocol = "inspector",
+--     port = 9222,
+--     webRoot = "${workspaceFolder}"
+--   }
+-- }
+
+-- local api = vim.api
+-- local keymap_restore = {}
+-- dap.listeners.after['event_initialized']['me'] = function()
+--   for _, buf in pairs(api.nvim_list_bufs()) do
+--     local keymaps = api.nvim_buf_get_keymap(buf, 'n')
+--     for _, keymap in pairs(keymaps) do
+--       if keymap.lhs == "K" then
+--         table.insert(keymap_restore, keymap)
+--         api.nvim_buf_del_keymap(buf, 'n', 'K')
+--       end
+--     end
+--   end
+--   api.nvim_set_keymap(
+--     'n', 'K', '<Cmd>lua require("dap.ui.widgets").hover()<CR>', { silent = true })
+-- end
+
+-- dap.listeners.after['event_terminated']['me'] = function()
+--   for _, keymap in pairs(keymap_restore) do
+--     api.nvim_buf_set_keymap(
+--       keymap.buffer,
+--       keymap.mode,
+--       keymap.lhs,
+--       keymap.rhs,
+--       { silent = keymap.silent == 1 }
+--     )
+--   end
+--   keymap_restore = {}
+-- end
+
+lvim.builtin.alpha.dashboard.section.header.val = {
+  "                                      ",
+  "                  ▄                   ",
+  "                ▄▄▄▄▄                 ",
+  "              ▄▄▄▄▄▄▄▄▄               ",
+  "           ▗  ▄▄▄▄▄▄▄▄▄  ▖            ",
+  "          ▄▄▄   ▄▄▄▄▄   ▄▄▄           ",
+  "        ▄▄▄▄▄▄▄   ▄   ▄▄▄▄▄▄▄         ",
+  "      ▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄       ",
+  "    ▄▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄▄     ",
+  "  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ",
+  "                                      ",
+  "           C Y B E R D Y N E          ",
+  "               SYSTEMS                ",
+}

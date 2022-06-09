@@ -1,4 +1,4 @@
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 -- capabilities.textDocument.documentHighlight = true
 -- capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -34,6 +34,10 @@ require("flutter-tools").setup {
   },
   widget_guides = {
     enabled = false,
+  },
+  dev_log = {
+    enabled = true,
+    open_cmd = "15new",
   },
   -- lsp = {
   --   on_attach = require("lvim.lsp").common_on_attach,

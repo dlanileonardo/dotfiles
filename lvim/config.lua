@@ -249,6 +249,7 @@ lvim.plugins = {
   --     vim.g.matchup_matchparen_offscreen = { method = "popup" }
   --   end,
   -- },
+  -- { 'Vonr/align.nvim' },
   {
     "nvim-telescope/telescope-frecency.nvim",
     config = function()
@@ -262,6 +263,28 @@ lvim.plugins = {
   },
   { "SmiteshP/nvim-gps",
     requires = "nvim-treesitter/nvim-treesitter"
+  },
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+    config = function()
+      require 'treesitter-context'.setup {
+        enable = true,
+        throttle = false,
+        max_lines = 0,
+        patterns = {
+          default = {
+            'class',
+            'function',
+            'method',
+            'for', -- These won't appear in the context
+            'while',
+            'if',
+            'switch',
+            'case',
+          },
+        },
+      }
+    end
   },
   {
     "nvim-telescope/telescope-project.nvim",
@@ -337,6 +360,9 @@ lvim.plugins = {
     config = function()
     end
   },
+  {
+    "machakann/vim-sandwich",
+  },
   -- {
   --   'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp',
   --   config = function()
@@ -378,6 +404,7 @@ vim.opt.list = true
 
 vim.cmd [[
   au BufRead,BufNewFile *.* hi IndentBlanklineContextChar guifg=grey gui=nocombine
+  let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
 ]]
 
 require("indent_blankline").setup {
@@ -501,22 +528,22 @@ command_center.add({
   },
   {
     description = "Buffer Next",
-    cmd = "<CMD>:bn<CR>",
+    cmd = "<CMD>bn<CR>",
     keybindings = { "n", "<C-l>" },
   },
   {
     description = "Buffer Previous",
-    cmd = "<CMD>:bp<CR>",
+    cmd = "<CMD>bp<CR>",
     keybindings = { "n", "<C-h>" },
   },
   {
     description = "Tab Close",
-    cmd = "<CMD>:tabclose<CR>",
+    cmd = "<CMD>tabclose<CR>",
     keybindings = { "n", "<M-w>" },
   },
   {
     description = "Exit Vim",
-    cmd = "<CMD>:q<CR>",
+    cmd = "<CMD>q<CR>",
     keybindings = { "n", "<C-q>" },
   },
   {
@@ -536,12 +563,23 @@ command_center.add({
     cmd = "<CMD>Telescope lsp_document_symbols<CR>",
   },
   {
-    description = "Code Actions",
+    description = "LSP - Code Actions",
     cmd = "<CMD>lua vim.lsp.buf.code_action()<CR>",
+    keybindings = { "n", "ca" }
+  },
+  {
+    description = "LSP - Range Code Action",
+    cmd = "<CMD>lua vim.lsp.buf.range_code_action()<CR>",
+    -- keybindings = { "x", "ca" }
+  },
+  {
+    description = "LSP - Go to Definition",
+    cmd = "<CMD>lua vim.lsp.buf.definition()<CR>",
+    keybindings = { "n", "gd" }
   },
   {
     description = "LSP Hover",
-    cmd = "<cmd>lua vim.lsp.buf.hover()<cr>",
+    cmd = "<CMD>lua vim.lsp.buf.hover()<cr>",
     keybindings = { "n", "K" }
   },
   {
@@ -582,7 +620,7 @@ command_center.add({
   },
   {
     description = "View Notification",
-    cmd = "<cmd>Telescope notify<cr>",
+    cmd = "<CMD>Telescope notify<cr>",
   },
   {
     description = "Reload LunarVim's configuration",
@@ -594,11 +632,11 @@ command_center.add({
   },
   {
     description = "Git - History",
-    cmd = "<CMD>:DiffviewFileHistory<CR>",
+    cmd = "<CMD>DiffviewFileHistory<CR>",
   },
   {
     description = "Git - Diff",
-    cmd = "<CMD>:DiffviewOpen<CR>",
+    cmd = "<CMD>DiffviewOpen<CR>",
   },
   {
     description = "Surround with \"",
@@ -621,13 +659,20 @@ command_center.add({
   },
   {
     description = "NvimTree - Toggle",
-    cmd = "<CMD>:NvimTreeToggle<CR>",
+    cmd = "<CMD>NvimTreeToggle<CR>",
     keybindings = { "n", "<M-b>" }
   },
-
   {
     description = "NvimTree - Find File",
-    cmd = "<CMD>:NvimTreeFindFile<CR>",
+    cmd = "<CMD>NvimTreeFindFile<CR>",
+  },
+  {
+    description = "Split in Horizontal",
+    cmd = "<CMD>sp<CR>",
+  },
+  {
+    description = "Split in Vertical",
+    cmd = "<CMD>vsp<CR>"
   }
 })
 

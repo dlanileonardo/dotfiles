@@ -14,7 +14,7 @@ vim.opt.shell = "/bin/sh"
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
-lvim.colorscheme = "catppuccin"
+lvim.colorscheme = "tokyonight"
 lvim.transparent_window = true
 
 -- lvim.builtin.dap.active = true
@@ -71,7 +71,7 @@ lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 1
+-- lvim.builtin.nvimtree.show_icons.git = 1
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -216,15 +216,28 @@ lvim.plugins = {
   -- { 'shaunsingh/nord.nvim' },
   -- { 'shaunsingh/moonlight.nvim' },
   -- { 'bluz71/vim-nightfly-guicolors' },
-  -- { 'morhetz/gruvbox' },
+  { 'morhetz/gruvbox' },
+  -- { "sainnhe/gruvbox-material" },
+  -- { 'scottymoon/vim-twilight' },
   -- { 'Rigellute/shades-of-purple.vim' },
   -- { 'Mofiqul/dracula.nvim' },
   -- { "sainnhe/sonokai" },
   -- { 'yashguptaz/calvera-dark.nvim' },
   -- { "rafamadriz/neon" },
-  -- { "RRethy/nvim-base16" },
+  { "RRethy/nvim-base16" },
   -- { 'Soares/base16.nvim' },
+  -- { "chriskempson/base16-vim" },
   -- PLUGINS
+  -- {
+  --   "folke/twilight.nvim",
+  --   config = function()
+  --     require("twilight").setup {
+  --       -- your configuration comes here
+  --       -- or leave it empty to use the default settings
+  --       -- refer to the configuration section below
+  --     }
+  --   end
+  -- },
   {
     "sindrets/diffview.nvim",
     requires = 'nvim-lua/plenary.nvim'
@@ -441,7 +454,7 @@ lvim.builtin.treesitter.rainbow.extended_mode = true
 require("nvim-gps").setup()
 local gps = require("nvim-gps")
 
-vim.g.tokyonight_style = "storm"
+vim.g.tokyonight_style = "night"
 vim.g.catppuccin_flavour = "mocha"
 
 lvim.builtin.lualine.style = "default"
@@ -458,6 +471,11 @@ lvim.builtin.lualine.sections = {
   lualine_z = { "location" },
 }
 lvim.builtin.lualine.options.theme = "tokyonight"
+
+lvim.builtin.bufferline.options.always_show_bufferline = true
+-- lvim.builtin.bufferline.options.enforce_regular_tabs = true
+-- lvim.builtin.bufferline.options.separator_style = "thick"
+-- lvim.builtin.bufferline.options.sort_by = "relative_directory"
 
 local opts = {
   extensions = {
@@ -565,7 +583,7 @@ command_center.add({
   {
     description = "LSP - Code Actions",
     cmd = "<CMD>lua vim.lsp.buf.code_action()<CR>",
-    keybindings = { "n", "ca" }
+    -- keybindings = { "n", "ca" }
   },
   {
     description = "LSP - Range Code Action",
@@ -638,21 +656,21 @@ command_center.add({
     description = "Git - Diff",
     cmd = "<CMD>DiffviewOpen<CR>",
   },
-  {
-    description = "Surround with \"",
-    cmd = "ciw\"\"<Esc>P",
-    keybindings = { "n", "cs\"" },
-  },
-  {
-    description = "Surround with \'",
-    cmd = "ciw''<Esc>P",
-    keybindings = { "n", "cs'" },
-  },
-  {
-    description = "Unsurround",
-    cmd = "mpeld bhd `ph",
-    keybindings = { "n", "csd" }
-  },
+  -- {
+  --   description = "Surround with \"",
+  --   cmd = "ciw\"\"<Esc>P",
+  --   keybindings = { "n", "cs\"" },
+  -- },
+  -- {
+  --   description = "Surround with \'",
+  --   cmd = "ciw''<Esc>P",
+  --   keybindings = { "n", "cs'" },
+  -- },
+  -- {
+  --   description = "Unsurround",
+  --   cmd = "mpeld bhd `ph",
+  --   keybindings = { "n", "csd" }
+  -- },
   {
     description = "Outline",
     cmd = "<CMD>SymbolsOutline<CR>",

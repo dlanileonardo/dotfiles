@@ -71,7 +71,7 @@ lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
--- lvim.builtin.nvimtree.show_icons.git = 1
+-- lvim.builtin.nvimtree.active = false
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -476,6 +476,7 @@ lvim.builtin.bufferline.options.always_show_bufferline = true
 -- lvim.builtin.bufferline.options.enforce_regular_tabs = true
 -- lvim.builtin.bufferline.options.separator_style = "thick"
 -- lvim.builtin.bufferline.options.sort_by = "relative_directory"
+lvim.builtin.bufferline.options.show_close_icon = false
 
 local opts = {
   extensions = {

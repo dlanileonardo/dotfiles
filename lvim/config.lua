@@ -14,7 +14,7 @@ vim.opt.shell = "/bin/sh"
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
-lvim.colorscheme = "tokyonight"
+lvim.colorscheme = "catppuccin"
 lvim.transparent_window = true
 
 -- lvim.builtin.dap.active = true
@@ -26,24 +26,25 @@ lvim.leader = "space"
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
--- local _, actions = pcall(require, "telescope.actions")
--- lvim.builtin.telescope.defaults.mappings = {
---   -- for input mode
---   i = {
---     ["<C-j>"] = actions.move_selection_next,
---     ["<C-k>"] = actions.move_selection_previous,
---     ["<C-n>"] = actions.cycle_history_next,
---     ["<C-p>"] = actions.cycle_history_prev,
---   },
---   -- for normal mode
---   n = {
---     ["<C-j>"] = actions.move_selection_next,
---     ["<C-k>"] = actions.move_selection_previous,
---   },
--- }
+local _, actions = pcall(require, "telescope.actions")
+lvim.builtin.telescope.defaults.mappings = {
+  -- for input mode
+  i = {
+    ["<C-j>"] = actions.move_selection_next,
+    ["<C-k>"] = actions.move_selection_previous,
+    -- ["<C-n>"] = actions.cycle_history_next,
+    -- ["<C-p>"] = actions.cycle_history_prev,
+  },
+  -- for normal mode
+  n = {
+    ["<C-j>"] = actions.move_selection_next,
+    ["<C-k>"] = actions.move_selection_previous,
+  },
+}
 
 -- Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.which_key.mappings["e"] = { "<cmd>Telescope file_browser<CR>", "Telescope Explorer" }
+
 lvim.builtin.which_key.mappings["s"]["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["s"]["E"] = { "<cmd>Telescope file_browser<CR>", "Telescope Explorer" }
 
@@ -103,8 +104,10 @@ lvim.builtin.which_key.mappings['r'] = {
   name = "Hop",
   w = { "<cmd>:HopWord<CR>", "Search by Word" },
   e = { "<cmd>:HopPattern<CR>", "Search by Pattern" },
-  f = { "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", "After Cursor" },
-  F = { "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", "Before Cursor" },
+  f = { "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",
+    "After Cursor" },
+  F = { "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",
+    "Before Cursor" },
 }
 
 -- lvim.builtin.which_key.mappings['s']['e'] = { "<cmd>lua require('spectre').open()<cr>", "Spectre" }
@@ -130,7 +133,8 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
 
 vim.api.nvim_set_keymap('n', 'ff', ":HopWord<cr>", { silent = true })
 vim.api.nvim_set_keymap('n', 'fp', ":HopPattern<cr>", { silent = true })
-vim.api.nvim_set_keymap('n', 'fd', "<cmd>lua require'hop'.hint_words({ current_line_only = true })<cr>", { silent = true })
+vim.api.nvim_set_keymap('n', 'fd', "<cmd>lua require'hop'.hint_words({ current_line_only = true })<cr>",
+  { silent = true })
 vim.api.nvim_set_keymap('n', 'fs', ":HopLineStart<cr>", { silent = true })
 vim.api.nvim_set_keymap('n', 'fl', ":HopLine<cr>", { silent = true })
 
@@ -253,6 +257,7 @@ lvim.plugins = {
   { 'famiu/bufdelete.nvim' },
   { "folke/trouble.nvim", cmd = "TroubleToggle", },
   { "gfeiyou/command-center.nvim" },
+  -- { 'mrjones2014/legendary.nvim' },
   { 'nvim-telescope/telescope-ui-select.nvim' },
   { 'mg979/vim-visual-multi', branch = "master" },
   -- {
@@ -278,18 +283,40 @@ lvim.plugins = {
     requires = "nvim-treesitter/nvim-treesitter"
   },
   {
+    "Djancyp/cheat-sheet",
+    config = function()
+      require("cheat-sheet").setup({
+        auto_fill = {
+          filetype = true,
+          current_word = true,
+        },
+
+        main_win = {
+          style = "minimal",
+          border = "double",
+        },
+
+        input_win = {
+          style = "minimal",
+          border = "double",
+        },
+      })
+    end
+  },
+  {
     'nvim-treesitter/nvim-treesitter-context',
     config = function()
       require 'treesitter-context'.setup {
         enable = true,
         throttle = false,
         max_lines = 0,
+        -- mode = 'topline',
         patterns = {
           default = {
             'class',
             'function',
             'method',
-            'for', -- These won't appear in the context
+            'for',
             'while',
             'if',
             'switch',
@@ -376,25 +403,25 @@ lvim.plugins = {
   {
     "machakann/vim-sandwich",
   },
-  -- {
-  --   'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp',
-  --   config = function()
-  --     local tabnine = require('cmp_tabnine.config')
-  --     tabnine:setup({
-  --       max_lines = 1000;
-  --       max_num_results = 20;
-  --       sort = true;
-  --       run_on_every_keystroke = true;
-  --       snippet_placeholder = '..';
-  --       ignored_file_types = {
-  --         -- uncomment to ignore in lua:
-  --         -- lua = true
-  --         html = true
-  --       };
-  --       show_prediction_strength = false;
-  --     })
-  --   end
-  -- },
+  {
+    'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp',
+    config = function()
+      local tabnine = require('cmp_tabnine.config')
+      tabnine:setup({
+        max_lines = 1000;
+        max_num_results = 20;
+        sort = true;
+        run_on_every_keystroke = true;
+        snippet_placeholder = '..';
+        ignored_file_types = {
+          -- uncomment to ignore in lua:
+          -- lua = true
+          html = true
+        };
+        show_prediction_strength = false;
+      })
+    end
+  },
 }
 
 -- CINNAMON
@@ -470,13 +497,13 @@ lvim.builtin.lualine.sections = {
   lualine_y = { "progress" },
   lualine_z = { "location" },
 }
-lvim.builtin.lualine.options.theme = "tokyonight"
+lvim.builtin.lualine.options.theme = "catppuccin"
 
 lvim.builtin.bufferline.options.always_show_bufferline = true
 -- lvim.builtin.bufferline.options.enforce_regular_tabs = true
 -- lvim.builtin.bufferline.options.separator_style = "thick"
 -- lvim.builtin.bufferline.options.sort_by = "relative_directory"
-lvim.builtin.bufferline.options.show_close_icon = false
+-- lvim.builtin.bufferline.options.show_close_icon = false
 
 local opts = {
   extensions = {
@@ -539,6 +566,14 @@ lvim.keys.normal_mode["<C-Up>"] = false
 -- edit a default keymapping
 -- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
 
+-- local keymaps = {
+--   { '<M-c>', '<CMD>CheatSH<CR>', description = 'Cheat Sheet', opts = {} },
+-- }
+-- require('legendary').setup {
+--   keymaps = keymaps,
+-- }
+
+-- lvim.builtin.which_key.on_config_done = function()
 command_center.add({
   {
     description = "Save File",
@@ -562,7 +597,7 @@ command_center.add({
   },
   {
     description = "Exit Vim",
-    cmd = "<CMD>q<CR>",
+    cmd = "<CMD>qa<CR>",
     keybindings = { "n", "<C-q>" },
   },
   {
@@ -692,8 +727,44 @@ command_center.add({
   {
     description = "Split in Vertical",
     cmd = "<CMD>vsp<CR>"
+  },
+  {
+    description = "Cheat Sheet",
+    cmd = "<CMD>CheatSH<CR>",
+    keybindings = { "n", "<M-c>" }
+  },
+  {
+    description = "Next",
+    cmd = "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>",
+    keybindings = { "n", "m" },
+  },
+  {
+    description = "Previous",
+    cmd = "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>",
+    keybindings = { "n", "N" },
+  },
+  {
+    description = "*",
+    cmd = "*<Cmd>lua require('hlslens').start()<CR>",
+    keybindings = { "n", "*" },
+  },
+  {
+    description = "#",
+    cmd = "#<Cmd>lua require('hlslens').start()<CR>",
+    keybindings = { "n", "#" },
+  },
+  {
+    description = "g*",
+    cmd = "g*<Cmd>lua require('hlslens').start()<CR>",
+    keybindings = { "n", "g*" },
+  },
+  {
+    description = "g#",
+    cmd = "g#<Cmd>lua require('hlslens').start()<CR>",
+    keybindings = { "n", "g#" },
   }
 })
+-- end
 
 -- local dap = require('dap')
 -- dap.adapters.chrome = {

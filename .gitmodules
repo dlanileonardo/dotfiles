@@ -67,3 +67,6 @@
 [submodule "dependencies/nord-dircolors"]
 	path = dependencies/nord-dircolors
 	url = git@github.com:arcticicestudio/nord-dircolors.git
+[submodule "dependencies/friendly-snippets"]
+	path = dependencies/friendly-snippets
+	url = https://github.com/rafamadriz/friendly-snippets

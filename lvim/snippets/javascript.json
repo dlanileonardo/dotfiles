@@ -1,0 +1,12 @@
+{
+  "console.log": {
+    "prefix": "yah",
+    "body": "console.log(\"Yahoo!\")",
+    "description": "Console Log Yahoo!"
+  },
+  "log": {
+    "prefix": "log",
+    "body": "console.log(${1:object})",
+    "description": "Console Log Yahoo!"
+  }
+}

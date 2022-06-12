@@ -124,12 +124,24 @@ lvim.builtin.which_key.mappings["S"] = {
 --   pattern = { "*" },
 --   command = ":normal zz",
 -- })
+local aucmd_dict = {
+  BufWinEnter = {
+    {
+      pattern = { "*.*" },
+      command = "setlocal foldmethod=indent"
+    },
+    {
+      pattern = { "*.*" },
+      command = "set foldexpr=nvim_treesitter#foldexpr()"
+    },
+  }
+}
 
-vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
-  pattern = { "*.*" },
-  command = "setlocal foldmethod=indent"
-})
-
+for event, opt_tbls in pairs(aucmd_dict) do
+  for _, opt_tbl in pairs(opt_tbls) do
+    vim.api.nvim_create_autocmd(event, opt_tbl)
+  end
+end
 
 vim.api.nvim_set_keymap('n', 'ff', ":HopWord<cr>", { silent = true })
 vim.api.nvim_set_keymap('n', 'fp', ":HopPattern<cr>", { silent = true })
@@ -549,6 +561,70 @@ vim.cmd [[
   set cmdheight=1
 ]]
 
+-- local dap = require('dap')
+-- dap.adapters.chrome = {
+--   type = "executable",
+--   command = "node",
+--   args = { os.getenv("HOME") .. "/.local/share/nvim/dapinstall/chrome/vscode-chrome-debug/out/src/chromeDebug.js" }
+-- }
+
+-- dap.configurations.javascript = { -- change this to javascript if needed
+--   {
+--     type = "chrome",
+--     request = "attach",
+--     program = "${file}",
+--     cwd = vim.fn.getcwd(),
+--     sourceMaps = true,
+--     protocol = "inspector",
+--     port = 9222,
+--     webRoot = "${workspaceFolder}"
+--   }
+-- }
+
+-- local api = vim.api
+-- local keymap_restore = {}
+-- dap.listeners.after['event_initialized']['me'] = function()
+--   for _, buf in pairs(api.nvim_list_bufs()) do
+--     local keymaps = api.nvim_buf_get_keymap(buf, 'n')
+--     for _, keymap in pairs(keymaps) do
+--       if keymap.lhs == "K" then
+--         table.insert(keymap_restore, keymap)
+--         api.nvim_buf_del_keymap(buf, 'n', 'K')
+--       end
+--     end
+--   end
+--   api.nvim_set_keymap(
+--     'n', 'K', '<Cmd>lua require("dap.ui.widgets").hover()<CR>', { silent = true })
+-- end
+
+-- dap.listeners.after['event_terminated']['me'] = function()
+--   for _, keymap in pairs(keymap_restore) do
+--     api.nvim_buf_set_keymap(
+--       keymap.buffer,
+--       keymap.mode,
+--       keymap.lhs,
+--       keymap.rhs,
+--       { silent = keymap.silent == 1 }
+--     )
+--   end
+--   keymap_restore = {}
+-- end
+
+lvim.builtin.alpha.dashboard.section.header.val = {
+  "                                      ",
+  "                  ▄                   ",
+  "                ▄▄▄▄▄                 ",
+  "              ▄▄▄▄▄▄▄▄▄               ",
+  "           ▗  ▄▄▄▄▄▄▄▄▄  ▖            ",
+  "          ▄▄▄   ▄▄▄▄▄   ▄▄▄           ",
+  "        ▄▄▄▄▄▄▄   ▄   ▄▄▄▄▄▄▄         ",
+  "      ▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄       ",
+  "    ▄▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄▄     ",
+  "  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ",
+  "                                      ",
+  "           C Y B E R D Y N E          ",
+  "               SYSTEMS                ",
+}
 
 local command_center = require("command_center")
 -- local noremap = { noremap = true }
@@ -762,71 +838,14 @@ command_center.add({
     description = "g#",
     cmd = "g#<Cmd>lua require('hlslens').start()<CR>",
     keybindings = { "n", "g#" },
+  },
+  {
+    description = "Update Core Packages",
+    cmd = "<CMD>LvimSyncCorePlugins<CR>",
+  },
+  {
+    description = "Update Plugins",
+    cmd = "<CMD>PackerSync<CR>"
   }
 })
 -- end
-
--- local dap = require('dap')
--- dap.adapters.chrome = {
---   type = "executable",
---   command = "node",
---   args = { os.getenv("HOME") .. "/.local/share/nvim/dapinstall/chrome/vscode-chrome-debug/out/src/chromeDebug.js" }
--- }
-
--- dap.configurations.javascript = { -- change this to javascript if needed
---   {
---     type = "chrome",
---     request = "attach",
---     program = "${file}",
---     cwd = vim.fn.getcwd(),
---     sourceMaps = true,
---     protocol = "inspector",
---     port = 9222,
---     webRoot = "${workspaceFolder}"
---   }
--- }
-
--- local api = vim.api
--- local keymap_restore = {}
--- dap.listeners.after['event_initialized']['me'] = function()
---   for _, buf in pairs(api.nvim_list_bufs()) do
---     local keymaps = api.nvim_buf_get_keymap(buf, 'n')
---     for _, keymap in pairs(keymaps) do
---       if keymap.lhs == "K" then
---         table.insert(keymap_restore, keymap)
---         api.nvim_buf_del_keymap(buf, 'n', 'K')
---       end
---     end
---   end
---   api.nvim_set_keymap(
---     'n', 'K', '<Cmd>lua require("dap.ui.widgets").hover()<CR>', { silent = true })
--- end
-
--- dap.listeners.after['event_terminated']['me'] = function()
---   for _, keymap in pairs(keymap_restore) do
---     api.nvim_buf_set_keymap(
---       keymap.buffer,
---       keymap.mode,
---       keymap.lhs,
---       keymap.rhs,
---       { silent = keymap.silent == 1 }
---     )
---   end
---   keymap_restore = {}
--- end
-
-lvim.builtin.alpha.dashboard.section.header.val = {
-  "                                      ",
-  "                  ▄                   ",
-  "                ▄▄▄▄▄                 ",
-  "              ▄▄▄▄▄▄▄▄▄               ",
-  "           ▗  ▄▄▄▄▄▄▄▄▄  ▖            ",
-  "          ▄▄▄   ▄▄▄▄▄   ▄▄▄           ",
-  "        ▄▄▄▄▄▄▄   ▄   ▄▄▄▄▄▄▄         ",
-  "      ▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄       ",
-  "    ▄▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄▄     ",
-  "  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ",
-  "                                      ",
-  "           C Y B E R D Y N E          ",
-  "               SYSTEMS                ",
-}

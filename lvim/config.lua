@@ -42,28 +42,6 @@ lvim.builtin.telescope.defaults.mappings = {
   },
 }
 
--- Use which-key to add extra bindings with the leader-key prefix
-lvim.builtin.which_key.mappings["e"] = { "<cmd>Telescope file_browser<CR>", "Telescope Explorer" }
-
-lvim.builtin.which_key.mappings["s"]["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
-lvim.builtin.which_key.mappings["s"]["E"] = { "<cmd>Telescope file_browser<CR>", "Telescope Explorer" }
-
-lvim.builtin.which_key.mappings["b"]["n"] = { "<cmd>:bnext<cr>", "Next Buffer" }
-lvim.builtin.which_key.mappings["b"]["1"] = { "<cmd>:bfirst<cr>", "First Buffer" }
-lvim.builtin.which_key.mappings["b"]["0"] = { "<cmd>:blast<cr>", "Last Buffer" }
-
-lvim.builtin.which_key.mappings["L"]["h"] = { "<cmd>:CheckHealth<cr>", "Check Health" }
-
-lvim.builtin.which_key.mappings["t"] = {
-  name = "+Trouble",
-  t = { "<cmd>:TroubleToggle<cr>", "Toggle" },
-  r = { "Trouble lsp_references<cr>", "References" },
-  f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
-  d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
-  q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
-  l = { "<cmd>Trouble loclist<cr>", "LocationList" },
-  w = { "<cmd>Trouble workspace_diagnostics<cr>", "Wordspace Diagnostics" },
-}
 
 -- TODO: User Config for predefined plug sins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
@@ -436,20 +414,6 @@ lvim.plugins = {
   },
 }
 
--- CINNAMON
--- require('cinnamon').setup {
---   default_keymaps = true,
---   extra_keymaps = true,
---   centered = false,
---   -- scroll_limit = 300,
---   default_delay = 3,
--- }
-
--- vim.cmd [[
---   nnoremap <PageUp> <C-b>
---   nnoremap <PageDown> <C-f>
--- ]]
-
 vim.opt.list = true
 -- vim.opt.listchars:append("space:⋅")
 -- vim.opt.listchars:append("eol:↴")
@@ -524,7 +488,6 @@ local opts = {
         -- even more opts
       }
     },
-
     file_browser = {
       -- hidden = true,
       respect_gitignore = false,
@@ -554,7 +517,6 @@ lvim.builtin.telescope.on_config_done = function(tele)
   -- require('telescope').setup(lvim.builtin.telescope)
 end
 
-lvim.builtin.which_key.mappings['l']['K'] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" }
 
 vim.cmd [[
   au BufRead,BufNewFile Fastfile set filetype=ruby
@@ -624,6 +586,31 @@ lvim.builtin.alpha.dashboard.section.header.val = {
   "                                      ",
   "           C Y B E R D Y N E          ",
   "               SYSTEMS                ",
+}
+
+
+-- Use which-key to add extra bindings with the leader-key prefix
+lvim.builtin.which_key.mappings['l']['K'] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" }
+lvim.builtin.which_key.mappings["e"] = { "<cmd>Telescope file_browser<CR>", "Telescope Explorer" }
+
+lvim.builtin.which_key.mappings["s"]["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
+lvim.builtin.which_key.mappings["s"]["E"] = { "<cmd>Telescope file_browser<CR>", "Telescope Explorer" }
+
+lvim.builtin.which_key.mappings["b"]["n"] = { "<cmd>:bnext<cr>", "Next Buffer" }
+lvim.builtin.which_key.mappings["b"]["1"] = { "<cmd>:bfirst<cr>", "First Buffer" }
+lvim.builtin.which_key.mappings["b"]["0"] = { "<cmd>:blast<cr>", "Last Buffer" }
+
+lvim.builtin.which_key.mappings["L"]["h"] = { "<cmd>:CheckHealth<cr>", "Check Health" }
+
+lvim.builtin.which_key.mappings["t"] = {
+  name = "+Trouble",
+  t = { "<cmd>:TroubleToggle<cr>", "Toggle" },
+  r = { "Trouble lsp_references<cr>", "References" },
+  f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
+  d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
+  q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
+  l = { "<cmd>Trouble loclist<cr>", "LocationList" },
+  w = { "<cmd>Trouble workspace_diagnostics<cr>", "Wordspace Diagnostics" },
 }
 
 local command_center = require("command_center")
@@ -741,10 +728,6 @@ command_center.add({
     cmd = "<CMD>lua require('telescope.builtin').keymaps()<CR>"
   },
   {
-    description = "Check Health",
-    cmd = "<CMD>checkhealth<CR>",
-  },
-  {
     description = "Update LunarVim",
     cmd = "<CMD>LvimUpdate<CR>",
   },
@@ -846,6 +829,81 @@ command_center.add({
   {
     description = "Update Plugins",
     cmd = "<CMD>PackerSync<CR>"
-  }
+  },
+  {
+    description = "Hover",
+    cmd = "<cmd>lua vim.lsp.buf.hover()<cr>",
+    keybindings = { "n", "<Leader>lK" }
+  },
+  {
+    description = "Telescope Explorer",
+    cmd = "<cmd>Telescope file_browser<CR>",
+    keybindings = { "n", "e" }
+  },
+  {
+    description = "Teleescope Projects",
+    cmd = "<cmd>Telescope projects<CR>",
+    keybindings = { "n", "<Leader>sP" }
+  },
+  {
+    description = "Teleescope Explorer",
+    cmd = "<cmd>Telescope file_browser<CR>",
+    keybindings = { "n", "<Leader>sE" }
+  },
+  {
+    description = "Next Buffer",
+    cmd = "<cmd>:bnext<cr>",
+    keybindings = { "n", "<leader>bn" }
+  },
+  {
+    description = "First Buffer",
+    cmd = "<cmd>:bfirst<cr>",
+    keybindings = { "n", "<leader>b1" }
+  },
+  {
+    description = "Last Buffer",
+    cmd = "<cmd>:blast<cr>",
+    keybindings = { "n", "<leader>b0" }
+  },
+  {
+    description = "Check Health",
+    cmd = "<cmd>:CheckHealth<cr>",
+    keybindings = { "n", "<leader>Lh" }
+  },
+  {
+    description = "Toggle",
+    cmd = "<cmd>TroubleToggle<cr>",
+    keybindings = { "n", "<leader>tt" }
+  },
+  {
+    description = "References",
+    cmd = "<cmd>Trouble lsp_references<cr>",
+    keybindings = { "n", "<leader>tr" }
+  },
+  {
+    description = "Definitions",
+    cmd = "<cmd>Trouble lsp_definitions<cr>",
+    keybindings = { "n", "<leader>tf" }
+  },
+  {
+    description = "Diagnostics",
+    cmd = "<cmd>Trouble document_diagnostics<cr>",
+    keybindings = { "n", "<leader>td" }
+  },
+  {
+    description = "QuickFix",
+    cmd = "<cmd>Trouble quickfix<cr>",
+    keybindings = { "n", "<leader>tq" }
+  },
+  {
+    description = "LocationList",
+    cmd = "<cmd>Trouble loclist<cr>",
+    keybindings = { "n", "<leader>tl" }
+  },
+  {
+    description = "Wordspace Diagnostics",
+    cmd = "<cmd>Trouble workspace_diagnostics<cr>",
+    keybindings = { "n", "<leader>tw" }
+  },
 })
 -- end

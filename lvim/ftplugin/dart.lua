@@ -1,27 +1,15 @@
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
+local lspconfig = require 'lspconfig'
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 
--- capabilities.textDocument.documentHighlight = true
--- capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.documentHighlight = true
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- require 'lspconfig'.dartls.setup {
---   capabilities = capabilities,
---   -- cmd = {},
---   init_options = {
---     closingLabels = true,
---     flutterOutline = true,
---     onlyAnalyzeProjectsWithOpenFiles = false,
---     outline = true,
---     suggestFromUnimportedLibraries = true
---   },
---   settings = {
---     dart = {
---       completeFunctionCalls = true,
---       showTodos = true
---     }
---   }
--- }
+lspconfig.dartls.setup {
+  capabilities = capabilities
+}
 
 require("flutter-tools").setup {
+  capabilities = capabilities,
   decorations = {
     statusline = {
       app_version = true,

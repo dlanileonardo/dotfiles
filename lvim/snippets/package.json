@@ -7,12 +7,24 @@
   "contributes": {
     "snippets": [
       {
+        "language": "cpp",
+        "path": "./cpp/snippets.json"
+      },
+      {
+        "language": "python",
+        "path": "./python/snippets.json"
+      },
+      {
         "language": "dart",
-        "path": "./dart.json"
+        "path": "./dart/snippets.json"
       },
       {
         "language": "javascript",
-        "path": "./javascript.json"
+        "path": "./javascript/snippets.json"
+      },
+      {
+        "language": "lua",
+        "path": "./lua/snippets.json"
       }
     ]
   }

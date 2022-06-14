@@ -11,3 +11,4 @@ install.sh
 config/tmuxinator/*.yml
 symlinks/.gnupg
 nvim/sessions
+nvim/

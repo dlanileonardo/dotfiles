@@ -25,15 +25,14 @@ lvim.builtin.which_key.mappings["t"] = {
 -- keymappings hop
 lvim.builtin.which_key.mappings['r'] = {
   name = "Hop",
-  w = { "<cmd>:HopWord<CR>", "Search by Word" },
-  e = { "<cmd>:HopPattern<CR>", "Search by Pattern" },
+  w = { "<cmd>HopWord<CR>", "Search by Word" },
+  e = { "<cmd>HopPattern<CR>", "Search by Pattern" },
   f = { "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",
     "After Cursor" },
   F = { "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",
     "Before Cursor" },
+  d = { "<cmd>lua require'hop'.hint_words({ current_line_only = true })<cr>", "Jump to Word" },
 }
-
--- lvim.builtin.which_key.mappings['s']['e'] = { "<cmd>lua require('spectre').open()<cr>", "Spectre" }
 
 lvim.builtin.which_key.mappings["S"] = {
   name = "Session",
@@ -41,3 +40,5 @@ lvim.builtin.which_key.mappings["S"] = {
   l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore last session" },
   Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
 }
+
+vim.api.nvim_set_keymap('n', '<C-M-p>', ":Telescope command_center<CR>", { silent = true })

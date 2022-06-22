@@ -6,7 +6,6 @@ lvim.format_on_save = true
 lvim.lint_on_save = true
 lvim.colorscheme = "catppuccin"
 lvim.transparent_window = true
--- lvim.builtin.dap.active = true
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -29,6 +28,9 @@ lvim.builtin.telescope.defaults.mappings = {
     ["<C-k>"] = actions.move_selection_previous,
   },
 }
+
+-- unmap a default keymapping
+lvim.keys.normal_mode["<C-Up>"] = false
 
 -- TODO: User Config for predefined plug sins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
@@ -64,6 +66,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 --   pattern = { "*" },
 --   command = ":normal zz",
 -- })
+
 local aucmd_dict = {
   BufWinEnter = {
     {
@@ -83,37 +86,31 @@ for event, opt_tbls in pairs(aucmd_dict) do
   end
 end
 
-vim.api.nvim_set_keymap('n', 'ff', ":HopWord<cr>", { silent = true })
-vim.api.nvim_set_keymap('n', 'fp', ":HopPattern<cr>", { silent = true })
-vim.api.nvim_set_keymap('n', 'fd', "<cmd>lua require'hop'.hint_words({ current_line_only = true })<cr>",
-  { silent = true })
-vim.api.nvim_set_keymap('n', 'fs', ":HopLineStart<cr>", { silent = true })
-vim.api.nvim_set_keymap('n', 'fl', ":HopLine<cr>", { silent = true })
-
-vim.api.nvim_set_keymap('n', '<C-p>', ":Telescope find_files<CR>", { silent = true })
-vim.api.nvim_set_keymap('n', '<C-M-p>', ":Telescope command_center<CR>", { silent = true })
-
 vim.opt.timeoutlen = 500
 vim.opt.list = true
-
--- vim.opt.listchars:append("space:⋅")
--- vim.opt.listchars:append("eol:↴")
 
 vim.cmd([[
   set nofoldenable
   set foldlevel=99
 ]])
 
-vim.cmd [[
+vim.cmd([[
+  set tabstop     =2
+  set softtabstop =2
+  set shiftwidth  =2
+  set expandtab
+  set smarttab
+]])
+
+vim.cmd([[
   au BufRead,BufNewFile *.* hi IndentBlanklineContextChar guifg=grey gui=nocombine
   let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
-]]
+]])
 
-vim.cmd [[
+vim.cmd([[
   au BufRead,BufNewFile Fastfile set filetype=ruby
   set cmdheight=1
-]]
-
+]])
 
 lvim.builtin.alpha.dashboard.section.header.val = {
   "                                      ",

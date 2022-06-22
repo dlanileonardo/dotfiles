@@ -2,18 +2,7 @@ local command_center = require("command_center")
 -- local noremap = { noremap = true }
 -- local silent_noremap = { noremap = true, silent = true }
 
--- unmap a default keymapping
-lvim.keys.normal_mode["<C-Up>"] = false
 -- edit a default keymapping
--- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
-
--- local keymaps = {
---   { '<M-c>', '<CMD>CheatSH<CR>', description = 'Cheat Sheet', opts = {} },
--- }
--- require('legendary').setup {
---   keymaps = keymaps,
--- }
-
 -- lvim.builtin.which_key.on_config_done = function()
 command_center.add({
   {
@@ -92,6 +81,7 @@ command_center.add({
   {
     description = "Telescope git Files",
     cmd = "<CMD>lua require('telescope.builtin').git_files()<CR>",
+    keybindings = { "n", "<C-p>" },
   },
   {
     description = "Telescope Files",
@@ -106,8 +96,17 @@ command_center.add({
     cmd = "<CMD>lua require('telescope.builtin').keymaps()<CR>"
   },
   {
+    description = "Telescope Current Buffer",
+    cmd = "<CMD>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>",
+    keybindings = { "n", "<M-p>" },
+  },
+  {
     description = "Update LunarVim",
     cmd = "<CMD>LvimUpdate<CR>",
+  },
+  {
+    description = "Toggle Auto Format",
+    cmd = "<CMD>LvimToggleFormatOnSave<CR>",
   },
   {
     description = "View Notification",
@@ -283,5 +282,39 @@ command_center.add({
     cmd = "<cmd>Trouble workspace_diagnostics<cr>",
     keybindings = { "n", "<leader>tw" }
   },
+  {
+    description = "Retab to Space",
+    cmd = "<CMD>set expandtab<CR><CMD>retab<CR>",
+    keybindings = { "n", "key" }
+  },
+  {
+    description = "Hop Word",
+    cmd = "<CMD>HopWord<CR>",
+    keybindings = { "n", "ff" }
+  },
+  {
+    description = "Hop Line",
+    cmd = "<CMD>HopLine<CR>",
+    keybindings = { "n", "fl" }
+  },
+  {
+    description = "Hop Line Start",
+    cmd = "<CMD>HopLineStart<CR>",
+    keybindings = { "n", "fs" },
+  },
+  {
+    description = "Hop in Current Line",
+    cmd = "<CMD>lua require'hop'.hint_words({ current_line_only = true })<CR>",
+    keybindings = { "n", "fd" }
+  },
+  {
+    description = "Hop Char1",
+    cmd = "<cmd>HopChar1<CR>",
+    keybindings = { "n", "fc" }
+  },
+  {
+    description = "Hop Pattern",
+    cmd = "<CMD>HopPattern<CR>",
+    keybindings = { "n", "fp" }
+  },
 })
--- end

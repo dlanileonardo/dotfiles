@@ -1,3 +1,7 @@
+require "user.general"
+require "user.lsp"
+-- require "user.plugins"
+
 -- Additional Plugins
 lvim.plugins = {
   -- THEMES
@@ -11,6 +15,7 @@ lvim.plugins = {
     "sindrets/diffview.nvim",
     requires = 'nvim-lua/plenary.nvim'
   },
+  { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } },
   {
     'simrat39/symbols-outline.nvim'
   },
@@ -121,34 +126,36 @@ lvim.plugins = {
   {
     "karb94/neoscroll.nvim",
   },
+  -- {
+  --   "folke/persistence.nvim",
+  --   event = "BufReadPre",
+  --   module = "persistence",
+  --   config = function()
+  --     require("persistence").setup {
+  --       ---@diagnostic disable-next-line: missing-parameter
+  --       dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"),
+  --       options = { "buffers", "curdir", "tabpages", "winsize" },
+  --     }
+  --   end,
+  -- },
   {
-    "folke/persistence.nvim",
-    event = "BufReadPre",
-    module = "persistence",
+    'rmagatti/auto-session',
     config = function()
-      require("persistence").setup {
-        ---@diagnostic disable-next-line: missing-parameter
-        dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"),
-        options = { "buffers", "curdir", "tabpages", "winsize" },
+      require('auto-session').setup {
+        log_level = 'info',
+        -- auto_session_suppress_dirs = {'~/', '~/Projects'}
       }
-    end,
+    end
   },
+  -- {
+  --   'kevinhwang91/nvim-ufo',
+  --   requires = 'kevinhwang91/promise-async',
+  --   config = function()
+  --   end
+  -- },
   { 'anuvyklack/pretty-fold.nvim',
     requires = 'anuvyklack/nvim-keymap-amend',
     config = function()
-      require('pretty-fold').setup({
-        keep_indentation = false,
-        fill_char = '-',
-        sections = {
-          left = {
-            '+', function() return string.rep('-', vim.v.foldlevel) end, '-| ', 'content', ' |-'
-          },
-          right = {
-            '-| ', 'number_of_folded_lines', ': ', 'percentage', ' |-',
-          }
-        }
-      })
-      require('pretty-fold.preview').setup()
     end
   },
   {
@@ -178,4 +185,11 @@ lvim.plugins = {
       })
     end
   },
+  { "github/copilot.vim" },
 }
+
+require "user.config_plugins"
+require "user.dap"
+require "user.which_key"
+require "user.command_center"
+require "user.terminal"

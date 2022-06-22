@@ -1,3 +1,26 @@
+vim.opt.list = true
+vim.opt.listchars:append("space:⋅")
+-- vim.opt.listchars:append("eol:↴")
+
+-- require('ufo').setup {
+
+-- }
+
+require('pretty-fold').setup({
+  -- keep_indentation = true,
+  fill_char = '-',
+  sections = {
+    left = {
+      -- function() return string.rep('-', vim.v.foldlevel) end, '-| ', 'content', ' |-'
+      'content', ' |-'
+    },
+    right = {
+      '-| ', 'number_of_folded_lines', ': ', 'percentage', ' |-',
+    }
+  }
+})
+require('pretty-fold.preview').setup()
+
 require("indent_blankline").setup {
   char = '|',
   char_blankline = '┊',
@@ -5,10 +28,11 @@ require("indent_blankline").setup {
   space_char_blankline = " ",
   show_current_context = true,
   show_current_context_start = true,
-  show_end_of_line = false,
+  show_end_of_line = true,
   show_first_indent_level = true,
-  filetype_exclude = { "help", "terminal", "dashboard", "man", "checkhealth", "packer" },
-  buftype_exclude = { "terminal", "nofile", "quickfix" },
+  filetype_exclude = { "help", "terminal", "dashboard", "man", "checkhealth", "packer", "flutterToolsOutline", "Outline" },
+  buftype_exclude = { "terminal", "nofile", "quickfix", "flutterToolsOutline", "Outline" },
+  bufname_exclude = {},
   show_trailing_blankline_indent = false,
 }
 
@@ -40,7 +64,7 @@ lvim.builtin.lualine.sections = {
   lualine_a = { "mode" },
   lualine_b = { "branch", "diff", "diagnostics" },
   lualine_c = {
-    -- { require('auto-session-library').current_session_name },
+    { require('auto-session-library').current_session_name },
     "filename",
     { gps.get_location, cond = gps.is_available }
   },

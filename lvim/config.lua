@@ -1,8 +1,0 @@
-require "user.general"
-require "user.lsp"
-require "user.plugins"
-require "user.config_plugins"
-require "user.dap"
-require "user.terminal"
-require "user.which_key"
-require "user.command_center"

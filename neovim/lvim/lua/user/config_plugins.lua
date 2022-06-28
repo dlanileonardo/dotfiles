@@ -56,15 +56,15 @@ lvim.builtin.treesitter.rainbow.extended_mode = true
 require("nvim-gps").setup()
 local gps = require("nvim-gps")
 
-vim.g.tokyonight_style = "night"
-vim.g.catppuccin_flavour = "mocha"
-
+lvim.builtin.lualine.options.disabled_filetypes = {
+  "alpha", "NvimTree", "Outline", "flutterToolsOutline"
+}
 lvim.builtin.lualine.style = "default"
 lvim.builtin.lualine.sections = {
   lualine_a = { "mode" },
   lualine_b = { "branch", "diff", "diagnostics" },
   lualine_c = {
-    { require('auto-session-library').current_session_name },
+    -- { require('auto-session-library').current_session_name },
     "filename",
     { gps.get_location, cond = gps.is_available }
   },
@@ -82,6 +82,9 @@ lvim.builtin.bufferline.options.always_show_bufferline = true
 
 local opts = {
   extensions = {
+    live_grep_args = {
+      auto_quoting = true,
+    },
     ["ui-select"] = {
       require("telescope.themes").get_dropdown {
         -- even more opts
@@ -103,7 +106,14 @@ local opts = {
     }
   }
 }
+
 lvim.builtin.telescope.extensions = vim.tbl_extend("force", lvim.builtin.telescope.extensions, opts.extensions)
+lvim.builtin.telescope.defaults = {
+  -- devicons_disabled = true,
+  catppuccin_flavour = "mocha"
+}
+
+-- print(vim.inspect(lvim.builtin.telescope.extensions))
 
 -- Plugins
 lvim.builtin.telescope.on_config_done = function(tele)
@@ -111,7 +121,51 @@ lvim.builtin.telescope.on_config_done = function(tele)
   tele.load_extension("frecency")
   tele.load_extension("file_browser")
   tele.load_extension("ui-select")
+  tele.load_extension("live_grep_args")
   -- tele.load_extension("flutter")
   -- tele.setup(opts.extensions)
   -- require('telescope').setup(lvim.builtin.telescope)
 end
+
+require('nvim-test').setup {
+  run = true, -- run tests (using for debug)
+  commands_create = true, -- create commands (TestFile, TestLast, ...)
+  filename_modifier = ":.", -- modify filenames before tests run(:h filename-modifiers)
+  silent = false, -- less notifications
+  term = "terminal", -- a terminal to run ("terminal"|"toggleterm")
+  termOpts = {
+    direction = "vertical", -- terminal's direction ("horizontal"|"vertical"|"float")
+    width = 96, -- terminal's width (for vertical|float)
+    height = 24, -- terminal's height (for horizontal|float)
+    go_back = false, -- return focus to original window after executing
+    stopinsert = "auto", -- exit from insert mode (true|false|"auto")
+    keep_one = true, -- keep only one terminal for testing
+  },
+  runners = {
+    cs = "nvim-test.runners.dotnet",
+    go = "nvim-test.runners.go-test",
+    haskell = "nvim-test.runners.hspec",
+    javacriptreact = "nvim-test.runners.jest",
+    javascript = "nvim-test.runners.jest",
+    lua = "nvim-test.runners.busted",
+    python = "nvim-test.runners.pytest",
+    ruby = "nvim-test.runners.rspec",
+    rust = "nvim-test.runners.cargo-test",
+    typescript = "nvim-test.runners.jest",
+    typescriptreact = "nvim-test.runners.jest",
+  }
+}
+
+require('config-local').setup {
+  -- Default configuration (optional)
+  config_files = { ".vimrc.lua", ".vimrc" }, -- Config file patterns to load (lua supported)
+  hashfile = vim.fn.stdpath("data") .. "/config-local", -- Where the plugin keeps files data
+  autocommands_create = true, -- Create autocommands (VimEnter, DirectoryChanged)
+  commands_create = true, -- Create commands (ConfigSource, ConfigEdit, ConfigTrust, ConfigIgnore)
+  silent = false, -- Disable plugin messages (Config loaded/ignored)
+  lookup_parents = false, -- Lookup config files in parent directories
+}
+
+vim.g.catppuccin_flavour = "mocha"
+vim.g.tokyonight_style = "night"
+vim.g.catppuccin_flavour = "mocha"

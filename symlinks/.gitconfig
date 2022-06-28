@@ -5,7 +5,7 @@
   interactive = auto
   status = auto
 [user]
-	name = Dlani Mendes
+  name = Dlani Mendes
   email = dlanileonardo@gmail.com
   signingkey = C8B858EE
 [credential]
@@ -81,7 +81,7 @@
   prompt = true
   external = meld
 [apply]
-   whitespace = nowarn
+  whitespace = nowarn
 [bulkworkspaces]
   achievemore = /Users/dlani/projetos/rails/achievemore-bundle
 [filter "lfs"]

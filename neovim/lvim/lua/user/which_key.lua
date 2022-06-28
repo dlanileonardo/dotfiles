@@ -12,7 +12,7 @@ lvim.builtin.which_key.mappings["b"]["0"] = { "<cmd>:blast<cr>", "Last Buffer" }
 lvim.builtin.which_key.mappings["L"]["h"] = { "<cmd>:CheckHealth<cr>", "Check Health" }
 
 lvim.builtin.which_key.mappings["t"] = {
-  name = "+Trouble",
+  name = "Trouble",
   t = { "<cmd>:TroubleToggle<cr>", "Toggle" },
   r = { "Trouble lsp_references<cr>", "References" },
   f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
@@ -22,6 +22,13 @@ lvim.builtin.which_key.mappings["t"] = {
   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Wordspace Diagnostics" },
 }
 
+
+lvim.builtin.which_key.mappings["y"] = {
+  name = "NvimTests",
+  f = { "<CMD>TestFile<CR>", "Test File" },
+  s = { "<CMD>TestSuite<CR>", "Test Suite" },
+  n = { "<CMD>TestNearest<CR>", "Test Nearest" },
+}
 -- keymappings hop
 lvim.builtin.which_key.mappings['r'] = {
   name = "Hop",

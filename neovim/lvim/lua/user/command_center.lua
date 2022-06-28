@@ -21,14 +21,24 @@ command_center.add({
     keybindings = { "n", "<C-h>" },
   },
   {
+    description = "Buffer Delete",
+    cmd = "<CMD>bdelete<CR>",
+    keybindings = { "n", "<C-M-w>" },
+  },
+  {
     description = "Tab Close",
     cmd = "<CMD>tabclose<CR>",
-    keybindings = { "n", "<M-w>" },
+    keybindings = { "n", "<M-q>" },
+  },
+  {
+    description = "Window Close",
+    cmd = "<CMD>close<CR>",
+    keybindings = { "n", "<C-q>" },
   },
   {
     description = "Exit Vim",
     cmd = "<CMD>qa<CR>",
-    keybindings = { "n", "<C-q>" },
+    keybindings = { "n", "<C-M-q>" },
   },
   {
     description = "Find files",
@@ -77,6 +87,11 @@ command_center.add({
   {
     description = "Telescope Search Word",
     cmd = "<CMD>lua require('telescope.builtin').live_grep()<CR>",
+  },
+  {
+    description = "Telescope Search Word Args",
+    cmd = "<CMD>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+    keybindings = { "n", "<M-o>" }
   },
   {
     description = "Telescope git Files",
@@ -213,11 +228,6 @@ command_center.add({
     keybindings = { "n", "<Leader>lK" }
   },
   {
-    description = "Telescope Explorer",
-    cmd = "<cmd>Telescope file_browser<CR>",
-    keybindings = { "n", "e" }
-  },
-  {
     description = "Teleescope Projects",
     cmd = "<cmd>Telescope projects<CR>",
     keybindings = { "n", "<Leader>sP" }
@@ -317,4 +327,50 @@ command_center.add({
     cmd = "<CMD>HopPattern<CR>",
     keybindings = { "n", "fp" }
   },
+  {
+    description = "TestFile",
+    cmd = "<CMD>TestFile<CR>",
+    keybindings = { "n", "<leader>yf" }
+  },
+  {
+    description = "TestSuite",
+    cmd = "<CMD>TestSuite<CR>",
+    keybindings = { "n", "<leader>ys" }
+  },
+  {
+    description = "TestNearest",
+    cmd = "<CMD>TestNearest<CR>",
+    keybindings = { "n", "<leader>yn" }
+  },
 })
+
+
+lvim.builtin.telescope.extensions.command_center = {
+  -- Below are default settings that can be overriden ...
+
+  -- Specify what components are shown in telescope prompt;
+  -- Order matters, and components may repeat
+  components = {
+    command_center.component.DESCRIPTION,
+    command_center.component.COMMAND,
+    command_center.component.KEYBINDINGS,
+  },
+
+  -- Spcify by what components that search results are ordered;
+  -- Order does not matter
+  sort_by = {
+    command_center.component.DESCRIPTION,
+    command_center.component.KEYBINDINGS,
+    command_center.component.COMMAND,
+  },
+
+  -- Change the separator used to separate each component
+  separator = " ",
+
+  -- When set to false,
+  -- The description compoenent will be empty if it is not specified
+  auto_replace_desc_with_cmd = true,
+
+  -- Default title to Telescope prompt
+  prompt_title = "Command Center",
+}

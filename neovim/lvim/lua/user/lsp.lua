@@ -3,6 +3,14 @@ lvim.lsp.automatic_servers_installation = false
 lvim.lsp.document_highlight = true
 lvim.lsp.templates_dir = join_paths(get_runtime_dir(), "after", "ftplugin")
 
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+  signs = true,
+  virtual_text = true,
+  underline = true,
+  update_in_insert = true,
+})
+
 -- ---configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
 -- ---see the full default list `:lua print(vim.inspect(lvim.lsp.automatic_configuration.skipped_servers))`
 -- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })

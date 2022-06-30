@@ -13,12 +13,12 @@ command_center.add({
   {
     description = "Buffer Next",
     cmd = "<CMD>bn<CR>",
-    keybindings = { "n", "<C-l>" },
+    keybindings = { "n", "<M-l>" },
   },
   {
     description = "Buffer Previous",
     cmd = "<CMD>bp<CR>",
-    keybindings = { "n", "<C-h>" },
+    keybindings = { "n", "<M-h>" },
   },
   {
     description = "Buffer Delete",
@@ -105,6 +105,7 @@ command_center.add({
   {
     description = "Telescope Buffers",
     cmd = "<CMD>lua require('telescope.builtin').buffers()<CR>",
+    keybindings = { "n", "<M-i>" },
   },
   {
     description = "Telescope Keymaps",
@@ -114,6 +115,20 @@ command_center.add({
     description = "Telescope Current Buffer",
     cmd = "<CMD>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>",
     keybindings = { "n", "<M-p>" },
+  },
+  {
+    description = "Telescope Modified Files",
+    cmd = "<CMD>lua require('telescope.builtin').git_status()<CR>",
+  },
+  {
+    description = "Teleescope Projects",
+    cmd = "<cmd>Telescope projects<CR>",
+    keybindings = { "n", "<Leader>sP" }
+  },
+  {
+    description = "Teleescope Explorer",
+    cmd = "<cmd>Telescope file_browser<CR>",
+    keybindings = { "n", "<M-e>" }
   },
   {
     description = "Update LunarVim",
@@ -143,21 +158,6 @@ command_center.add({
     description = "Git - Diff",
     cmd = "<CMD>DiffviewOpen<CR>",
   },
-  -- {
-  --   description = "Surround with \"",
-  --   cmd = "ciw\"\"<Esc>P",
-  --   keybindings = { "n", "cs\"" },
-  -- },
-  -- {
-  --   description = "Surround with \'",
-  --   cmd = "ciw''<Esc>P",
-  --   keybindings = { "n", "cs'" },
-  -- },
-  -- {
-  --   description = "Unsurround",
-  --   cmd = "mpeld bhd `ph",
-  --   keybindings = { "n", "csd" }
-  -- },
   {
     description = "Outline",
     cmd = "<CMD>SymbolsOutline<CR>",
@@ -228,16 +228,6 @@ command_center.add({
     keybindings = { "n", "<Leader>lK" }
   },
   {
-    description = "Teleescope Projects",
-    cmd = "<cmd>Telescope projects<CR>",
-    keybindings = { "n", "<Leader>sP" }
-  },
-  {
-    description = "Teleescope Explorer",
-    cmd = "<cmd>Telescope file_browser<CR>",
-    keybindings = { "n", "<Leader>sE" }
-  },
-  {
     description = "Next Buffer",
     cmd = "<cmd>:bnext<cr>",
     keybindings = { "n", "<leader>bn" }
@@ -295,7 +285,21 @@ command_center.add({
   {
     description = "Retab to Space",
     cmd = "<CMD>set expandtab<CR><CMD>retab<CR>",
-    keybindings = { "n", "key" }
+  },
+  {
+    description = "TestFile",
+    cmd = "<CMD>TestFile<CR>",
+    keybindings = { "n", "<leader>yf" }
+  },
+  {
+    description = "TestSuite",
+    cmd = "<CMD>TestSuite<CR>",
+    keybindings = { "n", "<leader>ys" }
+  },
+  {
+    description = "TestNearest",
+    cmd = "<CMD>TestNearest<CR>",
+    keybindings = { "n", "<leader>yn" }
   },
   {
     description = "Hop Word",
@@ -326,21 +330,6 @@ command_center.add({
     description = "Hop Pattern",
     cmd = "<CMD>HopPattern<CR>",
     keybindings = { "n", "fp" }
-  },
-  {
-    description = "TestFile",
-    cmd = "<CMD>TestFile<CR>",
-    keybindings = { "n", "<leader>yf" }
-  },
-  {
-    description = "TestSuite",
-    cmd = "<CMD>TestSuite<CR>",
-    keybindings = { "n", "<leader>ys" }
-  },
-  {
-    description = "TestNearest",
-    cmd = "<CMD>TestNearest<CR>",
-    keybindings = { "n", "<leader>yn" }
   },
 })
 

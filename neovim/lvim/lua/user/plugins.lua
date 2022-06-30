@@ -1,11 +1,11 @@
 -- Additional Plugins
 lvim.plugins = {
   -- THEMES
-  { "lunarvim/colorschemes" },
+  -- { "lunarvim/colorschemes" },
   { "folke/tokyonight.nvim" },
   { "catppuccin/nvim", as = "catppuccin" },
-  { 'morhetz/gruvbox' },
-  { "RRethy/nvim-base16" },
+  -- { 'morhetz/gruvbox' },
+  -- { "RRethy/nvim-base16" },
   -- PLUGINS
   {
     "sindrets/diffview.nvim",
@@ -182,7 +182,7 @@ lvim.plugins = {
       })
     end
   },
-  { "github/copilot.vim" },
+  -- { "github/copilot.vim" },
   {
     "klen/nvim-test",
     config = function()

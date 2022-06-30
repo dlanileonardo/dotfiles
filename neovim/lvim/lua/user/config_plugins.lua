@@ -169,3 +169,27 @@ require('config-local').setup {
 vim.g.catppuccin_flavour = "mocha"
 vim.g.tokyonight_style = "night"
 vim.g.catppuccin_flavour = "mocha"
+
+require("cybu").setup({
+  position = {
+    relative_to = "editor",
+    anchor = "topcenter",
+    vertical_offset = 3,
+  },
+  style = {
+    border = "rounded",
+    padding = 2,
+  },
+  behavior = {
+    mode = {
+      default = {
+        switch = "on_close",
+        view = "paging"
+      }
+    }
+  }
+})
+-- vim.keymap.set("n", "K", "<Plug>(CybuPrev)")
+-- vim.keymap.set("n", "J", "<Plug>(CybuNext)")
+vim.keymap.set({ "n", "v" }, "<M-s-tab>", "<plug>(CybuLastusedPrev)")
+vim.keymap.set({ "n", "v" }, "<M-tab>", "<plug>(CybuLastusedNext)")

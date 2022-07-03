@@ -187,7 +187,7 @@ command_center.add({
   {
     description = "Next",
     cmd = "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>",
-    keybindings = { "n", "m" },
+    keybindings = { "n", "n" },
   },
   {
     description = "Previous",

@@ -4,8 +4,12 @@ vim.opt.shell = "/bin/sh"
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
-lvim.colorscheme = "catppuccin"
-lvim.transparent_window = true
+lvim.colorscheme = "tokyonight"
+lvim.transparent_window = false
+
+vim.g.tokyonight_style = "storm"
+-- vim.g.catppuccin_flavour = "frappe"
+-- lvim.builtin.lualine.options.theme = "catppuccin"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"

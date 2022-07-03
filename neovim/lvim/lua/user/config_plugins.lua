@@ -2,10 +2,6 @@ vim.opt.list = true
 vim.opt.listchars:append("space:⋅")
 -- vim.opt.listchars:append("eol:↴")
 
--- require('ufo').setup {
-
--- }
-
 require('pretty-fold').setup({
   -- keep_indentation = true,
   fill_char = '-',
@@ -19,6 +15,7 @@ require('pretty-fold').setup({
     }
   }
 })
+
 require('pretty-fold.preview').setup()
 
 require("indent_blankline").setup {
@@ -37,9 +34,9 @@ require("indent_blankline").setup {
 }
 
 require('neoscroll').setup({
-  easing_function = "quadratic",
+  -- easing_function = "quadratic",
   mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb', '<PageUp>', 'PageDown', },
-  performance_mode = true,
+  -- performance_mode = true,
 })
 
 vim.g.symbols_outline = {
@@ -72,7 +69,6 @@ lvim.builtin.lualine.sections = {
   lualine_y = { "progress" },
   lualine_z = { "location" },
 }
-lvim.builtin.lualine.options.theme = "catppuccin"
 
 lvim.builtin.bufferline.options.always_show_bufferline = true
 -- lvim.builtin.bufferline.options.enforce_regular_tabs = true
@@ -108,9 +104,10 @@ local opts = {
 }
 
 lvim.builtin.telescope.extensions = vim.tbl_extend("force", lvim.builtin.telescope.extensions, opts.extensions)
+
 lvim.builtin.telescope.defaults = {
   -- devicons_disabled = true,
-  catppuccin_flavour = "mocha"
+  catppuccin_flavour = "frappe"
 }
 
 -- print(vim.inspect(lvim.builtin.telescope.extensions))
@@ -166,10 +163,6 @@ require('config-local').setup {
   lookup_parents = false, -- Lookup config files in parent directories
 }
 
-vim.g.catppuccin_flavour = "mocha"
-vim.g.tokyonight_style = "night"
-vim.g.catppuccin_flavour = "mocha"
-
 require("cybu").setup({
   position = {
     relative_to = "editor",
@@ -189,6 +182,7 @@ require("cybu").setup({
     }
   }
 })
+
 -- vim.keymap.set("n", "K", "<Plug>(CybuPrev)")
 -- vim.keymap.set("n", "J", "<Plug>(CybuNext)")
 vim.keymap.set({ "n", "v" }, "<M-s-tab>", "<plug>(CybuLastusedPrev)")

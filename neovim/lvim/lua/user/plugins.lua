@@ -3,11 +3,20 @@ lvim.plugins = {
   -- THEMES
   -- { "lunarvim/colorschemes" },
   -- { "luisiacc/gruvbox-baby" },
-  { "folke/tokyonight.nvim" },
+  { "EdenEast/nightfox.nvim" },
+  -- { "folke/tokyonight.nvim" },
+  -- { 'glepnir/zephyr-nvim' },
+  -- { "sainnhe/gruvbox-material" },
+  -- { "sainnhe/sonokai" },
   -- { "catppuccin/nvim", as = "catppuccin" },
   -- { 'morhetz/gruvbox' },
 
   -- PLUGINS
+  -- {
+  --   'feline-nvim/feline.nvim',
+  --   config = function()
+  --   end
+  -- },
   { "sindrets/diffview.nvim", requires = 'nvim-lua/plenary.nvim' },
   { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } },
   { 'simrat39/symbols-outline.nvim' },
@@ -67,7 +76,8 @@ lvim.plugins = {
       require('numb').setup()
     end
   },
-  { 'phaazon/hop.nvim',
+  {
+    'phaazon/hop.nvim',
     branch = 'v1',
     config = function()
       require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }

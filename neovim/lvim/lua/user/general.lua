@@ -4,12 +4,54 @@ vim.opt.shell = "/bin/sh"
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
-lvim.colorscheme = "tokyonight"
-lvim.transparent_window = false
+lvim.colorscheme = "duskfox"
+lvim.transparent_window = true
 
-vim.g.tokyonight_style = "storm"
--- vim.g.catppuccin_flavour = "frappe"
--- lvim.builtin.lualine.options.theme = "catppuccin"
+if lvim.colorscheme == "gruvbox-baby" then
+  -- GRUVBO-BABY
+  lvim.builtin.lualine.options.theme = "gruvbox-baby"
+elseif lvim.colorscheme == "nightfox" or lvim.colorscheme == "duskfox" then
+  require('nightfox').setup({
+    options = {
+      compile_path = vim.fn.stdpath("cache") .. "/nightfox",
+      compile_file_suffix = "_compiled",
+      transparent = true,
+      terminal_colors = true,
+      dim_inactive = true,
+      styles = {
+        comments = "italic",
+        conditionals = "NONE",
+        constants = "NONE",
+        functions = "bold",
+        keywords = "italic",
+        numbers = "NONE",
+        operators = "NONE",
+        strings = "NONE",
+        types = "NONE",
+        variables = "NONE",
+      },
+    },
+  })
+elseif lvim.colorscheme == "gruvbox-material" then
+  -- GRUVBOX-MATERIAL
+  vim.g.gruvbox_material_enable_italic = 1
+  vim.g.gruvbox_material_foreground = 'original'
+  vim.g.gruvbox_material_ui_contrast = 'high'
+  vim.g.gruvbox_material_background = 'medium'
+  vim.g.gruvbox_material_statusline_style = 'default'
+  lvim.builtin.lualine.options.theme = "gruvbox-material"
+elseif lvim.colorscheme == "sonokai" then
+  -- SONOKAI
+  vim.g.sonokai_material_enable_italic = 1
+  vim.g.sonokai_style = 'andromeda'
+elseif lvim.colorscheme == "tokyonight" then
+  -- TOKYONIGHT
+  vim.g.tokyonight_style = "storm"
+elseif lvim.colorscheme == "catppuccin" then
+  -- CATPPUCCIN
+  vim.g.catppuccin_flavour = "frappe"
+  lvim.builtin.lualine.options.theme = "catppuccin"
+end
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"

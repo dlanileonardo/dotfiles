@@ -69,6 +69,9 @@ lvim.builtin.lualine.sections = {
   lualine_y = { "progress" },
   lualine_z = { "location" },
 }
+-- lvim.builtin.lualine.active = false
+
+-- require('user.ui.feline')
 
 lvim.builtin.bufferline.options.always_show_bufferline = true
 -- lvim.builtin.bufferline.options.enforce_regular_tabs = true

@@ -2,8 +2,8 @@
 lvim.plugins = {
   -- THEMES
   -- { "lunarvim/colorschemes" },
-  -- { "luisiacc/gruvbox-baby" },
-  { "EdenEast/nightfox.nvim" },
+  { "luisiacc/gruvbox-baby", branch = "main" },
+  -- { "EdenEast/nightfox.nvim" },
   -- { "folke/tokyonight.nvim" },
   -- { 'glepnir/zephyr-nvim' },
   -- { "sainnhe/gruvbox-material" },
@@ -80,7 +80,7 @@ lvim.plugins = {
     'phaazon/hop.nvim',
     branch = 'v1',
     config = function()
-      require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+      require 'hop'.setup {}
     end
   },
   {

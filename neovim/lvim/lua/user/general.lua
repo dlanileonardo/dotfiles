@@ -4,12 +4,17 @@ vim.opt.shell = "/bin/sh"
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
-lvim.colorscheme = "duskfox"
-lvim.transparent_window = true
+lvim.colorscheme = "gruvbox-baby"
+-- lvim.transparent_window = true
 
 if lvim.colorscheme == "gruvbox-baby" then
   -- GRUVBO-BABY
+  local colors = require("gruvbox-baby.colors").config()
   lvim.builtin.lualine.options.theme = "gruvbox-baby"
+  -- vim.g.gruvbox_baby_highlights = { Visual = { bg = colors.medium_gray } }
+  vim.g.gruvbox_baby_telescope_theme = 1
+  -- vim.g.gruvbox_baby_transparent_mode = 1
+  vim.g.gruvbox_baby_background_color = "dark"
 elseif lvim.colorscheme == "nightfox" or lvim.colorscheme == "duskfox" then
   require('nightfox').setup({
     options = {

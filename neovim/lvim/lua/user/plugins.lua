@@ -117,6 +117,11 @@ lvim.plugins = {
   },
   -- { "github/copilot.vim" },
   {
+    'crusj/bookmarks.nvim',
+    branch = 'main',
+    requires = { 'kyazdani42/nvim-web-devicons' }
+  },
+  {
     "ghillb/cybu.nvim",
     branch = "main", -- timely updates
     -- branch = "v1.x", -- won't receive breaking changes

@@ -174,19 +174,35 @@ require("cybu").setup({
   },
   style = {
     border = "rounded",
-    padding = 2,
+    padding = 7,
+    hide_buffer_id = true,
   },
   behavior = {
     mode = {
       default = {
-        switch = "on_close",
+        switch = "immediate",
         view = "paging"
       }
     }
   }
 })
 
--- vim.keymap.set("n", "K", "<Plug>(CybuPrev)")
--- vim.keymap.set("n", "J", "<Plug>(CybuNext)")
+-- vim.keymap.set("n", "<C-h>", "<Plug>(CybuPrev)")
+-- vim.keymap.set("n", "<C-l>", "<Plug>(CybuNext)")
+
 vim.keymap.set({ "n", "v" }, "<M-s-tab>", "<plug>(CybuLastusedPrev)")
 vim.keymap.set({ "n", "v" }, "<M-tab>", "<plug>(CybuLastusedNext)")
+
+-- require("bookmarks").setup({
+--   keymap = {
+--     toggle = "<tab><tab>", -- toggle bookmarks
+--     add = "\\z", -- add bookmarks
+--     jump = "<CR>", -- jump from bookmarks
+--     delete = "dd", -- delete bookmarks
+--     order = "<space><space>", -- order bookmarks by frequency or updated_time
+--   },
+--   width = 0.8, -- bookmarks window width:  (0, 1]
+--   height = 0.6, -- bookmarks window height: (0, 1]
+--   preview_ratio = 0.4, -- bookmarks preview window ratio (0, 1]
+--   hl_cursorline = "guibg=Gray guifg=White" -- hl bookmarsk window cursorline
+-- })

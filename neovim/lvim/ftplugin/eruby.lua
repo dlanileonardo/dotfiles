@@ -10,8 +10,8 @@ lspconfig.emmet_ls.setup({
   filetypes = { "eruby", "erb" },
 })
 
-require 'lspconfig'.eruby.setup {
-  capabilities = capabilities,
-}
+-- require 'lspconfig'.erb.setup {
+--   capabilities = capabilities,
+-- }
 
 vim.notify("eruby loaded")

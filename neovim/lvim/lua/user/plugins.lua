@@ -1,7 +1,7 @@
 -- Additional Plugins
 lvim.plugins = {
   -- THEMES
-  -- { "lunarvim/colorschemes" },
+  { "lunarvim/colorschemes" },
   { "luisiacc/gruvbox-baby", branch = "main" },
   -- { "EdenEast/nightfox.nvim" },
   -- { "folke/tokyonight.nvim" },
@@ -10,7 +10,6 @@ lvim.plugins = {
   -- { "sainnhe/sonokai" },
   -- { "catppuccin/nvim", as = "catppuccin" },
   -- { 'morhetz/gruvbox' },
-
   -- PLUGINS
   -- {
   --   'feline-nvim/feline.nvim',
@@ -18,7 +17,7 @@ lvim.plugins = {
   --   end
   -- },
   { "sindrets/diffview.nvim", requires = 'nvim-lua/plenary.nvim' },
-  { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } },
+  -- { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } },
   { 'simrat39/symbols-outline.nvim' },
   { "machakann/vim-sandwich" },
   { "RRethy/vim-illuminate" },
@@ -32,7 +31,8 @@ lvim.plugins = {
   { "SmiteshP/nvim-gps", requires = "nvim-treesitter/nvim-treesitter" },
   { 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim', },
   { "karb94/neoscroll.nvim", },
-  { 'anuvyklack/pretty-fold.nvim', requires = 'anuvyklack/nvim-keymap-amend', },
+  { 'anuvyklack/pretty-fold.nvim' },
+  { 'anuvyklack/fold-preview.nvim', requires = 'anuvyklack/keymap-amend.nvim', },
   { "lukas-reineke/indent-blankline.nvim" },
   { "klen/nvim-test" },
   { "klen/nvim-config-local" },
@@ -40,6 +40,17 @@ lvim.plugins = {
   { "nvim-telescope/telescope-live-grep-args.nvim" },
   { "nvim-telescope/telescope-frecency.nvim", requires = { "tami5/sqlite.lua" } },
   { "nvim-telescope/telescope-file-browser.nvim", },
+  -- { 'jvgrootveld/telescope-zoxide' },
+  -- { 'nvim-telescope/telescope-z.nvim',
+  --   requires = {
+  --     { 'nvim-lua/plenary.nvim' },
+  --     { 'nvim-lua/popup.nvim' },
+  --     { 'nvim-telescope/telescope.nvim' },
+  --   },
+  --   config = function()
+  --   end,
+  -- },
+  -- { 'cljoly/telescope-repo.nvim' },
   {
     "nvim-telescope/telescope-project.nvim",
     event = "BufWinEnter",
@@ -116,11 +127,11 @@ lvim.plugins = {
     end
   },
   -- { "github/copilot.vim" },
-  {
-    'crusj/bookmarks.nvim',
-    branch = 'main',
-    requires = { 'kyazdani42/nvim-web-devicons' }
-  },
+  -- {
+  --   'crusj/bookmarks.nvim',
+  --   branch = 'main',
+  --   requires = { 'kyazdani42/nvim-web-devicons' }
+  -- },
   {
     "ghillb/cybu.nvim",
     branch = "main", -- timely updates
@@ -132,5 +143,15 @@ lvim.plugins = {
         return
       end
     end,
-  }
+  },
+  {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+    end
+  },
+  { "anuvyklack/hydra.nvim" },
+  -- { "szw/vim-maximizer" },
+  -- { "chaoren/vim-wordmotion", },
+  -- { "anuvyklack/vim-smartword" },
 }

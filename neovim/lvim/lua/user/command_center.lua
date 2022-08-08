@@ -53,7 +53,7 @@ command_center.add({
     cmd = "<CMD>Telescope find_files hidden=true<CR>",
   },
   {
-    description = "Show document symbols",
+    description = "LSP - Show document symbols",
     cmd = "<CMD>Telescope lsp_document_symbols<CR>",
   },
   {
@@ -72,9 +72,24 @@ command_center.add({
     keybindings = { "n", "gd" }
   },
   {
-    description = "LSP Hover",
+    description = "LSP - Hover",
     cmd = "<CMD>lua vim.lsp.buf.hover()<cr>",
     keybindings = { "n", "K" }
+  },
+  {
+    description = "LSP - Show Diagnostic",
+    cmd = "<CMD>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>",
+    keybindings = { "n", "K" }
+  },
+  {
+    description = "LSP - References",
+    cmd = "<cmd>Trouble lsp_references<cr>",
+    keybindings = { "n", "<leader>tr" }
+  },
+  {
+    description = "LSP - Definitions",
+    cmd = "<cmd>Trouble lsp_definitions<cr>",
+    keybindings = { "n", "<leader>tf" }
   },
   {
     description = "Telescope File Explorer",
@@ -223,11 +238,6 @@ command_center.add({
     cmd = "<CMD>PackerSync<CR>"
   },
   {
-    description = "Hover",
-    cmd = "<cmd>lua vim.lsp.buf.hover()<cr>",
-    keybindings = { "n", "<Leader>lK" }
-  },
-  {
     description = "Next Buffer",
     cmd = "<cmd>:bnext<cr>",
     keybindings = { "n", "<leader>bn" }
@@ -251,16 +261,6 @@ command_center.add({
     description = "Toggle",
     cmd = "<cmd>TroubleToggle<cr>",
     keybindings = { "n", "<leader>tt" }
-  },
-  {
-    description = "References",
-    cmd = "<cmd>Trouble lsp_references<cr>",
-    keybindings = { "n", "<leader>tr" }
-  },
-  {
-    description = "Definitions",
-    cmd = "<cmd>Trouble lsp_definitions<cr>",
-    keybindings = { "n", "<leader>tf" }
   },
   {
     description = "Diagnostics",
@@ -330,6 +330,11 @@ command_center.add({
     description = "Hop Pattern",
     cmd = "<CMD>HopPattern<CR>",
     keybindings = { "n", "fp" }
+  },
+  {
+    description = "Trouble TODO",
+    cmd = "<CMD>TodoTrouble<CR>",
+    keybindings = { "n", "<Leader>a" }
   },
 })
 

@@ -6,10 +6,34 @@ lvim.lsp.templates_dir = join_paths(get_runtime_dir(), "after", "ftplugin")
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
   signs = true,
-  virtual_text = true,
+  virtual_text = false,
   underline = true,
   update_in_insert = true,
 })
+
+-- vim.o.updatetime = 250
+vim.api.nvim_create_autocmd("CursorHold", {
+  buffer = bufnr,
+  callback = function()
+    local opts = {
+      focusable = false,
+      close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+      border = 'rounded',
+      source = 'always',
+      prefix = ' ',
+      scope = 'cursor',
+    }
+    vim.diagnostic.open_float(nil, opts)
+  end
+})
+
+-- vim.diagnostic.config({
+--   virtual_text = false,
+--   signs = true,
+--   underline = true,
+--   update_in_insert = false,
+--   severity_sort = false,
+-- })
 
 -- ---configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
 -- ---see the full default list `:lua print(vim.inspect(lvim.lsp.automatic_configuration.skipped_servers))`

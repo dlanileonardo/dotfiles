@@ -1,4 +1,4 @@
-local dap = require('dap')
+-- local dap = require('dap')
 local lspconfig = require 'lspconfig'
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
@@ -8,11 +8,11 @@ lspconfig.dartls.setup {
   capabilities = capabilities
 }
 
-dap.adapters.dart = {
-  type = "executable",
-  command = "node",
-  args = { os.getenv("HOME") .. "/.local/share/nvim/dapinstall/dart/Dart-Code/out/dist/debug.js" },
-}
+-- dap.adapters.dart = {
+--   type = "executable",
+--   command = "node",
+--   args = { os.getenv("HOME") .. "/.local/share/nvim/dapinstall/dart/Dart-Code/out/dist/debug.js" },
+-- }
 
 require("flutter-tools").setup {
   capabilities = capabilities,
@@ -37,37 +37,37 @@ require("flutter-tools").setup {
     enabled = true,
     run_via_dap = false, -- use dap instead of a plenary job to run flutter apps
     register_configurations = function(paths)
-      dap.configurations.dart = {
-        {
-          name = "Flutter launch Debug",
-          type = "dart",
-          request = "launch",
-          program = "lib/main.dart",
-          flutterMode = "debug",
-          runInTerminal = true,
-        },
-        {
-          name = "Flutter Run all Tests",
-          type = "dart",
-          request = "launch",
-          program = "./test/",
-          runInTerminal = true,
-        },
-        {
-          name = "Flutter: Attach to Device",
-          type = "dart",
-          request = "attach",
-          runInTerminal = true,
-        },
-        {
-          name = "Flutter: Launch Profile",
-          type = "dart",
-          request = "launch",
-          program = "lib/main.dart",
-          flutterMode = "profile",
-          runInTerminal = true,
-        },
-      }
+      -- dap.configurations.dart = {
+      --   {
+      --     name = "Flutter launch Debug",
+      --     type = "dart",
+      --     request = "launch",
+      --     program = "lib/main.dart",
+      --     flutterMode = "debug",
+      --     runInTerminal = true,
+      --   },
+      --   {
+      --     name = "Flutter Run all Tests",
+      --     type = "dart",
+      --     request = "launch",
+      --     program = "./test/",
+      --     runInTerminal = true,
+      --   },
+      --   {
+      --     name = "Flutter: Attach to Device",
+      --     type = "dart",
+      --     request = "attach",
+      --     runInTerminal = true,
+      --   },
+      --   {
+      --     name = "Flutter: Launch Profile",
+      --     type = "dart",
+      --     request = "launch",
+      --     program = "lib/main.dart",
+      --     flutterMode = "profile",
+      --     runInTerminal = true,
+      --   },
+      -- }
       -- require("dap.ext.vscode").load_launchjs()
     end,
   },

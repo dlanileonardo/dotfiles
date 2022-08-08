@@ -1,13 +1,12 @@
 vim.opt.list = true
 vim.opt.listchars:append("space:⋅")
--- vim.opt.listchars:append("eol:↴")
+vim.opt.listchars:append("eol:↴")
 
 require('pretty-fold').setup({
   -- keep_indentation = true,
   fill_char = '-',
   sections = {
     left = {
-      -- function() return string.rep('-', vim.v.foldlevel) end, '-| ', 'content', ' |-'
       'content', ' |-'
     },
     right = {
@@ -16,7 +15,13 @@ require('pretty-fold').setup({
   }
 })
 
-require('pretty-fold.preview').setup()
+require('fold-preview').setup()
+
+local keymap = vim.keymap
+keymap.amend = require('keymap-amend')
+local map = require('fold-preview').mapping
+
+keymap.amend('n', 'zp', map.show_close_preview_open_fold)
 
 require("indent_blankline").setup {
   char = '|',
@@ -80,6 +85,12 @@ lvim.builtin.bufferline.options.always_show_bufferline = true
 -- lvim.builtin.bufferline.options.show_close_icon = false
 
 local opts = {
+  defaults = {
+    devicons_disabled = false,
+    catppuccin_flavour = "frappe",
+    color_devicons = false,
+    prompt_prefix = "> "
+  },
   extensions = {
     live_grep_args = {
       auto_quoting = true,
@@ -102,26 +113,39 @@ local opts = {
         ["achievemore"] = "/Volumes/Workspace/achievemore/",
         ["crypto"] = "/Volumes/Workspace/crypto/"
       }
-    }
+    },
+    -- z = {
+    --   cmd = { "fish", '-c', 'z --list' }
+    -- }
   }
 }
 
+lvim.builtin.telescope.defaults = vim.tbl_extend("force", lvim.builtin.telescope.defaults, opts.defaults)
 lvim.builtin.telescope.extensions = vim.tbl_extend("force", lvim.builtin.telescope.extensions, opts.extensions)
 
-lvim.builtin.telescope.defaults = {
-  -- devicons_disabled = true,
-  catppuccin_flavour = "frappe"
-}
-
--- print(vim.inspect(lvim.builtin.telescope.extensions))
+-- print(vim.inspect(lvim.builtin.telescope))
 
 -- Plugins
+-- require("z").setup {
+--   cmd = { "fish", '-c', 'z --list' },
+-- }
+
 lvim.builtin.telescope.on_config_done = function(tele)
   tele.load_extension('command_center')
   tele.load_extension("frecency")
   tele.load_extension("file_browser")
   tele.load_extension("ui-select")
   tele.load_extension("live_grep_args")
+  -- tele.load_extension("z")
+  -- tele.load_extension("repo")
+  -- tele.load_extension("zoxide")
+
+  -- local z_utils = require("telescope._extensions.zoxide.utils")
+  -- require("telescope._extensions.zoxide.config").setup({
+  --   -- Zoxide list command with score
+  --   list_command = "z --list",
+  -- })
+
   -- tele.load_extension("flutter")
   -- tele.setup(opts.extensions)
   -- require('telescope').setup(lvim.builtin.telescope)
@@ -187,22 +211,8 @@ require("cybu").setup({
   }
 })
 
--- vim.keymap.set("n", "<C-h>", "<Plug>(CybuPrev)")
--- vim.keymap.set("n", "<C-l>", "<Plug>(CybuNext)")
-
 vim.keymap.set({ "n", "v" }, "<M-s-tab>", "<plug>(CybuLastusedPrev)")
 vim.keymap.set({ "n", "v" }, "<M-tab>", "<plug>(CybuLastusedNext)")
 
--- require("bookmarks").setup({
---   keymap = {
---     toggle = "<tab><tab>", -- toggle bookmarks
---     add = "\\z", -- add bookmarks
---     jump = "<CR>", -- jump from bookmarks
---     delete = "dd", -- delete bookmarks
---     order = "<space><space>", -- order bookmarks by frequency or updated_time
---   },
---   width = 0.8, -- bookmarks window width:  (0, 1]
---   height = 0.6, -- bookmarks window height: (0, 1]
---   preview_ratio = 0.4, -- bookmarks preview window ratio (0, 1]
---   hl_cursorline = "guibg=Gray guifg=White" -- hl bookmarsk window cursorline
--- })
+require("todo-comments").setup {
+}

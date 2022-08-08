@@ -39,7 +39,7 @@ export ZSH=$HOME/.oh-my-zsh
 # . $(brew --prefix asdf)/libexec/asdf.sh
 
 # YARN
-export PATH="$PATH:$(yarn global bin)"
+# export PATH="$PATH:$(yarn global bin)"
 export PATH=~/.composer/vendor/bin:$PATH
 
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
@@ -102,7 +102,7 @@ ZSH_THEME="af-magic" # "braun", "juanghurtado", "wedisagree", "sonicradish", "fl
 plugins=(
   git git-extras ruby themes colorize
   gem docker docker-compose cp
-  brew aws yarn
+  brew aws
   zsh-autosuggestions
   zsh-syntax-highlighting git-prune
   alias-tips conda-zsh-completion

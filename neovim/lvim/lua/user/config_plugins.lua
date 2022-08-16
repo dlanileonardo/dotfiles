@@ -38,11 +38,11 @@ require("indent_blankline").setup {
   show_trailing_blankline_indent = false,
 }
 
-require('neoscroll').setup({
-  -- easing_function = "quadratic",
-  mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb', '<PageUp>', 'PageDown', },
-  -- performance_mode = true,
-})
+-- require('neoscroll').setup({
+--   -- easing_function = "quadratic",
+--   mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb', '<PageUp>', 'PageDown', },
+--   -- performance_mode = true,
+-- })
 
 vim.g.symbols_outline = {
   auto_preview = false,
@@ -72,7 +72,7 @@ lvim.builtin.lualine.sections = {
   },
   lualine_x = { "encoding", "fileformat", "filetype" },
   lualine_y = { "progress" },
-  lualine_z = { "location" },
+  lualine_z = { "location", require('pomodoro').statusline },
 }
 
 -- lvim.builtin.lualine.active = false

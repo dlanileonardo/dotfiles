@@ -9,12 +9,18 @@ lvim.transparent_window = false
 
 if lvim.colorscheme == "gruvbox-baby" then
   -- GRUVBO-BABY
-  local colors = require("gruvbox-baby.colors").config()
+  local colors = require("gruvbox-baby.colors")
+  local c = colors.config(config)
   lvim.builtin.lualine.options.theme = "gruvbox-baby"
-  -- vim.g.gruvbox_baby_highlights = { Visual = { bg = colors.medium_gray } }
+
+  vim.g.gruvbox_baby_highlights = {
+    Visual = { bg = c.medium_gray },
+    -- VisualNOS = { bg = c.medium_gray },
+  }
+
   vim.g.gruvbox_baby_telescope_theme = 1
   -- vim.g.gruvbox_baby_transparent_mode = 1
-  -- vim.g.gruvbox_baby_background_color = "dark"
+  vim.g.gruvbox_baby_background_color = "medium"
 elseif lvim.colorscheme == "nightfox" or lvim.colorscheme == "duskfox" then
   require('nightfox').setup({
     options = {

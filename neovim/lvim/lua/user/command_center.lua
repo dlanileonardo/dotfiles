@@ -336,6 +336,14 @@ command_center.add({
     cmd = "<CMD>TodoTrouble<CR>",
     keybindings = { "n", "<Leader>a" }
   },
+  {
+    description = "Pomodoro Start",
+    cmd = "<CMD>PomodoroStart<CR>"
+  },
+  {
+    description = "Pomodor Status",
+    cmd = "<CMD>PomodoroStatus<CR>"
+  }
 })
 
 

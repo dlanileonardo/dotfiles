@@ -30,7 +30,7 @@ lvim.plugins = {
   { 'mg979/vim-visual-multi', branch = "master" },
   { "SmiteshP/nvim-gps", requires = "nvim-treesitter/nvim-treesitter" },
   { 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim', },
-  { "karb94/neoscroll.nvim", },
+  -- { "karb94/neoscroll.nvim", },
   { 'anuvyklack/pretty-fold.nvim' },
   { 'anuvyklack/fold-preview.nvim', requires = 'anuvyklack/keymap-amend.nvim', },
   { "lukas-reineke/indent-blankline.nvim" },
@@ -151,6 +151,18 @@ lvim.plugins = {
     end
   },
   { "anuvyklack/hydra.nvim" },
+  {
+    'wthollingsworth/pomodoro.nvim',
+    requires = 'MunifTanjim/nui.nvim',
+    config = function()
+      require('pomodoro').setup({
+        time_work = 25,
+        time_break_short = 5,
+        time_break_long = 20,
+        timers_to_long_break = 4
+      })
+    end
+  },
   -- { "szw/vim-maximizer" },
   -- { "chaoren/vim-wordmotion", },
   -- { "anuvyklack/vim-smartword" },

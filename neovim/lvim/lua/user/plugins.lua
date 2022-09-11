@@ -4,7 +4,7 @@ lvim.plugins = {
   { "lunarvim/colorschemes" },
   { "luisiacc/gruvbox-baby", branch = "main" },
   -- { "EdenEast/nightfox.nvim" },
-  -- { "folke/tokyonight.nvim" },
+  { "folke/tokyonight.nvim" },
   -- { 'glepnir/zephyr-nvim' },
   -- { "sainnhe/gruvbox-material" },
   -- { "sainnhe/sonokai" },

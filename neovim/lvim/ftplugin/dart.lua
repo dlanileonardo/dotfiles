@@ -34,7 +34,7 @@ require("flutter-tools").setup {
     open_cmd = "15new",
   },
   debugger = {
-    enabled = true,
+    enabled = false,
     run_via_dap = false, -- use dap instead of a plenary job to run flutter apps
     register_configurations = function(paths)
       -- dap.configurations.dart = {

@@ -79,6 +79,7 @@ lvim.builtin.lualine.sections = {
 -- require('user.ui.feline')
 
 lvim.builtin.bufferline.options.always_show_bufferline = true
+lvim.builtin.bufferline.options.indicator_icon = nil
 -- lvim.builtin.bufferline.options.enforce_regular_tabs = true
 -- lvim.builtin.bufferline.options.separator_style = "thick"
 -- lvim.builtin.bufferline.options.sort_by = "relative_directory"

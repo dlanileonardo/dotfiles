@@ -55,8 +55,8 @@ lvim.builtin.treesitter.rainbow.enable = true
 lvim.builtin.treesitter.rainbow.extended_mode = true
 
 -- LUALINE
-require("nvim-gps").setup()
-local gps = require("nvim-gps")
+-- require("nvim-gps").setup()
+-- local gps = require("nvim-gps")
 
 lvim.builtin.lualine.options.disabled_filetypes = {
   "alpha", "NvimTree", "Outline", "flutterToolsOutline"
@@ -68,7 +68,7 @@ lvim.builtin.lualine.sections = {
   lualine_c = {
     -- { require('auto-session-library').current_session_name },
     "filename",
-    { gps.get_location, cond = gps.is_available }
+    -- { gps.get_location, cond = gps.is_available }
   },
   lualine_x = { "encoding", "fileformat", "filetype" },
   lualine_y = { "progress" },
@@ -87,10 +87,10 @@ lvim.builtin.bufferline.options.indicator_icon = nil
 
 local opts = {
   defaults = {
-    devicons_disabled = false,
+    -- devicons_disabled = false,
     catppuccin_flavour = "frappe",
-    color_devicons = false,
-    prompt_prefix = "> "
+    -- color_devicons = false,
+    prompt_prefix = "> ",
   },
   extensions = {
     live_grep_args = {
@@ -101,10 +101,11 @@ local opts = {
         -- even more opts
       }
     },
-    file_browser = {
-      -- hidden = true,
-      respect_gitignore = false,
-    },
+    -- file_browser = {
+    --   theme = "ivy",
+    --   -- hidden = true,
+    --   respect_gitignore = false,
+    -- },
     frecency = {
       show_scores = true,
       -- devicons_disabled = true,
@@ -123,6 +124,11 @@ local opts = {
 
 lvim.builtin.telescope.defaults = vim.tbl_extend("force", lvim.builtin.telescope.defaults, opts.defaults)
 lvim.builtin.telescope.extensions = vim.tbl_extend("force", lvim.builtin.telescope.extensions, opts.extensions)
+
+lvim.builtin.telescope.on_config_done = function(telescope)
+  pcall(telescope.load_extension, "frecency")
+  pcall(telescope.load_extension, "file-browser")
+end
 
 -- print(vim.inspect(lvim.builtin.telescope))
 

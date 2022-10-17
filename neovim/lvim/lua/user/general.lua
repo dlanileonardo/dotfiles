@@ -4,9 +4,9 @@ vim.opt.shell = "/bin/sh"
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
--- lvim.colorscheme = "gruvbox-baby"
-lvim.colorscheme = "tokyonight"
-lvim.transparent_window = true
+lvim.colorscheme = "gruvbox-baby"
+-- lvim.colorscheme = "tokyonight"
+lvim.transparent_window = false
 
 if lvim.colorscheme == "gruvbox-baby" then
   -- GRUVBO-BABY
@@ -171,6 +171,7 @@ vim.cmd([[
 vim.cmd([[
   au BufRead,BufNewFile Fastfile set filetype=ruby
   set cmdheight=1
+  set rtp+=/usr/local/opt/fzf
 ]])
 
 lvim.builtin.alpha.dashboard.section.header.val = {

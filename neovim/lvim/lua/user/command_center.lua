@@ -110,7 +110,7 @@ command_center.add({
   },
   {
     description = "Telescope git Files",
-    cmd = "<CMD>lua require('telescope.builtin').git_files()<CR>",
+    cmd = "<CMD>lua require('telescope.builtin').find_files()<CR>",
     keybindings = { "n", "<C-p>" },
   },
   {

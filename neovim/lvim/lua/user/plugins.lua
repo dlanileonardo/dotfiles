@@ -1,26 +1,12 @@
 -- Additional Plugins
 lvim.plugins = {
+  { '/usr/local/opt/fzf' },
   -- THEMES
   { "lunarvim/colorschemes" },
   { "luisiacc/gruvbox-baby", branch = "main" },
-  -- { "EdenEast/nightfox.nvim" },
-  { "folke/tokyonight.nvim" },
-  -- { 'glepnir/zephyr-nvim' },
-  -- { "sainnhe/gruvbox-material" },
-  -- { "sainnhe/sonokai" },
-  -- { "catppuccin/nvim", as = "catppuccin" },
-  -- { 'morhetz/gruvbox' },
-  -- PLUGINS
-  -- {
-  --   'feline-nvim/feline.nvim',
-  --   config = function()
-  --   end
-  -- },
   { "sindrets/diffview.nvim", requires = 'nvim-lua/plenary.nvim' },
-  -- { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } },
   { 'simrat39/symbols-outline.nvim' },
   { "machakann/vim-sandwich" },
-  { "RRethy/vim-illuminate" },
   { "p00f/nvim-ts-rainbow" },
   { 'onsails/lspkind.nvim' },
   { 'norcalli/nvim_utils' },
@@ -28,29 +14,15 @@ lvim.plugins = {
   { "folke/trouble.nvim", cmd = "TroubleToggle", },
   { "gfeiyou/command-center.nvim" },
   { 'mg979/vim-visual-multi', branch = "master" },
-  { "SmiteshP/nvim-gps", requires = "nvim-treesitter/nvim-treesitter" },
-  { 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim', },
   -- { "karb94/neoscroll.nvim", },
   { 'anuvyklack/pretty-fold.nvim' },
   { 'anuvyklack/fold-preview.nvim', requires = 'anuvyklack/keymap-amend.nvim', },
-  { "lukas-reineke/indent-blankline.nvim" },
   { "klen/nvim-test" },
   { "klen/nvim-config-local" },
   { 'nvim-telescope/telescope-ui-select.nvim' },
   { "nvim-telescope/telescope-live-grep-args.nvim" },
   { "nvim-telescope/telescope-frecency.nvim", requires = { "tami5/sqlite.lua" } },
   { "nvim-telescope/telescope-file-browser.nvim", },
-  -- { 'jvgrootveld/telescope-zoxide' },
-  -- { 'nvim-telescope/telescope-z.nvim',
-  --   requires = {
-  --     { 'nvim-lua/plenary.nvim' },
-  --     { 'nvim-lua/popup.nvim' },
-  --     { 'nvim-telescope/telescope.nvim' },
-  --   },
-  --   config = function()
-  --   end,
-  -- },
-  -- { 'cljoly/telescope-repo.nvim' },
   {
     "nvim-telescope/telescope-project.nvim",
     event = "BufWinEnter",

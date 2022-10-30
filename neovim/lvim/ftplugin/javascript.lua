@@ -6,8 +6,15 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 vim.cmd("setlocal tabstop=4 shiftwidth=4")
 
-require 'lspconfig'.tsserver.setup {
-  capabilities = capabilities
+-- require 'lspconfig'.tsserver.setup {
+--   capabilities = capabilities,
+--   init_options = {
+--     provideFormatter = true
+--   }
+-- }
+
+require 'lspconfig'.tailwindcss.setup {
+  capabilities = capabilities,
 }
 
 -- dap.adapters.chrome = {
@@ -42,4 +49,4 @@ require 'lspconfig'.tsserver.setup {
 --   },
 -- }
 
-vim.notify("tsserver loaded")
+-- vim.notify("tsserver loaded")

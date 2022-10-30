@@ -110,12 +110,13 @@ command_center.add({
   },
   {
     description = "Telescope git Files",
-    cmd = "<CMD>lua require('telescope.builtin').find_files()<CR>",
-    keybindings = { "n", "<C-p>" },
+    cmd = "<CMD>lua require('telescope.builtin').git_files()<CR>",
+    keybindings = { "n", "<C-S-p>" },
   },
   {
     description = "Telescope Files",
     cmd = "<CMD>lua require('telescope.builtin').find_files()<CR>",
+    keybindings = { "n", "<C-p>" },
   },
   {
     description = "Telescope Buffers",
@@ -153,10 +154,10 @@ command_center.add({
     description = "Toggle Auto Format",
     cmd = "<CMD>LvimToggleFormatOnSave<CR>",
   },
-  {
-    description = "View Notification",
-    cmd = "<CMD>Telescope notify<cr>",
-  },
+  -- {
+  --   description = "View Notification",
+  --   cmd = "<CMD>Telescope notify<cr>",
+  -- },
   {
     description = "Reload LunarVim's configuration",
     cmd = "<cmd>LvimReload<cr>",
@@ -336,14 +337,14 @@ command_center.add({
     cmd = "<CMD>TodoTrouble<CR>",
     keybindings = { "n", "<Leader>a" }
   },
-  {
-    description = "Pomodoro Start",
-    cmd = "<CMD>PomodoroStart<CR>"
-  },
-  {
-    description = "Pomodor Status",
-    cmd = "<CMD>PomodoroStatus<CR>"
-  }
+  -- {
+  --   description = "Pomodoro Start",
+  --   cmd = "<CMD>PomodoroStart<CR>"
+  -- },
+  -- {
+  --   description = "Pomodor Status",
+  --   cmd = "<CMD>PomodoroStatus<CR>"
+  -- }
 })
 
 

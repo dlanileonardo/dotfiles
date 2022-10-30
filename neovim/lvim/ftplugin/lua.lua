@@ -6,4 +6,4 @@ require 'lspconfig'.sumneko_lua.setup {
   capabilities = capabilities
 }
 
-vim.notify("Lua loaded")
+-- vim.notify("Lua loaded")

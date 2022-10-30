@@ -14,4 +14,4 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 --   capabilities = capabilities,
 -- }
 
-vim.notify("eruby loaded")
+-- vim.notify("eruby loaded")

@@ -6,4 +6,4 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 require 'lspconfig'.yamlls.setup {
   capabilities = capabilities
 }
-vim.notify("yammls loaded")
+-- vim.notify("yammls loaded")

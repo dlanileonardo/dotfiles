@@ -1,13 +1,6 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
--- capabilities.textDocument.documentHighlight = {
--- }
-
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-require 'lspconfig'.ruby.setup {
-  capabilities = capabilities
-}
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local rspec = require('nvim-test.runners.rspec'):setup {
 }
@@ -18,4 +11,6 @@ function rspec:build_test_args(args, tests)
   table.insert(args, name .. ":" .. line)
 end
 
-vim.notify("ruby loaded")
+require 'lspconfig'.solargraph.setup {}
+
+-- vim.notify("ruby loaded")

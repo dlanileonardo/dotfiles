@@ -23,20 +23,20 @@ local map = require('fold-preview').mapping
 
 keymap.amend('n', 'zp', map.show_close_preview_open_fold)
 
-require("indent_blankline").setup {
-  char = '|',
-  char_blankline = '┊',
-  -- char_list = { '|', '¦', '┆', '┊' },
-  space_char_blankline = " ",
-  show_current_context = true,
-  show_current_context_start = true,
-  show_end_of_line = true,
-  show_first_indent_level = true,
-  filetype_exclude = { "help", "terminal", "dashboard", "man", "checkhealth", "packer", "flutterToolsOutline", "Outline" },
-  buftype_exclude = { "terminal", "nofile", "quickfix", "flutterToolsOutline", "Outline" },
-  bufname_exclude = {},
-  show_trailing_blankline_indent = false,
-}
+-- require("indent_blankline").setup {
+--   char = '|',
+--   char_blankline = '┊',
+--   -- char_list = { '|', '¦', '┆', '┊' },
+--   space_char_blankline = " ",
+--   show_current_context = true,
+--   show_current_context_start = true,
+--   show_end_of_line = true,
+--   show_first_indent_level = true,
+--   filetype_exclude = { "help", "terminal", "dashboard", "man", "checkhealth", "packer", "flutterToolsOutline", "Outline" },
+--   buftype_exclude = { "terminal", "nofile", "quickfix", "flutterToolsOutline", "Outline" },
+--   bufname_exclude = {},
+--   show_trailing_blankline_indent = false,
+-- }
 
 -- require('neoscroll').setup({
 --   -- easing_function = "quadratic",
@@ -49,6 +49,11 @@ vim.g.symbols_outline = {
   preview_bg_highlight = "Pmenu",
   highlight_hovered_item = true,
 }
+require("symbols-outline").setup({
+  auto_preview = false,
+  preview_bg_highlight = "Pmenu",
+  highlight_hovered_item = true,
+})
 
 -- RAINBOW
 lvim.builtin.treesitter.rainbow.enable = true
@@ -72,7 +77,10 @@ lvim.builtin.lualine.sections = {
   },
   lualine_x = { "encoding", "fileformat", "filetype" },
   lualine_y = { "progress" },
-  lualine_z = { "location", require('pomodoro').statusline },
+  lualine_z = {
+    "location",
+    -- require('pomodoro').statusline
+  },
 }
 
 -- lvim.builtin.lualine.active = false
@@ -91,6 +99,28 @@ local opts = {
     catppuccin_flavour = "frappe",
     -- color_devicons = false,
     prompt_prefix = "> ",
+    pickers = {
+      git_files = {
+        hidden = true,
+        show_untracked = true,
+      },
+      live_grep = {
+
+      }
+    }
+  },
+  pickers = {
+    git_files = {
+      hidden = true,
+      show_untracked = true,
+    },
+    live_grep = {
+
+    },
+    find_files = {
+
+    },
+
   },
   extensions = {
     live_grep_args = {
@@ -124,6 +154,7 @@ local opts = {
 
 lvim.builtin.telescope.defaults = vim.tbl_extend("force", lvim.builtin.telescope.defaults, opts.defaults)
 lvim.builtin.telescope.extensions = vim.tbl_extend("force", lvim.builtin.telescope.extensions, opts.extensions)
+lvim.builtin.telescope.pickers = vim.tbl_extend("force", lvim.builtin.telescope.pickers, opts.pickers)
 
 lvim.builtin.telescope.on_config_done = function(telescope)
   pcall(telescope.load_extension, "frecency")
@@ -223,3 +254,8 @@ vim.keymap.set({ "n", "v" }, "<M-tab>", "<plug>(CybuLastusedNext)")
 
 require("todo-comments").setup {
 }
+
+
+vim.cmd([[
+  let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
+]])

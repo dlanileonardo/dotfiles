@@ -7,6 +7,7 @@ lvim.lint_on_save = true
 lvim.colorscheme = "gruvbox-baby"
 -- lvim.colorscheme = "tokyonight"
 lvim.transparent_window = false
+vim.opt.relativenumber = true
 
 if lvim.colorscheme == "gruvbox-baby" then
   -- GRUVBO-BABY
@@ -95,9 +96,7 @@ lvim.keys.normal_mode["<C-Up>"] = false
 
 -- TODO: User Config for predefined plug sins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
-lvim.builtin.alpha.active = true
-lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.notify.active = true
+-- lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 -- lvim.builtin.nvimtree.active = false
@@ -165,7 +164,6 @@ vim.cmd([[
 
 vim.cmd([[
   au BufRead,BufNewFile *.* hi IndentBlanklineContextChar guifg=grey gui=nocombine
-  let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
 ]])
 
 vim.cmd([[
@@ -174,7 +172,7 @@ vim.cmd([[
   set rtp+=/usr/local/opt/fzf
 ]])
 
-lvim.builtin.alpha.dashboard.section.header.val = {
+lvim.builtin.alpha.startify.section.header.val = {
   "                                      ",
   "                  ▄                   ",
   "                ▄▄▄▄▄                 ",
@@ -189,3 +187,10 @@ lvim.builtin.alpha.dashboard.section.header.val = {
   "           C Y B E R D Y N E          ",
   "               SYSTEMS                ",
 }
+
+lvim.builtin.alpha.active = true
+lvim.builtin.alpha.mode = "startify"
+-- lvim.builtin.alpha.startify.section.header.opts = {
+--   position = "center",
+--   h1 = "Label",
+-- }

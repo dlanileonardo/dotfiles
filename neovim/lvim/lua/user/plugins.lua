@@ -4,9 +4,16 @@ lvim.plugins = {
   -- THEMES
   { "lunarvim/colorschemes" },
   { "luisiacc/gruvbox-baby", branch = "main" },
-  { "sindrets/diffview.nvim", requires = 'nvim-lua/plenary.nvim' },
+  {
+    "sindrets/diffview.nvim",
+    event = "BufRead",
+    requires = 'nvim-lua/plenary.nvim'
+  },
   { 'simrat39/symbols-outline.nvim' },
-  { "machakann/vim-sandwich" },
+  {
+    "machakann/vim-sandwich",
+    -- event = "BufRead",
+  },
   { "p00f/nvim-ts-rainbow" },
   { 'onsails/lspkind.nvim' },
   { 'norcalli/nvim_utils' },
@@ -55,13 +62,18 @@ lvim.plugins = {
   },
   {
     'nacro90/numb.nvim',
+    event = "BufRead",
     config = function()
-      require('numb').setup()
+      require('numb').setup({
+        show_numbers = true, -- Enable 'number' for the window while peeking
+        show_cursorline = true, -- Enable 'cursorline' for the window while peeking
+      })
     end
   },
   {
     'phaazon/hop.nvim',
-    branch = 'v1',
+    event = "BufRead",
+    branch = 'v2',
     config = function()
       require 'hop'.setup {}
     end
@@ -80,7 +92,9 @@ lvim.plugins = {
     end
   },
   {
-    'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp',
+    'tzachar/cmp-tabnine',
+    run = './install.sh',
+    requires = 'hrsh7th/nvim-cmp',
     config = function()
       local tabnine = require('cmp_tabnine.config')
       tabnine:setup({
@@ -98,7 +112,6 @@ lvim.plugins = {
       })
     end
   },
-  -- { "github/copilot.vim" },
   -- {
   --   'crusj/bookmarks.nvim',
   --   branch = 'main',
@@ -122,20 +135,18 @@ lvim.plugins = {
     config = function()
     end
   },
-  { "anuvyklack/hydra.nvim" },
-  {
-    'wthollingsworth/pomodoro.nvim',
-    requires = 'MunifTanjim/nui.nvim',
-    config = function()
-      require('pomodoro').setup({
-        time_work = 25,
-        time_break_short = 5,
-        time_break_long = 20,
-        timers_to_long_break = 4
-      })
-    end
-  },
+  -- { "anuvyklack/hydra.nvim" },
+  -- {
+  --   'wthollingsworth/pomodoro.nvim',
+  --   requires = 'MunifTanjim/nui.nvim',
+  --   config = function()
+  --     require('pomodoro').setup({
+  --       time_work = 25,
+  --       time_break_short = 5,
+  --       time_break_long = 20,
+  --       timers_to_long_break = 4
+  --     })
+  --   end
+  -- },
   -- { "szw/vim-maximizer" },
-  -- { "chaoren/vim-wordmotion", },
-  -- { "anuvyklack/vim-smartword" },
 }

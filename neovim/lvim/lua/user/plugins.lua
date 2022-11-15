@@ -4,10 +4,6 @@ lvim.plugins = {
   -- THEMES
   { "lunarvim/colorschemes" },
   { "luisiacc/gruvbox-baby", branch = "main" },
-  -- { 'folke/tokyonight.nvim', branch = 'main' },
-  -- { "catppuccin/nvim", as = "catppuccin" },
-  -- { 'chriskempson/base16-vim' },
-  -- { "RRethy/nvim-base16" },
   {
     "sindrets/diffview.nvim",
     event = "BufRead",
@@ -21,7 +17,9 @@ lvim.plugins = {
   {
     'sunaku/tmux-navigate',
   },
-  { "p00f/nvim-ts-rainbow" },
+  {
+    'rcarriga/nvim-notify'
+  },
   { 'onsails/lspkind.nvim' },
   { 'norcalli/nvim_utils' },
   { 'famiu/bufdelete.nvim' },
@@ -44,6 +42,13 @@ lvim.plugins = {
       vim.cmd [[packadd telescope.nvim]]
     end,
   },
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+  },
+  { "p00f/nvim-ts-rainbow" },
   {
     'nvim-treesitter/nvim-treesitter-context',
     config = function()

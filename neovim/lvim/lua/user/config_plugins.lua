@@ -1,6 +1,7 @@
 vim.opt.list = true
 vim.opt.listchars:append("space:⋅")
 vim.opt.listchars:append("eol:↴")
+vim.notify = require("notify")
 
 require('pretty-fold').setup({
   -- keep_indentation = true,
@@ -44,12 +45,6 @@ require('neoscroll').setup({
   -- performance_mode = true,
 })
 
--- vim.g.symbols_outline = {
---   auto_preview = false,
---   preview_bg_highlight = "Pmenu",
---   highlight_hovered_item = true,
--- }
---
 require("symbols-outline").setup({
   auto_preview = false,
   preview_bg_highlight = "Pmenu",
@@ -264,7 +259,6 @@ vim.keymap.set({ "n", "v" }, "<M-tab>", "<plug>(CybuLastusedNext)")
 
 require("todo-comments").setup {
 }
-
 
 vim.cmd([[
   let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)

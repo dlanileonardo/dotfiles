@@ -154,10 +154,10 @@ command_center.add({
     description = "Toggle Auto Format",
     cmd = "<CMD>LvimToggleFormatOnSave<CR>",
   },
-  -- {
-  --   description = "View Notification",
-  --   cmd = "<CMD>Telescope notify<cr>",
-  -- },
+  {
+    description = "View Notification",
+    cmd = "<CMD>Telescope notify<cr>",
+  },
   {
     description = "Reload LunarVim's configuration",
     cmd = "<cmd>LvimReload<cr>",
@@ -354,31 +354,17 @@ command_center.add({
 
 
 lvim.builtin.telescope.extensions.command_center = {
-  -- Below are default settings that can be overriden ...
-
-  -- Specify what components are shown in telescope prompt;
-  -- Order matters, and components may repeat
   components = {
     command_center.component.DESCRIPTION,
     command_center.component.COMMAND,
     command_center.component.KEYBINDINGS,
   },
-
-  -- Spcify by what components that search results are ordered;
-  -- Order does not matter
   sort_by = {
     command_center.component.DESCRIPTION,
     command_center.component.KEYBINDINGS,
     command_center.component.COMMAND,
   },
-
-  -- Change the separator used to separate each component
   separator = " ",
-
-  -- When set to false,
-  -- The description compoenent will be empty if it is not specified
   auto_replace_desc_with_cmd = true,
-
-  -- Default title to Telescope prompt
   prompt_title = "Command Center",
 }

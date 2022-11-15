@@ -5,7 +5,6 @@ lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
 lvim.colorscheme = "gruvbox-baby"
--- lvim.colorscheme = "base16-twilight"
 lvim.transparent_window = false
 vim.opt.relativenumber = true
 

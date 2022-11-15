@@ -5,7 +5,7 @@ lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
 lvim.colorscheme = "gruvbox-baby"
--- lvim.colorscheme = "tokyonight"
+-- lvim.colorscheme = "base16-twilight"
 lvim.transparent_window = false
 vim.opt.relativenumber = true
 
@@ -13,7 +13,7 @@ if lvim.colorscheme == "gruvbox-baby" then
   -- GRUVBO-BABY
   local colors = require("gruvbox-baby.colors")
   local c = colors.config(config)
-  lvim.builtin.lualine.options.theme = "gruvbox-baby"
+  lvim.builtin.lualine.options.theme = "gruvbox"
 
   vim.g.gruvbox_baby_highlights = {
     Visual = { bg = c.medium_gray },
@@ -25,7 +25,7 @@ if lvim.colorscheme == "gruvbox-baby" then
   vim.g.gruvbox_baby_background_color = "medium"
 elseif lvim.colorscheme == "tokyonight" then
   lvim.builtin.lualine.options.theme = "tokyonight"
-  vim.g.tokyonight_style = "storm"
+  vim.g.tokyonight_style = "night"
 elseif lvim.colorscheme == "nightfox" or lvim.colorscheme == "duskfox" then
   require('nightfox').setup({
     options = {
@@ -60,12 +60,8 @@ elseif lvim.colorscheme == "sonokai" then
   -- SONOKAI
   vim.g.sonokai_material_enable_italic = 1
   vim.g.sonokai_style = 'andromeda'
-elseif lvim.colorscheme == "tokyonight" then
-  -- TOKYONIGHT
-  vim.g.tokyonight_style = "storm"
 elseif lvim.colorscheme == "catppuccin" then
-  -- CATPPUCCIN
-  vim.g.catppuccin_flavour = "frappe"
+  vim.g.catppuccin_flavour = "mocha"
   lvim.builtin.lualine.options.theme = "catppuccin"
 end
 

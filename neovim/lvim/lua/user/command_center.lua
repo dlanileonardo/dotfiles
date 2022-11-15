@@ -13,12 +13,12 @@ command_center.add({
   {
     description = "Buffer Next",
     cmd = "<CMD>CybuNext<CR>",
-    keybindings = { "n", "<M-l>" },
+    keybindings = { "n", "<C-l>" },
   },
   {
     description = "Buffer Previous",
     cmd = "<CMD>CybuPrev<CR>",
-    keybindings = { "n", "<M-h>" },
+    keybindings = { "n", "<C-h>" },
   },
   {
     description = "Buffer Delete",
@@ -175,7 +175,7 @@ command_center.add({
     cmd = "<CMD>DiffviewOpen<CR>",
   },
   {
-    description = "Outline",
+    description = "Outline Toggle",
     cmd = "<CMD>SymbolsOutline<CR>",
   },
   {
@@ -337,6 +337,11 @@ command_center.add({
     cmd = "<CMD>TodoTrouble<CR>",
     keybindings = { "n", "<Leader>a" }
   },
+  {
+    description = "Buffer Toggle Pin",
+    cmd = "<CMD>BufferLineTogglePin<CR>",
+    keybindings = { "n", "<Leader>bt" }
+  }
   -- {
   --   description = "Pomodoro Start",
   --   cmd = "<CMD>PomodoroStart<CR>"

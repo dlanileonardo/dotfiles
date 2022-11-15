@@ -38,21 +38,25 @@ keymap.amend('n', 'zp', map.show_close_preview_open_fold)
 --   show_trailing_blankline_indent = false,
 -- }
 
--- require('neoscroll').setup({
---   -- easing_function = "quadratic",
---   mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb', '<PageUp>', 'PageDown', },
---   -- performance_mode = true,
--- })
+require('neoscroll').setup({
+  easing_function = "quadratic",
+  mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb', '<PageUp>', 'PageDown', },
+  -- performance_mode = true,
+})
 
-vim.g.symbols_outline = {
-  auto_preview = false,
-  preview_bg_highlight = "Pmenu",
-  highlight_hovered_item = true,
-}
+-- vim.g.symbols_outline = {
+--   auto_preview = false,
+--   preview_bg_highlight = "Pmenu",
+--   highlight_hovered_item = true,
+-- }
+--
 require("symbols-outline").setup({
   auto_preview = false,
   preview_bg_highlight = "Pmenu",
   highlight_hovered_item = true,
+  keymaps = { -- These keymaps can be a string or a table for multiple keys
+    close = { "q" },
+  },
 })
 
 -- RAINBOW
@@ -83,20 +87,26 @@ lvim.builtin.lualine.sections = {
   },
 }
 
+options = {
+  component_separators = { left = '\\', right = '/' },
+  section_separators = { left = '', right = '' },
+}
+
+lvim.builtin.lualine.options = vim.tbl_extend("force", lvim.builtin.lualine.options, options)
+
 -- lvim.builtin.lualine.active = false
--- require('user.ui.feline')
 
 lvim.builtin.bufferline.options.always_show_bufferline = true
 lvim.builtin.bufferline.options.indicator_icon = nil
 -- lvim.builtin.bufferline.options.enforce_regular_tabs = true
--- lvim.builtin.bufferline.options.separator_style = "thick"
+lvim.builtin.bufferline.options.separator_style = "slant"
 -- lvim.builtin.bufferline.options.sort_by = "relative_directory"
 -- lvim.builtin.bufferline.options.show_close_icon = false
 
 local opts = {
   defaults = {
     -- devicons_disabled = false,
-    catppuccin_flavour = "frappe",
+    -- catppuccin_flavour = "frappe",
     -- color_devicons = false,
     prompt_prefix = "> ",
     pickers = {

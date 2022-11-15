@@ -4,6 +4,10 @@ lvim.plugins = {
   -- THEMES
   { "lunarvim/colorschemes" },
   { "luisiacc/gruvbox-baby", branch = "main" },
+  -- { 'folke/tokyonight.nvim', branch = 'main' },
+  -- { "catppuccin/nvim", as = "catppuccin" },
+  -- { 'chriskempson/base16-vim' },
+  -- { "RRethy/nvim-base16" },
   {
     "sindrets/diffview.nvim",
     event = "BufRead",
@@ -14,6 +18,9 @@ lvim.plugins = {
     "machakann/vim-sandwich",
     -- event = "BufRead",
   },
+  {
+    'sunaku/tmux-navigate',
+  },
   { "p00f/nvim-ts-rainbow" },
   { 'onsails/lspkind.nvim' },
   { 'norcalli/nvim_utils' },
@@ -21,7 +28,7 @@ lvim.plugins = {
   { "folke/trouble.nvim", cmd = "TroubleToggle", },
   { "gfeiyou/command-center.nvim" },
   { 'mg979/vim-visual-multi', branch = "master" },
-  -- { "karb94/neoscroll.nvim", },
+  { "karb94/neoscroll.nvim", },
   { 'anuvyklack/pretty-fold.nvim' },
   { 'anuvyklack/fold-preview.nvim', requires = 'anuvyklack/keymap-amend.nvim', },
   { "klen/nvim-test" },

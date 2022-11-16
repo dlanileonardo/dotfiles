@@ -13,9 +13,9 @@ vim.cmd("setlocal tabstop=4 shiftwidth=4")
 --   }
 -- }
 
-require 'lspconfig'.tailwindcss.setup {
-  capabilities = capabilities,
-}
+-- require 'lspconfig'.tailwindcss.setup {
+--   capabilities = capabilities,
+-- }
 
 -- dap.adapters.chrome = {
 --   type = "executable",
@@ -49,4 +49,4 @@ require 'lspconfig'.tailwindcss.setup {
 --   },
 -- }
 
--- vim.notify("tsserver loaded")
+vim.notify("tsserver loaded")

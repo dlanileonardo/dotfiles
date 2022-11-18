@@ -341,7 +341,40 @@ command_center.add({
     description = "Buffer Toggle Pin",
     cmd = "<CMD>BufferLineTogglePin<CR>",
     keybindings = { "n", "<Leader>bt" }
-  }
+  },
+  {
+    description = "Task Overseer Toggle",
+    cmd = "<CMD>OverseerToggle<CR>",
+    keybindings = { "n", "<Leader>ot" }
+  },
+  {
+    description = "Task Overseer Run",
+    cmd = "<CMD>OverseerRun<CR>",
+    keybindings = { "n", "<Leader>or" }
+  },
+  {
+    description = "Task Overseer Tasks Action",
+    cmd = "<CMD>OverseerTaskAction<CR>",
+    keybindings = { "n", "<Leader>oa" }
+  },
+  {
+    description = "Structural Search and Replace",
+    cmd = "<CMD>lua require(\"ssr\").open()<CR>",
+    keybindings = {
+      { "n", "<M-f>", noremap },
+      { "x", "<M-f>", noremap },
+    },
+  },
+  {
+    description = "Move to down",
+    cmd = "<CMD>m .+1<CR>==",
+    keybindings = { "n", "<C-j>" }
+  },
+  {
+    description = "Move to down",
+    cmd = "<CMD>m .-2<CR>==",
+    keybindings = { "n", "<C-k>" }
+  },
   -- {
   --   description = "Pomodoro Start",
   --   cmd = "<CMD>PomodoroStart<CR>"

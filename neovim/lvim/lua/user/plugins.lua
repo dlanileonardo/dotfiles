@@ -147,6 +147,37 @@ lvim.plugins = {
     config = function()
     end
   },
+  {
+    'akinsho/flutter-tools.nvim'
+  },
+  {
+    'stevearc/overseer.nvim',
+    config = function()
+      require('overseer').setup({
+        task_list = {
+          direction = "right",
+          default_detail = 2,
+        }
+      })
+    end
+  },
+  {
+    "cshuaimin/ssr.nvim",
+    module = "ssr",
+    -- Calling setup is optional.
+    config = function()
+      require("ssr").setup {
+        min_width = 50,
+        min_height = 5,
+        keymaps = {
+          close = "q",
+          next_match = "n",
+          prev_match = "N",
+          replace_all = "<cr>",
+        },
+      }
+    end
+  },
   -- { "anuvyklack/hydra.nvim" },
   -- {
   --   'wthollingsworth/pomodoro.nvim',

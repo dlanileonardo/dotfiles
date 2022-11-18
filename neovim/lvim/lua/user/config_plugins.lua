@@ -39,11 +39,11 @@ keymap.amend('n', 'zp', map.show_close_preview_open_fold)
 --   show_trailing_blankline_indent = false,
 -- }
 
-require('neoscroll').setup({
-  easing_function = "quadratic",
-  mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb', '<PageUp>', 'PageDown', },
-  -- performance_mode = true,
-})
+-- require('neoscroll').setup({
+--   easing_function = "quadratic",
+--   mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb', '<PageUp>', 'PageDown', },
+--   -- performance_mode = true,
+-- })
 
 require("symbols-outline").setup({
   auto_preview = false,

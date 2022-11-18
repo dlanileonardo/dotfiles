@@ -1,45 +1,6 @@
-[submodule "dependencies/vimfiles"]
-	path = dependencies/vimfiles
-	url = git@github.com:dlanileonardo/vimfiles.git
-[submodule "themes/base16-builder"]
-	path = themes/base16-builder
-	url = git@github.com:dlanileonardo/base16-builder.git
-[submodule "themes/base16-tmux"]
-	path = themes/base16-tmux
-	url = git@github.com:Kraust/base16-tmux.git
 [submodule "dependencies/sawesome-terminal-fonts"]
 	path = dependencies/awesome-terminal-fonts
 	url = git@github.com:gabrielelana/awesome-terminal-fonts.git
-[submodule "dependencies/powerlevel9k"]
-	path = dependencies/powerlevel9k
-	url = git@github.com:bhilburn/powerlevel9k.git
-[submodule "dependencies/powerline-fonts"]
-	path = dependencies/powerline-fonts
-	url = git@github.com:powerline/fonts.git
 [submodule "flatabulous"]
 	path = flatabulous
 	url = git@github.com:anmoljagetia/Flatabulous.git
-[submodule "dependencies/awesome-terminal-fonts"]
-	path = dependencies/awesome-terminal-fonts
-	url = git@github.com:gabrielelana/awesome-terminal-fonts.git
-[submodule "themes/flatabulous"]
-	path = themes/flatabulous
-	url = git@github.com:anmoljagetia/Flatabulous.git
-[submodule "dependencies/powerlevel10k"]
-	path = dependencies/powerlevel10k
-	url = git@github.com:romkatv/powerlevel10k.git
-[submodule "dependencies/zsh-async"]
-	path = dependencies/zsh-async
-	url = git@github.com:mafredri/zsh-async.git
-[submodule "dependencies/tmux.gpa"]
-	path = dependencies/tmux.gpa
-	url = git@github.com:gpakosz/.tmux.git
-[submodule "dependencies/tpm"]
-	path = dependencies/tpm
-	url = git@github.com:tmux-plugins/tpm.git
-[submodule "dependencies/nord-dircolors"]
-	path = dependencies/nord-dircolors
-	url = git@github.com:arcticicestudio/nord-dircolors.git
-[submodule "dependencies/friendly-snippets"]
-	path = dependencies/friendly-snippets
-	url = https://github.com/rafamadriz/friendly-snippets

@@ -19,30 +19,6 @@
 [submodule "flatabulous"]
 	path = flatabulous
 	url = git@github.com:anmoljagetia/Flatabulous.git
-[submodule "zsh-plugins/antigen"]
-	path = zsh-plugins/antigen
-	url = git@github.com:zsh-users/antigen.git
-[submodule "zsh-plugins/zsh-syntax-highlighting"]
-	path = zsh-plugins/zsh-syntax-highlighting
-	url = git@github.com:zsh-users/zsh-syntax-highlighting.git
-[submodule "zsh-plugins/zsh-autosuggestions"]
-	path = zsh-plugins/zsh-autosuggestions
-	url = git@github.com:zsh-users/zsh-autosuggestions.git
-[submodule "zsh-plugins/alias-tips"]
-	path = zsh-plugins/alias-tips
-	url = git@github.com:djui/alias-tips.git
-[submodule "zsh-plugins/git-prune"]
-	path = zsh-plugins/git-prune
-	url = git@github.com:Seinh/git-prune.git
-[submodule "zsh-plugins/oh-my-zsh-reminder"]
-	path = zsh-plugins/oh-my-zsh-reminder
-	url = git@github.com:AlexisBRENON/oh-my-zsh-reminder.git
-[submodule "zsh-plugins/almostontop"]
-	path = zsh-plugins/almostontop
-	url = git@github.com:Valiev/almostontop.git
-[submodule "zsh-plugins/bash-insulter"]
-	path = zsh-plugins/bash-insulter
-	url = git@github.com:hkbakke/bash-insulter.git
 [submodule "dependencies/awesome-terminal-fonts"]
 	path = dependencies/awesome-terminal-fonts
 	url = git@github.com:gabrielelana/awesome-terminal-fonts.git
@@ -55,9 +31,6 @@
 [submodule "dependencies/zsh-async"]
 	path = dependencies/zsh-async
 	url = git@github.com:mafredri/zsh-async.git
-[submodule "zsh-plugins/conda-zsh-completion"]
-	path = zsh-plugins/conda-zsh-completion
-	url = git@github.com:esc/conda-zsh-completion.git
 [submodule "dependencies/tmux.gpa"]
 	path = dependencies/tmux.gpa
 	url = git@github.com:gpakosz/.tmux.git

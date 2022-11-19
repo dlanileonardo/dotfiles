@@ -1,14 +1,14 @@
-local lspconfig = require 'lspconfig'
-local configs = require 'lspconfig/configs'
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require 'lspconfig'.cssls.setup {
+local opts = {
   capabilities = capabilities,
 }
 
-require 'lspconfig'.emmet_ls.setup({
+require("lvim.lsp.manager").setup("cssls", opts)
+
+require("lvim.lsp.manager").setup("emmet_ls", {
   capabilities = capabilities,
   filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
   init_options = {
@@ -20,7 +20,5 @@ require 'lspconfig'.emmet_ls.setup({
     },
   }
 })
-
--- require 'lspconfig'.tailwindcss.setup {}
 
 vim.notify("css loaded")

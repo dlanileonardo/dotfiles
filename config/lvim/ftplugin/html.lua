@@ -1,12 +1,9 @@
-local lspconfig = require 'lspconfig'
-local configs = require 'lspconfig/configs'
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
--- capabilities.textDocument.documentHighlight = true
+capabilities.textDocument.documentHighlight = true
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require 'lspconfig'.emmet_ls.setup({
-  -- on_attach = on_attach,
+local opts = {
   capabilities = capabilities,
   filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
   init_options = {
@@ -17,13 +14,12 @@ require 'lspconfig'.emmet_ls.setup({
       },
     },
   }
+}
+
+require("lvim.lsp.manager").setup("emmet_ls", opts)
+
+require("lvim.lsp.manager").setup("tailwindcss", {
+  capabilities = capabilities,
 })
-
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
--- require 'lspconfig'.tailwindcss.setup {
---   capabilities = capabilities
--- }
 
 vim.notify("html loaded")

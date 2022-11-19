@@ -1,21 +1,24 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
--- local dap = require('dap')
 
-capabilities.textDocument.documentHighlight = true
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- capabilities.textDocument.documentHighlight = true
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 vim.cmd("setlocal tabstop=4 shiftwidth=4")
 
--- require 'lspconfig'.tsserver.setup {
---   capabilities = capabilities,
---   init_options = {
---     provideFormatter = true
---   }
--- }
+local opts = {
+  capabilities = capabilities,
+}
 
--- require 'lspconfig'.tailwindcss.setup {
---   capabilities = capabilities,
--- }
+require("lvim.lsp.manager").setup("tsserver", {
+  capabilities = capabilities,
+  init_options = {
+    provideFormatter = true
+  }
+})
+
+require("lvim.lsp.manager").setup("tailwindcss", {
+  capabilities = capabilities,
+})
 
 -- dap.adapters.chrome = {
 --   type = "executable",

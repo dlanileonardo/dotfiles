@@ -1,17 +1,13 @@
-local lspconfig = require 'lspconfig'
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- lspconfig.emmet_ls.setup({
---   -- on_attach = on_attach,
---   capabilities = capabilities,
---   filetypes = { "eruby", "erb" },
--- })
+local opts = {
+  capabilities = capabilities,
+}
 
--- require 'lspconfig'.erb.setup {
---   capabilities = capabilities,
--- }
+require("lvim.lsp.manager").setup("solargraph", opts)
+require("lvim.lsp.manager").setup("emmet_ls", opts)
 
--- vim.notify("eruby loaded")
+
+vim.notify("eruby loaded")

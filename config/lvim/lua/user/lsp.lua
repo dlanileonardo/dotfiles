@@ -1,7 +1,7 @@
 -- ---@usage disable automatic installation of servers
-lvim.lsp.automatic_servers_installation = false
-lvim.lsp.document_highlight = true
-lvim.lsp.templates_dir = join_paths(get_runtime_dir(), "after", "ftplugin")
+-- lvim.lsp.installer.setup.automatic_installation = true
+-- lvim.lsp.document_highlight = true
+-- lvim.lsp.templates_dir = join_paths(get_runtime_dir(), "after", "ftplugin")
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -37,7 +37,7 @@ vim.api.nvim_create_autocmd("CursorHold", {
 
 -- ---configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
 -- ---see the full default list `:lua print(vim.inspect(lvim.lsp.automatic_configuration.skipped_servers))`
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "tailwindcss", "dartls" })
+-- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "tailwindcss", "dartls", "solargraph" })
 -- local opts = {} -- check the lspconfig documentation for a list of all possible options
 -- require("lvim.lsp.manager").setup("pyright", opts)
 

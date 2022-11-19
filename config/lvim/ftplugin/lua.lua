@@ -2,8 +2,10 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require 'lspconfig'.sumneko_lua.setup {
-  capabilities = capabilities
+local opts = {
+  capabilities = capabilities,
 }
 
--- vim.notify("Lua loaded")
+require("lvim.lsp.manager").setup("sumneko_lua", opts)
+
+vim.notify("lua loaded")

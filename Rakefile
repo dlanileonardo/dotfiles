@@ -141,6 +141,7 @@ namespace 'dot' do
     run_apt_get 'bat', lvl: 1
     run_apt_get 'fd', lvl: 1
     run_apt_get 'git-extras', lvl: 1
+    run_apt_get 'neofetch', lvl: 1
 
     sp1.success 'COMPLETE'.green
   end
@@ -162,26 +163,6 @@ namespace 'dot' do
   task :install_vimplugins do
     sp1 = @multi_spinner.register '[:spinner] Setup Vim'
     sp1.auto_spin
-
-    # run_cmd 'curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > install.sh', lvl: 1
-
-    # unless Dir.exist?(ENV['NEOBUNDLE_INSTALL_DIR'].to_s)
-    #   run_cmd 'sh ./install.sh', lvl: 2
-    #   run_cmd 'rm install.sh', lvl: 2
-    # end
-
-    # run_cmd '~/.vim/bundle/neobundle.vim/bin/neoinstall', lvl: 2
-
-    # run_cmd 'wget -O codesearch.zip https://github.com/junkblocker/codesearch/releases/download/v5/codesearch_v5_darwin_amd64.zip',
-    #         lvl: 1
-    # run_cmd 'unzip -j -n codesearch.zip -d ~/bin && chmod a+x ~/bin/* && rm codesearch.zip', lvl: 2
-
-    # link_file '~/.vim/bundle/base16-vim/colors', '~/.vim/colors', lvl: 1
-    # link_file '$DOTFILES_ROOT/dependencies/vimfiles/doc', '~/.vim/doc', lvl: 1
-    # link_file '$DOTFILES_ROOT/dependencies/vimfiles/unite-menus/', '~/.vim/unite-menus', lvl: 1
-    # link_file '$DOTFILES_ROOT/dependencies/vimfiles/snippets/', '~/.vim/snippets', lvl: 1
-    # link_file '$DOTFILES_ROOT/dependencies/vimfiles/vimrc.d/', '~/.vim/vimrc.d', lvl: 1
-    # link_file '$DOTFILES_ROOT/dependencies/vimfiles/vimrc.plugins/', '~/.vim/vimrc.plugins', lvl: 1
 
     run_cmd 'mkdir -p ~/.vim/.cache/unite', lvl: 1
 

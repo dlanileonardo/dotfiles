@@ -5,6 +5,9 @@ lvim.plugins = {
   { "lunarvim/colorschemes" },
   { "luisiacc/gruvbox-baby", branch = "main" },
   {
+    "arcticicestudio/nord-vim",
+  },
+  {
     "sindrets/diffview.nvim",
     event = "BufRead",
     requires = 'nvim-lua/plenary.nvim'

@@ -165,6 +165,9 @@ vim.cmd([[
   au BufRead,BufNewFile Fastfile set filetype=ruby
   set cmdheight=1
   set rtp+=/usr/local/opt/fzf
+  let g:node_host_prog = systemlist("asdf which neovim-node-host")[0]
+  let g:ruby_host_prog = systemlist("asdf which neovim-ruby-host")[0]
+  let g:loaded_perl_provider = 0
 ]])
 
 lvim.builtin.alpha.startify.section.header.val = {

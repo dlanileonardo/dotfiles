@@ -142,6 +142,7 @@ namespace 'dot' do
     run_apt_get 'fd', lvl: 1
     run_apt_get 'git-extras', lvl: 1
     run_apt_get 'neofetch', lvl: 1
+    run_apt_get 'bat', lvl: 1
 
     sp1.success 'COMPLETE'.green
   end

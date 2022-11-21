@@ -30,8 +30,8 @@ set -gx PATH $PATH "/Users/dlani/.cargo/bin"
 set -gx PATH $PATH "/Users/dlani/.local/bin/"
 set -gx PATH $PATH "/usr/local/sbin"
 set -gx PATH "$HOME/bin" $PATH
-set -gx BAT_THEME "base16"
-set -gx LS_COLORS $(gdircolors ~/.dir_colors | grep -o "\'.*\'" | grep -o '[0-9a-z:=;*.]\+')
+# set -gx BAT_THEME "base16"
+# set -gx LS_COLORS $(gdircolors ~/.dir_colors | grep -o "\'.*\'" | grep -o '[0-9a-z:=;*.]\+')
 
 # set -gx LUA_PATH "/Users/dlani/.config/nvim/?.lua;/Users/dlani/.config/lvim/?.lua"
 

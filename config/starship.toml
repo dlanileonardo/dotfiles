@@ -1,114 +1,136 @@
-
-# Get editor completions based on the config schema
-"$schema" = 'https://starship.rs/config-schema.json'
-
-# Which is equivalent to
 format = """
+[](white)\
+$username\
+[](bg:8 fg:white)\
 $directory\
+[](fg:8 bg:0)\
 $git_branch\
-$git_commit\
 $git_state\
-$git_metrics\
 $git_status\
-$fill
-$character$prompt
+[ ](fg:0)\
+$cmd_duration\
+$line_break\
+$character
 """
 
-right_format = """\
-$all
+right_format = """
+$ruby\
+$python\
+$node\
+$nodejs\
+$aws\
+$package\
+[](white)\
+$status\
+$time\
+[](fg:white)\
 """
 
-# Inserts a blank line between shell prompts
-add_newline = true
+# Disable the blank line at the start of the prompt
+# add_newline = false
 
-command_timeout = 800
+# You can also replace your username with a neat symbol like  to save some space
+[username]
+show_always = true
+style_user = "bg:white fg:black bold"
+style_root = "bg:white fg:red"
+format = '[ $user ]($style)'
 
-[fill]
-symbol = ""
-style = "dimmed white"
+[directory]
+style = "bg:8"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
 
-# [env_var.SHELL]
-# variable = "SHELL"
-# default = "unknown shell"
+# Here is how you can shorten some long paths by text replacement
+# similar to mapped_locations in Oh My Posh:
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
 
-# Replace the "❯" symbol in the prompt with "➜"
-[character] # The name of the module we are configuring is "character"
-success_symbol = "[➜](bold green)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
-error_symbol = "[➜](bold red)"
+[package]
+symbol = " "
 
 [aws]
-symbol = "  "
-disabled = true
+symbol = " "
 
-[buf]
-symbol = " "
+[ruby]
+symbol = " "
+style = "fg:red"
 
 [c]
 symbol = " "
-
-[conda]
-symbol = " "
-
-[dart]
-symbol = " "
-
-[directory]
-read_only = " "
-truncation_symbol = ".../"
-truncation_length = 3
-truncate_to_repo = false
-
-[directory.substitutions]
-"/Volumes/Workspace/" = "/work/"
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
 
 [docker_context]
 symbol = " "
+style = "bg:#06969A"
+format = '[ $symbol $context ]($style) $path'
 
 [elixir]
 symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
 
 [elm]
 symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
 
 [git_branch]
-symbol = " "
+symbol = ""
+style = "bg:0 fg:7"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:0 fg:7"
+format = '[$all_status$ahead_behind ]($style)'
 
 [golang]
 symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
 
 [haskell]
 symbol = " "
-
-[hg_branch]
-symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
 
 [java]
 symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
 
 [julia]
 symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
 
-[memory_usage]
-symbol = " "
-disabled = true
+[nodejs]
+symbol = ""
+style = "fg:green"
+format = '[ $symbol ($version) ]($style)'
 
 [nim]
 symbol = " "
-
-[nix_shell]
-symbol = " "
-
-[nodejs]
-symbol = " "
-
-[package]
-symbol = " "
-
-[python]
-symbol = " "
-
-[spack]
-symbol = "🅢 "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
 
 [rust]
-symbol = " "
+symbol = ""
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[scala]
+symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:white fg:8"
+format = '[ ♥ $time ]($style)'

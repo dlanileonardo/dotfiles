@@ -1,5 +1,10 @@
 # Dotfiles
 
+- lunarvim
+- fish
+- tmux
+- tmuxinator
+
 ## How to install
 
 ```bash

@@ -14,3 +14,4 @@ nvim/sessions
 nvim/
 config/tmux/plugins/*
 config/fish/fish_variables
+config/zellij/layouts/*

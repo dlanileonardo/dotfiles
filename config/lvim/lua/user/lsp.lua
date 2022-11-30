@@ -1,6 +1,6 @@
 -- ---@usage disable automatic installation of servers
 -- lvim.lsp.installer.setup.automatic_installation = true
--- lvim.lsp.document_highlight = true
+lvim.lsp.document_highlight = true
 -- lvim.lsp.templates_dir = join_paths(get_runtime_dir(), "after", "ftplugin")
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -11,21 +11,24 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   update_in_insert = true,
 })
 
--- vim.o.updatetime = 250
-vim.api.nvim_create_autocmd("CursorHold", {
-  buffer = bufnr,
-  callback = function()
-    local opts = {
-      focusable = false,
-      close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-      border = 'rounded',
-      source = 'always',
-      prefix = ' ',
-      scope = 'cursor',
-    }
-    vim.diagnostic.open_float(nil, opts)
-  end
-})
+vim.o.updatetime = 250
+
+lvim.lsp.on_attach_callback = function(client, bufnr)
+  vim.api.nvim_create_autocmd("CursorHold", {
+    buffer = bufnr,
+    callback = function()
+      local opts = {
+        focusable = false,
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        border = 'rounded',
+        source = 'always',
+        prefix = ' ',
+        scope = 'cursor',
+      }
+      vim.diagnostic.open_float(nil, opts)
+    end
+  })
+end
 
 -- vim.diagnostic.config({
 --   virtual_text = false,

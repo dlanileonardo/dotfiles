@@ -10,7 +10,7 @@ lvim.transparent_window = false
 
 if lvim.colorscheme == "gruvbox-baby" then
   -- GRUVBO-BABY
-  config = config or require("gruvbox-baby.config")
+  local config = require("gruvbox-baby.config")
   local colors = require("gruvbox-baby.colors")
   local c = colors.config(config)
   lvim.builtin.lualine.options.theme = "gruvbox"

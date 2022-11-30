@@ -361,8 +361,8 @@ command_center.add({
     description = "Structural Search and Replace",
     cmd = "<CMD>lua require(\"ssr\").open()<CR>",
     keybindings = {
-      { "n", "<M-f>", noremap },
-      { "x", "<M-f>", noremap },
+      { "n", "<M-f>" },
+      { "x", "<M-f>" },
     },
   },
   {

@@ -82,7 +82,7 @@ lvim.builtin.lualine.sections = {
   },
 }
 
-options = {
+local options = {
   component_separators = { left = '\\', right = '/' },
   section_separators = { left = '', right = '' },
 }

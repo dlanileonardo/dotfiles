@@ -1,21 +1,24 @@
 -- general
 vim.opt.shell = "/bin/sh"
+vim.opt.relativenumber = true
 
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
 lvim.colorscheme = "gruvbox-baby"
 lvim.transparent_window = false
-vim.opt.relativenumber = true
 
 if lvim.colorscheme == "gruvbox-baby" then
   -- GRUVBO-BABY
+  config = config or require("gruvbox-baby.config")
   local colors = require("gruvbox-baby.colors")
   local c = colors.config(config)
   lvim.builtin.lualine.options.theme = "gruvbox"
 
   vim.g.gruvbox_baby_highlights = {
-    Visual = { bg = c.medium_gray },
+    -- Visual = { bg = c.medium_gray },
+    -- IncSearch = { bg = colors.p.medium_red },
+    Search = { fg = c.background, bg = c.soft_yellow },
     -- VisualNOS = { bg = c.medium_gray },
   }
 
@@ -170,7 +173,7 @@ vim.cmd([[
   let g:loaded_perl_provider = 0
 ]])
 
-lvim.builtin.alpha.startify.section.header.val = {
+lvim.builtin.alpha.dashboard.section.header.val = {
   "                                      ",
   "                  ▄                   ",
   "                ▄▄▄▄▄                 ",
@@ -186,8 +189,8 @@ lvim.builtin.alpha.startify.section.header.val = {
   "               SYSTEMS                ",
 }
 
-lvim.builtin.alpha.active = true
-lvim.builtin.alpha.mode = "startify"
+-- lvim.builtin.alpha.active = true
+-- lvim.builtin.alpha.mode = "startify"
 -- lvim.builtin.alpha.startify.section.header.opts = {
 --   position = "center",
 --   h1 = "Label",

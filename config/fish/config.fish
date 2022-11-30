@@ -30,6 +30,7 @@ set -gx PATH $PATH "/Users/dlani/.cargo/bin"
 set -gx PATH $PATH "/Users/dlani/.local/bin/"
 set -gx PATH $PATH "/usr/local/sbin"
 set -gx PATH "$HOME/bin" $PATH
+# set -gx USE_LIMA 1
 # set -gx BAT_THEME "base16"
 # set -gx LS_COLORS $(gdircolors ~/.dir_colors | grep -o "\'.*\'" | grep -o '[0-9a-z:=;*.]\+')
 
@@ -49,6 +50,7 @@ alias work="cd /Volumes/Workspace"
 alias serve="browser-sync start -s -f . --no-notify --host 0.0.0.0 --port 9000"
 alias colortest="curl -s https://gist.githubusercontent.com/HaleTom/89ffe32783f89f403bba96bd7bcd1263/raw/ | bash"
 alias zev="zellij --layout dev"
+# alias docker="lima nerdctl"
 # alias task="dstask"
 
 if type -q exa

@@ -55,3 +55,17 @@ lvim.builtin.which_key.mappings["s"]["p"] = {
 }
 
 vim.api.nvim_set_keymap('n', '<C-M-p>', ":Telescope command_center<CR>", { silent = true })
+
+lvim.builtin.which_key.mappings["B"] = {
+  name = "Bookmark",
+  t = { "<cmd>BookmarkToggle<CR>", "Toggle" },
+  i = { "<cmd>BookmarkAnnotate<CR>", "Annotate" },
+  a = { "<cmd>BookmarkShowAll<CR>", "Show All" },
+  j = { "<cmd>BookmarkNext<CR>", "Next" },
+  k = { "<cmd>BookmarkPrev<CR>", "Previous" },
+  c = { "<cmd>BookmarkClear<CR>", "Clear" },
+  x = { "<cmd>BookmarkClearAll<CR>", "CLear All" },
+  kk = { "<cmd>BookmarkMoveUp<CR>", "Move Up" },
+  jj = { "<cmd>BookmarkMoveDown<CR>", "Move Down" },
+  g = { "<cmd>BookmarkMoveToLine<CR>", "Move to Line" },
+}

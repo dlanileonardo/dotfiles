@@ -130,8 +130,13 @@ lvim.plugins = {
   -- {
   --   'crusj/bookmarks.nvim',
   --   branch = 'main',
-  --   requires = { 'kyazdani42/nvim-web-devicons' }
+  --   requires = { 'kyazdani42/nvim-web-devicons' },
+  --   config = function()
+  --   end
   -- },
+  {
+    "MattesGroeger/vim-bookmarks",
+  },
   {
     "ghillb/cybu.nvim",
     branch = "main", -- timely updates

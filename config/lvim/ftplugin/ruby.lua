@@ -13,6 +13,6 @@ local opts = {
 }
 
 require("lvim.lsp.manager").setup("solargraph", opts)
--- require("lvim.lsp.manager").setup("sorbet", ops)
+require("lvim.lsp.manager").setup("rubocop", ops)
 
 vim.notify("ruby loaded")

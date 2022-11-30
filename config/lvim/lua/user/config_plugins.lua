@@ -263,3 +263,10 @@ require("todo-comments").setup {
 vim.cmd([[
   let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
 ]])
+
+vim.cmd([[
+  highlight BookmarkSign ctermbg=NONE ctermfg=1
+  highlight BookmarkLine ctermbg=1 ctermfg=NONE
+  let g:bookmark_sign = '♥'
+  let g:bookmark_highlight_lines = 1
+]])

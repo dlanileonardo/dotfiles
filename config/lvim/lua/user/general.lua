@@ -8,8 +8,10 @@ lvim.lint_on_save = true
 lvim.colorscheme = "gruvbox-baby"
 lvim.transparent_window = false
 
+-- vim.o.background = "light"
+
 if lvim.colorscheme == "gruvbox-baby" then
-  -- GRUVBO-BABY
+  -- GRUVBOX-BABY
   local config = require("gruvbox-baby.config")
   local colors = require("gruvbox-baby.colors")
   local c = colors.config(config)

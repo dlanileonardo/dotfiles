@@ -103,6 +103,11 @@ local opts = {
     -- devicons_disabled = false,
     -- catppuccin_flavour = "frappe",
     -- color_devicons = false,
+    layout_config = {
+      height = 0.90,
+      width = 0.90,
+    },
+    layout_strategy = 'horizontal',
     prompt_prefix = "> ",
     pickers = {
       git_files = {

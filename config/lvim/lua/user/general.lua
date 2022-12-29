@@ -175,7 +175,7 @@ vim.cmd([[
   let g:loaded_perl_provider = 0
 ]])
 
-lvim.builtin.alpha.dashboard.section.header.val = {
+lvim.builtin.alpha.startify.section.header.val = {
   "                                      ",
   "                  ▄                   ",
   "                ▄▄▄▄▄                 ",
@@ -191,8 +191,8 @@ lvim.builtin.alpha.dashboard.section.header.val = {
   "               SYSTEMS                ",
 }
 
--- lvim.builtin.alpha.active = true
--- lvim.builtin.alpha.mode = "startify"
+lvim.builtin.alpha.active = true
+lvim.builtin.alpha.mode = "startify"
 -- lvim.builtin.alpha.startify.section.header.opts = {
 --   position = "center",
 --   h1 = "Label",

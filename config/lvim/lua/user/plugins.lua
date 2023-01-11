@@ -75,6 +75,13 @@ lvim.plugins = {
     end
   },
   {
+    'ckolkey/ts-node-action',
+    requires = { 'nvim-treesitter' },
+    config = function() -- Optional
+      require("ts-node-action").setup({})
+    end
+  },
+  {
     'nacro90/numb.nvim',
     event = "BufRead",
     config = function()

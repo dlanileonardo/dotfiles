@@ -24,6 +24,8 @@ local map = require('fold-preview').mapping
 
 keymap.amend('n', 'zp', map.show_close_preview_open_fold)
 
+vim.keymap.set({ "n" }, "T", require("ts-node-action").node_action, { desc = "Trigger Node Action" })
+
 -- require("indent_blankline").setup {
 --   char = '|',
 --   char_blankline = '┊',

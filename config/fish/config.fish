@@ -71,6 +71,8 @@ end
 
 direnv hook fish | source
 
+git-town completions fish | source
+
 fzf_configure_bindings --directory=\cf
 
 # test -r ~/.dir_colors && eval $(/usr/local/Cellar/coreutils/9.1/libexec/gnubin/dircolors ~/.dir_colors -c)

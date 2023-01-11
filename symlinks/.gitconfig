@@ -16,6 +16,16 @@
   ci = commit
   pu = pull
   ps = push
+  append = town append
+  hack = town hack
+  kill = town kill
+  new-pull-request = town new-pull-request
+  prepend = town prepend
+  prune-branches = town prune-branches
+  rename-branch = town rename-branch
+  repo = town repo
+  ship = town ship
+  sync = town sync
 [push]
   default = current
 [pull]
@@ -101,3 +111,11 @@
   defaultBranch = master
 [include]
   path = ~/.dotfiles/themes.gitconfig
+[git-town]
+  github-token = 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
+  main-branch-name = master
+	sync-strategy = rebase
+	ship-delete-remote-branch = true
+	pull-branch-strategy = rebase
+	perennial-branch-names = stable staging production development main master
+	offline = false

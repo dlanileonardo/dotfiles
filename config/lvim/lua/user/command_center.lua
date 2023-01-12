@@ -286,7 +286,12 @@ command_center.add({
   },
   {
     description = "Update Plugins",
-    cmd = "<CMD>PackerSync<CR>",
+    cmd = "<cmd>lua require(\"lazy\").update()<cr>",
+    category = "LunarVim",
+  },
+  {
+    description = "Sync Plugins",
+    cmd = "<cmd>lua require(\"lazy\").sync()<cr>",
     category = "LunarVim",
   },
   {

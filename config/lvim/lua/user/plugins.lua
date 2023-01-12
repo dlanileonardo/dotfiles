@@ -1,19 +1,20 @@
 -- Additional Plugins
 lvim.plugins = {
-  { '/usr/local/opt/fzf' },
-  -- THEMES
-  -- { "lunarvim/colorschemes" },
+  { dir = '/usr/local/opt/fzf' },
   { "luisiacc/gruvbox-baby", branch = "main" },
-  -- { "RRethy/nvim-base16" },
-  -- { "arcticicestudio/nord-vim", },
   {
     "sindrets/diffview.nvim",
     event = "BufRead",
-    requires = 'nvim-lua/plenary.nvim'
+    lazy = true,
+    dependencies = 'nvim-lua/plenary.nvim'
   },
-  { 'simrat39/symbols-outline.nvim' },
+  {
+    'simrat39/symbols-outline.nvim',
+    lazy = true,
+  },
   {
     "machakann/vim-sandwich",
+    -- lazy = true,
     -- event = "BufRead",
   },
   {
@@ -30,20 +31,20 @@ lvim.plugins = {
   { 'mg979/vim-visual-multi', branch = "master" },
   { "karb94/neoscroll.nvim", },
   { 'anuvyklack/pretty-fold.nvim' },
-  { 'anuvyklack/fold-preview.nvim', requires = 'anuvyklack/keymap-amend.nvim', },
+  { 'anuvyklack/fold-preview.nvim', dependencies = 'anuvyklack/keymap-amend.nvim', },
   { "klen/nvim-test" },
   { "klen/nvim-config-local" },
   { 'nvim-telescope/telescope-ui-select.nvim' },
   { "nvim-telescope/telescope-live-grep-args.nvim" },
-  { "nvim-telescope/telescope-frecency.nvim", requires = { "tami5/sqlite.lua" } },
+  { "nvim-telescope/telescope-frecency.nvim", dependencies = { "tami5/sqlite.lua" } },
   { "nvim-telescope/telescope-file-browser.nvim", },
-  {
-    "nvim-telescope/telescope-project.nvim",
-    event = "BufWinEnter",
-    setup = function()
-      vim.cmd [[packadd telescope.nvim]]
-    end,
-  },
+  -- {
+  --   "nvim-telescope/telescope-project.nvim",
+  --   event = "BufWinEnter",
+  --   init = function()
+  --     -- vim.cmd [[packadd telescope.nvim]]
+  --   end,
+  -- },
   {
     "windwp/nvim-ts-autotag",
     config = function()
@@ -76,7 +77,8 @@ lvim.plugins = {
   },
   {
     'ckolkey/ts-node-action',
-    requires = { 'nvim-treesitter' },
+    dependencies = { 'nvim-treesitter' },
+    lazy = true,
     config = function() -- Optional
       require("ts-node-action").setup({})
     end
@@ -114,8 +116,8 @@ lvim.plugins = {
   },
   {
     'tzachar/cmp-tabnine',
-    run = './install.sh',
-    requires = 'hrsh7th/nvim-cmp',
+    build = './install.sh',
+    dependencies = 'hrsh7th/nvim-cmp',
     config = function()
       local tabnine = require('cmp_tabnine.config')
       tabnine:setup({
@@ -136,7 +138,7 @@ lvim.plugins = {
   -- {
   --   'crusj/bookmarks.nvim',
   --   branch = 'main',
-  --   requires = { 'kyazdani42/nvim-web-devicons' },
+  --   dependencies = { 'kyazdani42/nvim-web-devicons' },
   --   config = function()
   --   end
   -- },
@@ -147,7 +149,7 @@ lvim.plugins = {
     "ghillb/cybu.nvim",
     branch = "main", -- timely updates
     -- branch = "v1.x", -- won't receive breaking changes
-    requires = { "kyazdani42/nvim-web-devicons" }, -- optional
+    dependencies = { "kyazdani42/nvim-web-devicons" }, -- optional
     config = function()
       local ok, cybu = pcall(require, "cybu")
       if not ok then
@@ -157,12 +159,14 @@ lvim.plugins = {
   },
   {
     "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
     config = function()
     end
   },
   {
-    'akinsho/flutter-tools.nvim'
+    'akinsho/flutter-tools.nvim',
+    lazy = true,
+    ft = { 'dart', 'pubspec.yaml' },
   },
   {
     'stevearc/overseer.nvim',
@@ -177,7 +181,7 @@ lvim.plugins = {
   },
   {
     "cshuaimin/ssr.nvim",
-    module = "ssr",
+    -- module = "ssr",
     -- Calling setup is optional.
     config = function()
       require("ssr").setup {
@@ -192,18 +196,4 @@ lvim.plugins = {
       }
     end
   },
-  -- { "anuvyklack/hydra.nvim" },
-  -- {
-  --   'wthollingsworth/pomodoro.nvim',
-  --   requires = 'MunifTanjim/nui.nvim',
-  --   config = function()
-  --     require('pomodoro').setup({
-  --       time_work = 25,
-  --       time_break_short = 5,
-  --       time_break_long = 20,
-  --       timers_to_long_break = 4
-  --     })
-  --   end
-  -- },
-  -- { "szw/vim-maximizer" },
 }

@@ -104,11 +104,13 @@ lvim.builtin.nvimtree.setup.view.side = "left"
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
   "bash",
+  "fish",
   "c",
   "javascript",
   "json",
   "lua",
   "python",
+  "php",
   "typescript",
   "tsx",
   "css",
@@ -116,6 +118,21 @@ lvim.builtin.treesitter.ensure_installed = {
   "java",
   "yaml",
   "dart",
+  "html",
+  "vue",
+  "markdown",
+  "dockerfile",
+  "scss",
+  "make",
+  "swift",
+  "kotlin",
+  "sql",
+  "graphql",
+  "go",
+  "git_rebase",
+  "gitattributes",
+  "gitcommit",
+  "gitignore",
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }

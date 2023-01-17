@@ -38,14 +38,20 @@
   excludesfile = /Users/dlani/.gitignore
   editor = vim
   autocrlf = input
-  pager = delta
+  ; pager = delta
+	pager	=	delta --side-by-side --width ${FZF_PREVIEW_COLUMNS-$COLUMNS}
+; [pager]
+;   diff = delta
+;   log = delta
+;   reflog = delta
+;   show = delta
 [interactive]
   diffFilter = delta --color-only
 [delta]
   navigate = true  # use n and N to move between diff sections
   light = false    # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
   line-numbers = true
-  syntax-theme = chameleon
+  ; syntax-theme = chameleon
   ; Tema que eu não consegui colocar em arquivo externo
   dark = true
   line-numbers = true
@@ -78,7 +84,7 @@
 [branch]
   autosetuprebase = always
 [merge]
-  tool = meld
+  ; tool = meld
   conflictstyle = diff3
 [diff]
   # tool = meld

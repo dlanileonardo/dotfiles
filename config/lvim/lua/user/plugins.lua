@@ -149,7 +149,7 @@ lvim.plugins = {
     "ghillb/cybu.nvim",
     branch = "main", -- timely updates
     -- branch = "v1.x", -- won't receive breaking changes
-    dependencies = { "kyazdani42/nvim-web-devicons" }, -- optional
+    -- dependencies = { "kyazdani42/nvim-web-devicons" }, -- optional
     config = function()
       local ok, cybu = pcall(require, "cybu")
       if not ok then

@@ -39,6 +39,9 @@ set -gx PATH "$HOME/bin" $PATH
 set -gx FLUTTER_ROOT (asdf where flutter)
 set -gx EDITOR "vim"
 set -gx HOMEBREW_NO_ENV_HINTS 1
+
+set -gx FORGIT_PAGER 'delta --side-by-side -w ${FZF_PREVIEW_COLUMNS:-$COLUMNS}' 
+
 source /usr/local/opt/asdf/libexec/asdf.fish
 
 alias work="cd /Volumes/Workspace/"

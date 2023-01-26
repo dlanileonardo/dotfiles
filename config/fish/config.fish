@@ -74,7 +74,7 @@ end
 
 direnv hook fish | source
 
-git-town completions fish | source
+# git-town completions fish | source
 
 fzf_configure_bindings --directory=\cf
 

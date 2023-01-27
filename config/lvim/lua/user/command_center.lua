@@ -211,6 +211,11 @@ command_center.add({
     cmd = "<CMD>DiffviewOpen<CR>",
     category = "git",
   },
+  -- {
+  --   description = "Git - Blame Toggle",
+  --   cmd = "<CMD>GitBlameToggle<CR>",
+  --   category = "git",
+  -- },
   {
     description = "Outline Toggle",
     cmd = "<CMD>SymbolsOutline<CR>",

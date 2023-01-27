@@ -164,7 +164,7 @@ export GOPATH=$HOME/.gocode
 export GOBIN=$GOPATH/bin
 
 # Sources
-for f in ~/.dotfiles/sources/*; do source $f; done
+# for f in ~/.dotfiles/sources/*; do source $f; done
 
 # autoenv
 # source $(brew --prefix autoenv)/activate.sh

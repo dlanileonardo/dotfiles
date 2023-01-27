@@ -63,6 +63,8 @@ lvim.builtin.treesitter.rainbow.extended_mode = true
 -- LUALINE
 -- require("nvim-gps").setup()
 -- local gps = require("nvim-gps")
+vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
+local git_blame = require('gitblame')
 
 lvim.builtin.lualine.options.disabled_filetypes = {
   "alpha", "NvimTree", "Outline", "flutterToolsOutline"
@@ -74,6 +76,7 @@ lvim.builtin.lualine.sections = {
   lualine_c = {
     -- { require('auto-session-library').current_session_name },
     "filename",
+    { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
     -- { gps.get_location, cond = gps.is_available }
   },
   lualine_x = { "encoding", "fileformat", "filetype" },
@@ -167,11 +170,6 @@ local opts = {
 lvim.builtin.telescope.defaults = vim.tbl_extend("force", lvim.builtin.telescope.defaults, opts.defaults)
 lvim.builtin.telescope.extensions = vim.tbl_extend("force", lvim.builtin.telescope.extensions, opts.extensions)
 lvim.builtin.telescope.pickers = vim.tbl_extend("force", lvim.builtin.telescope.pickers, opts.pickers)
-
-lvim.builtin.telescope.on_config_done = function(telescope)
-  pcall(telescope.load_extension, "frecency")
-  pcall(telescope.load_extension, "file-browser")
-end
 
 -- print(vim.inspect(lvim.builtin.telescope))
 

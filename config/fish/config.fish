@@ -88,8 +88,11 @@ fzf_configure_bindings --directory=\cf
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-# eval /usr/local/Caskroom/miniconda/base/bin/conda "shell.fish" "hook" $argv | source
+eval /usr/local/Caskroom/miniconda/base/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
 
 
 # dstask _completions fish | source
+for f in ~/.dotfiles/sources/*
+  cat "$f" | source
+end

@@ -5,9 +5,9 @@
   interactive = auto
   status = auto
 [user]
-  name = Dlani Mendes
-  email = dlanileonardo@gmail.com
-  signingkey = C8B858EE
+	name = Dlani Mendes
+	email = dlanileonardo@gmail.com
+	signingkey = A2D54F66DEC97FF28EEFCBB2DAFAEB02C16393DE
 [credential]
   helper = osxkeychain
 [alias]

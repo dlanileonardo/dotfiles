@@ -29,7 +29,7 @@ if lvim.colorscheme == "gruvbox-baby" then
   vim.g.gruvbox_baby_background_color = "medium"
 elseif lvim.colorscheme == "tokyonight" then
   lvim.builtin.lualine.options.theme = "tokyonight"
-  vim.g.tokyonight_style = "night"
+  vim.g.tokyonight_style = "moon"
 elseif lvim.colorscheme == "nightfox" or lvim.colorscheme == "duskfox" then
   require('nightfox').setup({
     options = {
@@ -67,6 +67,12 @@ elseif lvim.colorscheme == "sonokai" then
 elseif lvim.colorscheme == "catppuccin" then
   vim.g.catppuccin_flavour = "mocha"
   lvim.builtin.lualine.options.theme = "catppuccin"
+
+  require("catppuccin").setup({
+    integrations = {
+      telescope = true,
+    }
+  })
 end
 
 -- keymappings [view all the defaults by pressing <leader>Lk]

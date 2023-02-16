@@ -106,11 +106,12 @@ lvim.builtin.bufferline.options.separator_style = "slant"
 local opts = {
   defaults = {
     -- devicons_disabled = false,
-    -- catppuccin_flavour = "frappe",
+    -- catppuccin_flavour = "mocha",
     -- color_devicons = false,
     layout_config = {
-      height = 0.90,
-      width = 0.90,
+      height = 0.70,
+      width = 0.70,
+      prompt_position = "top",
     },
     layout_strategy = 'horizontal',
     prompt_prefix = "> ",

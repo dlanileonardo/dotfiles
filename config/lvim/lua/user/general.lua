@@ -8,8 +8,6 @@ lvim.lint_on_save = true
 lvim.colorscheme = "gruvbox-baby"
 lvim.transparent_window = false
 
--- vim.o.background = "light"
-
 if lvim.colorscheme == "gruvbox-baby" then
   -- GRUVBOX-BABY
   local config = require("gruvbox-baby.config")
@@ -27,6 +25,11 @@ if lvim.colorscheme == "gruvbox-baby" then
   vim.g.gruvbox_baby_telescope_theme = 1
   -- vim.g.gruvbox_baby_transparent_mode = 1
   vim.g.gruvbox_baby_background_color = "medium"
+elseif lvim.colorscheme == "onedark" then
+  require('onedark').setup {
+    style = 'warmer'
+  }
+  require('onedark').load()
 elseif lvim.colorscheme == "tokyonight" then
   lvim.builtin.lualine.options.theme = "tokyonight"
   vim.g.tokyonight_style = "moon"
@@ -217,7 +220,9 @@ lvim.builtin.alpha.startify.section.header.val = {
 }
 
 lvim.builtin.alpha.active = true
+
 lvim.builtin.alpha.mode = "startify"
+
 -- lvim.builtin.alpha.startify.section.header.opts = {
 --   position = "center",
 --   h1 = "Label",

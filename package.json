@@ -1,0 +1,19 @@
+{
+    "dependencies": {
+        "@themerdev/iterm": "*",
+        "@themerdev/vim": "*",
+        "@themerdev/wallpaper-block-wave": "^4.0.3",
+        "@themerdev/wallpaper-burst": "*",
+        "@themerdev/wallpaper-circuits": "*",
+        "@themerdev/wallpaper-diamonds": "*",
+        "@themerdev/wallpaper-dot-grid": "*",
+        "@themerdev/wallpaper-octagon": "*",
+        "@themerdev/wallpaper-shirts": "*",
+        "@themerdev/wallpaper-triangles": "*",
+        "@themerdev/wallpaper-trianglify": "*",
+        "base16-builder-typescript": "^2.0.0",
+        "jshint": "^2.13.6",
+        "themer": "*",
+        "themer-tmux": "^1.0.4"
+    }
+}

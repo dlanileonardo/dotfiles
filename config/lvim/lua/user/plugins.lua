@@ -1,9 +1,12 @@
 -- Additional Plugins
 lvim.plugins = {
   { dir = '/usr/local/opt/fzf' },
-  { "luisiacc/gruvbox-baby",   branch = "main" },
+  { dir = '~/.dotfiles/themes/vim/', name = "themer" },
+  { "luisiacc/gruvbox-baby",         branch = "main" },
   -- { "catppuccin/nvim",         name = "catppuccin" },
   -- { "casonadams/walh" },
+  -- { 'navarasu/onedark.nvim' },
+  -- { 'nyoom-engineering/oxocarbon.nvim' },
   {
     "sindrets/diffview.nvim",
     event = "BufRead",
@@ -21,6 +24,11 @@ lvim.plugins = {
   {
     'simrat39/symbols-outline.nvim',
     lazy = true,
+  },
+  { "folke/twilight.nvim",
+    config = function()
+      require("twilight").setup {}
+    end
   },
   {
     "machakann/vim-sandwich",

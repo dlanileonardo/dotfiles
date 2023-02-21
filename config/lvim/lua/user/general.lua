@@ -5,7 +5,7 @@ vim.opt.relativenumber = true
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
-lvim.colorscheme = "gruvbox-baby"
+lvim.colorscheme = "onedark"
 lvim.transparent_window = false
 
 if lvim.colorscheme == "gruvbox-baby" then
@@ -26,13 +26,13 @@ if lvim.colorscheme == "gruvbox-baby" then
   -- vim.g.gruvbox_baby_transparent_mode = 1
   vim.g.gruvbox_baby_background_color = "medium"
 elseif lvim.colorscheme == "onedark" then
-  require('onedark').setup {
-    style = 'warmer'
-  }
-  require('onedark').load()
+  -- require('onedark').setup {
+  --   style = 'warmer'
+  -- }
+  -- require('onedark').load()
 elseif lvim.colorscheme == "tokyonight" then
   lvim.builtin.lualine.options.theme = "tokyonight"
-  vim.g.tokyonight_style = "moon"
+  -- vim.g.tokyonight_style = "night"
 elseif lvim.colorscheme == "nightfox" or lvim.colorscheme == "duskfox" then
   require('nightfox').setup({
     options = {

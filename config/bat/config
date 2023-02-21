@@ -1,5 +1,6 @@
 # Set the theme to "TwoDark"
- --theme="gruvbox-dark"
+ # --theme="gruvbox-dark"
+--theme="base16"
 
 # Show line numbers, Git modifications and file header (but no grid)
 --style="default"

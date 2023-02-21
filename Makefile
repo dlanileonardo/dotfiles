@@ -24,7 +24,7 @@ generate:
 
 	cat ./themes/base16/$(theme).yaml | \
 		pnpm exec base16-builder \
-		--template ./themes/base16/sources/templates/iterm2/templates/default.mustache > ./themes/base16/output/$(theme)/$(theme).itermcolors
+		--template ./themes/base16/sources/templates/iterm2/templates/default-256.mustache > ./themes/base16/output/$(theme)/$(theme).itermcolors
 
 	cat ./themes/base16/$(theme).yaml | \
 		pnpm exec base16-builder \
@@ -38,11 +38,12 @@ generate:
 		pnpm exec base16-builder \
 		--template ./themes/base16/sources/templates/neovim/templates/default.mustache > ./themes/base16/output/$(theme)/$(theme).lua
 
+	ln -s ~/.dotfiles/themes/base16/output/$(theme)/$(theme).lua ~/.dotfiles/themes/vim/colors/
+
 all:
 	rm -rf ./themes/base16/output/*
+	rm -rf ./themes/vim/colors/*.lua
 	make generate theme=oxocarbon-dark
 	make generate theme=twilight
 	make generate theme=synth-midnight-dark
-	make generate theme=rose-pine
-	make generate theme=rose-pine-dawn
-	make generate theme=rose-pine-moon
+	make generate theme=onedark

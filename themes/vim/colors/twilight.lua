@@ -1,1 +1,1 @@
-../../base16/output/twilight/twilight.lua
+/Users/dlani/.dotfiles/themes/base16/output/twilight/twilight.lua

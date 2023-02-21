@@ -3,10 +3,58 @@ lvim.plugins = {
   { dir = '/usr/local/opt/fzf' },
   { dir = '~/.dotfiles/themes/vim/', name = "themer" },
   { "luisiacc/gruvbox-baby",         branch = "main" },
+  -- { 'folke/tokyonight.nvim', branch = 'main',
+  --   config = function()
+  --     require("tokyonight").setup({
+  --       style = "night",
+  --       transparent = true,
+  --     });
+  --   end
+  -- },
+  -- { "shaunsingh/moonlight.nvim" },
+  -- { 'titanzero/zephyrium' },
+  -- { 'kvrohit/rasmus.nvim' },
+  {
+    "olimorris/onedarkpro.nvim",
+    priority = 1000,
+    config = function()
+      require("onedarkpro").setup({})
+    end
+  },
   -- { "catppuccin/nvim",         name = "catppuccin" },
   -- { "casonadams/walh" },
   -- { 'navarasu/onedark.nvim' },
-  -- { 'nyoom-engineering/oxocarbon.nvim' },
+  { 'nyoom-engineering/oxocarbon.nvim' },
+  -- { "marko-cerovac/material.nvim" },
+  -- { "LunarVim/Colorschemes" },
+  -- { "RRethy/nvim-base16" },
+  -- {
+  --   'olivercederborg/poimandres.nvim',
+  --   config = function()
+  --     require('poimandres').setup {
+  --       -- leave this setup function empty for default config
+  --       -- or refer to the configuration section
+  --       -- for configuration options
+  --     }
+  --   end
+  -- },
+  -- {
+  --   'ramojus/mellifluous.nvim', dependencies = 'rktjmp/lush.nvim',
+  --   config = function()
+  --     require('mellifluous').setup {
+  --       color_set = "alduin",
+  --       transparent_background = {
+  --         enabled = false,
+  --         floating_windows = true,
+  --         telescope = true,
+  --         file_tree = true,
+  --         cursor_line = true,
+  --         status_line = true,
+  --       },
+
+  --     }
+  --   end
+  -- },
   {
     "sindrets/diffview.nvim",
     event = "BufRead",
@@ -96,7 +144,7 @@ lvim.plugins = {
       require("nvim-ts-autotag").setup()
     end,
   },
-  { "p00f/nvim-ts-rainbow" },
+  -- { "mrjones2014/nvim-ts-rainbow" },
   -- {
   --   "JoosepAlviste/nvim-ts-context-commentstring",
   --   event = "BufRead",
@@ -163,6 +211,14 @@ lvim.plugins = {
       require("scrollbar.handlers.search").setup()
     end
   },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   cmd = "Copilot",
+  --   event = "InsertEnter",
+  --   config = function()
+  --     require("copilot").setup({})
+  --   end,
+  -- },
   {
     'tzachar/cmp-tabnine',
     build = './install.sh',
@@ -176,8 +232,6 @@ lvim.plugins = {
         run_on_every_keystroke = true,
         snippet_placeholder = '..',
         ignored_file_types = {
-          -- uncomment to ignore in lua:
-          -- lua = true
           html = true
         },
         show_prediction_strength = false,

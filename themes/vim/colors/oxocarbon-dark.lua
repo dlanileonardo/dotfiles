@@ -1,1 +1,1 @@
-../../base16/output/oxocarbon-dark/oxocarbon-dark.lua
+/Users/dlani/.dotfiles/themes/base16/output/oxocarbon-dark/oxocarbon-dark.lua

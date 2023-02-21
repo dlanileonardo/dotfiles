@@ -55,8 +55,8 @@ require("symbols-outline").setup({
 })
 
 -- RAINBOW
-lvim.builtin.treesitter.rainbow.enable = true
-lvim.builtin.treesitter.rainbow.extended_mode = true
+-- lvim.builtin.treesitter.rainbow.enable = true
+-- lvim.builtin.treesitter.rainbow.extended_mode = true
 
 -- LUALINE
 -- require("nvim-gps").setup()
@@ -97,7 +97,7 @@ lvim.builtin.lualine.options = vim.tbl_extend("force", lvim.builtin.lualine.opti
 lvim.builtin.bufferline.options.always_show_bufferline = true
 lvim.builtin.bufferline.options.indicator_icon = nil
 -- lvim.builtin.bufferline.options.enforce_regular_tabs = true
-lvim.builtin.bufferline.options.separator_style = "slant"
+lvim.builtin.bufferline.options.separator_style = "slope"
 -- lvim.builtin.bufferline.options.sort_by = "relative_directory"
 -- lvim.builtin.bufferline.options.show_close_icon = false
 

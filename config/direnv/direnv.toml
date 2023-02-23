@@ -1,0 +1,5 @@
+[whitelist]
+prefix = [ "/Volumes/Workspace/achievemore/" ]
+
+[global]
+load_dotenv = true

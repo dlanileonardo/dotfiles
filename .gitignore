@@ -12,3 +12,10 @@ config/tmuxinator/*.yml
 symlinks/.gnupg
 nvim/sessions
 nvim/
+config/tmux/plugins/*
+config/fish/fish_variables
+config/zellij/layouts/*
+node_modules/
+themes/themer/output/
+themes/base16/output/
+themes/base16/sources/

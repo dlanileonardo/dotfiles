@@ -1,60 +1,17 @@
 -- Additional Plugins
 lvim.plugins = {
   { dir = '/usr/local/opt/fzf' },
-  { dir = '~/.dotfiles/themes/vim/', name = "themer" },
-  { "luisiacc/gruvbox-baby",         branch = "main" },
-  -- { 'folke/tokyonight.nvim', branch = 'main',
-  --   config = function()
-  --     require("tokyonight").setup({
-  --       style = "night",
-  --       transparent = true,
-  --     });
-  --   end
-  -- },
-  -- { "shaunsingh/moonlight.nvim" },
-  -- { 'titanzero/zephyrium' },
-  -- { 'kvrohit/rasmus.nvim' },
-  {
-    "olimorris/onedarkpro.nvim",
-    priority = 1000,
-    config = function()
-      require("onedarkpro").setup({})
-    end
-  },
-  -- { "catppuccin/nvim",         name = "catppuccin" },
-  -- { "casonadams/walh" },
-  -- { 'navarasu/onedark.nvim' },
+  { dir = '~/.dotfiles/themes/vim/',   name = "themer" },
+  { "olimorris/onedarkpro.nvim",       priority = 1000 },
   { 'nyoom-engineering/oxocarbon.nvim' },
-  -- { "marko-cerovac/material.nvim" },
-  -- { "LunarVim/Colorschemes" },
-  -- { "RRethy/nvim-base16" },
-  -- {
-  --   'olivercederborg/poimandres.nvim',
-  --   config = function()
-  --     require('poimandres').setup {
-  --       -- leave this setup function empty for default config
-  --       -- or refer to the configuration section
-  --       -- for configuration options
-  --     }
-  --   end
-  -- },
-  -- {
-  --   'ramojus/mellifluous.nvim', dependencies = 'rktjmp/lush.nvim',
-  --   config = function()
-  --     require('mellifluous').setup {
-  --       color_set = "alduin",
-  --       transparent_background = {
-  --         enabled = false,
-  --         floating_windows = true,
-  --         telescope = true,
-  --         file_tree = true,
-  --         cursor_line = true,
-  --         status_line = true,
-  --       },
-
-  --     }
-  --   end
-  -- },
+  { "luisiacc/gruvbox-baby",           branch = "main" },
+  { 'shaunsingh/nord.nvim' },
+  -- { 'ramojus/mellifluous.nvim',        dependencies = 'rktjmp/lush.nvim' },
+  -- { 'titanzero/zephyrium' },
+  -- { 'folke/tokyonight.nvim',         branch = 'main' },
+  -- { "catppuccin/nvim",                 name = "catppuccin" },
+  -- { "casonadams/walh" },
+  -- { 'olivercederborg/poimandres.nvim' },
   {
     "sindrets/diffview.nvim",
     event = "BufRead",

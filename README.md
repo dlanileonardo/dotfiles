@@ -13,6 +13,6 @@ $ make
 
 ## Keybindings
 
-- ## [nvim](./cheatsheets/nvim.md)
-- ## [fish](./cheatsheets/fish.md)
-- ## [tmux](./cheatsheets/tmux.md)
+- [nvim](./cheatsheets/nvim.md)
+- [fish](./cheatsheets/fish.md)
+- [tmux](./cheatsheets/tmux.md)

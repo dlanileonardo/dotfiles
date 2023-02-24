@@ -473,16 +473,37 @@ command_center.add({
     keybindings = { "n", "T" },
     category = "Treesitter",
   },
-  -- {
-  --   description = "Pomodoro Start",
-  --   cmd = "<CMD>PomodoroStart<CR>"
-  -- },
-  -- {
-  --   description = "Pomodor Status",
-  --   cmd = "<CMD>PomodoroStatus<CR>"
-  -- }
+  {
+    description = "Preview Definitions",
+    cmd = "<cmd>lua require('goto-preview').goto_preview_definition()<CR>",
+    keybindings = { "n", "gpd" },
+    category = "GoTo Preview",
+  },
+  {
+    description = "Preview Type Definitions",
+    cmd = "<cmd>lua require('goto-pre').goto_preview_type_definition()<CR>",
+    keybindings = { "n", "gpt" },
+    category = "GoTo Preview",
+  },
+  {
+    description = "Preview Implementation",
+    cmd = "<cmd>lua require('goto-pre').goto_preview_implementation()<CR>",
+    keybindings = { "n", "gpi" },
+    category = "GoTo Preview",
+  },
+  {
+    description = "Preview References",
+    cmd = "<cmd>lua require('goto-preview').goto_preview_references()<CR>",
+    keybindings = { "n", "gpr" },
+    category = "GoTo Preview",
+  },
+  {
+    description = "Close Preview",
+    cmd = "<cmd>lua require('goto-preview').close_all_win()<CR>",
+    keybindings = { "n", "gpc" },
+    category = "GoTo Preview",
+  },
 })
-
 
 lvim.builtin.telescope.extensions.command_center = {
   components = {

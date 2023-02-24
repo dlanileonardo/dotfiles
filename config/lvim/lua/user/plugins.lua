@@ -32,7 +32,7 @@ lvim.plugins = {
   { 'mg979/vim-visual-multi',                      branch = "master" },
   { 'anuvyklack/fold-preview.nvim',                dependencies = 'anuvyklack/keymap-amend.nvim', },
   { "folke/todo-comments.nvim",                    dependencies = "nvim-lua/plenary.nvim", },
-  -- { "mrjones2014/nvim-ts-rainbow", },
+  { "mrjones2014/nvim-ts-rainbow", },
   -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
   {
     "sindrets/diffview.nvim",
@@ -71,13 +71,22 @@ lvim.plugins = {
     config = function() vim.notify = require('notify') end
   },
   -- session management
+  -- {
+  --   'shatur/neovim-session-manager',
+  --   dependencies = { 'nvim-lua/plenary.nvim' },
+  --   config = function()
+  --     require('session_manager').setup {
+  --       autoload_mode = require('session_manager.config').AutoloadMode.CurrentDir,
+  --       -- autosave_only_in_session = true,
+  --     }
+  --   end
+  -- },
   {
-    'shatur/neovim-session-manager',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    'rmagatti/auto-session',
     config = function()
-      require('session_manager').setup {
-        autoload_mode = require('session_manager.config').AutoloadMode.CurrentDir,
-        -- autosave_only_in_session = true,
+      require("auto-session").setup {
+        log_level = "error",
+        -- auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
       }
     end
   },
@@ -248,6 +257,17 @@ lvim.plugins = {
       }
     end
   },
+  {
+    'rmagatti/goto-preview',
+    config = function()
+      require('goto-preview').setup {
+        default_mappings = false,
+        width = 120,
+        height = 25,
+        debug = false,
+      }
+    end
+  },
 
   -- LSP
   -- show icons from type on float window
@@ -255,12 +275,14 @@ lvim.plugins = {
   -- shows function signature
   {
     "ray-x/lsp_signature.nvim",
+    lazy = true,
+    event = "BufRead",
     config = function()
-      require('lsp_signature').setup {
+      require('lsp_signature').on_attach {
         -- bind = true, -- This is mandatory, otherwise border config won't get registered.
-        handler_opts = {
-          border = 'rounded'
-        },
+        -- handler_opts = {
+        --   border = 'rounded'
+        -- },
         hint = false,
       }
     end

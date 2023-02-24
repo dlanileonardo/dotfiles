@@ -93,7 +93,7 @@ command_center.add({
   },
   {
     description = "LSP - Show Diagnostic",
-    cmd = "<CMD>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>",
+    cmd = "<CMD>lua vim.diagnostic.open_float()<CR>",
     keybindings = { "n", "K" },
     category = "LSP",
   },
@@ -481,13 +481,13 @@ command_center.add({
   },
   {
     description = "Preview Type Definitions",
-    cmd = "<cmd>lua require('goto-pre').goto_preview_type_definition()<CR>",
+    cmd = "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>",
     keybindings = { "n", "gpt" },
     category = "GoTo Preview",
   },
   {
     description = "Preview Implementation",
-    cmd = "<cmd>lua require('goto-pre').goto_preview_implementation()<CR>",
+    cmd = "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>",
     keybindings = { "n", "gpi" },
     category = "GoTo Preview",
   },

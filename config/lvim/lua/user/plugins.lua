@@ -32,7 +32,7 @@ lvim.plugins = {
   { 'mg979/vim-visual-multi',                      branch = "master" },
   { 'anuvyklack/fold-preview.nvim',                dependencies = 'anuvyklack/keymap-amend.nvim', },
   { "folke/todo-comments.nvim",                    dependencies = "nvim-lua/plenary.nvim", },
-  { "mrjones2014/nvim-ts-rainbow", },
+  -- { "mrjones2014/nvim-ts-rainbow", },
   -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
   {
     "sindrets/diffview.nvim",
@@ -292,4 +292,14 @@ lvim.plugins = {
     'j-hui/fidget.nvim',
     config = function() require('fidget').setup {} end
   },
+
+  -- {
+  --   url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+  --   config = function()
+  --     require("lsp_lines").setup()
+  --     vim.diagnostic.config({
+  --       virtual_lines = { only_current_line = true }
+  --     })
+  --   end,
+  -- }
 }

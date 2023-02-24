@@ -5,7 +5,7 @@ vim.opt.relativenumber = true
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
-lvim.colorscheme = "oxocarbon"
+lvim.colorscheme = "onedark"
 lvim.transparent_window = false
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
@@ -33,8 +33,6 @@ lvim.builtin.telescope.defaults.mappings = {
 -- unmap a default keymapping
 lvim.keys.normal_mode["<C-Up>"] = false
 
--- TODO: User Config for predefined plug sins
--- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 -- lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"

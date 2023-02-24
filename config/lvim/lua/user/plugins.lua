@@ -1,10 +1,10 @@
 -- Additional Plugins
 lvim.plugins = {
-  { dir = '/usr/local/opt/fzf' },
-  { dir = '~/.dotfiles/themes/vim/',   name = "themer" },
-  { "olimorris/onedarkpro.nvim",       priority = 1000 },
+  -- THEMES
+  { dir = '~/.dotfiles/themes/vim/',               name = "themer" },
+  { "olimorris/onedarkpro.nvim",                   priority = 1000 },
   { 'nyoom-engineering/oxocarbon.nvim' },
-  { "luisiacc/gruvbox-baby",           branch = "main" },
+  { "luisiacc/gruvbox-baby",                       branch = "main" },
   { 'shaunsingh/nord.nvim' },
   -- { 'ramojus/mellifluous.nvim',        dependencies = 'rktjmp/lush.nvim' },
   -- { 'titanzero/zephyrium' },
@@ -12,55 +12,76 @@ lvim.plugins = {
   -- { "catppuccin/nvim",                 name = "catppuccin" },
   -- { "casonadams/walh" },
   -- { 'olivercederborg/poimandres.nvim' },
+
+  -- PLUGINS
+  { dir = '/usr/local/opt/fzf' },
+  { 'anuvyklack/pretty-fold.nvim' },
+  { "klen/nvim-test" },
+  { "klen/nvim-config-local" },
+  { 'nvim-telescope/telescope-ui-select.nvim' },
+  { "nvim-telescope/telescope-live-grep-args.nvim" },
+  { "nvim-telescope/telescope-file-browser.nvim", },
+  { 'sunaku/tmux-navigate' },
+  { 'norcalli/nvim_utils' },
+  { 'famiu/bufdelete.nvim' },
+  { "gfeiyou/command-center.nvim" },
+  { "MattesGroeger/vim-bookmarks" },
+  { 'simrat39/symbols-outline.nvim',               lazy = true },
+  { "nvim-telescope/telescope-frecency.nvim",      dependencies = { "tami5/sqlite.lua" } },
+  { "folke/trouble.nvim",                          cmd = "TroubleToggle", },
+  { 'mg979/vim-visual-multi',                      branch = "master" },
+  { 'anuvyklack/fold-preview.nvim',                dependencies = 'anuvyklack/keymap-amend.nvim', },
+  { "folke/todo-comments.nvim",                    dependencies = "nvim-lua/plenary.nvim", },
+  -- { "mrjones2014/nvim-ts-rainbow", },
+  -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
   {
     "sindrets/diffview.nvim",
-    event = "BufRead",
     lazy = true,
+    event = "BufRead",
     dependencies = 'nvim-lua/plenary.nvim'
   },
+  -- Git Blame plugin for Neovim written in Lua
   {
     "f-person/git-blame.nvim",
+    lazy = true,
     event = "BufRead",
     config = function()
       vim.cmd "highlight default link gitblame SpecialComment"
       vim.g.gitblame_enabled = 0
     end,
   },
+  -- Twilight is a Lua plugin for Neovim 0.5 that dims inactive portions of the code you're editing using TreeSitter.
   {
-    'simrat39/symbols-outline.nvim',
+    "folke/twilight.nvim",
     lazy = true,
-  },
-  { "folke/twilight.nvim",
+    event = "BufRead",
     config = function()
       require("twilight").setup {}
     end
   },
+  -- Surround text like a boss
   {
     "machakann/vim-sandwich",
-    -- lazy = true,
-    -- event = "BufRead",
-  },
-  {
-    'sunaku/tmux-navigate',
-  },
-  {
-    'rcarriga/nvim-notify'
-  },
-  { 'onsails/lspkind.nvim' },
-  {
-    "ray-x/lsp_signature.nvim",
+    lazy = true,
     event = "BufRead",
-    config = function()
-      require "lsp_signature".on_attach({
-        hint_enable = false,
-      })
-    end,
   },
-  { 'norcalli/nvim_utils' },
-  { 'famiu/bufdelete.nvim' },
-  { "folke/trouble.nvim",         cmd = "TroubleToggle", },
-  { "gfeiyou/command-center.nvim" },
-  { 'mg979/vim-visual-multi',     branch = "master" },
+  -- Beatiful notifcations
+  {
+    'rcarriga/nvim-notify',
+    config = function() vim.notify = require('notify') end
+  },
+  -- session management
+  {
+    'shatur/neovim-session-manager',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('session_manager').setup {
+        autoload_mode = require('session_manager.config').AutoloadMode.CurrentDir,
+        -- autosave_only_in_session = true,
+      }
+    end
+  },
+  -- Scroll with motion
   {
     "karb94/neoscroll.nvim",
     event = "WinScrolled",
@@ -80,32 +101,16 @@ lvim.plugins = {
       })
     end
   },
-  { 'anuvyklack/pretty-fold.nvim' },
-  { 'anuvyklack/fold-preview.nvim',                dependencies = 'anuvyklack/keymap-amend.nvim', },
-  { "klen/nvim-test" },
-  { "klen/nvim-config-local" },
-  { 'nvim-telescope/telescope-ui-select.nvim' },
-  { "nvim-telescope/telescope-live-grep-args.nvim" },
-  { "nvim-telescope/telescope-frecency.nvim",      dependencies = { "tami5/sqlite.lua" } },
-  { "nvim-telescope/telescope-file-browser.nvim", },
-  -- {
-  --   "nvim-telescope/telescope-project.nvim",
-  --   event = "BufWinEnter",
-  --   init = function()
-  --     -- vim.cmd [[packadd telescope.nvim]]
-  --   end,
-  -- },
+  -- auto close html tags
   {
     "windwp/nvim-ts-autotag",
+    lazy = true,
+    event = "BufRead",
     config = function()
       require("nvim-ts-autotag").setup()
     end,
   },
-  -- { "mrjones2014/nvim-ts-rainbow" },
-  -- {
-  --   "JoosepAlviste/nvim-ts-context-commentstring",
-  --   event = "BufRead",
-  -- },
+  -- awsome show context on top
   {
     'nvim-treesitter/nvim-treesitter-context',
     config = function()
@@ -129,16 +134,18 @@ lvim.plugins = {
       }
     end
   },
+  -- toggle kinds of code
   {
     'ckolkey/ts-node-action',
-    dependencies = { 'nvim-treesitter' },
     lazy = true,
+    dependencies = { 'nvim-treesitter' },
     config = function()
       require("ts-node-action").setup({})
     end
   },
   {
     'nacro90/numb.nvim',
+    lazy = true,
     event = "BufRead",
     config = function()
       require('numb').setup({
@@ -147,20 +154,24 @@ lvim.plugins = {
       })
     end
   },
+  -- like easymotion but better
   {
     'phaazon/hop.nvim',
+    lazy = true,
     event = "BufRead",
     branch = 'v2',
     config = function()
       require 'hop'.setup {}
     end
   },
+  -- show progress of search
   {
     'kevinhwang91/nvim-hlslens',
     config = function()
       require('hlslens').setup()
     end
   },
+  -- better scrollbar
   {
     'petertriho/nvim-scrollbar',
     config = function()
@@ -168,14 +179,7 @@ lvim.plugins = {
       require("scrollbar.handlers.search").setup()
     end
   },
-  -- {
-  --   "zbirenbaum/copilot.lua",
-  --   cmd = "Copilot",
-  --   event = "InsertEnter",
-  --   config = function()
-  --     require("copilot").setup({})
-  --   end,
-  -- },
+  -- TabNine plugin for hrsh7th/nvim-cmp
   {
     'tzachar/cmp-tabnine',
     build = './install.sh',
@@ -195,16 +199,7 @@ lvim.plugins = {
       })
     end
   },
-  -- {
-  --   'crusj/bookmarks.nvim',
-  --   branch = 'main',
-  --   dependencies = { 'kyazdani42/nvim-web-devicons' },
-  --   config = function()
-  --   end
-  -- },
-  {
-    "MattesGroeger/vim-bookmarks",
-  },
+  -- Neovim plugin that offers context when cycling buffers in the form of a customizable notification window.
   {
     "ghillb/cybu.nvim",
     branch = "main", -- timely updates
@@ -217,17 +212,13 @@ lvim.plugins = {
       end
     end,
   },
-  {
-    "folke/todo-comments.nvim",
-    dependencies = "nvim-lua/plenary.nvim",
-    config = function()
-    end
-  },
+  -- flutter equipments
   {
     'akinsho/flutter-tools.nvim',
     lazy = true,
     ft = { 'dart', 'pubspec.yaml' },
   },
+  -- A task runner and job management plugin for Neovim
   {
     'stevearc/overseer.nvim',
     config = function()
@@ -239,6 +230,7 @@ lvim.plugins = {
       })
     end
   },
+  -- Treesitter based structural search and replace plugin for Neovim.
   {
     "cshuaimin/ssr.nvim",
     -- module = "ssr",
@@ -255,5 +247,27 @@ lvim.plugins = {
         },
       }
     end
+  },
+
+  -- LSP
+  -- show icons from type on float window
+  { 'onsails/lspkind.nvim' },
+  -- shows function signature
+  {
+    "ray-x/lsp_signature.nvim",
+    config = function()
+      require('lsp_signature').setup {
+        -- bind = true, -- This is mandatory, otherwise border config won't get registered.
+        handler_opts = {
+          border = 'rounded'
+        },
+        hint = false,
+      }
+    end
+  },
+  -- lsp status notification thing
+  {
+    'j-hui/fidget.nvim',
+    config = function() require('fidget').setup {} end
   },
 }

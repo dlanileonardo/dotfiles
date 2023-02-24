@@ -55,8 +55,8 @@ require("symbols-outline").setup({
 })
 
 -- RAINBOW
--- lvim.builtin.treesitter.rainbow.enable = true
--- lvim.builtin.treesitter.rainbow.extended_mode = true
+lvim.builtin.treesitter.rainbow.enable = true
+lvim.builtin.treesitter.rainbow.extended_mode = true
 
 -- LUALINE
 -- require("nvim-gps").setup()

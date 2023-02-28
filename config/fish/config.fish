@@ -95,6 +95,9 @@ end
 
 
 # dstask _completions fish | source
+
+# ng completion script | source
+
 for f in ~/.dotfiles/sources/*
   cat "$f" | source
 end

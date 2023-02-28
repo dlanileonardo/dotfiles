@@ -293,6 +293,17 @@ lvim.plugins = {
     config = function() require('fidget').setup {} end
   },
 
+  {
+    "haringsrob/nvim_context_vt",
+    lazy = true,
+    event = "BufRead",
+    config = function()
+      require('nvim_context_vt').setup({
+        enabled = false,
+      })
+    end
+  },
+
   -- {
   --   url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
   --   config = function()

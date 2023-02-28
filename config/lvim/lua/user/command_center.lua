@@ -217,17 +217,17 @@ command_center.add({
     category = "git",
   },
   -- {
-  --   description = "Git - Blame Toggle",
+  --   description = "Toggle Git - Blame",
   --   cmd = "<CMD>GitBlameToggle<CR>",
   --   category = "git",
   -- },
   {
-    description = "Outline Toggle",
+    description = "Toggle Outline",
     cmd = "<CMD>SymbolsOutline<CR>",
     category = "LSP",
   },
   {
-    description = "NvimTree - Toggle",
+    description = "Toggle NvimTree",
     cmd = "<CMD>NvimTreeToggle<CR>",
     keybindings = { "n", "<M-b>" },
     category = "LunarVim",
@@ -329,7 +329,7 @@ command_center.add({
     category = "LunarVim",
   },
   {
-    description = "Toggle",
+    description = "Toggle Trouble",
     cmd = "<cmd>TroubleToggle<cr>",
     keybindings = { "n", "<leader>tt" },
     category = "Trouble",
@@ -424,13 +424,13 @@ command_center.add({
     category = "Trouble",
   },
   {
-    description = "Buffer Toggle Pin",
+    description = "Toggle Buffer Pin",
     cmd = "<CMD>BufferLineTogglePin<CR>",
     keybindings = { "n", "<Leader>bt" },
     category = "Buffer",
   },
   {
-    description = "Task Overseer Toggle",
+    description = "Toggle Task Overseer",
     cmd = "<CMD>OverseerToggle<CR>",
     keybindings = { "n", "<Leader>ot" },
     category = "Task",
@@ -468,10 +468,17 @@ command_center.add({
     keybindings = { "n", "<C-k>" },
     category = "LunarVim",
   },
-  { description = "Trigger Node Action",
+  {
+    description = "Trigger Node Action",
     cmd = "<CMD>lua require(\"ts-node-action\").node_action()<CR>",
     keybindings = { "n", "T" },
     category = "Treesitter",
+  },
+  {
+    description = "Toggle Context Virtual Line",
+    cmd = "<CMD>NvimContextVtToggle<CR>",
+    keybindings = { "n", "<C-;>" },
+    category = "Treesitter"
   },
   {
     description = "Preview Definitions",

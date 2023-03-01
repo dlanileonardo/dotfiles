@@ -4,8 +4,8 @@ lvim.plugins = {
   { dir = '~/.dotfiles/themes/vim/',               name = "themer" },
   { "olimorris/onedarkpro.nvim",                   priority = 1000 },
   { 'nyoom-engineering/oxocarbon.nvim' },
-  { "luisiacc/gruvbox-baby",                       branch = "main" },
-  { 'shaunsingh/nord.nvim' },
+  -- { "luisiacc/gruvbox-baby",                       branch = "main" },
+  -- { 'shaunsingh/nord.nvim' },
   -- { 'ramojus/mellifluous.nvim',        dependencies = 'rktjmp/lush.nvim' },
   -- { 'titanzero/zephyrium' },
   -- { 'folke/tokyonight.nvim',         branch = 'main' },
@@ -15,21 +15,80 @@ lvim.plugins = {
 
   -- PLUGINS
   { dir = '/usr/local/opt/fzf' },
+
+  -- ------------------------------------------------------------
+  -- telescope-ui-select.nvim
+  -- (https://github.com/nvim-telescope/telescope-ui-select.nvim)
+  -- ------------------------------------------------------------
   { 'nvim-telescope/telescope-ui-select.nvim' },
+
+  -- ------------------------------------------------------------
+  -- telescope-live-grep-args.nvim
+  -- (https://github.com/nvim-telescope/telescope-live-grep-args.nvim)
+  -- ------------------------------------------------------------
   { "nvim-telescope/telescope-live-grep-args.nvim" },
+
+  -- ------------------------------------------------------------
+  -- telescope-file-browser.nvim
+  -- (https://github.com/nvim-telescope/telescope-file-browser.nvim)
+  -- ------------------------------------------------------------
   { "nvim-telescope/telescope-file-browser.nvim", },
+
+  -- ------------------------------------------------------------
+  -- telescope-frecency.nvim
+  -- (https://github.com/nvim-telescope/telescope-frecency.nvim)
+  -- ------------------------------------------------------------
+  {
+    "nvim-telescope/telescope-frecency.nvim",
+    dependencies = { "tami5/sqlite.lua" }
+  },
+
+  -- ------------------------------------------------------------
+  -- tmux-navigate
+  -- (https://github.com/sunaku/tmux-navigate)
+  -- ------------------------------------------------------------
   { 'sunaku/tmux-navigate' },
+
+  -- ------------------------------------------------------------
+  -- nvim_utils
+  -- (https://github.com/norcalli/nvim_utils)
+  -- ------------------------------------------------------------
   { 'norcalli/nvim_utils' },
+
+  -- ------------------------------------------------------------
+  -- bufdelete.nvim
+  -- (https://github.com/famiu/bufdelete.nvim)
+  -- ------------------------------------------------------------
   { 'famiu/bufdelete.nvim' },
-  { "nvim-telescope/telescope-frecency.nvim",      dependencies = { "tami5/sqlite.lua" } },
-  { "folke/trouble.nvim",                          cmd = "TroubleToggle", },
-  { 'mg979/vim-visual-multi',                      branch = "master" },
-  { "folke/todo-comments.nvim",                    dependencies = "nvim-lua/plenary.nvim", },
+
+  -- ------------------------------------------------------------
+  -- trouble.nvim
+  -- (https://github.com/folke/trouble.nvim)
+  -- ------------------------------------------------------------
+  {
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+  },
+
+  -- ------------------------------------------------------------
+  -- vim-visual-multi
+  -- (https://github.com/mg979/vim-visual-multi)
+  -- ------------------------------------------------------------
+  {
+    'mg979/vim-visual-multi',
+    branch = "master"
+  },
+
+  -- ------------------------------------------------------------
+  -- nvim-ts-rainbow
+  -- (https://github.com/mrjones2014/nvim-ts-rainbow)
+  -- ------------------------------------------------------------
   -- { "mrjones2014/nvim-ts-rainbow", },
 
-  -- ----------------------
-  -- COMMAND CENTER
-  -- ----------------------
+  -- ------------------------------------------------------------
+  -- command-center.nvim
+  -- (https://github.com/FeiyouG/command_center.nvim)
+  -- ------------------------------------------------------------
   {
     "gfeiyou/command-center.nvim",
     config = function()
@@ -37,9 +96,10 @@ lvim.plugins = {
     end
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- nvim-config-local
-  -- ----------------------
+  -- (https://github.com/klen/nvim-config-local)
+  -- ------------------------------------------------------------
   {
     "klen/nvim-config-local",
     config = function()
@@ -55,48 +115,54 @@ lvim.plugins = {
     end
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- nvim-test
-  -- ----------------------
+  -- (https://github.com/klen/nvim-test)
+  -- ------------------------------------------------------------
   {
     "klen/nvim-test",
-    config = function()
-      lvim.builtin.which_key.mappings["y"] = {
-        name = "NvimTests",
-        f = { "<CMD>TestFile<CR>", "Test File" },
-        s = { "<CMD>TestSuite<CR>", "Test Suite" },
-        n = { "<CMD>TestNearest<CR>", "Test Nearest" },
-      }
-    end
+    lazy = true,
+    init = function()
+      lvim.builtin.which_key.mappings["y"] = { name = "NvimTests" }
+    end,
+    keys = {
+      { "<leader>yf", "<CMD>TestFile<CR>",    desc = "Test File" },
+      { "<leader>ys", "<CMD>TestSuite<CR>",   desc = "Test Suite" },
+      { "<leader>yn", "<CMD>TestNearest<CR>", desc = "Test Nearest" },
+    },
   },
 
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- vim-bookmarks
-  -- ----------------------
+  -- (https://github.com/MattesGroeger/vim-bookmarks)
+  -- ------------------------------------------------------------
   {
     "MattesGroeger/vim-bookmarks",
-    config = function()
-      lvim.builtin.which_key.mappings["B"] = {
-        name = "Bookmark",
-        t = { "<cmd>BookmarkToggle<CR>", "Toggle" },
-        i = { "<cmd>BookmarkAnnotate<CR>", "Annotate" },
-        a = { "<cmd>BookmarkShowAll<CR>", "Show All" },
-        j = { "<cmd>BookmarkNext<CR>", "Next" },
-        k = { "<cmd>BookmarkPrev<CR>", "Previous" },
-        c = { "<cmd>BookmarkClear<CR>", "Clear" },
-        x = { "<cmd>BookmarkClearAll<CR>", "CLear All" },
-        kk = { "<cmd>BookmarkMoveUp<CR>", "Move Up" },
-        jj = { "<cmd>BookmarkMoveDown<CR>", "Move Down" },
-        g = { "<cmd>BookmarkMoveToLine<CR>", "Move to Line" },
-      }
-    end
+    lazy = true,
+    init = function()
+      lvim.builtin.which_key.mappings["B"] = { name = "Bookmarks" }
+    end,
+    keys = {
+      { "<leader>Bt",  "<cmd>BookmarkToggle<CR>",     desc = "Toggle" },
+      { "<leader>Bi",  "<cmd>BookmarkAnnotate<CR>",   desc = "Annotate" },
+      { "<leader>Ba",  "<cmd>BookmarkShowAll<CR>",    desc = "Show All" },
+      { "<leader>Bj",  "<cmd>BookmarkNext<CR>",       desc = "Next" },
+      { "<leader>Bk",  "<cmd>BookmarkPrev<CR>",       desc = "Previous" },
+      { "<leader>Bc",  "<cmd>BookmarkClear<CR>",      desc = "Clear" },
+      { "<leader>Bx",  "<cmd>BookmarkClearAll<CR>",   desc = "Clear All" },
+      { "<leader>Bkk", "<cmd>BookmarkMoveUp<CR>",     desc = "Move Up" },
+      { "<leader>Bjj", "<cmd>BookmarkMoveDown<CR>",   desc = "Move Down" },
+      { "<leader>Bg",  "<cmd>BookmarkMoveToLine<CR>", desc = "Move to Line" },
+      desc = "Bookmarks",
+    },
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- diffview
-  -- ----------------------
+  -- (https://github.com/sindrets/diffview.nvim)
   -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
+  -- ------------------------------------------------------------
   {
     "sindrets/diffview.nvim",
     lazy = true,
@@ -104,10 +170,11 @@ lvim.plugins = {
     dependencies = 'nvim-lua/plenary.nvim'
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- git-blame
-  -- ----------------------
+  -- (https://github.com/f-person/git-blame.nvim)
   -- Git Blame plugin for Neovim written in Lua
+  -- ------------------------------------------------------------
   {
     "f-person/git-blame.nvim",
     lazy = true,
@@ -118,42 +185,48 @@ lvim.plugins = {
     end,
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- twilight
-  -- ----------------------
+  -- (https://github.com/folke/twilight.nvim)
   -- Twilight is a Lua plugin for Neovim 0.5 that dims inactive portions of the code you're editing using TreeSitter.
+  -- ------------------------------------------------------------
   {
     "folke/twilight.nvim",
     lazy = true,
-    event = "BufRead",
+    keys = {
+      { "<leader>Tt", "<cmd>Twilight<cr>", desc = "Twilight" },
+    },
     config = function()
       require("twilight").setup {}
     end
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- vim-sandwich
-  -- ----------------------
+  -- (https://github.com/machakann/vim-sandwich)
   -- Surround text like a boss
+  -- ------------------------------------------------------------
   {
     "machakann/vim-sandwich",
     lazy = true,
     event = "BufRead",
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- nvim-notify
-  -- ----------------------
+  -- (https://github.com/rcarriga/nvim-notify)
   -- Beautiful notifcations
+  -- ------------------------------------------------------------
   {
     'rcarriga/nvim-notify',
     config = function() vim.notify = require('notify') end
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- auto-session
-  -- ----------------------
+  -- (https://github.com/rmagatti/auto-session)
   -- session management
+  -- ------------------------------------------------------------
   {
     'rmagatti/auto-session',
     config = function()
@@ -164,10 +237,11 @@ lvim.plugins = {
     end
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- neoscroll
-  -- ----------------------
+  -- (https://github.com/karb94/neoscroll.nvim)
   -- Scroll with motion
+  -- ------------------------------------------------------------
   {
     "karb94/neoscroll.nvim",
     event = "WinScrolled",
@@ -188,10 +262,11 @@ lvim.plugins = {
     end
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- nvim-ts-autotag
-  -- ----------------------
+  -- (https://github.com/windwp/nvim-ts-autotag)
   -- auto close html tags
+  -- ------------------------------------------------------------
   {
     "windwp/nvim-ts-autotag",
     lazy = true,
@@ -201,10 +276,11 @@ lvim.plugins = {
     end,
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- nvim-treesitter-context
-  -- ----------------------
+  -- (https://github.com/nvim-treesitter/nvim-treesitter-context)
   -- awsome show context on top
+  -- ------------------------------------------------------------
   {
     'nvim-treesitter/nvim-treesitter-context',
     config = function()
@@ -229,13 +305,17 @@ lvim.plugins = {
     end
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- ts-node-action
-  -- ----------------------
+  -- (https://github.com/CKolkey/ts-node-action)
   -- toggle kinds of code
+  -- ------------------------------------------------------------
   {
     'ckolkey/ts-node-action',
     lazy = true,
+    keys = {
+      { "T", "<CMD>lua require('ts-node-action').node_action()<CR>", desc = "Node Action" },
+    },
     dependencies = { 'nvim-treesitter' },
     config = function()
       require("ts-node-action").setup({})
@@ -243,9 +323,10 @@ lvim.plugins = {
   },
 
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- numb.nvim
-  -- ----------------------
+  -- (https://github.com/nacro90/numb.nvim)
+  -- ------------------------------------------------------------
   {
     'nacro90/numb.nvim',
     lazy = true,
@@ -258,10 +339,11 @@ lvim.plugins = {
     end
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- hop.nvim
-  -- ----------------------
+  -- (https://github.com/phaazon/hop.nvim)
   -- like easymotion but better
+  -- ------------------------------------------------------------
   {
     'phaazon/hop.nvim',
     lazy = true,
@@ -283,9 +365,10 @@ lvim.plugins = {
     end
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- pretty-fold.nvim
-  -- ----------------------
+  -- (https://github.com/anuvyklack/pretty-fold.nvim)
+  -- ------------------------------------------------------------
   {
     'anuvyklack/pretty-fold.nvim',
     config = function()
@@ -304,9 +387,22 @@ lvim.plugins = {
     end
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
+  -- todo-comments.nvim
+  -- (https://github.com/folke/todo-comments.nvim)
+  -- ------------------------------------------------------------
+  {
+    "folke/todo-comments.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup {}
+    end
+  },
+
+  -- ------------------------------------------------------------
   -- fold-preview.nvim
-  -- ----------------------
+  -- (https://github.com/anuvyklack/fold-preview.nvim)
+  -- ------------------------------------------------------------
   {
     'anuvyklack/fold-preview.nvim',
     dependencies = 'anuvyklack/keymap-amend.nvim',
@@ -315,10 +411,11 @@ lvim.plugins = {
     end
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- nvim-hlslens
-  -- ----------------------
+  -- (https://github.com/kevinhwang91/nvim-hlslens)
   -- show progress of search
+  -- ------------------------------------------------------------
   {
     'kevinhwang91/nvim-hlslens',
     config = function()
@@ -326,10 +423,11 @@ lvim.plugins = {
     end
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- nvim-scrollbar
-  -- ----------------------
+  -- (https://github.com/petertriho/nvim-scrollbar)
   -- better scrollbar
+  -- ------------------------------------------------------------
   {
     'petertriho/nvim-scrollbar',
     config = function()
@@ -338,10 +436,11 @@ lvim.plugins = {
     end
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- cmp-tabnine
-  -- ----------------------
+  -- (https://github.com/tzachar/cmp-tabnine)
   -- TabNine plugin for hrsh7th/nvim-cmp
+  -- ------------------------------------------------------------
   {
     'tzachar/cmp-tabnine',
     build = './install.sh',
@@ -362,9 +461,10 @@ lvim.plugins = {
     end
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- cmp-fuzzy-buffer
-  -- ----------------------
+  -- (https://github.com/tzachar/cmp-fuzzy-buffer)
+  -- ------------------------------------------------------------
   -- {
   --   'tzachar/cmp-fuzzy-buffer',
   --   dependencies = { 'hrsh7th/nvim-cmp', 'tzachar/fuzzy.nvim' },
@@ -376,9 +476,11 @@ lvim.plugins = {
   -- },
   -- {
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- tabnine-nvim
-  -- ----------------------
+  -- https://github.com/codota/tabnine-nvim
+  -- ------------------------------------------------------------
+  -- {
   --   'codota/tabnine-nvim', build = "./dl_binaries.sh",
   --   config = function()
   --     require('tabnine').setup({
@@ -392,10 +494,11 @@ lvim.plugins = {
   --   end
   -- },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- cybu.nvim
-  -- ----------------------
+  -- (https://github.com/ghillb/cybu.nvim)
   -- Neovim plugin that offers context when cycling buffers in the form of a customizable notification window.
+  -- ------------------------------------------------------------
   {
     "ghillb/cybu.nvim",
     branch = "main", -- timely updates
@@ -433,22 +536,33 @@ lvim.plugins = {
     end,
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- flutter-tools.nvim
-  -- ----------------------
+  -- (https://github.com/akinsho/flutter-tools.nvim)
   -- flutter equipments
+  -- ------------------------------------------------------------
   {
     'akinsho/flutter-tools.nvim',
     lazy = true,
     ft = { 'dart', 'pubspec.yaml' },
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- overseer.nvim
-  -- ----------------------
+  -- (https://github.com/stevearc/overseer.nvim)
   -- A task runner and job management plugin for Neovim
+  -- ------------------------------------------------------------
   {
     'stevearc/overseer.nvim',
+    lazy = true,
+    keys = {
+      { "<leader>ot", "<cmd>OverseerToggle<cr>", desc = "Overseer Tasks Toggle" },
+      { "<leader>or", "<cmd>OverseerRun<cr>",    desc = "Overseer Tasks Run" },
+      { "<leader>oa", "<cmd>OverseerAction<cr>", desc = "Overseer Tasks Action" },
+    },
+    init = function()
+      lvim.builtin.which_key.mappings["o"] = { name = "Overseer" }
+    end,
     config = function()
       require('overseer').setup({
         task_list = {
@@ -459,13 +573,15 @@ lvim.plugins = {
     end
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- ssr.nvim
-  -- ----------------------
+  -- (https://github.com/cshuaimin/ssr.nvim)
   -- Treesitter based structural search and replace plugin for Neovim.
+  -- ------------------------------------------------------------
   {
     "cshuaimin/ssr.nvim",
     -- module = "ssr",
+    lazy = true,
     -- Calling setup is optional.
     config = function()
       require("ssr").setup {
@@ -481,11 +597,13 @@ lvim.plugins = {
     end
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- goto-preview
-  -- ----------------------
+  -- (https://github.com/rmagatti/goto-preview)
+  -- ------------------------------------------------------------
   {
     'rmagatti/goto-preview',
+    lazy = true,
     config = function()
       require('goto-preview').setup {
         default_mappings = false,
@@ -497,15 +615,17 @@ lvim.plugins = {
   },
 
   -- LSP
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- lspkind
-  -- ----------------------
+  -- (https://github.com/onsails/lspkind.nvim)
   -- show icons from type on float window
+  -- ------------------------------------------------------------
   { 'onsails/lspkind.nvim' },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- inc-rename.nvim
-  -- ----------------------
+  -- https://github.com/smjonas/inc-rename.nvim
+  -- ------------------------------------------------------------
   -- {
   --   "smjonas/inc-rename.nvim",
   --   lazy = true,
@@ -516,10 +636,11 @@ lvim.plugins = {
   --   end,
   -- },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- lsp_signature.nvim
-  -- ----------------------
+  -- (https://github.com/ray-x/lsp_signature.nvim)
   -- shows function signature
+  -- ------------------------------------------------------------
   {
     "ray-x/lsp_signature.nvim",
     lazy = true,
@@ -535,9 +656,10 @@ lvim.plugins = {
     end
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- vim-cursorword
-  -- ----------------------
+  -- (https://github.com/itchyny/vim-cursorword)
+  -- ------------------------------------------------------------
   -- {
   --   "itchyny/vim-cursorword",
   --   event = { "BufEnter", "BufNewFile" },
@@ -552,18 +674,20 @@ lvim.plugins = {
   --   end
   -- },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- fidget.nvim
-  -- ----------------------
+  -- (https://github.com/j-hui/fidget.nvim)
   -- lsp status notification thing
+  -- ------------------------------------------------------------
   {
     'j-hui/fidget.nvim',
     config = function() require('fidget').setup {} end
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- nvim_context_vt
-  -- ----------------------
+  -- (https://github.com/haringsrob/nvim_context_vt)
+  -- ------------------------------------------------------------
   {
     "haringsrob/nvim_context_vt",
     lazy = true,
@@ -575,13 +699,17 @@ lvim.plugins = {
     end
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- symbols-outline.nvim
-  -- ----------------------
+  -- (https://github.com/simrat39/symbols-outline.nvim)
+  -- ------------------------------------------------------------
   {
     'simrat39/symbols-outline.nvim',
     lazy = true,
-    event = "BufRead",
+    -- event = "BufRead",
+    keys = {
+      { "<leader>lo", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" },
+    },
     config = function()
       require("symbols-outline").setup({
         auto_preview = false,
@@ -594,9 +722,10 @@ lvim.plugins = {
     end
   },
 
-  -- ----------------------
+  -- ------------------------------------------------------------
   -- lsp_lines.nvim
-  -- ----------------------
+  -- (https://git.sr.ht/~whynothugo/lsp_lines.nvim)
+  -- ------------------------------------------------------------
   -- {
   --   url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
   --   config = function()

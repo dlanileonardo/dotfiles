@@ -223,7 +223,7 @@ command_center.add({
   -- },
   {
     description = "Toggle Outline",
-    cmd = "<CMD>SymbolsOutline<CR>",
+    cmd = "<leader>lo",
     category = "LSP",
   },
   {
@@ -431,19 +431,19 @@ command_center.add({
   },
   {
     description = "Toggle Task Overseer",
-    cmd = "<CMD>OverseerToggle<CR>",
+    cmd = "<Leader>ot",
     keybindings = { "n", "<Leader>ot" },
     category = "Task",
   },
   {
     description = "Task Overseer Run",
-    cmd = "<CMD>OverseerRun<CR>",
+    cmd = "<Leader>or",
     keybindings = { "n", "<Leader>or" },
     category = "Task",
   },
   {
     description = "Task Overseer Tasks Action",
-    cmd = "<CMD>OverseerTaskAction<CR>",
+    cmd = "<Leader>oa",
     keybindings = { "n", "<Leader>oa" },
     category = "Task",
   },
@@ -470,7 +470,7 @@ command_center.add({
   },
   {
     description = "Trigger Node Action",
-    cmd = "<CMD>lua require(\"ts-node-action\").node_action()<CR>",
+    cmd = "T",
     keybindings = { "n", "T" },
     category = "Treesitter",
   },

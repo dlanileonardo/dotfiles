@@ -190,7 +190,6 @@ require('nvim-test').setup {
   }
 }
 
-require("todo-comments").setup {}
 
 vim.cmd([[
   let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)

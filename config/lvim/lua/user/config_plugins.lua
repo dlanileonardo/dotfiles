@@ -3,56 +3,11 @@ vim.opt.listchars:append("space:⋅")
 vim.opt.listchars:append("eol:↴")
 -- vim.notify = require("notify")
 
-require('pretty-fold').setup({
-  -- keep_indentation = true,
-  fill_char = '-',
-  sections = {
-    left = {
-      'content', ' |-'
-    },
-    right = {
-      '-| ', 'number_of_folded_lines', ': ', 'percentage', ' |-',
-    }
-  }
-})
-
-require('fold-preview').setup()
-
 local keymap = vim.keymap
 keymap.amend = require('keymap-amend')
 local map = require('fold-preview').mapping
 
 keymap.amend('n', 'zp', map.show_close_preview_open_fold)
-
--- require("indent_blankline").setup {
---   char = '|',
---   char_blankline = '┊',
---   -- char_list = { '|', '¦', '┆', '┊' },
---   space_char_blankline = " ",
---   show_current_context = true,
---   show_current_context_start = true,
---   show_end_of_line = true,
---   show_first_indent_level = true,
---   filetype_exclude = { "help", "terminal", "dashboard", "man", "checkhealth", "packer", "flutterToolsOutline", "Outline" },
---   buftype_exclude = { "terminal", "nofile", "quickfix", "flutterToolsOutline", "Outline" },
---   bufname_exclude = {},
---   show_trailing_blankline_indent = false,
--- }
-
--- require('neoscroll').setup({
---   easing_function = "quadratic",
---   mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb', '<PageUp>', 'PageDown', },
---   -- performance_mode = true,
--- })
-
-require("symbols-outline").setup({
-  auto_preview = false,
-  preview_bg_highlight = "Pmenu",
-  highlight_hovered_item = true,
-  keymaps = { -- These keymaps can be a string or a table for multiple keys
-    close = { "q" },
-  },
-})
 
 -- RAINBOW
 lvim.builtin.treesitter.rainbow.enable = true
@@ -68,6 +23,14 @@ lvim.builtin.lualine.options.disabled_filetypes = {
   "alpha", "NvimTree", "Outline", "flutterToolsOutline"
 }
 lvim.builtin.lualine.style = "default"
+-- lvim.builtin.lualine.tabline = {
+--   lualine_a = {},
+--   lualine_b = { 'branch' },
+--   lualine_c = { 'filename' },
+--   lualine_x = {},
+--   lualine_y = {},
+--   lualine_z = {}
+-- }
 lvim.builtin.lualine.sections = {
   lualine_a = { "mode" },
   lualine_b = { "branch", "diff", "diagnostics" },
@@ -77,7 +40,7 @@ lvim.builtin.lualine.sections = {
     { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
     -- { gps.get_location, cond = gps.is_available }
   },
-  lualine_x = { "encoding", "fileformat", "filetype" },
+  lualine_x = { "tabnine", "encoding", "fileformat", "filetype" },
   lualine_y = { "progress" },
   lualine_z = {
     "location",
@@ -227,42 +190,7 @@ require('nvim-test').setup {
   }
 }
 
-require('config-local').setup {
-  -- Default configuration (optional)
-  config_files = { ".vimrc.lua", ".vimrc" }, -- Config file patterns to load (lua supported)
-  hashfile = vim.fn.stdpath("data") .. "/config-local", -- Where the plugin keeps files data
-  autocommands_create = true, -- Create autocommands (VimEnter, DirectoryChanged)
-  commands_create = true, -- Create commands (ConfigSource, ConfigEdit, ConfigTrust, ConfigIgnore)
-  silent = false, -- Disable plugin messages (Config loaded/ignored)
-  lookup_parents = false, -- Lookup config files in parent directories
-}
-
-require("cybu").setup({
-  position = {
-    relative_to = "editor",
-    anchor = "topcenter",
-    vertical_offset = 3,
-  },
-  style = {
-    border = "rounded",
-    padding = 7,
-    hide_buffer_id = true,
-  },
-  behavior = {
-    mode = {
-      default = {
-        switch = "immediate",
-        view = "paging"
-      }
-    }
-  }
-})
-
-vim.keymap.set({ "n", "v" }, "<M-s-tab>", "<plug>(CybuLastusedPrev)")
-vim.keymap.set({ "n", "v" }, "<M-tab>", "<plug>(CybuLastusedNext)")
-
-require("todo-comments").setup {
-}
+require("todo-comments").setup {}
 
 vim.cmd([[
   let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)

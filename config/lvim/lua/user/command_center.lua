@@ -12,10 +12,22 @@ command_center.add({
     category = "File",
   },
   {
+    description = "Buffer Last Used",
+    cmd = "<plug>(CybuLastusedNext)<CR>",
+    keybindings = { "n", "<M-tab>" },
+    category = "Buffer",
+  },
+  {
+    description = "Buffer Previous Used",
+    cmd = "<plug>(CybuLastusedNext)<CR>",
+    keybindings = { "n", "<M-s-tab>" },
+    category = "Buffer",
+  },
+  {
     description = "Buffer Next",
     cmd = "<CMD>CybuNext<CR>",
     keybindings = { "n", "<C-l>" },
-    category = "File",
+    category = "Buffer",
   },
   {
     description = "Buffer Previous",

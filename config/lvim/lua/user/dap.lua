@@ -1,4 +1,4 @@
--- lvim.builtin.dap.active = true
+lvim.builtin.dap.active = true
 
 -- local dap = require('dap')
 
@@ -50,4 +50,29 @@
 --   keymap_restore = {}
 -- end
 
--- require("dapui").setup {}
+-- require('dap-vscode-js').setup({
+--   debugger_path = os.getenv("HOME") .. "/.local./share/nvim/mason/packages/js-debug-adapter",
+--   debugger_cmd = { 'js-debug-adapter' },
+--   adapters = {
+--     'pwa-node',
+--     'pwa-chrome',
+--     'pwa-msedge',
+--     'node-terminal',
+--     'pwa-extensionHost',
+--   },
+-- })
+
+-- for _, language in ipairs({ 'typescript', 'javascript' }) do
+--   require('dap').configurations[language] = {
+--     {
+--       name = 'Attach to Node Functions - from init.lua',
+--       type = 'pwa-chrome',
+--       request = 'launch',
+--       port = 9222,
+--       url = "http://localhost:4200",
+--       preLaunchTask = 'npm: start',
+--     }
+--   }
+-- end
+
+require("dapui").setup {}

@@ -17,6 +17,15 @@ lvim.plugins = {
   { dir = '/usr/local/opt/fzf' },
 
   -- ------------------------------------------------------------
+  -- nvim-dap-vscode-js
+  -- (https://github.com/mxsdev/nvim-dap-vscode-js)
+  -- ------------------------------------------------------------
+  -- {
+  --   "mxsdev/nvim-dap-vscode-js",
+  --   dependencies = { "mfussenegger/nvim-dap" }
+  -- },
+
+  -- ------------------------------------------------------------
   -- telescope-ui-select.nvim
   -- (https://github.com/nvim-telescope/telescope-ui-select.nvim)
   -- ------------------------------------------------------------
@@ -105,12 +114,12 @@ lvim.plugins = {
     config = function()
       require('config-local').setup {
         -- Default configuration (optional)
-        config_files = { ".vimrc.lua", ".vimrc" }, -- Config file patterns to load (lua supported)
+        config_files = { ".vimrc.lua", ".vimrc" },            -- Config file patterns to load (lua supported)
         hashfile = vim.fn.stdpath("data") .. "/config-local", -- Where the plugin keeps files data
-        autocommands_create = true, -- Create autocommands (VimEnter, DirectoryChanged)
-        commands_create = true, -- Create commands (ConfigSource, ConfigEdit, ConfigTrust, ConfigIgnore)
-        silent = false, -- Disable plugin messages (Config loaded/ignored)
-        lookup_parents = false, -- Lookup config files in parent directories
+        autocommands_create = true,                           -- Create autocommands (VimEnter, DirectoryChanged)
+        commands_create = true,                               -- Create commands (ConfigSource, ConfigEdit, ConfigTrust, ConfigIgnore)
+        silent = false,                                       -- Disable plugin messages (Config loaded/ignored)
+        lookup_parents = false,                               -- Lookup config files in parent directories
       }
     end
   },
@@ -250,14 +259,14 @@ lvim.plugins = {
         -- All these keys will be mapped to their corresponding default scrolling animation
         mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb', '<PageUp>', 'PageDown', },
         -- performance_mode = true,
-        hide_cursor = true, -- Hide cursor while scrolling
-        stop_eof = true, -- Stop at <EOF> when scrolling downwards
+        hide_cursor = true,          -- Hide cursor while scrolling
+        stop_eof = true,             -- Stop at <EOF> when scrolling downwards
         use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
-        respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+        respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
         cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
         -- easing_function = nil, -- Default easing function
-        pre_hook = nil, -- Function to run before the scrolling animation starts
-        post_hook = nil, -- Function to run after the scrolling animation ends
+        pre_hook = nil,              -- Function to run before the scrolling animation starts
+        post_hook = nil,             -- Function to run after the scrolling animation ends
       })
     end
   },
@@ -356,9 +365,11 @@ lvim.plugins = {
         name = "Hop",
         w = { "<cmd>HopWord<CR>", "Search by Word" },
         e = { "<cmd>HopPattern<CR>", "Search by Pattern" },
-        f = { "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",
+        f = {
+          "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",
           "After Cursor" },
-        F = { "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",
+        F = {
+          "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",
           "Before Cursor" },
         d = { "<cmd>lua require'hop'.hint_words({ current_line_only = true })<cr>", "Jump to Word" },
       }
@@ -520,6 +531,12 @@ lvim.plugins = {
           border = "rounded",
           padding = 7,
           hide_buffer_id = true,
+          highlights = {
+            current_buffer = "BufferLineModifiedSelected",
+            adjacent_buffers = "CybuAdjacent",
+            background = "CybuBackground",
+            border = "CybuBorder",
+          },
         },
         behavior = {
           mode = {

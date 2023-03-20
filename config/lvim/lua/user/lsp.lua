@@ -5,11 +5,11 @@ lvim.lsp.document_highlight = true
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-  signs = true,
-  virtual_text = false,
-  underline = true,
-  update_in_insert = true,
-})
+    signs = true,
+    virtual_text = false,
+    underline = true,
+    update_in_insert = true,
+  })
 
 vim.o.updatetime = 250
 
@@ -94,4 +94,4 @@ end
 --   },
 -- }
 
--- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "dartls" })
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "standardrb", "sorbet" })

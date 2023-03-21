@@ -125,3 +125,8 @@
 	pull-branch-strategy = rebase
 	perennial-branch-names = stable staging production development main master
 	offline = false
+[fixup]
+  menu = fzf --bind 'tab:toggle-preview' \
+             --preview 'git show --color {+1}' \
+             --preview-window=up:50% \
+             --prompt 'Select commit: '

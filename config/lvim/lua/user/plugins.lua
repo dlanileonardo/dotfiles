@@ -141,7 +141,6 @@ lvim.plugins = {
     },
   },
 
-
   -- ------------------------------------------------------------
   -- vim-bookmarks
   -- (https://github.com/MattesGroeger/vim-bookmarks)
@@ -170,6 +169,10 @@ lvim.plugins = {
     },
   },
 
+  -- ------------------------------------------------------------
+  -- telescope-vim-bookmarks.nvim
+  -- (https://github.com/tom-anders/telescope-vim-bookmarks.nvim)
+  -- ------------------------------------------------------------
   {
     "tom-anders/telescope-vim-bookmarks.nvim"
   },

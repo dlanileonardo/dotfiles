@@ -148,9 +148,12 @@ lvim.plugins = {
   -- ------------------------------------------------------------
   {
     "MattesGroeger/vim-bookmarks",
-    lazy = true,
+    lazy = false,
     init = function()
       lvim.builtin.which_key.mappings["B"] = { name = "Bookmarks" }
+      -- vim.g.bookmark_auto_save = 1
+      -- vim.g.bookmark_manage_per_buffer = 1
+      vim.g.bookmark_auto_close = 1
     end,
     keys = {
       { "<leader>Bt",  "<cmd>BookmarkToggle<CR>",     desc = "Toggle" },
@@ -166,6 +169,27 @@ lvim.plugins = {
       desc = "Bookmarks",
     },
   },
+
+  {
+    "tom-anders/telescope-vim-bookmarks.nvim"
+  },
+
+  -- {
+  --   "crusj/bookmarks.nvim",
+  --   init = function()
+  --     require("bookmarks").setup({
+  --       keymap = {
+  --         toggle = "<tab><tab>",  -- Toggle bookmarks
+  --         add = "\\z",            -- Add bookmarks
+  --         jump = "<CR>",          -- Jump from bookmarks
+  --         delete = "dd",          -- Delete bookmarks
+  --         order = "<space><space>", -- Order bookmarks by frequency or updated_time
+  --         delete_on_virt = "\\dd", -- Delete bookmark at virt text line
+  --         show_desc = "\\sd",     -- show bookmark desc
+  --       }
+  --     })
+  --   end
+  -- },
 
   -- ------------------------------------------------------------
   -- diffview

@@ -522,6 +522,17 @@ command_center.add({
     keybindings = { "n", "gpc" },
     category = "GoTo Preview",
   },
+
+  {
+    description = "Bookmarks All",
+    cmd = "<cmd>lua require('telescope').extensions.vim_bookmarks.all()<CR>",
+    category = "Bookmarks",
+  },
+  {
+    description = "Bookmarks Current File",
+    cmd = "<cmd>lua require('telescope').extensions.vim_bookmarks.current_file()<CR>",
+    category = "Bookmarks",
+  },
 })
 
 lvim.builtin.telescope.extensions.command_center = {

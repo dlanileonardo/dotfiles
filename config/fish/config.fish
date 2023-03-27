@@ -42,6 +42,14 @@ set -gx HOMEBREW_NO_ENV_HINTS 1
 
 set -gx FORGIT_PAGER 'delta --side-by-side -w ${FZF_PREVIEW_COLUMNS:-$COLUMNS}' 
 
+# done
+set -U __done_enabled 1
+set -U __done_initial_window_id com.googlecode.iterm2
+set -U __done_notification_command "terminal-notifier -sender com.googlecode.iterm2 -title \$title -message \$message"
+set -U __done_min_cmd_duration 5000
+set -U __done_notify_sound 1
+# done
+
 source /usr/local/opt/asdf/libexec/asdf.fish
 
 alias work="cd /Volumes/Workspace/"

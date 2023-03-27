@@ -97,7 +97,6 @@ local opts = {
     find_files = {
 
     },
-
   },
   extensions = {
     live_grep_args = {
@@ -146,6 +145,8 @@ lvim.builtin.telescope.on_config_done = function(tele)
   tele.load_extension("file_browser")
   tele.load_extension("ui-select")
   tele.load_extension("live_grep_args")
+  tele.load_extension("vim_bookmarks")
+
   -- tele.load_extension("z")
   -- tele.load_extension("repo")
   -- tele.load_extension("zoxide")
@@ -162,18 +163,18 @@ lvim.builtin.telescope.on_config_done = function(tele)
 end
 
 require('nvim-test').setup {
-  run = true, -- run tests (using for debug)
-  commands_create = true, -- create commands (TestFile, TestLast, ...)
+  run = true,               -- run tests (using for debug)
+  commands_create = true,   -- create commands (TestFile, TestLast, ...)
   filename_modifier = ":.", -- modify filenames before tests run(:h filename-modifiers)
-  silent = false, -- less notifications
-  term = "terminal", -- a terminal to run ("terminal"|"toggleterm")
+  silent = false,           -- less notifications
+  term = "terminal",        -- a terminal to run ("terminal"|"toggleterm")
   termOpts = {
     direction = "vertical", -- terminal's direction ("horizontal"|"vertical"|"float")
-    width = 96, -- terminal's width (for vertical|float)
-    height = 24, -- terminal's height (for horizontal|float)
-    go_back = false, -- return focus to original window after executing
-    stopinsert = "auto", -- exit from insert mode (true|false|"auto")
-    keep_one = true, -- keep only one terminal for testing
+    width = 96,             -- terminal's width (for vertical|float)
+    height = 24,            -- terminal's height (for horizontal|float)
+    go_back = false,        -- return focus to original window after executing
+    stopinsert = "auto",    -- exit from insert mode (true|false|"auto")
+    keep_one = true,        -- keep only one terminal for testing
   },
   runners = {
     cs = "nvim-test.runners.dotnet",

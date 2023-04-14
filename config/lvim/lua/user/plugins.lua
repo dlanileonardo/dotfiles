@@ -253,10 +253,10 @@ lvim.plugins = {
   -- (https://github.com/rcarriga/nvim-notify)
   -- Beautiful notifcations
   -- ------------------------------------------------------------
-  {
-    'rcarriga/nvim-notify',
-    config = function() vim.notify = require('notify') end
-  },
+  -- {
+  --   'rcarriga/nvim-notify',
+  --   config = function() vim.notify = require('notify') end
+  -- },
 
   -- ------------------------------------------------------------
   -- auto-session

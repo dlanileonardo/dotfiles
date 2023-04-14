@@ -95,6 +95,22 @@ lvim.plugins = {
   -- { "mrjones2014/nvim-ts-rainbow", },
 
   -- ------------------------------------------------------------
+  -- nvim-spider
+  -- (https://github.com/chrisgrieser/nvim-spider)
+  -- ------------------------------------------------------------
+
+  {
+    "chrisgrieser/nvim-spider",
+    -- lazy = true,
+    config = function()
+      vim.keymap.set({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
+      vim.keymap.set({ "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
+      vim.keymap.set({ "n", "o", "x" }, "b", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-b" })
+      vim.keymap.set({ "n", "o", "x" }, "ge", "<cmd>lua require('spider').motion('ge')<CR>", { desc = "Spider-ge" })
+    end
+  },
+
+  -- ------------------------------------------------------------
   -- command-center.nvim
   -- (https://github.com/FeiyouG/command_center.nvim)
   -- ------------------------------------------------------------
@@ -268,11 +284,32 @@ lvim.plugins = {
     config = function()
       require("auto-session").setup {
         log_level = "error",
-        -- auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
       }
     end
   },
 
+  {
+    "natecraddock/workspaces.nvim",
+    config = function()
+      require("workspaces").setup({
+        hooks = {
+          open_pre = { "SaveSession" },
+          open = { "bufdo bd", "RestoreSession" }
+        }
+      })
+      require('telescope').load_extension('workspaces')
+    end
+  },
+  -- {
+  --   "natecraddock/sessions.nvim",
+  --   config = function()
+  --     require("sessions").setup({
+  --       events = { "WinEnter" },
+  --       -- session_filepath = vim.fn.stdpath("data") .. "/sessions",
+  --       absolute = true,
+  --     })
+  --   end
+  -- },
   -- ------------------------------------------------------------
   -- neoscroll
   -- (https://github.com/karb94/neoscroll.nvim)

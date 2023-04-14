@@ -46,6 +46,7 @@
   "nvim-lspconfig": { "branch": "master", "commit": "10fa01d553ce10646350461ac5ddc71f189e9d1a" },
   "nvim-navic": { "branch": "master", "commit": "27124a773d362628b114cd12016e743dab4ccf3e" },
   "nvim-scrollbar": { "branch": "main", "commit": "f85b29805cf917f9b1d5ff0c9a52c5b1bdca5943" },
+  "nvim-spider": { "branch": "main", "commit": "23fa1260be2090f2d675ee90e0b83fd993f6c3dc" },
   "nvim-test": { "branch": "main", "commit": "4e30d0772a43bd67ff299cfe201964c5bd799d73" },
   "nvim-tree.lua": { "branch": "master", "commit": "48d53a5934fbd51b655d03db7dad35551838f2c9" },
   "nvim-treesitter": { "branch": "master", "commit": "ac4020c70722337c326bf65b645b162ee6e1796b" },
@@ -85,5 +86,6 @@
   "vim-illuminate": { "branch": "master", "commit": "a2907275a6899c570d16e95b9db5fd921c167502" },
   "vim-sandwich": { "branch": "master", "commit": "c5a2cc438ce6ea2005c556dc833732aa53cae21a" },
   "vim-visual-multi": { "branch": "master", "commit": "724bd53adfbaf32e129b001658b45d4c5c29ca1a" },
-  "which-key.nvim": { "branch": "main", "commit": "4b73390eec680b4c061ea175eb32c0ff3412271d" }
+  "which-key.nvim": { "branch": "main", "commit": "4b73390eec680b4c061ea175eb32c0ff3412271d" },
+  "workspaces.nvim": { "branch": "master", "commit": "dd9574c8a6fbd4910bf298fcd1175a0222e9a09d" }
 }

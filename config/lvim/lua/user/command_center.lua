@@ -188,6 +188,12 @@ command_center.add({
     category = "Telescope",
   },
   {
+    description = "Telescope Workspaces",
+    cmd = "<cmd>Telescope workspaces<cr>",
+    keybindings = { "n", "<M-w>" },
+    category = "Telescope",
+  },
+  {
     description = "Teleescope Explorer",
     cmd = "<cmd>Telescope file_browser<CR>",
     keybindings = { "n", "<M-e>" },

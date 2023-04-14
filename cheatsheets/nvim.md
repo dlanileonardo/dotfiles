@@ -45,6 +45,8 @@
 | <kbd>[m</kbd> , <kbd>]m</kbd> | Navigate into Methods |
 | <kbd>%</kbd> | Move into Pairs |
 | <kbd>number G</kbd> <kbd>number gg</kbd> | Go Number Line |
+| <kbd>Ctrl</kbd> + <kbd>o</kbd> | Move to previous cursor position |
+| <kbd>Ctrl</kbd> + <kbd>i</kbd> | Move to next cursor position |
 
 ## Edition
 

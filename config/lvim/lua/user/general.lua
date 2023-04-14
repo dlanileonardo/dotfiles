@@ -5,7 +5,7 @@ vim.opt.relativenumber = true
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
-lvim.colorscheme = "oxocarbon"
+lvim.colorscheme = "onedark"
 lvim.transparent_window = false
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
@@ -37,6 +37,7 @@ lvim.keys.normal_mode["<C-Up>"] = false
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 -- lvim.builtin.nvimtree.active = false
+-- lvim.builtin.project.active = false
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {

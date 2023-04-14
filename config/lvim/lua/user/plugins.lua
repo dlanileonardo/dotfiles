@@ -293,8 +293,8 @@ lvim.plugins = {
     config = function()
       require("workspaces").setup({
         hooks = {
-          open_pre = { "SaveSession" },
-          open = { "bufdo bd", "RestoreSession" }
+          open_pre = { "SaveSession", "bufdo bd" },
+          open = { "RestoreSession" }
         }
       })
       require('telescope').load_extension('workspaces')

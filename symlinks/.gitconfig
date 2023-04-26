@@ -7,7 +7,7 @@
 [user]
   name = Dlani Mendes
   email = dlanileonardo@gmail.com
-  signingkey = A2D54F66DEC97FF28EEFCBB2DAFAEB02C16393DE
+	signingkey = 3A70FE6156688B7E
 [credential]
   helper = osxkeychain
 [alias]
@@ -33,7 +33,7 @@
   rebase = true
 [commit]
   template = ~/.gitmessage.txt
-  gpgsign = true
+	gpgsign = true
 [core]
   excludesfile = /Users/dlani/.gitignore
   editor = vim

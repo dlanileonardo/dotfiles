@@ -38,6 +38,7 @@ generate:
 		pnpm exec base16-builder \
 		--template ./themes/base16/sources/templates/neovim/templates/default.mustache > ./themes/base16/output/$(theme)/$(theme).lua
 
+	rm ~/.dotfiles/themes/vim/colors/$(theme).lua
 	ln -s ~/.dotfiles/themes/base16/output/$(theme)/$(theme).lua ~/.dotfiles/themes/vim/colors/
 
 all:

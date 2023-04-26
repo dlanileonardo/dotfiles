@@ -1,7 +1,7 @@
 -- Additional Plugins
 lvim.plugins = {
   -- THEMES
-  { dir = '~/.dotfiles/themes/vim/',               name = "themer" },
+  -- { dir = '~/.dotfiles/themes/vim/',               name = "themer" },
   { "olimorris/onedarkpro.nvim",                   priority = 1000 },
   { 'nyoom-engineering/oxocarbon.nvim' },
   -- { "luisiacc/gruvbox-baby",                       branch = "main" },
@@ -283,11 +283,17 @@ lvim.plugins = {
     'rmagatti/auto-session',
     config = function()
       require("auto-session").setup {
+        auto_restore_enabled = true,
         log_level = "error",
       }
     end
   },
 
+  -- ------------------------------------------------------------
+  -- workspaces.nvim
+  -- (https://github.com/natecraddock/workspaces.nvim)
+  -- workspaces
+  -- ------------------------------------------------------------
   {
     "natecraddock/workspaces.nvim",
     config = function()

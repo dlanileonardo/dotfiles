@@ -30,6 +30,7 @@ set -gx PATH $PATH "/Users/dlani/.cargo/bin"
 set -gx PATH $PATH "/Users/dlani/.local/bin/"
 set -gx PATH $PATH "/usr/local/sbin"
 set -gx PATH "$HOME/bin" $PATH
+set -gx GPG_TTY $(tty)
 # set -gx USE_LIMA 1
 # set -gx BAT_THEME "base16"
 # set -gx LS_COLORS $(gdircolors ~/.dir_colors | grep -o "\'.*\'" | grep -o '[0-9a-z:=;*.]\+')

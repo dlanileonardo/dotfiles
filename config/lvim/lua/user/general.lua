@@ -5,7 +5,7 @@ vim.opt.relativenumber = true
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
-lvim.colorscheme = "oxocarbon"
+lvim.colorscheme = "onedark_vivid"
 lvim.transparent_window = false
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
@@ -29,6 +29,8 @@ lvim.builtin.telescope.defaults.mappings = {
     ["<C-k>"] = actions.move_selection_previous,
   },
 }
+
+lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
 
 -- unmap a default keymapping
 lvim.keys.normal_mode["<C-Up>"] = false

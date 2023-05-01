@@ -1,7 +1,7 @@
 -- Additional Plugins
 lvim.plugins = {
   -- THEMES
-  -- { dir = '~/.dotfiles/themes/vim/',               name = "themer" },
+  { dir = '~/.dotfiles/themes/vim/',               name = "themer" },
   { "olimorris/onedarkpro.nvim",                   priority = 1000 },
   { 'nyoom-engineering/oxocarbon.nvim' },
   -- { "luisiacc/gruvbox-baby",                       branch = "main" },
@@ -15,6 +15,28 @@ lvim.plugins = {
 
   -- PLUGINS
   { dir = '/usr/local/opt/fzf' },
+
+  -- {
+  --   'stevearc/oil.nvim',
+  --   opts = {},
+  --   -- Optional dependencies
+  --   dependencies = { "nvim-tree/nvim-web-devicons" },
+  --   config = function()
+  --     require("oil").setup({
+  --       float = {
+  --         -- Padding around the floating window
+  --         padding = 5,
+  --         max_width = 0,
+  --         max_height = 0,
+  --         border = "rounded",
+  --         win_options = {
+  --           winblend = 10,
+  --         },
+  --       },
+  --     })
+  --     vim.keymap.set("n", "<M-n>", require("oil").open_float, { desc = "Open parent directory" })
+  --   end
+  -- },
 
   -- ------------------------------------------------------------
   -- nvim-dap-vscode-js
@@ -299,8 +321,8 @@ lvim.plugins = {
     config = function()
       require("workspaces").setup({
         hooks = {
-          open_pre = { "SaveSession", "bufdo bd" },
-          open = { "RestoreSession" }
+          open_pre = { "SessionSave", "bufdo bd" },
+          open = { "SessionRestore" }
         }
       })
       require('telescope').load_extension('workspaces')
@@ -643,9 +665,9 @@ lvim.plugins = {
     'stevearc/overseer.nvim',
     lazy = true,
     keys = {
-      { "<leader>ot", "<cmd>OverseerToggle<cr>", desc = "Overseer Tasks Toggle" },
-      { "<leader>or", "<cmd>OverseerRun<cr>",    desc = "Overseer Tasks Run" },
-      { "<leader>oa", "<cmd>OverseerAction<cr>", desc = "Overseer Tasks Action" },
+      { "<leader>ot", "<cmd>OverseerToggle<cr>",     desc = "Overseer Tasks Toggle" },
+      { "<leader>or", "<cmd>OverseerRun<cr>",        desc = "Overseer Tasks Run" },
+      { "<leader>oa", "<cmd>OverseerTaskAction<cr>", desc = "Overseer Tasks Action" },
     },
     init = function()
       lvim.builtin.which_key.mappings["o"] = { name = "Overseer" }

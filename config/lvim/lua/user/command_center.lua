@@ -196,7 +196,7 @@ command_center.add({
   {
     description = "Teleescope Explorer",
     cmd = "<cmd>Telescope file_browser<CR>",
-    keybindings = { "n", "<M-e>" },
+    keybindings = { { "n", "<M-e>" }, { "n", "<M-b>" } },
     category = "Telescope",
   },
   {
@@ -247,7 +247,7 @@ command_center.add({
   {
     description = "Toggle NvimTree",
     cmd = "<CMD>NvimTreeToggle<CR>",
-    keybindings = { "n", "<M-b>" },
+    -- keybindings = { "n", "<M-b>" },
     category = "LunarVim",
   },
   {

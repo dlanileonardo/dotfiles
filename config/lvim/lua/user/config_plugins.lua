@@ -107,11 +107,16 @@ local opts = {
         -- even more opts
       }
     },
-    -- file_browser = {
-    --   theme = "ivy",
-    --   -- hidden = true,
-    --   respect_gitignore = false,
-    -- },
+    file_browser = {
+      -- theme = "ivy",
+      hidden = false,
+      -- respect_gitignore = false,
+      auto_depth = true,
+      depth = 1,
+      hide_parent_dir = false,
+      -- display_stat = { date = false, size = false, mode = false },
+      grouped = true,
+    },
     frecency = {
       show_scores = true,
       -- devicons_disabled = true,

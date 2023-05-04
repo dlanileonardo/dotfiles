@@ -6,6 +6,8 @@ lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
 lvim.colorscheme = "onedark_vivid"
+-- lvim.colorscheme = "oxocarbon"
+-- lvim.colorscheme = "gruvbox-baby"
 lvim.transparent_window = false
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
@@ -29,8 +31,6 @@ lvim.builtin.telescope.defaults.mappings = {
     ["<C-k>"] = actions.move_selection_previous,
   },
 }
-
-lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
 
 -- unmap a default keymapping
 lvim.keys.normal_mode["<C-Up>"] = false
@@ -106,7 +106,7 @@ for event, opt_tbls in pairs(aucmd_dict) do
 end
 
 vim.opt.timeoutlen = 500
-vim.opt.list = true
+vim.opt.list = false
 
 vim.cmd([[
   set nofoldenable

@@ -9,6 +9,9 @@ local map = require('fold-preview').mapping
 
 keymap.amend('n', 'zp', map.show_close_preview_open_fold)
 
+lvim.builtin.nvimtree.active = false
+lvim.builtin.breadcrumbs.active = false
+
 -- RAINBOW
 lvim.builtin.treesitter.rainbow.enable = true
 -- lvim.builtin.treesitter.rainbow.extended_mode = true
@@ -56,13 +59,14 @@ local options = {
 lvim.builtin.lualine.options = vim.tbl_extend("force", lvim.builtin.lualine.options, options)
 
 -- lvim.builtin.lualine.active = false
+lvim.builtin.bufferline.active = true
 
 lvim.builtin.bufferline.options.always_show_bufferline = true
-lvim.builtin.bufferline.options.indicator_icon = nil
--- lvim.builtin.bufferline.options.enforce_regular_tabs = true
 lvim.builtin.bufferline.options.separator_style = "slope"
 lvim.builtin.bufferline.options.sort_by = "relative_directory"
--- lvim.builtin.bufferline.options.show_close_icon = false
+lvim.builtin.bufferline.options.show_close_icon = false
+-- lvim.builtin.bufferline.options.close_icon = ''
+-- lvim.builtin.bufferline.options.buffer_close_icon = '󰅖'
 
 local opts = {
   defaults = {
@@ -70,12 +74,14 @@ local opts = {
     -- catppuccin_flavour = "mocha",
     -- color_devicons = false,
     layout_config = {
-      height = 0.70,
-      width = 0.70,
+      -- vertical = { width = 0.9 },
+      height = 0.95,
+      width = 0.95,
       prompt_position = "top",
+      mirror = true,
     },
-    layout_strategy = 'horizontal',
-    prompt_prefix = "> ",
+    layout_strategy = 'vertical',
+    prompt_prefix = "$ ",
     pickers = {
       git_files = {
         hidden = true,

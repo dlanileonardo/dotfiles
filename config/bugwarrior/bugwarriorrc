@@ -1,0 +1,103 @@
+[general]
+# Here you define a comma separated list of targets.  Each of them must have a
+# section below determining their properties, how to query them, etc.  The name
+# is just a symbol, and doesn't have any functional importance.
+targets = achievemore.github
+
+# If unspecified, the default taskwarrior config will be used.
+#taskrc = /path/to/.taskrc
+
+# Setting this to true will shorten links with http://da.gd/
+#shorten = False
+
+# Setting this to True will include a link to the ticket in the description
+inline_links = False
+
+# Setting this to True will include a link to the ticket as an annotation
+annotation_links = True
+
+# Setting this to True will include issue comments and author name in task
+# annotations
+annotation_comments = True
+
+# Defines whether or not issues should be matched based upon their description.
+# In legacy mode, we will attempt to match issues to bugs based upon the
+# presence of the '(bw)' marker in the task description.
+# If this is false, we will only select issues having the appropriate UDA
+# fields defined (which is smarter, better, newer, etc..)
+legacy_matching = False
+
+# log.level specifies the verbosity.  The default is DEBUG.
+# log.level can be one of DEBUG, INFO, WARNING, ERROR, CRITICAL, DISABLED
+#log.level = DEBUG
+
+# If log.file is specified, output will be redirected there.  If it remains
+# unspecified, output is sent to sys.stderr
+#log.file = /var/log/bugwarrior.log
+
+# Configure the default description or annotation length.
+#annotation_length = 45
+
+# Use hooks to run commands prior to importing from bugwarrior-pull.
+# bugwarrior-pull will run the commands in the order that they are specified
+# below.
+#
+# pre_import: The pre_import hook is invoked after all issues have been pulled
+# from remote sources, but before they are synced to the TW db. If your
+# pre_import script has a non-zero exit code, the `bugwarrior-pull` command will
+# exit early.
+# [hooks]
+# pre_import = /home/someuser/backup.sh, /home/someuser/sometask.sh
+
+# This section is for configuring notifications when bugwarrior-pull runs,
+# and when issues are created, updated, or deleted by bugwarrior-pull.
+# Three backends are currently supported:
+#
+#  - growlnotify (v2)   Mac OS X   "gntp" must be installed
+#  - gobject            Linux      python gobject must be installed
+#
+# To configure, adjust the settings below.  Note that neither of the #
+# "sticky" options have any effect on Linux.  They only work for
+# growlnotify.
+# [notifications]
+# notifications = True
+# backend = growlnotify
+# finished_querying_sticky = False
+# task_crud_sticky = True
+# only_on_new_tasks = True
+
+[dlanileonardo_github]
+service = github
+github.default_priority = L
+
+github.login = dlanileonardo
+github.username = dlanileonardo
+# github.token = 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
+github.token = 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
+
+github.description_template = {{githubnumber}}: {{githubtitle}}
+github.include_user_repos = True
+github.import_labels_as_tags = True
+github.label_template = {{label}}
+github.exclude_pull_requests = True
+
+# github.project_owner_prefix = True
+github.project_template = {{project|capitalize}}
+
+[achievemore.github]
+service = github
+github.default_priority = H
+
+github.login = dlanileonardo
+github.username = achievemore
+github.token = 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
+
+github.description_template = {{githubnumber}}: {{githubtitle}}
+github.include_user_repos = True
+github.import_labels_as_tags = True
+github.label_template = achievemore,{{label}}
+github.exclude_pull_requests = True
+
+github.project_template = {{project|capitalize}}
+
+github.include_repos = achievemore-bundle,achievemore-flutter,angular-frontend,business-backbone,achievemore,websockets-api,gem-dynamic-graphql,static,suite,docs

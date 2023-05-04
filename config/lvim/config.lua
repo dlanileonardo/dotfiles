@@ -1,4 +1,4 @@
-utils = require("user.utils")
+local utils = require("user.utils")
 require "user.plugins"
 require "user.config_plugins"
 require "user.general"

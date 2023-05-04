@@ -4,7 +4,7 @@ lvim.plugins = {
   { dir = '~/.dotfiles/themes/vim/',               name = "themer" },
   { "olimorris/onedarkpro.nvim",                   priority = 1000 },
   { 'nyoom-engineering/oxocarbon.nvim' },
-  -- { "luisiacc/gruvbox-baby",                       branch = "main" },
+  { "luisiacc/gruvbox-baby",                       branch = "main" },
   -- { 'shaunsingh/nord.nvim' },
   -- { 'ramojus/mellifluous.nvim',        dependencies = 'rktjmp/lush.nvim' },
   -- { 'titanzero/zephyrium' },
@@ -498,7 +498,8 @@ lvim.plugins = {
     "folke/todo-comments.nvim",
     dependencies = "nvim-lua/plenary.nvim",
     config = function()
-      require("todo-comments").setup {}
+      require("todo-comments").setup({
+      })
     end
   },
 
@@ -617,7 +618,7 @@ lvim.plugins = {
         position = {
           relative_to = "editor",
           anchor = "topcenter",
-          vertical_offset = 3,
+          vertical_offset = 5,
         },
         style = {
           border = "rounded",
@@ -635,7 +636,7 @@ lvim.plugins = {
             default = {
               switch = "immediate",
               view = "paging"
-            }
+            },
           }
         }
       })

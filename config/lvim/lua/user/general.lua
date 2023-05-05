@@ -1,6 +1,7 @@
 -- general
 vim.opt.shell = "/bin/sh"
 vim.opt.relativenumber = true
+vim.opt.sessionoptions = "buffers,curdir,folds,tabpages,winsize,winpos,terminal,localoptions"
 
 lvim.log.level = "warn"
 lvim.format_on_save = true

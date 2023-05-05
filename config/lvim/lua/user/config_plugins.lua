@@ -10,7 +10,7 @@ local map = require('fold-preview').mapping
 keymap.amend('n', 'zp', map.show_close_preview_open_fold)
 
 lvim.builtin.nvimtree.active = false
-lvim.builtin.breadcrumbs.active = false
+-- lvim.builtin.breadcrumbs.active = false
 
 -- RAINBOW
 lvim.builtin.treesitter.rainbow.enable = true
@@ -63,7 +63,7 @@ lvim.builtin.bufferline.active = true
 
 lvim.builtin.bufferline.options.always_show_bufferline = true
 lvim.builtin.bufferline.options.separator_style = "slope"
-lvim.builtin.bufferline.options.sort_by = "relative_directory"
+-- lvim.builtin.bufferline.options.sort_by = "relative_directory"
 lvim.builtin.bufferline.options.show_close_icon = false
 -- lvim.builtin.bufferline.options.close_icon = ''
 -- lvim.builtin.bufferline.options.buffer_close_icon = '󰅖'

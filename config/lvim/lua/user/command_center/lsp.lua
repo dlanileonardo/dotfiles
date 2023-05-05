@@ -58,7 +58,7 @@ local commands = {
     category = "LSP",
   },
   {
-    description = "LSP - Diagnostics",
+    description = "LSP - Buffers Diagnostics",
     cmd = "<CMD>Telescope diagnostics no_unlisted=true<CR>",
     -- keybindings = {  },
     category = "LSP"

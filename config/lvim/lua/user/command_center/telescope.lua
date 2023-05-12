@@ -89,5 +89,10 @@ local commands = {
     cmd = "<CMD>TodoTelescope<CR>",
     category = "Telescope",
   },
+  {
+    description = "Telescope yank",
+    cmd = "<CMD>Telescope yank_history<CR>",
+    category = "Telescope",
+  },
 };
 return commands;

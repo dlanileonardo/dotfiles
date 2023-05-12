@@ -311,23 +311,49 @@ lvim.plugins = {
     end
   },
 
-  -- ------------------------------------------------------------
+  ------------------------------------------------------------
   -- workspaces.nvim
   -- (https://github.com/natecraddock/workspaces.nvim)
   -- workspaces
-  -- ------------------------------------------------------------
+  ------------------------------------------------------------
   {
     "natecraddock/workspaces.nvim",
     config = function()
       require("workspaces").setup({
+        auto_open = false,
+        -- path = vim.fn.stdpath("data") .. "/workspaces",
         hooks = {
           open_pre = { "SessionSave", "bufdo bd" },
           open = { "SessionRestore" }
         }
       })
-      require('telescope').load_extension('workspaces')
     end
   },
+
+
+  -- {
+  --   "aaditeynair/conduct.nvim",
+  --   dependencies = "nvim-lua/plenary.nvim",
+  --   cmd = {
+  --     "ConductNewProject",
+  --     "ConductLoadProject",
+  --     "ConductLoadLastProject",
+  --     "ConductLoadProjectConfig",
+  --     "ConductReloadProjectConfig",
+  --     "ConductDeleteProject",
+  --     "ConductRenameProject",
+  --     "ConductProjectNewSession",
+  --     "ConductProjectLoadSession",
+  --     "ConductProjectDeleteSession",
+  --     "ConductProjectRenameSession",
+  --   },
+  --   config = function()
+  --     require("conduct").setup({
+
+  --     })
+  --   end
+  -- },
+
   -- {
   --   "natecraddock/sessions.nvim",
   --   config = function()
@@ -828,7 +854,50 @@ lvim.plugins = {
         keymaps = { -- These keymaps can be a string or a table for multiple keys
           close = { "q" },
         },
+        symbols = {
+          File = { icon = lvim.icons.kind.File, hl = "@text.uri" },
+          Module = { icon = lvim.icons.kind.Module, hl = "@namespace" },
+          Namespace = { icon = lvim.icons.kind.Namespace, hl = "@namespace" },
+          Package = { icon = lvim.icons.kind.Package, hl = "@namespace" },
+          Class = { icon = lvim.icons.kind.Class, hl = "@constant" },
+          Method = { icon = lvim.icons.kind.Method, hl = "@method" },
+          Property = { icon = lvim.icons.kind.Property, hl = "@method" },
+          Field = { icon = lvim.icons.kind.Field, hl = "@field" },
+          Constructor = { icon = lvim.icons.kind.Constructor, hl = "@constructor" },
+          Enum = { icon = lvim.icons.kind.Enum, hl = "@type" },
+          Interface = { icon = lvim.icons.kind.Interface, hl = "@type" },
+          Function = { icon = lvim.icons.kind.Function, hl = "@function" },
+          Variable = { icon = lvim.icons.kind.Variable, hl = "Statement" },
+          Constant = { icon = lvim.icons.kind.Constant, hl = "Statement" },
+          String = { icon = lvim.icons.kind.String, hl = "@string" },
+          Number = { icon = lvim.icons.kind.Number, hl = "@number" },
+          Boolean = { icon = lvim.icons.kind.Boolean, hl = "@boolean" },
+          Array = { icon = lvim.icons.kind.Array, hl = "@constant" },
+          Object = { icon = lvim.icons.kind.Object, hl = "@constant" },
+          Key = { icon = lvim.icons.kind.Key, hl = "@type" },
+          Null = { icon = lvim.icons.kind.Null, hl = "@type" },
+          EnumMember = { icon = lvim.icons.kind.EnumMember, hl = "@field" },
+          Struct = { icon = lvim.icons.kind.Struct, hl = "@type" },
+          Event = { icon = lvim.icons.kind.Event, hl = "@type" },
+          Operator = { icon = lvim.icons.kind.Operator, hl = "@operator" },
+          TypeParameter = { icon = lvim.icons.kind.TypeParameter, hl = "@parameter" },
+          Component = { icon = lvim.icons.kind.Function, hl = "@function" },
+          Fragment = { icon = lvim.icons.kind.Constant, hl = "@constant" },
+        },
       })
+    end
+  },
+
+  {
+    "gbprod/yanky.nvim",
+    config = function()
+      require("yanky").setup({})
+      vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+      vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+      vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+      vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+      vim.keymap.set("n", "<M-,>", "<Plug>(YankyCycleForward)")
+      vim.keymap.set("n", "<M-.>", "<Plug>(YankyCycleBackward)")
     end
   },
 

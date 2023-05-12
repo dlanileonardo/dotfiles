@@ -81,7 +81,7 @@ local opts = {
       mirror = true,
     },
     layout_strategy = 'vertical',
-    prompt_prefix = "$ ",
+    prompt_prefix = " > ",
     pickers = {
       git_files = {
         hidden = true,
@@ -158,6 +158,11 @@ lvim.builtin.telescope.on_config_done = function(tele)
   tele.load_extension("live_grep_args")
   tele.load_extension("vim_bookmarks")
 
+
+  tele.load_extension('workspaces')
+  -- tele.load_extension("conduct")
+  tele.load_extension("yank_history")
+
   -- tele.load_extension("z")
   -- tele.load_extension("repo")
   -- tele.load_extension("zoxide")
@@ -201,6 +206,10 @@ require('nvim-test').setup {
     typescriptreact = "nvim-test.runners.jest",
   }
 }
+
+lvim.builtin.cmp.on_config_done = function(cmp)
+  -- lvim.builtin.cmp.mapping = {}
+end
 
 
 vim.cmd([[

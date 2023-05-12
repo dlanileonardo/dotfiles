@@ -2,7 +2,7 @@
 # Here you define a comma separated list of targets.  Each of them must have a
 # section below determining their properties, how to query them, etc.  The name
 # is just a symbol, and doesn't have any functional importance.
-targets = achievemore.github
+targets = achievemore.github,achievemore.jira
 
 # If unspecified, the default taskwarrior config will be used.
 #taskrc = /path/to/.taskrc
@@ -86,18 +86,28 @@ github.project_template = {{project|capitalize}}
 
 [achievemore.github]
 service = github
-github.default_priority = H
-
 github.login = dlanileonardo
 github.username = achievemore
-github.token = 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
+github.token = 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
 
+github.default_priority = H
 github.description_template = {{githubnumber}}: {{githubtitle}}
-github.include_user_repos = True
+github.include_user_repos = False
 github.import_labels_as_tags = True
-github.label_template = achievemore,{{label}}
+github.label_template = achievemore,github,{{label}}
 github.exclude_pull_requests = True
-
 github.project_template = {{project|capitalize}}
-
 github.include_repos = achievemore-bundle,achievemore-flutter,angular-frontend,business-backbone,achievemore,websockets-api,gem-dynamic-graphql,static,suite,docs
+
+github.query = assignee:dlanileonardo is:open org:achievemore
+
+[achievemore.jira]
+service = jira
+jira.base_uri = https://achievemore.atlassian.net
+jira.username = odlanier.mendes@achievemore.com.br
+jira.password = ATATT3xFfGF0pAa_kDpU_CRoI_fEVigj1CgdUELhbFxyG-QWF3vKgB7mmoQqA7yAR3_tawmcyz8zoqlh7d8bj23u1b9Zn-x73Q4kPJ2k9F07jjG1BHWbAvTBdZsl3OIKCpkllG5TtMJcDDkcJlIpvX6_iZcDBtriHSwTzwRFz5hgePYnVBen6Hk=F266300B
+
+jira.import_labels_as_tags = True
+jira.import_sprints_as_tags = True
+jira.label_template = achievemore,jira,{{label}}
+jira.project_template = Achievemore Produto Jira

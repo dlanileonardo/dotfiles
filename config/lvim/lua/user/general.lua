@@ -6,8 +6,8 @@ vim.opt.sessionoptions = "buffers,curdir,folds,tabpages,winsize,winpos,terminal,
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
-lvim.colorscheme = "onedark_vivid"
--- lvim.colorscheme = "oxocarbon"
+-- lvim.colorscheme = "onedark_vivid"
+lvim.colorscheme = "oxocarbon"
 -- lvim.colorscheme = "gruvbox-baby"
 lvim.transparent_window = false
 

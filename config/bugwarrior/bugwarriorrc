@@ -2,7 +2,7 @@
 # Here you define a comma separated list of targets.  Each of them must have a
 # section below determining their properties, how to query them, etc.  The name
 # is just a symbol, and doesn't have any functional importance.
-targets = achievemore.github,achievemore.jira
+targets = achievemore.jira,achievemore.github
 
 # If unspecified, the default taskwarrior config will be used.
 #taskrc = /path/to/.taskrc
@@ -88,7 +88,7 @@ github.project_template = {{project|capitalize}}
 service = github
 github.login = dlanileonardo
 github.username = achievemore
-github.token = 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
+github.token = @oracle:use_keyring
 
 github.default_priority = H
 github.description_template = {{githubnumber}}: {{githubtitle}}
@@ -105,7 +105,7 @@ github.query = assignee:dlanileonardo is:open org:achievemore
 service = jira
 jira.base_uri = https://achievemore.atlassian.net
 jira.username = odlanier.mendes@achievemore.com.br
-jira.password = ATATT3xFfGF0pAa_kDpU_CRoI_fEVigj1CgdUELhbFxyG-QWF3vKgB7mmoQqA7yAR3_tawmcyz8zoqlh7d8bj23u1b9Zn-x73Q4kPJ2k9F07jjG1BHWbAvTBdZsl3OIKCpkllG5TtMJcDDkcJlIpvX6_iZcDBtriHSwTzwRFz5hgePYnVBen6Hk=F266300B
+jira.password = @oracle:use_keyring
 
 jira.import_labels_as_tags = True
 jira.import_sprints_as_tags = True

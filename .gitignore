@@ -18,3 +18,4 @@ node_modules/
 themes/themer/output/
 themes/base16/output/
 themes/base16/sources/
+config/fish/*.tmp.*

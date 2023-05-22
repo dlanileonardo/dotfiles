@@ -1,6 +1,0 @@
-[submodule "dependencies/sawesome-terminal-fonts"]
-	path = dependencies/awesome-terminal-fonts
-	url = git@github.com:gabrielelana/awesome-terminal-fonts.git
-[submodule "flatabulous"]
-	path = flatabulous
-	url = git@github.com:anmoljagetia/Flatabulous.git

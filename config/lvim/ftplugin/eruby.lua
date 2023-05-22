@@ -7,6 +7,7 @@ local opts = {
 }
 
 require("lvim.lsp.manager").setup("solargraph", opts)
+
 require("lvim.lsp.manager").setup("emmet_ls", opts)
 
 

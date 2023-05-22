@@ -60,7 +60,7 @@ local commands = {
     category = "Telescope",
   },
   {
-    description = "Teleescope Projects",
+    description = "Telescope Projects",
     cmd = "<cmd>Telescope projects<CR>",
     keybindings = { "n", "<Leader>sP" },
     category = "Telescope",
@@ -72,16 +72,16 @@ local commands = {
     category = "Telescope",
   },
   {
-    description = "Teleescope Explorer",
+    description = "Telescope Explorer",
     cmd = "<cmd>Telescope file_browser<CR>",
-    keybindings = { { "n", "<M-e>" } },
+    keybindings = { { "n", "<M-x>" } },
     category = "Telescope",
   },
   {
     description = "Teleescope Explorer Current Folder",
     -- cmd = "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
     cmd = "<CMD>lua require('telescope').extensions.file_browser.file_browser({path='%:p:h'})<CR>",
-    keybindings = { "n", "<M-b>" },
+    keybindings = { "n", "<M-c>" },
     category = "TTelescope",
   },
   {

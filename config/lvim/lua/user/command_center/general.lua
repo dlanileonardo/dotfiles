@@ -37,42 +37,6 @@ local commands = {
     category = "Window",
   },
   {
-    description = "Next",
-    cmd = "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>",
-    keybindings = { "n", "n" },
-    category = "hlslens",
-  },
-  {
-    description = "Previous",
-    cmd = "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>",
-    keybindings = { "n", "N" },
-    category = "hlslens",
-  },
-  {
-    description = "*",
-    cmd = "*<Cmd>lua require('hlslens').start()<CR>",
-    keybindings = { "n", "*" },
-    category = "hlslens",
-  },
-  {
-    description = "#",
-    cmd = "#<Cmd>lua require('hlslens').start()<CR>",
-    keybindings = { "n", "#" },
-    category = "hlslens",
-  },
-  {
-    description = "g*",
-    cmd = "g*<Cmd>lua require('hlslens').start()<CR>",
-    keybindings = { "n", "g*" },
-    category = "hlslens",
-  },
-  {
-    description = "g#",
-    cmd = "g#<Cmd>lua require('hlslens').start()<CR>",
-    keybindings = { "n", "g#" },
-    category = "hlslens",
-  },
-  {
     description = "Toggle Trouble",
     cmd = "<cmd>TroubleToggle<cr>",
     keybindings = { "n", "<leader>tt" },

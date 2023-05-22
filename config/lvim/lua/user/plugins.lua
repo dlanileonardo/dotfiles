@@ -1,10 +1,10 @@
 -- Additional Plugins
 lvim.plugins = {
   -- THEMES
-  { dir = '~/.dotfiles/themes/vim/',               name = "themer" },
+  -- { dir = '~/.dotfiles/themes/vim/',               name = "themer" },
   { "olimorris/onedarkpro.nvim",                   priority = 1000 },
   { 'nyoom-engineering/oxocarbon.nvim' },
-  { "luisiacc/gruvbox-baby",                       branch = "main" },
+  -- { "luisiacc/gruvbox-baby",                       branch = "main" },
   -- { 'shaunsingh/nord.nvim' },
   -- { 'ramojus/mellifluous.nvim',        dependencies = 'rktjmp/lush.nvim' },
   -- { 'titanzero/zephyrium' },
@@ -15,28 +15,6 @@ lvim.plugins = {
 
   -- PLUGINS
   { dir = '/usr/local/opt/fzf' },
-
-  -- {
-  --   'stevearc/oil.nvim',
-  --   opts = {},
-  --   -- Optional dependencies
-  --   dependencies = { "nvim-tree/nvim-web-devicons" },
-  --   config = function()
-  --     require("oil").setup({
-  --       float = {
-  --         -- Padding around the floating window
-  --         padding = 5,
-  --         max_width = 0,
-  --         max_height = 0,
-  --         border = "rounded",
-  --         win_options = {
-  --           winblend = 10,
-  --         },
-  --       },
-  --     })
-  --     vim.keymap.set("n", "<M-n>", require("oil").open_float, { desc = "Open parent directory" })
-  --   end
-  -- },
 
   -- ------------------------------------------------------------
   -- nvim-dap-vscode-js
@@ -120,7 +98,6 @@ lvim.plugins = {
   -- nvim-spider
   -- (https://github.com/chrisgrieser/nvim-spider)
   -- ------------------------------------------------------------
-
   {
     "chrisgrieser/nvim-spider",
     -- lazy = true,
@@ -183,37 +160,53 @@ lvim.plugins = {
   -- vim-bookmarks
   -- (https://github.com/MattesGroeger/vim-bookmarks)
   -- ------------------------------------------------------------
-  {
-    "MattesGroeger/vim-bookmarks",
-    lazy = false,
-    init = function()
-      lvim.builtin.which_key.mappings["B"] = { name = "Bookmarks" }
-      -- vim.g.bookmark_auto_save = 1
-      -- vim.g.bookmark_manage_per_buffer = 1
-      vim.g.bookmark_auto_close = 1
-    end,
-    keys = {
-      { "<leader>Bt",  "<cmd>BookmarkToggle<CR>",     desc = "Toggle" },
-      { "<leader>Bi",  "<cmd>BookmarkAnnotate<CR>",   desc = "Annotate" },
-      { "<leader>Ba",  "<cmd>BookmarkShowAll<CR>",    desc = "Show All" },
-      { "<leader>Bj",  "<cmd>BookmarkNext<CR>",       desc = "Next" },
-      { "<leader>Bk",  "<cmd>BookmarkPrev<CR>",       desc = "Previous" },
-      { "<leader>Bc",  "<cmd>BookmarkClear<CR>",      desc = "Clear" },
-      { "<leader>Bx",  "<cmd>BookmarkClearAll<CR>",   desc = "Clear All" },
-      { "<leader>Bkk", "<cmd>BookmarkMoveUp<CR>",     desc = "Move Up" },
-      { "<leader>Bjj", "<cmd>BookmarkMoveDown<CR>",   desc = "Move Down" },
-      { "<leader>Bg",  "<cmd>BookmarkMoveToLine<CR>", desc = "Move to Line" },
-      desc = "Bookmarks",
-    },
-  },
+  -- {
+  --   "MattesGroeger/vim-bookmarks",
+  --   lazy = false,
+  --   init = function()
+  --     lvim.builtin.which_key.mappings["B"] = { name = "Bookmarks" }
+  --     -- vim.g.bookmark_auto_save = 1
+  --     -- vim.g.bookmark_manage_per_buffer = 1
+  --     vim.g.bookmark_auto_close = 1
+  --   end,
+  --   keys = {
+  --     { "<leader>Bt",  "<cmd>BookmarkToggle<CR>",     desc = "Toggle" },
+  --     { "<leader>Bi",  "<cmd>BookmarkAnnotate<CR>",   desc = "Annotate" },
+  --     { "<leader>Ba",  "<cmd>BookmarkShowAll<CR>",    desc = "Show All" },
+  --     { "<leader>Bj",  "<cmd>BookmarkNext<CR>",       desc = "Next" },
+  --     { "<leader>Bk",  "<cmd>BookmarkPrev<CR>",       desc = "Previous" },
+  --     { "<leader>Bc",  "<cmd>BookmarkClear<CR>",      desc = "Clear" },
+  --     { "<leader>Bx",  "<cmd>BookmarkClearAll<CR>",   desc = "Clear All" },
+  --     { "<leader>Bkk", "<cmd>BookmarkMoveUp<CR>",     desc = "Move Up" },
+  --     { "<leader>Bjj", "<cmd>BookmarkMoveDown<CR>",   desc = "Move Down" },
+  --     { "<leader>Bg",  "<cmd>BookmarkMoveToLine<CR>", desc = "Move to Line" },
+  --     desc = "Bookmarks",
+  --   },
+  -- },
+
+  -- ------------------------------------------------------------
+  -- cutlass.nvim
+  -- (https://github.com/gbprod/cutlass.nvim)
+  -- ------------------------------------------------------------
+  -- {
+  --   "gbprod/cutlass.nvim",
+  --   opts = {
+  --     cut_key = "x",
+  --     registers = {
+  --       select = "s",
+  --       delete = "d",
+  --       change = "c",
+  --     },
+  --   },
+  -- },
 
   -- ------------------------------------------------------------
   -- telescope-vim-bookmarks.nvim
   -- (https://github.com/tom-anders/telescope-vim-bookmarks.nvim)
   -- ------------------------------------------------------------
-  {
-    "tom-anders/telescope-vim-bookmarks.nvim"
-  },
+  -- {
+  --   "tom-anders/telescope-vim-bookmarks.nvim"
+  -- },
 
   -- {
   --   "crusj/bookmarks.nvim",
@@ -330,40 +323,6 @@ lvim.plugins = {
     end
   },
 
-
-  -- {
-  --   "aaditeynair/conduct.nvim",
-  --   dependencies = "nvim-lua/plenary.nvim",
-  --   cmd = {
-  --     "ConductNewProject",
-  --     "ConductLoadProject",
-  --     "ConductLoadLastProject",
-  --     "ConductLoadProjectConfig",
-  --     "ConductReloadProjectConfig",
-  --     "ConductDeleteProject",
-  --     "ConductRenameProject",
-  --     "ConductProjectNewSession",
-  --     "ConductProjectLoadSession",
-  --     "ConductProjectDeleteSession",
-  --     "ConductProjectRenameSession",
-  --   },
-  --   config = function()
-  --     require("conduct").setup({
-
-  --     })
-  --   end
-  -- },
-
-  -- {
-  --   "natecraddock/sessions.nvim",
-  --   config = function()
-  --     require("sessions").setup({
-  --       events = { "WinEnter" },
-  --       -- session_filepath = vim.fn.stdpath("data") .. "/sessions",
-  --       absolute = true,
-  --     })
-  --   end
-  -- },
   -- ------------------------------------------------------------
   -- neoscroll
   -- (https://github.com/karb94/neoscroll.nvim)
@@ -550,6 +509,19 @@ lvim.plugins = {
     'kevinhwang91/nvim-hlslens',
     config = function()
       require('hlslens').setup()
+
+      local kopts = { noremap = true, silent = true }
+
+      vim.api.nvim_set_keymap('n', 'n',
+        [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]], kopts)
+      vim.api.nvim_set_keymap('n', 'N',
+        [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]], kopts)
+      vim.api.nvim_set_keymap('n', '*', [[*<Cmd>lua require('hlslens').start()<CR>]], kopts)
+      vim.api.nvim_set_keymap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>]], kopts)
+      vim.api.nvim_set_keymap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts)
+      vim.api.nvim_set_keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
+
+      vim.api.nvim_set_keymap('n', '<Leader>l', '<Cmd>noh<CR>', kopts)
     end
   },
 
@@ -590,39 +562,6 @@ lvim.plugins = {
       })
     end
   },
-
-  -- ------------------------------------------------------------
-  -- cmp-fuzzy-buffer
-  -- (https://github.com/tzachar/cmp-fuzzy-buffer)
-  -- ------------------------------------------------------------
-  -- {
-  --   'tzachar/cmp-fuzzy-buffer',
-  --   dependencies = { 'hrsh7th/nvim-cmp', 'tzachar/fuzzy.nvim' },
-  --   config = function()
-  --     lvim.builtin.cmp.sources = vim.tbl_extend("force", lvim.builtin.cmp.sources, {
-  --       { name = "fuzzy_buffer" }
-  --     })
-  --   end
-  -- },
-  -- {
-
-  -- ------------------------------------------------------------
-  -- tabnine-nvim
-  -- https://github.com/codota/tabnine-nvim
-  -- ------------------------------------------------------------
-  -- {
-  --   'codota/tabnine-nvim', build = "./dl_binaries.sh",
-  --   config = function()
-  --     require('tabnine').setup({
-  --       disable_auto_comment = true,
-  --       accept_keymap = "<C-y>",
-  --       dismiss_keymap = "<C-]>",
-  --       debounce_ms = 800,
-  --       suggestion_color = { gui = "#808080", cterm = 244 },
-  --       exclude_filetypes = { "TelescopePrompt" }
-  --     })
-  --   end
-  -- },
 
   -- ------------------------------------------------------------
   -- cybu.nvim
@@ -817,7 +756,9 @@ lvim.plugins = {
   -- ------------------------------------------------------------
   {
     'j-hui/fidget.nvim',
-    config = function() require('fidget').setup {} end
+    config = function()
+      require('fidget').setup {}
+    end
   },
 
   -- ------------------------------------------------------------

@@ -21,8 +21,8 @@ require("lvim.lsp.manager").setup("tailwindcss", {
   capabilities = capabilities,
 })
 
-require("lvim.lsp.manager").setup("angularls", {
-  capabilities = capabilities,
-})
+-- require("lvim.lsp.manager").setup("angularls", {
+--   capabilities = capabilities,
+-- })
 
 vim.notify("typescript loaded")

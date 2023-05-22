@@ -110,3 +110,20 @@ fzf_configure_bindings --directory=\cf
 for f in ~/.dotfiles/sources/*
   cat "$f" | source
 end
+
+# function cd -w='cd'
+#   builtin cd $argv || return
+#   check_directory_for_new_repository
+# end
+
+# function check_directory_for_new_repository
+#   set current_repository (git rev-parse --show-toplevel 2> /dev/null)
+#   if [ "$current_repository" ] && \
+#     [ "$current_repository" != "$last_repository" ]
+#     onefetch
+#   end
+#   set -gx last_repository $current_repository
+# end
+
+# funcsave cd
+# funcsave check_directory_for_new_repository

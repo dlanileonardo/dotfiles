@@ -26,6 +26,7 @@
   repo = town repo
   ship = town ship
   sync = town sync
+	project-summary = !which onefetch && onefetch
 [push]
   default = current
 [pull]

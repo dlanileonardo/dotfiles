@@ -1,3 +1,5 @@
+vim.cmd("setlocal colorcolumn=120")
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 -- capabilities.textDocument.documentHighlight = true
@@ -52,4 +54,4 @@ require("lvim.lsp.manager").setup("tailwindcss", {
 --   },
 -- }
 
-vim.notify("tsserver loaded")
+-- vim.notify("tsserver loaded")

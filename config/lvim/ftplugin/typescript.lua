@@ -1,4 +1,7 @@
+vim.cmd("setlocal colorcolumn=120")
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+
 -- local dap = require('dap')
 
 -- capabilities.textDocument.documentHighlight = true

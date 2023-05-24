@@ -1,5 +1,6 @@
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+vim.cmd("setlocal colorcolumn=120")
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 local rspec = require('nvim-test.runners.rspec'):setup {}
 
 function rspec:build_test_args(args, tests)
@@ -15,4 +16,4 @@ local opts = {
 require("lvim.lsp.manager").setup("solargraph", opts)
 require("lvim.lsp.manager").setup("rubocop", opts)
 
-vim.notify("ruby loaded")
+-- vim.notify("ruby loaded")

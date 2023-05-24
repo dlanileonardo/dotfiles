@@ -21,6 +21,11 @@ local commands = {
     cmd = "<CMD>DiffviewOpen<CR>",
     category = "git",
   },
+  {
+    description = "Git - Diff Close",
+    cmd = "<CMD>DiffviewClose<CR>",
+    category = "git",
+  },
   -- {
   --   description = "Toggle Git - Blame",
   --   cmd = "<CMD>GitBlameToggle<CR>",

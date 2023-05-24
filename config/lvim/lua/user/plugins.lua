@@ -4,7 +4,7 @@ lvim.plugins = {
   -- { dir = '~/.dotfiles/themes/vim/',               name = "themer" },
   { "olimorris/onedarkpro.nvim",                   priority = 1000 },
   { 'nyoom-engineering/oxocarbon.nvim' },
-  -- { "luisiacc/gruvbox-baby",                       branch = "main" },
+  { "luisiacc/gruvbox-baby",                       branch = "main" },
   -- { 'shaunsingh/nord.nvim' },
   -- { 'ramojus/mellifluous.nvim',        dependencies = 'rktjmp/lush.nvim' },
   -- { 'titanzero/zephyrium' },
@@ -88,6 +88,30 @@ lvim.plugins = {
     branch = "master"
   },
 
+  {
+    'Bekaboo/deadcolumn.nvim',
+    opts = {
+      modes = { 'i', 'ic', 'ix', 'R', 'Rc', 'Rx', 'Rv', 'Rvc', 'Rvx' },
+      blending = {
+        threshold = 0.75,
+        colorcode = '#000000',
+        hlgroup = {
+          'Normal',
+          'background',
+        },
+      },
+      warning = {
+        alpha = 0.2,
+        offset = 0,
+        colorcode = '#FF0000',
+        hlgroup = {
+          'Error',
+          'background',
+        },
+      },
+    },
+  },
+
   -- ------------------------------------------------------------
   -- nvim-ts-rainbow
   -- (https://github.com/mrjones2014/nvim-ts-rainbow)
@@ -100,13 +124,13 @@ lvim.plugins = {
   -- ------------------------------------------------------------
   {
     "chrisgrieser/nvim-spider",
-    -- lazy = true,
-    config = function()
-      vim.keymap.set({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
-      vim.keymap.set({ "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
-      vim.keymap.set({ "n", "o", "x" }, "b", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-b" })
-      vim.keymap.set({ "n", "o", "x" }, "ge", "<cmd>lua require('spider').motion('ge')<CR>", { desc = "Spider-ge" })
-    end
+    lazy = true,
+    keys = {
+      { "w",  "<cmd>lua require('spider').motion('w')<CR>",  desc = "Spider-w",  mode = { "n", "o", "x" } },
+      { "e",  "<cmd>lua require('spider').motion('e')<CR>",  desc = "Spider-e",  mode = { "n", "o", "x" } },
+      { "b",  "<cmd>lua require('spider').motion('b')<CR>",  desc = "Spider-b",  mode = { "n", "o", "x" } },
+      { "ge", "<cmd>lua require('spider').motion('ge')<CR>", desc = "Spider-ge", mode = { "n", "o", "x" } },
+    },
   },
 
   -- ------------------------------------------------------------
@@ -115,9 +139,13 @@ lvim.plugins = {
   -- ------------------------------------------------------------
   {
     "gfeiyou/command-center.nvim",
-    config = function()
-      vim.api.nvim_set_keymap('n', '<C-M-p>', ":Telescope command_center<CR>", { silent = true })
-    end
+    lazy = false,
+    keys = {
+      { "<C-M-p>", ":Telescope command_center<CR>", desc = "Command Center" }
+    },
+    -- config = function()
+    --   vim.api.nvim_set_keymap('n', '<C-M-p>', ":Telescope command_center<CR>", { silent = true })
+    -- end
   },
 
   -- ------------------------------------------------------------
@@ -126,17 +154,14 @@ lvim.plugins = {
   -- ------------------------------------------------------------
   {
     "klen/nvim-config-local",
-    config = function()
-      require('config-local').setup {
-        -- Default configuration (optional)
-        config_files = { ".vimrc.lua", ".vimrc" },            -- Config file patterns to load (lua supported)
-        hashfile = vim.fn.stdpath("data") .. "/config-local", -- Where the plugin keeps files data
-        autocommands_create = true,                           -- Create autocommands (VimEnter, DirectoryChanged)
-        commands_create = true,                               -- Create commands (ConfigSource, ConfigEdit, ConfigTrust, ConfigIgnore)
-        silent = false,                                       -- Disable plugin messages (Config loaded/ignored)
-        lookup_parents = false,                               -- Lookup config files in parent directories
-      }
-    end
+    opts = {
+      config_files = { ".vimrc.lua", ".vimrc" },            -- Config file patterns to load (lua supported)
+      hashfile = vim.fn.stdpath("data") .. "/config-local", -- Where the plugin keeps files data
+      autocommands_create = true,                           -- Create autocommands (VimEnter, DirectoryChanged)
+      commands_create = true,                               -- Create commands (ConfigSource, ConfigEdit, ConfigTrust, ConfigIgnore)
+      silent = false,                                       -- Disable plugin messages (Config loaded/ignored)
+      lookup_parents = false,                               -- Lookup config files in parent directories
+    },
   },
 
   -- ------------------------------------------------------------
@@ -233,7 +258,8 @@ lvim.plugins = {
   {
     "sindrets/diffview.nvim",
     lazy = true,
-    event = "BufRead",
+    -- event = "BufRead",
+    cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewClose", },
     dependencies = 'nvim-lua/plenary.nvim'
   },
 
@@ -263,9 +289,7 @@ lvim.plugins = {
     keys = {
       { "<leader>Tt", "<cmd>Twilight<cr>", desc = "Twilight" },
     },
-    config = function()
-      require("twilight").setup {}
-    end
+    opts = {},
   },
 
   -- ------------------------------------------------------------
@@ -273,10 +297,28 @@ lvim.plugins = {
   -- (https://github.com/machakann/vim-sandwich)
   -- Surround text like a boss
   -- ------------------------------------------------------------
+  -- {
+  --   "machakann/vim-sandwich",
+  --   lazy = true,
+  --   event = "BufRead",
+  -- },
+
+  -- ------------------------------------------------------------
+  -- nvim-surround
+  -- (https://github.com/kylechui/nvim-surround)
+  -- Add/change/delete surrounding delimiter pairs with ease. Written in Lua.
+  -- ------------------------------------------------------------
   {
-    "machakann/vim-sandwich",
-    lazy = true,
-    event = "BufRead",
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    opts = {
+      keymaps = {
+        normal = "sa",
+        delete = "sd",
+        change = "sr",
+      },
+    }
   },
 
   -- ------------------------------------------------------------
@@ -296,12 +338,10 @@ lvim.plugins = {
   -- ------------------------------------------------------------
   {
     'rmagatti/auto-session',
-    config = function()
-      require("auto-session").setup {
-        auto_restore_enabled = true,
-        log_level = "error",
-      }
-    end
+    opts = {
+      auto_restore_enabled = true,
+      log_level = "error",
+    },
   },
 
   ------------------------------------------------------------
@@ -311,16 +351,14 @@ lvim.plugins = {
   ------------------------------------------------------------
   {
     "natecraddock/workspaces.nvim",
-    config = function()
-      require("workspaces").setup({
-        auto_open = false,
-        -- path = vim.fn.stdpath("data") .. "/workspaces",
-        hooks = {
-          open_pre = { "SessionSave", "bufdo bd" },
-          open = { "SessionRestore" }
-        }
-      })
-    end
+    opts = {
+      auto_open = false,
+      -- path = vim.fn.stdpath("data") .. "/workspaces",
+      hooks = {
+        open_pre = { "SessionSave", "bufdo bd" },
+        open = { "SessionRestore" }
+      },
+    },
   },
 
   -- ------------------------------------------------------------
@@ -331,21 +369,19 @@ lvim.plugins = {
   {
     "karb94/neoscroll.nvim",
     event = "WinScrolled",
-    config = function()
-      require('neoscroll').setup({
-        -- All these keys will be mapped to their corresponding default scrolling animation
-        mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb', '<PageUp>', 'PageDown', },
-        -- performance_mode = true,
-        hide_cursor = true,          -- Hide cursor while scrolling
-        stop_eof = true,             -- Stop at <EOF> when scrolling downwards
-        use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
-        respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-        -- easing_function = nil, -- Default easing function
-        pre_hook = nil,              -- Function to run before the scrolling animation starts
-        post_hook = nil,             -- Function to run after the scrolling animation ends
-      })
-    end
+    opts = {
+      -- All these keys will be mapped to their corresponding default scrolling animation
+      mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb', '<PageUp>', 'PageDown', },
+      -- performance_mode = true,
+      hide_cursor = true,          -- Hide cursor while scrolling
+      stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+      use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
+      respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+      cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+      -- easing_function = nil, -- Default easing function
+      pre_hook = nil,              -- Function to run before the scrolling animation starts
+      post_hook = nil,             -- Function to run after the scrolling animation ends
+    },
   },
 
   -- ------------------------------------------------------------
@@ -357,9 +393,7 @@ lvim.plugins = {
     "windwp/nvim-ts-autotag",
     lazy = true,
     event = "BufRead",
-    config = function()
-      require("nvim-ts-autotag").setup()
-    end,
+    opts = {}
   },
 
   -- ------------------------------------------------------------
@@ -369,26 +403,24 @@ lvim.plugins = {
   -- ------------------------------------------------------------
   {
     'nvim-treesitter/nvim-treesitter-context',
-    config = function()
-      require 'treesitter-context'.setup {
-        enable = true,
-        throttle = true,
-        max_lines = 0,
-        -- mode = 'topline',
-        patterns = {
-          default = {
-            'class',
-            'function',
-            'method',
-            'for',
-            'while',
-            'if',
-            'switch',
-            'case',
-          },
+    opts = {
+      enable = true,
+      throttle = true,
+      max_lines = 0,
+      -- mode = 'topline',
+      patterns = {
+        default = {
+          'class',
+          'function',
+          'method',
+          'for',
+          'while',
+          'if',
+          'switch',
+          'case',
         },
-      }
-    end
+      },
+    },
   },
 
   -- ------------------------------------------------------------
@@ -403,9 +435,7 @@ lvim.plugins = {
       { "T", "<CMD>lua require('ts-node-action').node_action()<CR>", desc = "Node Action" },
     },
     dependencies = { 'nvim-treesitter' },
-    config = function()
-      require("ts-node-action").setup({})
-    end
+    opts = {}
   },
 
 
@@ -417,12 +447,10 @@ lvim.plugins = {
     'nacro90/numb.nvim',
     lazy = true,
     event = "BufRead",
-    config = function()
-      require('numb').setup({
-        show_numbers = true,
-        show_cursorline = true,
-      })
-    end
+    opts = {
+      show_numbers = true,
+      show_cursorline = true,
+    }
   },
 
   -- ------------------------------------------------------------
@@ -433,24 +461,17 @@ lvim.plugins = {
   {
     'phaazon/hop.nvim',
     lazy = true,
-    event = "BufRead",
+    -- event = "BufRead",
     branch = 'v2',
-    config = function()
-      require 'hop'.setup {}
-
-      lvim.builtin.which_key.mappings['r'] = {
-        name = "Hop",
-        w = { "<cmd>HopWord<CR>", "Search by Word" },
-        e = { "<cmd>HopPattern<CR>", "Search by Pattern" },
-        f = {
-          "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",
-          "After Cursor" },
-        F = {
-          "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",
-          "Before Cursor" },
-        d = { "<cmd>lua require'hop'.hint_words({ current_line_only = true })<cr>", "Jump to Word" },
-      }
-    end
+    keys = {
+      { "ff", "<cmd>HopWord<cr>",                                                   desc = "Hop Word" },
+      { "fl", "<cmd>HopLine<cr>",                                                   desc = "Hop Line" },
+      { "fs", "<cmd>HopLineStart<cr>",                                              desc = "Hop Line Start" },
+      { "fd", "<cmd>lua require'hop'.hint_words({ current_line_only = true })<cr>", desc = "Hop in Current Line" },
+      { "fc", "<cmd>HopChar1<cr>",                                                  desc = "Hop Char1" },
+      { "fp", "<cmd>HopPattern<cr>",                                                desc = "Hop Pattern" },
+    },
+    opts = {}
   },
 
   -- ------------------------------------------------------------
@@ -459,20 +480,18 @@ lvim.plugins = {
   -- ------------------------------------------------------------
   {
     'anuvyklack/pretty-fold.nvim',
-    config = function()
-      require('pretty-fold').setup({
-        -- keep_indentation = true,
-        fill_char = '-',
-        sections = {
-          left = {
-            'content', ' |-'
-          },
-          right = {
-            '-| ', 'number_of_folded_lines', ': ', 'percentage', ' |-',
-          }
-        }
-      })
-    end
+    opts = {
+      -- keep_indentation = true,
+      fill_char = '-',
+      sections = {
+        left = {
+          'content', ' |-'
+        },
+        right = {
+          '-| ', 'number_of_folded_lines', ': ', 'percentage', ' |-',
+        },
+      },
+    },
   },
 
   -- ------------------------------------------------------------
@@ -482,10 +501,7 @@ lvim.plugins = {
   {
     "folke/todo-comments.nvim",
     dependencies = "nvim-lua/plenary.nvim",
-    config = function()
-      require("todo-comments").setup({
-      })
-    end
+    opts = {}
   },
 
   -- ------------------------------------------------------------
@@ -495,9 +511,7 @@ lvim.plugins = {
   {
     'anuvyklack/fold-preview.nvim',
     dependencies = 'anuvyklack/keymap-amend.nvim',
-    config = function()
-      require('fold-preview').setup()
-    end
+    opts = {},
   },
 
   -- ------------------------------------------------------------
@@ -573,6 +587,13 @@ lvim.plugins = {
     branch = "main", -- timely updates
     -- branch = "v1.x", -- won't receive breaking changes
     -- dependencies = { "kyazdani42/nvim-web-devicons" }, -- optional
+    keys = {
+      { "<M-s-tab>", "<plug>(CybuLastusedPrev)", desc = "Last Previous Buffer", mode = { "n", "v" } },
+      { "<M-tab>",   "<plug>(CybuLastusedNext)", desc = "Last Next Buffer",     mode = { "n", "v" } },
+      { "<C-l>",     "<CMD>CybuNext<CR>",        desc = "Next Buffer" },
+      { "<C-h>",     "<CMD>CybuPrev<CR>",        desc = "Previous Buffer" },
+    },
+    lazy = true,
     config = function()
       local ok, cybu = pcall(require, "cybu")
       if not ok then
@@ -605,9 +626,6 @@ lvim.plugins = {
           }
         }
       })
-
-      vim.keymap.set({ "n", "v" }, "<M-s-tab>", "<plug>(CybuLastusedPrev)")
-      vim.keymap.set({ "n", "v" }, "<M-tab>", "<plug>(CybuLastusedNext)")
     end,
   },
 
@@ -657,19 +675,16 @@ lvim.plugins = {
     "cshuaimin/ssr.nvim",
     -- module = "ssr",
     lazy = true,
-    -- Calling setup is optional.
-    config = function()
-      require("ssr").setup {
-        min_width = 50,
-        min_height = 5,
-        keymaps = {
-          close = "q",
-          next_match = "n",
-          prev_match = "N",
-          replace_all = "<cr>",
-        },
-      }
-    end
+    opts = {
+      min_width = 50,
+      min_height = 5,
+      keymaps = {
+        close = "q",
+        next_match = "n",
+        prev_match = "N",
+        replace_all = "<cr>",
+      },
+    },
   },
 
   -- ------------------------------------------------------------
@@ -679,14 +694,12 @@ lvim.plugins = {
   {
     'rmagatti/goto-preview',
     lazy = true,
-    config = function()
-      require('goto-preview').setup {
-        default_mappings = false,
-        width = 120,
-        height = 25,
-        debug = false,
-      }
-    end
+    opts = {
+      default_mappings = false,
+      width = 120,
+      height = 25,
+      debug = false,
+    },
   },
 
   -- LSP
@@ -720,15 +733,9 @@ lvim.plugins = {
     "ray-x/lsp_signature.nvim",
     lazy = true,
     event = "BufRead",
-    config = function()
-      require('lsp_signature').on_attach {
-        -- bind = true, -- This is mandatory, otherwise border config won't get registered.
-        -- handler_opts = {
-        --   border = 'rounded'
-        -- },
-        hint = false,
-      }
-    end
+    opts = {
+      hint = false,
+    },
   },
 
   -- ------------------------------------------------------------
@@ -756,9 +763,7 @@ lvim.plugins = {
   -- ------------------------------------------------------------
   {
     'j-hui/fidget.nvim',
-    config = function()
-      require('fidget').setup {}
-    end
+    opts = {},
   },
 
   -- ------------------------------------------------------------
@@ -769,11 +774,9 @@ lvim.plugins = {
     "haringsrob/nvim_context_vt",
     lazy = true,
     event = "BufRead",
-    config = function()
-      require('nvim_context_vt').setup({
-        enabled = false,
-      })
-    end
+    opts = {
+      enabled = false,
+    },
   },
 
   -- ------------------------------------------------------------
@@ -787,46 +790,44 @@ lvim.plugins = {
     keys = {
       { "<leader>lo", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" },
     },
-    config = function()
-      require("symbols-outline").setup({
-        auto_preview = false,
-        preview_bg_highlight = "Pmenu",
-        highlight_hovered_item = true,
-        keymaps = { -- These keymaps can be a string or a table for multiple keys
-          close = { "q" },
-        },
-        symbols = {
-          File = { icon = lvim.icons.kind.File, hl = "@text.uri" },
-          Module = { icon = lvim.icons.kind.Module, hl = "@namespace" },
-          Namespace = { icon = lvim.icons.kind.Namespace, hl = "@namespace" },
-          Package = { icon = lvim.icons.kind.Package, hl = "@namespace" },
-          Class = { icon = lvim.icons.kind.Class, hl = "@constant" },
-          Method = { icon = lvim.icons.kind.Method, hl = "@method" },
-          Property = { icon = lvim.icons.kind.Property, hl = "@method" },
-          Field = { icon = lvim.icons.kind.Field, hl = "@field" },
-          Constructor = { icon = lvim.icons.kind.Constructor, hl = "@constructor" },
-          Enum = { icon = lvim.icons.kind.Enum, hl = "@type" },
-          Interface = { icon = lvim.icons.kind.Interface, hl = "@type" },
-          Function = { icon = lvim.icons.kind.Function, hl = "@function" },
-          Variable = { icon = lvim.icons.kind.Variable, hl = "Statement" },
-          Constant = { icon = lvim.icons.kind.Constant, hl = "Statement" },
-          String = { icon = lvim.icons.kind.String, hl = "@string" },
-          Number = { icon = lvim.icons.kind.Number, hl = "@number" },
-          Boolean = { icon = lvim.icons.kind.Boolean, hl = "@boolean" },
-          Array = { icon = lvim.icons.kind.Array, hl = "@constant" },
-          Object = { icon = lvim.icons.kind.Object, hl = "@constant" },
-          Key = { icon = lvim.icons.kind.Key, hl = "@type" },
-          Null = { icon = lvim.icons.kind.Null, hl = "@type" },
-          EnumMember = { icon = lvim.icons.kind.EnumMember, hl = "@field" },
-          Struct = { icon = lvim.icons.kind.Struct, hl = "@type" },
-          Event = { icon = lvim.icons.kind.Event, hl = "@type" },
-          Operator = { icon = lvim.icons.kind.Operator, hl = "@operator" },
-          TypeParameter = { icon = lvim.icons.kind.TypeParameter, hl = "@parameter" },
-          Component = { icon = lvim.icons.kind.Function, hl = "@function" },
-          Fragment = { icon = lvim.icons.kind.Constant, hl = "@constant" },
-        },
-      })
-    end
+    opts = {
+      auto_preview = false,
+      preview_bg_highlight = "Pmenu",
+      highlight_hovered_item = true,
+      keymaps = { -- These keymaps can be a string or a table for multiple keys
+        close = { "q" },
+      },
+      symbols = {
+        File = { icon = lvim.icons.kind.File, hl = "@text.uri" },
+        Module = { icon = lvim.icons.kind.Module, hl = "@namespace" },
+        Namespace = { icon = lvim.icons.kind.Namespace, hl = "@namespace" },
+        Package = { icon = lvim.icons.kind.Package, hl = "@namespace" },
+        Class = { icon = lvim.icons.kind.Class, hl = "@constant" },
+        Method = { icon = lvim.icons.kind.Method, hl = "@method" },
+        Property = { icon = lvim.icons.kind.Property, hl = "@method" },
+        Field = { icon = lvim.icons.kind.Field, hl = "@field" },
+        Constructor = { icon = lvim.icons.kind.Constructor, hl = "@constructor" },
+        Enum = { icon = lvim.icons.kind.Enum, hl = "@type" },
+        Interface = { icon = lvim.icons.kind.Interface, hl = "@type" },
+        Function = { icon = lvim.icons.kind.Function, hl = "@function" },
+        Variable = { icon = lvim.icons.kind.Variable, hl = "Statement" },
+        Constant = { icon = lvim.icons.kind.Constant, hl = "Statement" },
+        String = { icon = lvim.icons.kind.String, hl = "@string" },
+        Number = { icon = lvim.icons.kind.Number, hl = "@number" },
+        Boolean = { icon = lvim.icons.kind.Boolean, hl = "@boolean" },
+        Array = { icon = lvim.icons.kind.Array, hl = "@constant" },
+        Object = { icon = lvim.icons.kind.Object, hl = "@constant" },
+        Key = { icon = lvim.icons.kind.Key, hl = "@type" },
+        Null = { icon = lvim.icons.kind.Null, hl = "@type" },
+        EnumMember = { icon = lvim.icons.kind.EnumMember, hl = "@field" },
+        Struct = { icon = lvim.icons.kind.Struct, hl = "@type" },
+        Event = { icon = lvim.icons.kind.Event, hl = "@type" },
+        Operator = { icon = lvim.icons.kind.Operator, hl = "@operator" },
+        TypeParameter = { icon = lvim.icons.kind.TypeParameter, hl = "@parameter" },
+        Component = { icon = lvim.icons.kind.Function, hl = "@function" },
+        Fragment = { icon = lvim.icons.kind.Constant, hl = "@constant" },
+      },
+    },
   },
 
   {

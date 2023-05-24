@@ -211,11 +211,6 @@ lvim.builtin.cmp.on_config_done = function(cmp)
   -- lvim.builtin.cmp.mapping = {}
 end
 
-
-vim.cmd([[
-  let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
-]])
-
 vim.cmd([[
   highlight BookmarkSign ctermbg=NONE ctermfg=1
   highlight BookmarkLine ctermbg=1 ctermfg=NONE

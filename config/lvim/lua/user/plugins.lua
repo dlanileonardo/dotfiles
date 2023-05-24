@@ -688,21 +688,21 @@ lvim.plugins = {
   -- (https://github.com/cshuaimin/ssr.nvim)
   -- Treesitter based structural search and replace plugin for Neovim.
   -- ------------------------------------------------------------
-  {
-    "cshuaimin/ssr.nvim",
-    -- module = "ssr",
-    lazy = true,
-    opts = {
-      min_width = 50,
-      min_height = 5,
-      keymaps = {
-        close = "q",
-        next_match = "n",
-        prev_match = "N",
-        replace_all = "<cr>",
-      },
-    },
-  },
+  -- {
+  --   "cshuaimin/ssr.nvim",
+  --   -- module = "ssr",
+  --   lazy = true,
+  --   opts = {
+  --     min_width = 50,
+  --     min_height = 5,
+  --     keymaps = {
+  --       close = "q",
+  --       next_match = "n",
+  --       prev_match = "N",
+  --       replace_all = "<cr>",
+  --     },
+  --   },
+  -- },
 
   -- ------------------------------------------------------------
   -- goto-preview

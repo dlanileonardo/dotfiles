@@ -14,7 +14,6 @@
 | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>w</kbd> | Delete Buffer |
 | <kbd>Alt</kbd> + <kbd>q</kbd> | Tab Close |
 | <kbd>Ctrl</kbd> + <kbd>q</kbd> | Window Close |
-| <kbd>Alt</kbd> + <kbd>b</kbd> | NvimTree Toggle |
 | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>q</kbd> | Close Vim |
 
 ## [Hop](https://github.com/phaazon/hop.nvim)

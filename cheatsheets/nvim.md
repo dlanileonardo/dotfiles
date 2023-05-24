@@ -69,6 +69,7 @@
 | <kbd>r</kbd> | replace |
 | <kbd>n.</kbd> | Repeat same Insert in Next occurence |
 | <kbd>J</kbd> | Join next Line to Previous |
+| <kbd>S-Up</kbd>, <kbd>S-Down</kbd> | Move current line do up or Down |
 
 ## Misc
 
@@ -84,13 +85,21 @@
 | ---------- | ----------- |
 | <kbd>K</kbd> | Hover Documentation |
 
-## [Sandwitch](https://github.com/machakann/vim-sandwich)
+## Panels and Windows
+
+| Keybinding | Description |
+| ---------- | ----------- |
+| <kbd>C-h</kbd>, <kbd>C-j</kbd>, <kbd>C-k</kbd>, <kbd>C-l</kbd> | Move Between Splits and Panels (tmux support) |
+| <kbd>M-h</kbd>, <kbd>M-j</kbd>, <kbd>M-k</kbd>, <kbd>M-l</kbd> | Resize Splits and Panels (tmux support) |
+
+## [nvim-surround](https://github.com/kylechui/nvim-surround)
 
 | Keybinding | Description |
 | ---------- | ----------- |
 | <kbd>sa</kbd> , <kbd>saiw'</kbd> | add |
 | <kbd>sd</kbd> , <kbd>sdb</kbd> , <kbd>sd'</kbd> | delete |
 | <kbd>sr</kbd> , <kbd>srb'</kbd> , <kbd>sr'"</kbd> | replace |
+| <kbd>S'</kbd> | add (visual mode) |
 
 ## [ssr.nvim](https://github.com/cshuaimin/ssr.nvim)
 
@@ -111,49 +120,3 @@
 | <kbd>Q</kbd> | press `Q` to remove current cursor/selection |
 | <kbd>i</kbd> , <kbd>a</kbd> , <kbd>I</kbd> , <kbd>A</kbd> | start insert mode with <kbd>i</kbd>,<kbd>a</kbd>,<kbd>I</kbd>,<kbd>A</kbd> |
 
-## NeoVimTree
-
-| Keybinding | Description |
-| ---------- | ----------- |
-| <kbd>Enter</kbd> or <kbd>LClick</kbd> | edit - open a file or folder; root will cd to the above directory |
-| <kbd>C-e</kbd> | edit_in_place - edit the file in place, effectively replacing the tree explorer |
-| <kbd>O</kbd> | edit_no_picker - same as (edit) with no window picker |
-| <kbd>C</kbd> + <kbd>]</kbd> , <kbd>RClick</kbd> | cd - cd in the directory under the cursor |
-| <kbd>Ctrl</kbd> + <kbd>v</kbd> | vsplit - open the file in a vertical split |
-| <kbd>Ctrl</kbd> + <kbd>x</kbd> | split - open the file in a horizontal split |
-| <kbd>Ctrl</kbd> + <kbd>t</kbd> | tabnew - open the file in a new tab |
-| <kbd><</kbd> | prev_sibling - navigate to the previous sibling of current file/directory |
-| <kbd>></kbd> | next_sibling - navigate to the next sibling of current file/directory |
-| <kbd>P</kbd> | parent_node - move cursor to the parent directory |
-| <kbd>Backspace</kbd> | close_node - close current opened directory or parent |
-| <kbd>Tab</kbd> | preview - open the file as a preview (keeps the cursor in the tree) |
-| <kbd>K</kbd> | first_sibling - navigate to the first sibling of current file/directory |
-| <kbd>J</kbd> | last_sibling - navigate to the last sibling of current file/directory |
-| <kbd>I</kbd> | toggle_git_ignored  toggle visibility of files/folders hidden via |git.ignore| option |
-| <kbd>H</kbd> | toggle_dotfiles - toggle visibility of dotfiles via |filters.dotfiles| option |
-| <kbd>U</kbd> | toggle_custom - toggle visibility of files/folders hidden via |filters.custom| option |
-| <kbd>R</kbd> | refresh - refresh the tree |
-| <kbd>a</kbd> | create - add a file; leaving a trailing `/` will add a directory |
-| <kbd>d</kbd> | remove - delete a file (will prompt for confirmation) |
-| <kbd>D</kbd> | trash - trash a file via |trash| option |
-| <kbd>r</kbd> | rename - rename a file |
-| <kbd>Ctrl</kbd> + <kbd>r</kbd> | full_rename - rename a file and omit the filename on input |
-| <kbd>x</kbd> | cut - add/remove file/directory to cut clipboard |
-| <kbd>c</kbd> | copy - add/remove file/directory to copy clipboard |
-| <kbd>p</kbd> | paste - paste from clipboard; cut clipboard has precedence over copy; will prompt for confirmation |
-| <kbd>y</kbd> | copy_name - copy name to system clipboard |
-| <kbd>Y</kbd> | copy_path - copy relative path to system clipboard |
-| <kbd>gy</kbd> | copy_absolute_path  copy absolute path to system clipboard |
-| <kbd>[c</kbd> | prev_git_item - go to next git item |
-| <kbd>]c</kbd> | next_git_item - go to prev git item |
-| <kbd>-</kbd> | dir_up - navigate up to the parent directory of the current file/directory |
-| <kbd>s</kbd> | system_open - open a file with default system application or a folder with default file manager, using |system_open| option |
-| <kbd>f</kbd> | live_filter - live filter nodes dynamically based on regex matching. |
-| <kbd>F</kbd> | clear_live_filter - clear live filter |
-| <kbd>q</kbd> | close - close tree window |
-| <kbd>W</kbd> | collapse_all - collapse the whole tree |
-| <kbd>E</kbd> | expand_all - expand the whole tree, stopping after expanding |actions.expand_all.max_folder_discovery| folders; this might hang neovim for a while if running on a big folder |
-| <kbd>S</kbd> | search_node - prompt the user to enter a path and then expands the tree to match the path |
-| <kbd>.</kbd> | run_file_command - enter vim command mode with the file the cursor is on |
-| <kbd>Ctrl</kbd> + <kbd>k</kbd> | toggle_file_info - toggle a popup with file infos about the file under the cursor |
-| <kbd>g?</kbd> | toggle_help - toggle help |

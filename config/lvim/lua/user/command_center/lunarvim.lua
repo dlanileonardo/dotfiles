@@ -11,13 +11,19 @@ local commands = {
   {
     description = "Move to down",
     cmd = "<CMD>m .+1<CR>==",
-    keybindings = { "n", "<C-j>" },
+    keybindings = {
+      { "n", "<C-M-j>" },
+      { "n", "<S-Down>" },
+    },
     category = "LunarVim",
   },
   {
-    description = "Move to down",
+    description = "Move to up",
     cmd = "<CMD>m .-2<CR>==",
-    keybindings = { "n", "<C-k>" },
+    keybindings = {
+      { "n", "<C-M-k>" },
+      { "n", "<S-Up>" },
+    },
     category = "LunarVim",
   },
   {

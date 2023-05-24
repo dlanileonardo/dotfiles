@@ -44,13 +44,13 @@ local commands = {
   {
     description = "Buffer Next",
     cmd = "<CMD>CybuNext<CR>",
-    keybindings = { "n", "<C-l>" },
+    keybindings = { "n", "<S-l>" },
     category = "Buffer",
   },
   {
     description = "Buffer Previous",
     cmd = "<CMD>CybuPrev<CR>",
-    keybindings = { "n", "<C-h>" },
+    keybindings = { "n", "<S-h>" },
     category = "Buffer",
   },
   {

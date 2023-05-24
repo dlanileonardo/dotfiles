@@ -56,7 +56,18 @@ lvim.plugins = {
   -- tmux-navigate
   -- (https://github.com/sunaku/tmux-navigate)
   -- ------------------------------------------------------------
-  { 'sunaku/tmux-navigate' },
+  -- { 'sunaku/tmux-navigate' },
+
+  {
+    "aserowy/tmux.nvim",
+    keys = {
+      { "<C-h>", "<cmd>lua require('tmux').resize_left()<cr>" },
+      { "<C-j>", "<cmd>lua require('tmux').resize_bottom()<cr>" },
+      { "<C-k>", "<cmd>lua require('tmux').resize_top()<cr>" },
+      { "<C-l>", "<cmd>lua require('tmux').resize_right()<cr>" },
+    },
+    opts = {}
+  },
 
   -- ------------------------------------------------------------
   -- nvim_utils
@@ -595,9 +606,10 @@ lvim.plugins = {
     keys = {
       { "<M-s-tab>", "<plug>(CybuLastusedPrev)", desc = "Last Previous Buffer", mode = { "n", "v" } },
       { "<M-tab>",   "<plug>(CybuLastusedNext)", desc = "Last Next Buffer",     mode = { "n", "v" } },
-      { "<C-l>",     "<CMD>CybuNext<CR>",        desc = "Next Buffer" },
-      { "<C-h>",     "<CMD>CybuPrev<CR>",        desc = "Previous Buffer" },
+      { "<S-l>",     "<CMD>CybuNext<CR>",        desc = "Next Buffer" },
+      { "<S-h>",     "<CMD>CybuPrev<CR>",        desc = "Previous Buffer" },
     },
+    cmd = { "CybuPrev", "CybuNext", "CybuLastusedPrev", "CybuLastusedNext" },
     lazy = true,
     config = function()
       local ok, cybu = pcall(require, "cybu")

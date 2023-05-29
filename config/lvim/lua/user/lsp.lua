@@ -1,36 +1,36 @@
 -- ---@usage disable automatic installation of servers
 -- lvim.lsp.installer.setup.automatic_installation = true
-lvim.lsp.document_highlight = true
+-- lvim.lsp.document_highlight = true
 -- lvim.lsp.templates_dir = join_paths(get_runtime_dir(), "after", "ftplugin")
 --
-lvim.lsp.buffer_mappings.normal_mode = {
-  -- ["K"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Show hover" },
-  -- ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Goto definition" },
-  -- ["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Goto Declaration" },
-  -- ["gr"] = { "<cmd>lua vim.lsp.buf.references()<cr>", "Goto references" },
-  -- ["gI"] = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Goto Implementation" },
-  -- ["gs"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "show signature help" },
-  -- ["gl"] = {
-  --   function()
-  --     local float = vim.diagnostic.config().float
+-- lvim.lsp.buffer_mappings.normal_mode = {
+-- ["K"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Show hover" },
+-- ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Goto definition" },
+-- ["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Goto Declaration" },
+-- ["gr"] = { "<cmd>lua vim.lsp.buf.references()<cr>", "Goto references" },
+-- ["gI"] = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Goto Implementation" },
+-- ["gs"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "show signature help" },
+-- ["gl"] = {
+--   function()
+--     local float = vim.diagnostic.config().float
 
-  --     if float then
-  --       local config = type(float) == "table" and float or {}
-  --       config.scope = "line"
+--     if float then
+--       local config = type(float) == "table" and float or {}
+--       config.scope = "line"
 
-  --       vim.diagnostic.open_float(config)
-  --     end
-  --   end,
-  --   "Show line diagnostics",
-  -- },
-}
+--       vim.diagnostic.open_float(config)
+--     end
+--   end,
+--   "Show line diagnostics",
+-- },
+-- }
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-    signs = true,
-    virtual_text = false,
-    underline = true,
-    update_in_insert = true,
+    -- signs = true,
+    -- virtual_text = true,
+    -- underline = true,
+    -- update_in_insert = true,
   })
 
 vim.o.updatetime = 250
@@ -52,13 +52,23 @@ lvim.lsp.on_attach_callback = function(client, bufnr)
   })
 end
 
--- vim.diagnostic.config({
---   virtual_text = false,
---   signs = true,
---   underline = true,
---   update_in_insert = false,
---   severity_sort = false,
--- })
+local config = {
+  virtual_text = false,
+  update_in_insert = true,
+  underline = false,
+  severity_sort = true,
+  float = {
+    focusable = false,
+    style = "minimal",
+    border = "rounded",
+    source = "always",
+    header = "",
+    prefix = "",
+    suffix = "",
+  },
+}
+
+vim.diagnostic.config(config)
 
 -- ---configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
 -- ---see the full default list `:lua print(vim.inspect(lvim.lsp.automatic_configuration.skipped_servers))`

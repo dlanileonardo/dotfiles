@@ -26,6 +26,11 @@ local commands = {
     cmd = "<CMD>DiffviewClose<CR>",
     category = "git",
   },
+  {
+    description = "Lazygit",
+    cmd = "<leader>gg",
+    category = "git",
+  },
   -- {
   --   description = "Toggle Git - Blame",
   --   cmd = "<CMD>GitBlameToggle<CR>",

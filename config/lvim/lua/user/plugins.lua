@@ -196,29 +196,36 @@ lvim.plugins = {
   -- vim-bookmarks
   -- (https://github.com/MattesGroeger/vim-bookmarks)
   -- ------------------------------------------------------------
-  -- {
-  --   "MattesGroeger/vim-bookmarks",
-  --   lazy = false,
-  --   init = function()
-  --     lvim.builtin.which_key.mappings["B"] = { name = "Bookmarks" }
-  --     -- vim.g.bookmark_auto_save = 1
-  --     -- vim.g.bookmark_manage_per_buffer = 1
-  --     vim.g.bookmark_auto_close = 1
-  --   end,
-  --   keys = {
-  --     { "<leader>Bt",  "<cmd>BookmarkToggle<CR>",     desc = "Toggle" },
-  --     { "<leader>Bi",  "<cmd>BookmarkAnnotate<CR>",   desc = "Annotate" },
-  --     { "<leader>Ba",  "<cmd>BookmarkShowAll<CR>",    desc = "Show All" },
-  --     { "<leader>Bj",  "<cmd>BookmarkNext<CR>",       desc = "Next" },
-  --     { "<leader>Bk",  "<cmd>BookmarkPrev<CR>",       desc = "Previous" },
-  --     { "<leader>Bc",  "<cmd>BookmarkClear<CR>",      desc = "Clear" },
-  --     { "<leader>Bx",  "<cmd>BookmarkClearAll<CR>",   desc = "Clear All" },
-  --     { "<leader>Bkk", "<cmd>BookmarkMoveUp<CR>",     desc = "Move Up" },
-  --     { "<leader>Bjj", "<cmd>BookmarkMoveDown<CR>",   desc = "Move Down" },
-  --     { "<leader>Bg",  "<cmd>BookmarkMoveToLine<CR>", desc = "Move to Line" },
-  --     desc = "Bookmarks",
-  --   },
-  -- },
+  {
+    "MattesGroeger/vim-bookmarks",
+    lazy = true,
+    event = "BufRead",
+    cmd = {
+      "BookmarkToggle", "BookmarkAnnotate", "BookmarkShowAll", "BookmarkNext", "BookmarkPrev", "BookmarkClear",
+      "BookmarkClearAll", "BookmarkMoveToLine",
+    },
+    keys = {
+      { "<tab><tab>", "<cmd>BookmarkToggle<CR>", "Toggle" },
+    },
+    config = function()
+      lvim.builtin.which_key.mappings["B"] = {
+        name = "Bookmarks",
+        t = { "<cmd>BookmarkToggle<CR>", "Toggle" },
+        i = { "<cmd>BookmarkAnnotate<CR>", "Annotate" },
+        a = { "<cmd>BookmarkShowAll<CR>", "Show All" },
+        j = { "<cmd>BookmarkNext<CR>", "Next" },
+        k = { "<cmd>BookmarkPrev<CR>", "Previous" },
+        c = { "<cmd>BookmarkClear<CR>", "Clear" },
+        x = { "<cmd>BookmarkClearAll<CR>", "Clear All" },
+        g = { "<cmd>BookmarkMoveToLine<CR>", "Move to Line" },
+        -- { "<leader>Bjj", "<cmd>BookmarkMoveDown<CR>",   desc = "Move Down" },
+        -- { "<leader>Bkk", "<cmd>BookmarkMoveUp<CR>",     desc = "Move Up" },
+      }
+      -- vim.g.bookmark_auto_save = 1
+      -- vim.g.bookmark_manage_per_buffer = 1
+      vim.g.bookmark_auto_close = 1
+    end,
+  },
 
   -- ------------------------------------------------------------
   -- cutlass.nvim
@@ -240,22 +247,22 @@ lvim.plugins = {
   -- telescope-vim-bookmarks.nvim
   -- (https://github.com/tom-anders/telescope-vim-bookmarks.nvim)
   -- ------------------------------------------------------------
-  -- {
-  --   "tom-anders/telescope-vim-bookmarks.nvim"
-  -- },
+  {
+    "tom-anders/telescope-vim-bookmarks.nvim"
+  },
 
   -- {
   --   "crusj/bookmarks.nvim",
   --   init = function()
   --     require("bookmarks").setup({
   --       keymap = {
-  --         toggle = "<tab><tab>",  -- Toggle bookmarks
-  --         add = "\\z",            -- Add bookmarks
-  --         jump = "<CR>",          -- Jump from bookmarks
-  --         delete = "dd",          -- Delete bookmarks
+  --         toggle = "<tab><tab>",    -- Toggle bookmarks
+  --         add = "\\z",              -- Add bookmarks
+  --         jump = "<CR>",            -- Jump from bookmarks
+  --         delete = "dd",            -- Delete bookmarks
   --         order = "<space><space>", -- Order bookmarks by frequency or updated_time
-  --         delete_on_virt = "\\dd", -- Delete bookmark at virt text line
-  --         show_desc = "\\sd",     -- show bookmark desc
+  --         delete_on_virt = "\\dd",  -- Delete bookmark at virt text line
+  --         show_desc = "\\sd",       -- show bookmark desc
   --       }
   --     })
   --   end
@@ -288,6 +295,14 @@ lvim.plugins = {
       vim.g.gitblame_enabled = 0
     end,
   },
+
+  -- {
+  --   "kdheepak/lazygit.nvim",
+  --   -- optional for floating window border decoration
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  -- },
 
   -- ------------------------------------------------------------
   -- twilight
@@ -655,6 +670,11 @@ lvim.plugins = {
     'akinsho/flutter-tools.nvim',
     lazy = true,
     ft = { 'dart', 'pubspec.yaml' },
+    event = "BufRead pubspec.yaml",
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'stevearc/dressing.nvim', -- optional for vim.ui.select
+    },
   },
 
   -- ------------------------------------------------------------

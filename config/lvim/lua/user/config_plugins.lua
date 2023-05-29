@@ -156,7 +156,7 @@ lvim.builtin.telescope.on_config_done = function(tele)
   tele.load_extension("file_browser")
   tele.load_extension("ui-select")
   tele.load_extension("live_grep_args")
-  -- tele.load_extension("vim_bookmarks")
+  tele.load_extension("vim_bookmarks")
 
 
   tele.load_extension('workspaces')

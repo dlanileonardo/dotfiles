@@ -7,5 +7,5 @@ local highlights = require("nord").bufferline.highlights({
   bold = true,
 })
 
-lvim.builtin.bufferline.options.separator_style = "slant"
+-- lvim.builtin.bufferline.options.separator_style = "slant"
 lvim.builtin.bufferline.options.highlights = highlights

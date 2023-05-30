@@ -1,6 +1,7 @@
 local utils = require("user.utils")
 require "user.plugins"
 require "user.config_plugins"
+require "user.autocommands"
 require "user.general"
 utils.loadrequire("user.styles." .. lvim.colorscheme)
 require "user.lsp"

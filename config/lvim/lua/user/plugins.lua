@@ -2,10 +2,10 @@
 lvim.plugins = {
   -- THEMES
   -- { dir = '~/.dotfiles/themes/vim/',               name = "themer" },
-  { "olimorris/onedarkpro.nvim",                   priority = 1000 },
+  -- { "olimorris/onedarkpro.nvim",                   priority = 1000 },
   { 'nyoom-engineering/oxocarbon.nvim' },
-  { "luisiacc/gruvbox-baby",                       branch = "main" },
-  { "ellisonleao/gruvbox.nvim" },
+  -- { "luisiacc/gruvbox-baby",                       branch = "main" },
+  -- { "ellisonleao/gruvbox.nvim" },
   { 'shaunsingh/nord.nvim' },
   -- { 'ramojus/mellifluous.nvim',        dependencies = 'rktjmp/lush.nvim' },
   -- { 'titanzero/zephyrium' },

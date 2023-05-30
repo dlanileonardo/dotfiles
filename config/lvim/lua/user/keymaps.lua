@@ -2,7 +2,7 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 -- Fold Preview
-keymap('n', 'zp', require('fold-preview').mapping.show_close_preview_open_fold)
+keymap('n', 'zp', "<CMD>lua require('fold-preview').show_preview()<CR>", opts)
 
 -- Override Home Key to ^
 keymap("n", "<Home>", "^", opts)

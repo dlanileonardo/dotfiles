@@ -12,11 +12,8 @@ lvim.builtin.treesitter.rainbow.enable = true
 
 -- LUALINE
 vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
-local git_blame = require('gitblame')
 
-lvim.builtin.lualine.options.disabled_filetypes = {
-  "alpha", "NvimTree", "Outline", "flutterToolsOutline"
-}
+local git_blame = require('gitblame')
 
 local opts = {
   style = "default",
@@ -31,6 +28,9 @@ local opts = {
   options = {
     component_separators = { left = '\\', right = '/' },
     section_separators = { left = '', right = '' },
+    disabled_filetypes = {
+      "alpha", "NvimTree", "Outline", "flutterToolsOutline"
+    }
   }
 }
 lvim.builtin.lualine = vim.tbl_deep_extend("force", lvim.builtin.lualine, opts)
@@ -182,7 +182,3 @@ require('nvim-test').setup {
     typescriptreact = "nvim-test.runners.jest",
   }
 }
-
--- lvim.builtin.cmp.on_config_done = function(cmp)
--- lvim.builtin.cmp.mapping = {}
--- end

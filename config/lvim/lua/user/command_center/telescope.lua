@@ -1,11 +1,11 @@
 local commands = {
   {
-    description = "Search inside current buffer",
-    cmd = "<CMD>Telescope current_buffer_fuzzy_find<CR>",
+    description = "Telescope View Notification",
+    cmd = "<CMD>Telescope notify<cr>",
     category = "Telescope",
   },
   {
-    description = "Find hidden files",
+    description = "Telescope Find hidden files",
     cmd = "<CMD>Telescope find_files hidden=true<CR>",
     category = "Telescope",
   },
@@ -17,6 +17,7 @@ local commands = {
   {
     description = "Telescope Search Word",
     cmd = "<CMD>lua require('telescope.builtin').live_grep()<CR>",
+    keybindings = { "n", "<M-r>" },
     category = "Telescope",
   },
   {
@@ -40,7 +41,7 @@ local commands = {
   {
     description = "Telescope Buffers",
     cmd = "<CMD>lua require('telescope.builtin').buffers()<CR>",
-    keybindings = { "n", "<M-i>" },
+    keybindings = { "n", "<M-b>" },
     category = "Telescope",
   },
   {
@@ -73,16 +74,17 @@ local commands = {
   },
   {
     description = "Telescope Explorer",
-    cmd = "<cmd>Telescope file_browser<CR>",
+    cmd = "<cmd>Telescope file_browser respect_gitignore=false<CR>",
     keybindings = { { "n", "<M-x>" } },
     category = "Telescope",
   },
   {
-    description = "Teleescope Explorer Current Folder",
-    -- cmd = "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
-    cmd = "<CMD>lua require('telescope').extensions.file_browser.file_browser({path='%:p:h'})<CR>",
+    description = "Telescope Explorer Current Folder",
+    cmd = "<cmd>Telescope file_browser path=%:p:h respect_gitignore=false<CR>",
+    -- cmd =
+    -- "<CMD>lua require('telescope').extensions.file_browser.file_browser({path='%:p:h',respect_gitignore=false})<CR>",
     keybindings = { "n", "<M-c>" },
-    category = "TTelescope",
+    category = "Telescope",
   },
   {
     description = "Telescope TODO",
@@ -94,5 +96,21 @@ local commands = {
     cmd = "<CMD>Telescope yank_history<CR>",
     category = "Telescope",
   },
+  {
+    description = "Telescope Treesiter",
+    cmd = "<CMD>Telescope treesitter<CR>",
+    keybindings = { "n", "<M-t>" },
+    category = "Telescope",
+  },
+  {
+    description = "Telescope Git Branches",
+    cmd = "<CMD>Telescope git_branches<CR>",
+    category = "Telescope",
+  },
+  {
+    description = "Telescope Help",
+    cmd = "<CMD>Telescope help_tags<CR>",
+    category = "Telescope",
+  }
 };
 return commands;

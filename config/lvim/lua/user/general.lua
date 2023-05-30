@@ -6,10 +6,8 @@ vim.opt.sessionoptions = "buffers,curdir,folds,tabpages,winsize,winpos,terminal,
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
--- lvim.colorscheme = "onedark"
-lvim.colorscheme = "oxocarbon"
--- lvim.colorscheme = "gruvbox-baby"
 lvim.transparent_window = false
+lvim.colorscheme = "nord"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -44,38 +42,41 @@ lvim.builtin.nvimtree.setup.view.side = "left"
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
-  "vim",
   "bash",
-  "fish",
   "c",
-  "javascript",
-  "json",
-  "lua",
-  "python",
-  "php",
-  "ruby",
-  "typescript",
-  "tsx",
+  "comment",
   "css",
-  "rust",
-  "java",
-  "yaml",
   "dart",
-  "html",
-  "vue",
-  "markdown",
   "dockerfile",
-  "scss",
-  "make",
-  "swift",
-  "kotlin",
-  "sql",
-  "graphql",
-  "go",
+  "fish",
   "git_rebase",
   "gitattributes",
   "gitcommit",
   "gitignore",
+  "go",
+  "graphql",
+  "html",
+  "java",
+  "javascript",
+  "json",
+  "kotlin",
+  "lua",
+  "make",
+  "markdown",
+  "php",
+  "python",
+  "regex",
+  "ruby",
+  "rust",
+  "scss",
+  "sql",
+  "swift",
+  "tsx",
+  "typescript",
+  "vim",
+  "vimdoc",
+  "vue",
+  "yaml",
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }

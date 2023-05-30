@@ -22,16 +22,16 @@ lvim.builtin.telescope.extensions.command_center = {
   components = {
     command_center.component.CATEGORY,
     command_center.component.DESCRIPTION,
-    command_center.component.COMMAND,
     command_center.component.KEYBINDINGS,
+    command_center.component.COMMAND,
   },
   sort_by = {
     command_center.component.CATEGORY,
     command_center.component.DESCRIPTION,
-    command_center.component.COMMAND,
-    command_center.component.KEYBINDINGS,
+    -- command_center.component.COMMAND,
+    -- command_center.component.KEYBINDINGS,
   },
-  separator = " ",
+  separator = "  ",
   auto_replace_desc_with_cmd = true,
   prompt_title = "Command Center",
 }

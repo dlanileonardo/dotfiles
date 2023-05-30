@@ -25,7 +25,7 @@ local commands = {
   },
   {
     description = "Save File",
-    cmd = "<CMD>w <CR>",
+    cmd = "<CMD>w<CR>",
     keybindings = { "n", "<C-s>" },
     category = "File",
   },

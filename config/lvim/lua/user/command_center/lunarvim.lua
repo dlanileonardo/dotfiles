@@ -69,11 +69,6 @@ local commands = {
     category = "LunarVim",
   },
   {
-    description = "View Notification",
-    cmd = "<CMD>Telescope notify<cr>",
-    category = "Telescope",
-  },
-  {
     description = "Reload LunarVim's configuration",
     cmd = "<cmd>LvimReload<cr>",
     category = "LunarVim",

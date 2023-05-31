@@ -15,8 +15,8 @@ vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
 
 local git_blame = require('gitblame')
 
-local opts = {
-  style = "default",
+local lualine = {
+  -- style = "default",
   sections = {
     -- lualine_a = { 'mode' },
     -- lualine_b = { 'branch', 'diff', 'diagnostics' },
@@ -33,9 +33,9 @@ local opts = {
     }
   }
 }
-lvim.builtin.lualine = vim.tbl_deep_extend("force", lvim.builtin.lualine, opts)
+lvim.builtin.lualine = vim.tbl_deep_extend("force", lvim.builtin.lualine, lualine)
 
-local opts = {
+local bufferline = {
   active = true,
   options = {
     separator_style = "slope",
@@ -46,9 +46,9 @@ local opts = {
     -- buffer_close_icon = '󰅖',
   }
 }
-lvim.builtin.bufferline = vim.tbl_extend("force", lvim.builtin.bufferline, opts)
+lvim.builtin.bufferline = vim.tbl_extend("force", lvim.builtin.bufferline, bufferline)
 
-local opts = {
+local telescope = {
   defaults = {
     -- devicons_disabled = false,
     -- catppuccin_flavour = "mocha",
@@ -118,9 +118,9 @@ local opts = {
     -- }
   }
 }
-lvim.builtin.telescope.defaults = vim.tbl_extend("force", lvim.builtin.telescope.defaults, opts.defaults)
-lvim.builtin.telescope.extensions = vim.tbl_extend("force", lvim.builtin.telescope.extensions, opts.extensions)
-lvim.builtin.telescope.pickers = vim.tbl_extend("force", lvim.builtin.telescope.pickers, opts.pickers)
+lvim.builtin.telescope.defaults = vim.tbl_extend("force", lvim.builtin.telescope.defaults, telescope.defaults)
+lvim.builtin.telescope.extensions = vim.tbl_extend("force", lvim.builtin.telescope.extensions, telescope.extensions)
+lvim.builtin.telescope.pickers = vim.tbl_extend("force", lvim.builtin.telescope.pickers, telescope.pickers)
 
 -- Plugins
 -- require("z").setup {

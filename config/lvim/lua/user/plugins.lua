@@ -1,7 +1,7 @@
 -- Additional Plugins
 lvim.plugins = {
   -- THEMES
-  { dir = '~/.dotfiles/themes/vim/',               name = "themer" },
+  -- { dir = '~/.dotfiles/themes/vim/',               name = "themer" },
   -- { "olimorris/onedarkpro.nvim",                   priority = 1000 },
   { 'nyoom-engineering/oxocarbon.nvim' },
   { "luisiacc/gruvbox-baby",                       branch = "main" },
@@ -13,7 +13,6 @@ lvim.plugins = {
   -- { "catppuccin/nvim",                             name = "catppuccin" },
   -- { "casonadams/walh" },
   -- { 'olivercederborg/poimandres.nvim' },
-
   -- PLUGINS
   { dir = '/usr/local/opt/fzf' },
 
@@ -80,7 +79,13 @@ lvim.plugins = {
   -- bufdelete.nvim
   -- (https://github.com/famiu/bufdelete.nvim)
   -- ------------------------------------------------------------
-  { 'famiu/bufdelete.nvim' },
+  {
+    'famiu/bufdelete.nvim',
+    keys = {
+      { "<S-x>", "<cmd>Bdelete<CR>" }
+    },
+    cmd = "Bdelete"
+  },
 
   -- ------------------------------------------------------------
   -- trouble.nvim
@@ -620,12 +625,13 @@ lvim.plugins = {
     -- branch = "v1.x", -- won't receive breaking changes
     -- dependencies = { "kyazdani42/nvim-web-devicons" }, -- optional
     keys = {
-      { "<M-s-tab>", "<plug>(CybuLastusedPrev)", desc = "Last Previous Buffer", mode = { "n", "v" } },
-      { "<M-tab>",   "<plug>(CybuLastusedNext)", desc = "Last Next Buffer",     mode = { "n", "v" } },
-      { "<S-l>",     "<CMD>CybuNext<CR>",        desc = "Next Buffer" },
-      { "<S-h>",     "<CMD>CybuPrev<CR>",        desc = "Previous Buffer" },
+      { "<S-tab>", "<plug>(CybuLastusedPrev)", desc = "Last Previous Buffer", mode = { "n", "v" } },
+      { "<M-tab>", "<plug>(CybuLastusedNext)", desc = "Last Next Buffer",     mode = { "n", "v" } },
+      -- { "<S-l>",     "<CMD>CybuNext<CR>",        desc = "Next Buffer" },
+      -- { "<S-h>",     "<CMD>CybuPrev<CR>",        desc = "Previous Buffer" },
     },
     cmd = { "CybuPrev", "CybuNext", "CybuLastusedPrev", "CybuLastusedNext" },
+    event = "BufRead",
     lazy = true,
     config = function()
       local ok, cybu = pcall(require, "cybu")
@@ -656,7 +662,15 @@ lvim.plugins = {
               switch = "immediate",
               view = "paging"
             },
-          }
+            last_used = {
+              switch = "immediate", -- immediate, on_close
+              view = "paging",      -- paging, rolling
+            },
+            auto = {
+              view = "paging", -- paging, rolling
+            },
+          },
+          show_on_autocmd = "BufWinEnter",
         }
       })
     end,

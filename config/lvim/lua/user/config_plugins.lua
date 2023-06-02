@@ -34,7 +34,7 @@ local lualine = {
   }
 }
 lvim.builtin.lualine = vim.tbl_deep_extend("force", lvim.builtin.lualine, lualine)
-
+local g_ok, bufferline_groups = pcall(require, "bufferline.groups")
 local bufferline = {
   active = true,
   options = {
@@ -44,6 +44,91 @@ local bufferline = {
     -- sort_by = "relative_directory",
     -- close_icon = '',
     -- buffer_close_icon = '󰅖',
+
+    groups = {
+      options = {
+        toggle_hidden_on_enter = true,
+      },
+      items = {
+        bufferline_groups.builtin.pinned:with { icon = "" },
+        bufferline_groups.builtin.ungrouped,
+        {
+          name = "ctrl",
+          -- priority = 2,
+          icon = "",
+          matcher = function(buf)
+            local path = buf.path
+            return path:match "controller[s]?/"
+                or buf.name:match "[cC]ontroller"
+          end,
+          separator = { -- Optional
+            style = require('bufferline.groups').separator.tab
+          },
+        },
+        {
+          name = "viws",
+          -- priority = 3,
+          icon = "󰡃",
+          matcher = function(buf)
+            local name = buf.path
+            return name:match "view[s]?/"
+          end,
+          separator = { -- Optional
+            style = require('bufferline.groups').separator.tab
+          },
+        },
+        {
+          name = "mdls",
+          -- priority = 4,
+          icon = "󰛡",
+          matcher = function(buf)
+            local name = buf.path
+            return name:match "model[s]?/"
+          end,
+          separator = { -- Optional
+            style = require('bufferline.groups').separator.tab
+          },
+        },
+        {
+          name = "lib",
+          -- priority = 5,
+          icon = "",
+          matcher = function(buf) -- Mandatory
+            local name = vim.api.nvim_buf_get_name(buf.id)
+            return name:match "lib[s]?/"
+          end,
+          separator = { -- Optional
+            style = require('bufferline.groups').separator.tab
+          },
+        },
+        {
+          name = "test",
+          -- priority = 4,
+          icon = "",
+          matcher = function(buf)
+            return buf.path:match "spec[s]?/"
+                or buf.name:match "_spec"
+                or buf.path:match "test[s]?/"
+                or buf.name:match "_test"
+          end,
+          separator = { -- Optional
+            style = require('bufferline.groups').separator.tab
+          },
+        },
+        {
+          name = "doc",
+          -- priority = 6,
+          icon = "󰈙",
+          matcher = function(buf)
+            local name = vim.api.nvim_buf_get_name(buf.id)
+            return name:match "%.md" or name:match "%.txt"
+          end,
+          separator = { -- Optional
+            style = require('bufferline.groups').separator.tab
+          },
+        },
+      }
+    }
   }
 }
 lvim.builtin.bufferline = vim.tbl_extend("force", lvim.builtin.bufferline, bufferline)
@@ -182,3 +267,63 @@ require('nvim-test').setup {
     typescriptreact = "nvim-test.runners.jest",
   }
 }
+
+
+---@author kikito
+---@see https://codereview.stackexchange.com/questions/268130/get-list-of-buffers-from-current-neovim-instance
+-- local function get_listed_buffers()
+--   local buffers = {}
+--   local len = 0
+--   for buffer = 1, vim.fn.bufnr('$') do
+--     if vim.fn.buflisted(buffer) == 1 then
+--       len = len + 1
+--       buffers[len] = buffer
+--     end
+--   end
+
+--   return buffers
+-- end
+
+-- vim.api.nvim_create_augroup('alpha_on_empty', { clear = true })
+-- vim.api.nvim_create_autocmd('User', {
+--   pattern = 'BDeletePre',
+--   group = 'alpha_on_empty',
+--   callback = function(event)
+--     local found_non_empty_buffer = false
+--     local buffers = get_listed_buffers()
+
+--     for _, bufnr in ipairs(buffers) do
+--       if not found_non_empty_buffer then
+--         local name = vim.api.nvim_buf_get_name(bufnr)
+--         local ft = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+
+--         if bufnr ~= event.buf and name ~= '' and ft ~= 'Alpha' then
+--           found_non_empty_buffer = true
+--         end
+--       end
+--     end
+
+--     if not found_non_empty_buffer then
+--       -- require 'neo-tree'.close_all()
+--       vim.cmd [[:Alpha]]
+--     end
+--   end,
+-- })
+
+-- need bufdelete.nvim, neo-tree & alpha-dashboard
+local alpha_on_empty = vim.api.nvim_create_augroup("alpha_on_empty", { clear = true })
+vim.api.nvim_create_autocmd("User", {
+  pattern = "BDeletePost*",
+  group = alpha_on_empty,
+  callback = function(event)
+    local fallback_name = vim.api.nvim_buf_get_name(event.buf)
+    local fallback_ft = vim.api.nvim_buf_get_option(event.buf, "filetype")
+    local fallback_on_empty = fallback_name == "" and fallback_ft == ""
+
+    if fallback_on_empty then
+      -- require("neo-tree").close_all()
+      vim.cmd("Alpha")
+      vim.cmd(event.buf .. "bwipeout")
+    end
+  end,
+})

@@ -1,25 +1,43 @@
 local commands = {
+  -- {
+  --   description = "Toggle Buffer Group Toggle",
+  --   cmd = "<cmd>BufferLIneGroupToggle",
+  --   -- keybindings = { "n", "<Leader>bt" },
+  --   category = "Buffer",
+  -- },
+  -- {
+  --   description = "Toggle Buffer Group Close",
+  --   cmd = "<cmd>BufferLineGroupClose",
+  --   -- keybindings = { "n", "<Leader>bt" },
+  --   category = "Buffer",
+  -- },
   {
     description = "Toggle Buffer Pin",
-    cmd = "<CMD>BufferLineTogglePin<CR>",
+    cmd = "<cmd>BufferLineTogglePin<cr>",
     keybindings = { "n", "<Leader>bt" },
     category = "Buffer",
   },
   {
+    description = "Buffer Pick",
+    cmd = "<cmd>BufferLinePick<cr>",
+    keybindings = { "n", "fb" },
+    category = "Buffer",
+  },
+  {
     description = "Next Buffer",
-    cmd = "<cmd>:bnext<cr>",
+    cmd = "<cmd>bnext<cr>",
     keybindings = { "n", "<leader>bn" },
     category = "Buffer",
   },
   {
     description = "First Buffer",
-    cmd = "<cmd>:bfirst<cr>",
+    cmd = "<cmd>bfirst<cr>",
     keybindings = { "n", "<leader>b1" },
     category = "Buffer",
   },
   {
     description = "Last Buffer",
-    cmd = "<cmd>:blast<cr>",
+    cmd = "<cmd>blast<cr>",
     keybindings = { "n", "<leader>b0" },
     category = "Buffer",
   },
@@ -31,19 +49,19 @@ local commands = {
   },
   {
     description = "Buffer Last Used",
-    cmd = "<plug>(CybuLastusedNext)<CR>",
+    cmd = "<plug>(CybuLastusedNext)<cr>",
     keybindings = { "n", "<M-tab>" },
     category = "Buffer",
   },
   {
     description = "Buffer Previous Used",
-    cmd = "<plug>(CybuLastusedNext)<CR>",
+    cmd = "<plug>(CybuLastusedNext)<cr>",
     keybindings = { "n", "<M-s-tab>" },
     category = "Buffer",
   },
   {
     description = "Buffer Next",
-    cmd = "<CMD>CybuNext<CR>",
+    cmd = "<cmd>BufferLineCycleNext<cr>",
     keybindings = {
       { "n", "<S-l>" },
     },
@@ -51,7 +69,7 @@ local commands = {
   },
   {
     description = "Buffer Previous",
-    cmd = "<CMD>CybuPrev<CR>",
+    cmd = "<cmd>BufferLineCyclePrev<cr>",
     keybindings = {
       { "n", "<S-h>" },
     },
@@ -59,13 +77,13 @@ local commands = {
   },
   {
     description = "Buffer Delete",
-    cmd = "<CMD>bdelete<CR>",
+    cmd = "<cmd>Bdelete<cr>",
     keybindings = { "n", "<C-M-w>" },
     category = "Buffer",
   },
   {
     description = "Tab Close",
-    cmd = "<CMD>tabclose<CR>",
+    cmd = "<cmd>tabclose<cr>",
     keybindings = { "n", "<M-q>" },
     category = "Window",
   }

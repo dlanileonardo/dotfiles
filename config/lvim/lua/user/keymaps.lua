@@ -34,7 +34,7 @@ keymap("n", "<M-l>", ":vertical resize +2<CR>", opts)
 keymap("n", "<M-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-keymap("n", "<S-l>", "<CMD>CybuNext<CR>", opts)
+keymap("n", "<S-l>", "<CMD>BufferLineCycleNext<CR>", opts)
 keymap("n", "<S-Right>", "<CMD>CybuNext<CR>", opts)
-keymap("n", "<S-h>", "<CMD>CybuPrev<CR>", opts)
+keymap("n", "<S-h>", "<CMD>BufferLineCyclePrev<CR>", opts)
 keymap("n", "<S-Left>", "<CMD>CybuPrev<CR>", opts)

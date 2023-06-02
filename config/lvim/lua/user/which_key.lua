@@ -5,9 +5,11 @@ lvim.builtin.which_key.mappings["e"] = { "<cmd>Telescope file_browser<CR>", "Tel
 lvim.builtin.which_key.mappings["s"]["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["s"]["E"] = { "<cmd>Telescope file_browser<CR>", "Telescope Explorer" }
 
-lvim.builtin.which_key.mappings["b"]["n"] = { "<cmd>:bnext<cr>", "Next Buffer" }
-lvim.builtin.which_key.mappings["b"]["1"] = { "<cmd>:bfirst<cr>", "First Buffer" }
-lvim.builtin.which_key.mappings["b"]["0"] = { "<cmd>:blast<cr>", "Last Buffer" }
+lvim.builtin.which_key.mappings["b"]["n"] = { "<cmd>bnext<cr>", "Next Buffer" }
+lvim.builtin.which_key.mappings["b"]["1"] = { "<cmd>bfirst<cr>", "First Buffer" }
+lvim.builtin.which_key.mappings["b"]["0"] = { "<cmd>blast<cr>", "Last Buffer" }
+lvim.builtin.which_key.mappings["b"]["b"] = { "<cmd>BufferLineCyclePrev<cr>", "Previous Buffer" }
+lvim.builtin.which_key.mappings["b"]["n"] = { "<cmd>BufferLineCycleNext<cr>", "Next Buffer" }
 
 lvim.builtin.which_key.mappings["L"]["h"] = { "<cmd>:CheckHealth<cr>", "Check Health" }
 
@@ -26,4 +28,9 @@ lvim.builtin.which_key.mappings["t"] = {
 lvim.builtin.which_key.mappings["s"]["p"] = {
   "<cmd>lua require('telescope.builtin').colorscheme({enable_preview = true})<cr>",
   "Colorscheme with Preview",
+}
+
+lvim.builtin.which_key.mappings["c"] = {
+  "<cmd>Bdelete<cr>",
+  "Close Buffer"
 }

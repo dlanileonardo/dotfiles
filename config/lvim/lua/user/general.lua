@@ -7,7 +7,7 @@ lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
 lvim.transparent_window = false
-lvim.colorscheme = "oxocarbon"
+lvim.colorscheme = "nord"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"

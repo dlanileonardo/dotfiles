@@ -7,7 +7,7 @@ lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
 lvim.transparent_window = false
-lvim.colorscheme = "nord"
+lvim.colorscheme = "oxocarbon"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -46,7 +46,6 @@ lvim.builtin.treesitter.ensure_installed = {
   "c",
   "comment",
   "css",
-  "dart",
   "dockerfile",
   "fish",
   "git_rebase",
@@ -79,7 +78,7 @@ lvim.builtin.treesitter.ensure_installed = {
   "yaml",
 }
 
-lvim.builtin.treesitter.ignore_install = { "haskell" }
+lvim.builtin.treesitter.ignore_install = { "haskell", "dart" }
 lvim.builtin.treesitter.highlight.enabled = true
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -108,7 +107,6 @@ for event, opt_tbls in pairs(aucmd_dict) do
 end
 
 vim.opt.timeoutlen = 500
-vim.opt.list = false
 
 vim.cmd([[
   set nofoldenable
@@ -152,7 +150,6 @@ lvim.builtin.alpha.startify.section.header.val = {
   "               SYSTEMS                ",
 }
 
-lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "startify"
 
 -- lvim.builtin.alpha.startify.section.header.opts = {

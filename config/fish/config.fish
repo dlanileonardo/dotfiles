@@ -111,6 +111,12 @@ for f in ~/.dotfiles/sources/*
   cat "$f" | source
 end
 
+zoxide init fish | source
+
+# if command -v ngrok &>/dev/null; then
+  eval "$(ngrok completion)"
+# fi
+
 # function cd -w='cd'
 #   builtin cd $argv || return
 #   check_directory_for_new_repository

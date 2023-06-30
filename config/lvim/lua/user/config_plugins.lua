@@ -1,14 +1,36 @@
 vim.opt.list = true
-vim.opt.listchars:append("space:⋅")
-vim.opt.listchars:append("eol:↴")
+-- vim.opt.listchars:append("space:⋅")
+-- vim.opt.listchars:append("eol:↴")
 -- vim.notify = require("notify")
 
 lvim.builtin.nvimtree.active = false
--- lvim.builtin.breadcrumbs.active = false
+lvim.builtin.breadcrumbs.active = true
+lvim.builtin.treesitter.rainbow = {
+  enable = true,
+  -- Which query to use for finding delimiters
+  -- query = 'rainbow-parens',
+  -- Highlight the entire buffer all at once
+  -- strategy = require('ts-rainbow').strategy.global,
+}
+lvim.builtin.treesitter.textsubjects = {
+  enable = true,
+  prev_selection = ',', -- (Optional) keymap to select the previous selection
+  keymaps = {
+    ['.'] = 'textsubjects-smart',
+    [';'] = 'textsubjects-container-outer',
+    ['i;'] = 'textsubjects-container-inner',
+  },
+}
+lvim.builtin.indentlines.active = true
+lvim.builtin.illuminate.active = true
 
--- RAINBOW
-lvim.builtin.treesitter.rainbow.enable = true
--- lvim.builtin.treesitter.rainbow.extended_mode = true
+lvim.builtin.indentlines.on_config_done = function(indentlines)
+  vim.print(vim.inspect(indentlines))
+  -- indentlines.options.filetype_exclude.insert("dart")
+end
+
+-- lvim.builtin.indentlines.options.show_trailing_blankline_indent = true
+-- lvim.builtin.indentlines.options.show_end_of_line = true
 
 -- LUALINE
 vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text

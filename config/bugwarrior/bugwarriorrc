@@ -78,7 +78,7 @@ github.token = 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
 github.description_template = {{githubnumber}}: {{githubtitle}}
 github.include_user_repos = True
 github.import_labels_as_tags = True
-github.label_template = {{label}}
+github.label_template = github,{{label}}
 github.exclude_pull_requests = True
 
 # github.project_owner_prefix = True
@@ -95,7 +95,7 @@ github.description_template = {{githubnumber}}: {{githubtitle}}
 github.include_user_repos = False
 github.import_labels_as_tags = True
 github.label_template = achievemore,github,{{label}}
-github.exclude_pull_requests = True
+github.exclude_pull_requests = False
 github.project_template = {{project|capitalize}}
 github.include_repos = achievemore-bundle,achievemore-flutter,angular-frontend,business-backbone,achievemore,websockets-api,gem-dynamic-graphql,static,suite,docs
 

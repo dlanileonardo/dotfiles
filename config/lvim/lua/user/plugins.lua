@@ -4,9 +4,9 @@ lvim.plugins = {
   -- { dir = '~/.dotfiles/themes/vim/',               name = "themer" },
   -- { "olimorris/onedarkpro.nvim",                   priority = 1000 },
   { 'nyoom-engineering/oxocarbon.nvim' },
-  { "luisiacc/gruvbox-baby",                       branch = "main" },
+  -- { "luisiacc/gruvbox-baby",                       branch = "main" },
   -- { "ellisonleao/gruvbox.nvim" },
-  { 'shaunsingh/nord.nvim' },
+  -- { 'shaunsingh/nord.nvim' },
   -- { 'ramojus/mellifluous.nvim',        dependencies = 'rktjmp/lush.nvim' },
   -- { 'titanzero/zephyrium' },
   -- { 'folke/tokyonight.nvim',         branch = 'main' },
@@ -105,6 +105,10 @@ lvim.plugins = {
     branch = "master"
   },
 
+  -- ------------------------------------------------------------
+  -- deadcolumn.nvim
+  -- (https://github.com/Bekaboo/deadcolumn.nvim)
+  -- ------------------------------------------------------------
   {
     'Bekaboo/deadcolumn.nvim',
     opts = {
@@ -129,11 +133,6 @@ lvim.plugins = {
     },
   },
 
-  -- ------------------------------------------------------------
-  -- nvim-ts-rainbow
-  -- (https://github.com/mrjones2014/nvim-ts-rainbow)
-  -- ------------------------------------------------------------
-  -- { "mrjones2014/nvim-ts-rainbow", },
 
   -- ------------------------------------------------------------
   -- nvim-spider
@@ -180,6 +179,36 @@ lvim.plugins = {
       lookup_parents = false,                               -- Lookup config files in parent directories
     },
   },
+
+  -- {
+  --   'm-demare/hlargs.nvim',
+  --   config = function()
+  --     require('hlargs').setup({
+  --       color = '#35D27F',
+  --       use_colorpalette = true,
+  --       disable = function(lang, bufnr)
+  --         return false
+  --       end,
+  --       colorpalette = {
+  --         { fg = "#ef9062" },
+  --         { fg = "#3AC6BE" },
+  --         { fg = "#35D27F" },
+  --         { fg = "#EB75D6" },
+  --         { fg = "#E5D180" },
+  --         { fg = "#8997F5" },
+  --         { fg = "#D49DA5" },
+  --         { fg = "#7FEC35" },
+  --         { fg = "#F6B223" },
+  --         { fg = "#F67C1B" },
+  --         { fg = "#DE9A4E" },
+  --         { fg = "#BBEA87" },
+  --         { fg = "#EEF06D" },
+  --         { fg = "#8FB272" },
+  --       },
+  --     })
+  --     require('hlargs').disable()
+  --   end,
+  -- },
 
   -- ------------------------------------------------------------
   -- nvim-test
@@ -257,6 +286,10 @@ lvim.plugins = {
     "tom-anders/telescope-vim-bookmarks.nvim"
   },
 
+  -- ------------------------------------------------------------
+  -- bookmarks.nvim
+  -- (https://github.com/tom-anders/crusj/bookmarks.nvim)
+  -- ------------------------------------------------------------
   -- {
   --   "crusj/bookmarks.nvim",
   --   init = function()
@@ -302,14 +335,6 @@ lvim.plugins = {
     end,
   },
 
-  -- {
-  --   "kdheepak/lazygit.nvim",
-  --   -- optional for floating window border decoration
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --   },
-  -- },
-
   -- ------------------------------------------------------------
   -- twilight
   -- (https://github.com/folke/twilight.nvim)
@@ -323,22 +348,6 @@ lvim.plugins = {
     },
     opts = {},
   },
-
-  -- ------------------------------------------------------------
-  -- vim-sandwich
-  -- (https://github.com/machakann/vim-sandwich)
-  -- Surround text like a boss
-  -- ------------------------------------------------------------
-  -- {
-  --   "machakann/vim-sandwich",
-  --   lazy = true,
-  --   event = "BufRead",
-  --   config = function()
-  --     vim.cmd([[
-  --       let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
-  --     ]])
-  --   end
-  -- },
 
   -- ------------------------------------------------------------
   -- nvim-surround
@@ -459,6 +468,19 @@ lvim.plugins = {
       },
     },
   },
+
+  -- ------------------------------------------------------------
+  -- nvim-ts-rainbow
+  -- (https://github.com/mrjones2014/nvim-ts-rainbow)
+  -- ------------------------------------------------------------
+  -- { "HiPhish/nvim-ts-rainbow2" },
+  { "mrjones2014/nvim-ts-rainbow" },
+
+  -- ------------------------------------------------------------
+  -- nvim-treesitter-textsubjects
+  -- (https://github.com/RRethy/nvim-treesitter-textsubjects)
+  -- ------------------------------------------------------------
+  { "RRethy/nvim-treesitter-textsubjects" },
 
   -- ------------------------------------------------------------
   -- ts-node-action
@@ -719,27 +741,6 @@ lvim.plugins = {
   },
 
   -- ------------------------------------------------------------
-  -- ssr.nvim
-  -- (https://github.com/cshuaimin/ssr.nvim)
-  -- Treesitter based structural search and replace plugin for Neovim.
-  -- ------------------------------------------------------------
-  -- {
-  --   "cshuaimin/ssr.nvim",
-  --   -- module = "ssr",
-  --   lazy = true,
-  --   opts = {
-  --     min_width = 50,
-  --     min_height = 5,
-  --     keymaps = {
-  --       close = "q",
-  --       next_match = "n",
-  --       prev_match = "N",
-  --       replace_all = "<cr>",
-  --     },
-  --   },
-  -- },
-
-  -- ------------------------------------------------------------
   -- goto-preview
   -- (https://github.com/rmagatti/goto-preview)
   -- ------------------------------------------------------------
@@ -761,20 +762,6 @@ lvim.plugins = {
   -- show icons from type on float window
   -- ------------------------------------------------------------
   { 'onsails/lspkind.nvim' },
-
-  -- ------------------------------------------------------------
-  -- inc-rename.nvim
-  -- https://github.com/smjonas/inc-rename.nvim
-  -- ------------------------------------------------------------
-  -- {
-  --   "smjonas/inc-rename.nvim",
-  --   lazy = true,
-  --   event = "BufRead",
-  --   config = function()
-  --     require("inc_rename").setup()
-  --     lvim.builtin.which_key.mappings['l']['R'] = { ":IncRename ", "Inc Rename" }
-  --   end,
-  -- },
 
   -- ------------------------------------------------------------
   -- lsp_signature.nvim
@@ -815,6 +802,7 @@ lvim.plugins = {
   -- ------------------------------------------------------------
   {
     'j-hui/fidget.nvim',
+    branch = "legacy",
     opts = {},
   },
 
@@ -882,6 +870,10 @@ lvim.plugins = {
     },
   },
 
+  -- ------------------------------------------------------------
+  -- yanky.nvim
+  -- (https://github.com/gbprod/yanky.nvim)
+  -- ------------------------------------------------------------
   {
     "gbprod/yanky.nvim",
     config = function()

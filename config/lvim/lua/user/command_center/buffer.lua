@@ -85,7 +85,12 @@ local commands = {
     description = "Tab Close",
     cmd = "<cmd>tabclose<cr>",
     keybindings = { "n", "<M-q>" },
-    category = "Window",
+    category = "Buffer",
+  },
+  {
+    description = "Highlight Args",
+    cmd = "<CMD>lua require('hlargs').toggle()<CR>",
+    category = "Buffer",
   }
 };
 

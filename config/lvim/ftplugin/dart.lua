@@ -1,25 +1,7 @@
 local dap = require('dap')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-local opts = {
-  capabilities = capabilities,
-  init_options = {
-    flutterOutline = true,
-    onlyAnalyzeProjectsWithOpenFiles = true,
-    outline = true,
-    suggestFromUnimportedLibraries = true
-  },
-  settings = {
-    dart = {
-      lineLength = 120,
-    }
-  }
-}
-
 require("flutter-tools").setup {
-  capabilities = capabilities,
   decorations = {
     statusline = {
       app_version = true,
@@ -31,7 +13,7 @@ require("flutter-tools").setup {
     auto_open = true
   },
   widget_guides = {
-    enabled = false,
+    enabled = true,
   },
   dev_log = {
     enabled = true,
@@ -39,7 +21,7 @@ require("flutter-tools").setup {
   },
   debugger = {
     enabled = true,
-    run_via_dap = false, -- use dap instead of a plenary job to run flutter apps
+    run_via_dap = true,
     register_configurations = function(paths)
       dap.configurations.dart = {
         {
@@ -76,11 +58,31 @@ require("flutter-tools").setup {
       -- require("dap.ext.vscode").load_launchjs()
     end,
   },
-  -- lsp = {
-  -- on_attach = require("lvim.lsp").common_on_attach,
-  -- },
+  lsp = {
+    on_attach = require("lvim.lsp").common_on_attach,
+    color = {
+      enabled = true,         -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
+      background = false,     -- highlight the background
+      background_color = nil, -- required, when background is transparent (i.e. background_color = { r = 19, g = 17, b = 24},)
+      foreground = false,     -- highlight the foreground
+      virtual_text = true,    -- show the highlight using virtual text
+      virtual_text_str = "■", -- the virtual text character to highlight
+    },
+    settings = {
+      dart = {
+        lineLength = 120,
+      },
+      showTodos = true,
+      completeFunctionCalls = true,
+      -- analysisExcludedFolders = { "<path-to-flutter-sdk-packages>" },
+      renameFilesWithClasses = "prompt", -- "always"
+      enableSnippets = true,
+      updateImportsOnRename = true,      -- Whether to update imports and other directives when files are renamed. Required for `FlutterRename` command.
+    },
+  },
   flutter_lookup_cmd = "asdf where flutter",
 }
+
 require("telescope").load_extension("flutter")
 require("lvim.lsp.manager").setup("dartls", opts)
 

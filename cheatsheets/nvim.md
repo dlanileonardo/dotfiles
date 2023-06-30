@@ -16,17 +16,6 @@
 | <kbd>Ctrl</kbd> + <kbd>q</kbd> | Window Close |
 | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>q</kbd> | Close Vim |
 
-## [Hop](https://github.com/phaazon/hop.nvim)
-
-| Keybinding | Description |
-| ---------- | ----------- |
-| <kbd>ff</kbd> | Word |
-| <kbd>fl</kbd> | Line |
-| <kbd>fs</kbd> | Line Start |
-| <kbd>fd</kbd> | Current Line |
-| <kbd>fc</kbd> | Char |
-| <kbd>fp</kbd> | Patterns |
-
 ## Motion
 
 | Keybinding | Description |
@@ -91,6 +80,17 @@
 | <kbd>C-h</kbd>, <kbd>C-j</kbd>, <kbd>C-k</kbd>, <kbd>C-l</kbd> | Move Between Splits and Panels (tmux support) |
 | <kbd>M-h</kbd>, <kbd>M-j</kbd>, <kbd>M-k</kbd>, <kbd>M-l</kbd> | Resize Splits and Panels (tmux support) |
 
+## [hop.nvim](https://github.com/phaazon/hop.nvim)
+
+| Keybinding | Description |
+| ---------- | ----------- |
+| <kbd>ff</kbd> | Word |
+| <kbd>fl</kbd> | Line |
+| <kbd>fs</kbd> | Line Start |
+| <kbd>fd</kbd> | Current Line |
+| <kbd>fc</kbd> | Char |
+| <kbd>fp</kbd> | Patterns |
+
 ## [nvim-surround](https://github.com/kylechui/nvim-surround)
 
 | Keybinding | Description |
@@ -100,13 +100,14 @@
 | <kbd>sr</kbd> , <kbd>srb'</kbd> , <kbd>sr'"</kbd> | replace |
 | <kbd>S'</kbd> | add (visual mode) |
 
-## [ssr.nvim](https://github.com/cshuaimin/ssr.nvim)
+## [yanky.nvim](https://github.com/gbprod/yanky.nvim)
 
 | Keybinding | Description |
 | ---------- | ----------- |
-| <kbd>Alt</kbd> <kbd>f</kbd> | Search and Replace |
+| <kbd>M-,</kbd> | Cycle Yank Forward |
+| <kbd>M-.</kbd> | Cycle Yanky Backward |
 
-## [Vim Visual Multi](https://github.com/mg979/vim-visual-multi)
+## [vim-visual-multi](https://github.com/mg979/vim-visual-multi)
 
 | Keybinding | Description |
 | ---------- | ----------- |
@@ -119,3 +120,20 @@
 | <kbd>Q</kbd> | press `Q` to remove current cursor/selection |
 | <kbd>i</kbd> , <kbd>a</kbd> , <kbd>I</kbd> , <kbd>A</kbd> | start insert mode with <kbd>i</kbd>,<kbd>a</kbd>,<kbd>I</kbd>,<kbd>A</kbd> |
 
+## [nvim-treesitter-textsubjects](https://github.com/RRethy/nvim-treesitter-textsubjects)
+
+*(in visual mode)*
+
+| Keybinding | Description |
+| ---------- | ----------- |
+| <kbd>.</kbd> | Smart Expand |
+| <kbd>;</kbd> | Outer |
+| <kbd>i;</kbd> | Inner |
+
+## [overseer.nvim](https://github.com/stevearc/overseer.nvim)
+
+| Keybinding | Description |
+| ---------- | ----------- |
+| <kbd>&#x3c;leader&#x3e;ot</kbd> | Overseer Tasks Toggle |
+| <kbd>&#x3c;leader&#x3e;or</kbd> | Overseer Tasks Run |
+| <kbd>&#x3c;leader&#x3e;oa</kbd> | Overseer Tasks Action |

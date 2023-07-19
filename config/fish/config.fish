@@ -1,3 +1,9 @@
+function __fish_complete_aws
+    env COMP_LINE=(commandline -pc) aws_completer | tr -d ' '
+end
+
+complete -c aws -f -a "(__fish_complete_aws)"
+
 if status is-interactive
 	# Commands to run in interactive sessions can go here
 	set -U fish_key_bindings fish_default_key_bindings
@@ -81,7 +87,6 @@ if status is-interactive
     # zellij setup --generate-auto-start fish | source
 end
 
-direnv hook fish | source
 
 # git-town completions fish | source
 
@@ -91,9 +96,6 @@ fzf_configure_bindings --directory=\cf
 
 # fish_vi_key_bindings normal
 
-# starship init fish | source
-
-# zoxide init fish | source
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -102,16 +104,15 @@ fzf_configure_bindings --directory=\cf
 # end
 # <<< conda initialize <<<
 
-
+direnv hook fish | source
+# starship init fish | source
 # dstask _completions fish | source
-
 # ng completion script | source
+zoxide init fish | source
 
 for f in ~/.dotfiles/sources/*
   cat "$f" | source
 end
-
-zoxide init fish | source
 
 # if command -v ngrok &>/dev/null; then
   eval "$(ngrok completion)"

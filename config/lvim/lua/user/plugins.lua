@@ -474,7 +474,7 @@ lvim.plugins = {
   -- (https://github.com/mrjones2014/nvim-ts-rainbow)
   -- ------------------------------------------------------------
   -- { "HiPhish/nvim-ts-rainbow2" },
-  { "mrjones2014/nvim-ts-rainbow" },
+  -- { "mrjones2014/nvim-ts-rainbow" },
 
   -- ------------------------------------------------------------
   -- nvim-treesitter-textsubjects

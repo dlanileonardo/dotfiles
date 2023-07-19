@@ -108,6 +108,6 @@ jira.username = odlanier.mendes@achievemore.com.br
 jira.password = @oracle:use_keyring
 
 jira.import_labels_as_tags = True
-jira.import_sprints_as_tags = True
+jira.import_sprints_as_tags = False
 jira.label_template = achievemore,jira,{{label}}
 jira.project_template = Achievemore Produto Jira

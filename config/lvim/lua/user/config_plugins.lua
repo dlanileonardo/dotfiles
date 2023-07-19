@@ -5,13 +5,13 @@ vim.opt.list = true
 
 lvim.builtin.nvimtree.active = false
 lvim.builtin.breadcrumbs.active = true
-lvim.builtin.treesitter.rainbow = {
-  enable = true,
-  -- Which query to use for finding delimiters
-  -- query = 'rainbow-parens',
-  -- Highlight the entire buffer all at once
-  -- strategy = require('ts-rainbow').strategy.global,
-}
+-- lvim.builtin.treesitter.rainbow = {
+--   enable = true,
+--   -- Which query to use for finding delimiters
+--   -- query = 'rainbow-parens',
+--   -- Highlight the entire buffer all at once
+--   -- strategy = require('ts-rainbow').strategy.global,
+-- }
 lvim.builtin.treesitter.textsubjects = {
   enable = true,
   prev_selection = ',', -- (Optional) keymap to select the previous selection

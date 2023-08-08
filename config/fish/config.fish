@@ -68,6 +68,7 @@ alias work="cd /Volumes/Workspace"
 alias serve="browser-sync start -s -f . --no-notify --host 0.0.0.0 --port 9000"
 alias colortest="curl -s https://gist.githubusercontent.com/HaleTom/89ffe32783f89f403bba96bd7bcd1263/raw/ | bash"
 alias zev="zellij --layout dev"
+alias lazydocker="DOCKER_HOST=ssh://ubuntu /usr/local/bin/lazydocker"
 # alias docker="lima nerdctl"
 # alias task="dstask"
 

@@ -1,0 +1,3 @@
+set CLIPBOARD_PERSISTDIR ~/.config/cb
+set CLIPBOARD_THEME amber
+set CLIPBOARD_SILENT 1

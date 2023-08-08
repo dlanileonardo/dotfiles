@@ -17,3 +17,5 @@ unset __conda_setup
 . "$HOME/.cargo/env"
 
 complete -C /usr/local/bin/mc mc
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+export PATH="/home/linuxbrew/.linuxbrew/bin/:$PATH"

@@ -78,6 +78,27 @@ lvim.builtin.treesitter.ensure_installed = {
   "yaml",
 }
 
+lvim.lsp.installer.setup.ensure_installed = {
+  "angularls",
+  -- "luaformatter",
+  "tailwindcss",
+  "rust_analyzer",
+  "bashls",
+  "cssls",
+  "emmet_ls",
+  -- "erb-lint",
+  "html",
+  -- "htmlbeautifier",
+  "jsonls",
+  "lua_ls",
+  "pyright",
+  "rubocop",
+  "solargraph",
+  "tsserver",
+  "vimls",
+  "yamlls",
+}
+
 lvim.builtin.treesitter.ignore_install = { "haskell", "dart" }
 lvim.builtin.treesitter.highlight.enabled = true
 
@@ -128,11 +149,24 @@ vim.cmd([[
 vim.cmd([[
   au BufRead,BufNewFile Fastfile set filetype=ruby
   set cmdheight=1
-  set rtp+=/usr/local/opt/fzf
+  set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
   let g:node_host_prog = systemlist("asdf which neovim-node-host")[0]
   let g:ruby_host_prog = systemlist("asdf which neovim-ruby-host")[0]
   let g:loaded_perl_provider = 0
 ]])
+
+vim.g.clipboard = {
+  name = 'cb',
+  copy = {
+    ["+"] = { 'cb' },
+    ["*"] = { 'cb' },
+  },
+  paste = {
+    ["+"] = { 'cb' },
+    ["*"] = { 'cb' },
+  },
+  -- cache_enabled = 1,
+}
 
 lvim.builtin.alpha.startify.section.header.val = {
   "                                      ",

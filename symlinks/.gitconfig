@@ -7,9 +7,9 @@
 [user]
   name = Dlani Mendes
   email = dlanileonardo@gmail.com
-	signingkey = 3A70FE6156688B7E
-[credential]
-  helper = osxkeychain
+	signingkey = 89F68FBEE24B717B
+; [credential]
+;   helper = osxkeychain
 [alias]
   cl = clone
   co = checkout
@@ -107,7 +107,7 @@
   process = git-lfs filter-process
   required = true
 [gpg]
-  program = /usr/local/bin/gpg
+  ; program = /usr/local/bin/gpg
 [difftool "sourcetree"]
   cmd = opendiff \"$LOCAL\" \"$REMOTE\"
   path = 

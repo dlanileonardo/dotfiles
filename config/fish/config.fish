@@ -1,8 +1,5 @@
-function __fish_complete_aws
-    env COMP_LINE=(commandline -pc) aws_completer | tr -d ' '
-end
-
-complete -c aws -f -a "(__fish_complete_aws)"
+# source ~/.asdf/asdf.fish
+source /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.fish
 
 if status is-interactive
 	# Commands to run in interactive sessions can go here
@@ -26,24 +23,25 @@ if status is-interactive
 	set -g fish_prompt_pwd_dir_length 0
 end
 
-# alias vim="lvim"
-alias cat="bat"
+alias vim="lvim"
+# alias cat="batcat"
 
-set -gx PATH $PATH "$HOME/.pub-cache/bin"
-set -gx PATH $PATH "/usr/local/opt/flutter/bin"
-set -gx FLUTTER_ROOT (asdf where flutter)
-set -gx PATH $PATH "/Users/dlani/.cargo/bin"
-set -gx PATH $PATH "/Users/dlani/.local/bin/"
-set -gx PATH $PATH "/usr/local/sbin"
-set -gx PATH "$HOME/bin" $PATH
-set -gx GPG_TTY $(tty)
+fish_add_path -a "/home/linuxbrew/.linuxbrew/bin"
+fish_add_path -a "$HOME/.pub-cache/bin"
+fish_add_path -a "/usr/local/opt/flutter/bin"
+fish_add_path -a "/Users/dlani/.cargo/bin"
+fish_add_path -a "$HOME/.local/bin/"
+fish_add_path -a "/usr/local/sbin"
+fish_add_path -a "$HOME/bin"
+fish_add_path -a "/home/linuxbrew/.linuxbrew/sbin"
+
 # set -gx USE_LIMA 1
 # set -gx BAT_THEME "base16"
 # set -gx LS_COLORS $(gdircolors ~/.dir_colors | grep -o "\'.*\'" | grep -o '[0-9a-z:=;*.]\+')
-
 # set -gx LUA_PATH "/Users/dlani/.config/nvim/?.lua;/Users/dlani/.config/lvim/?.lua"
 
-set -gx FLUTTER_ROOT (asdf where flutter)
+set -gx GPG_TTY $(tty)
+# set -gx FLUTTER_ROOT (asdf where flutter)
 set -gx EDITOR "vim"
 set -gx HOMEBREW_NO_ENV_HINTS 1
 
@@ -56,8 +54,6 @@ set -U __done_notification_command "terminal-notifier -sender com.googlecode.ite
 set -U __done_min_cmd_duration 5000
 set -U __done_notify_sound 1
 # done
-
-source /usr/local/opt/asdf/libexec/asdf.fish
 
 alias work="cd /Volumes/Workspace/"
 alias mux="tmuxinator"
@@ -79,7 +75,8 @@ end
 
 function fish_greeting
   if test -z "$DISABLE_GREETING"
-    neofetch --ascii ~/.config/neofetch/cyberdyne
+    # neofetch --ascii ~/.config/neofetch/cyberdyne
+    neofetch
   end
 end
 
@@ -90,7 +87,7 @@ end
 
 # git-town completions fish | source
 
-fzf_configure_bindings --directory=\cf
+# fzf_configure_bindings --directory=\cf
 
 # test -r ~/.dir_colors && eval $(/usr/local/Cellar/coreutils/9.1/libexec/gnubin/dircolors ~/.dir_colors -c)
 
@@ -104,6 +101,7 @@ fzf_configure_bindings --directory=\cf
 # end
 # <<< conda initialize <<<
 
+set DIRENV_CONFIG $XDG_CONFIG_HOME/direnv/direnv.toml
 direnv hook fish | source
 # starship init fish | source
 # dstask _completions fish | source
@@ -134,3 +132,12 @@ end
 
 # funcsave cd
 # funcsave check_directory_for_new_repository
+shadowenv init fish | source
+
+if test -d (brew --prefix)"/share/fish/completions"
+    set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
+end
+
+if test -d (brew --prefix)"/share/fish/vendor_completions.d"
+    set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+end

@@ -236,7 +236,7 @@ lvim.builtin.telescope.pickers = vim.tbl_extend("force", lvim.builtin.telescope.
 
 lvim.builtin.telescope.on_config_done = function(tele)
   tele.load_extension('command_center')
-  tele.load_extension("frecency")
+  -- tele.load_extension("frecency")
   tele.load_extension("file_browser")
   tele.load_extension("ui-select")
   tele.load_extension("live_grep_args")

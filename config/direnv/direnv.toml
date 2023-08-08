@@ -1,5 +1,5 @@
 [whitelist]
-prefix = [ "/Volumes/Workspace/achievemore/" ]
+prefix = [ "~/projetos/achievemore/" ]
 
 [global]
 load_dotenv = true

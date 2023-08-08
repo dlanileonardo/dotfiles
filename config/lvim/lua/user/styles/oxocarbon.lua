@@ -1,2 +1,2 @@
 vim.opt.background = "dark"
-lvim.builtin.bufferline.options.separator_style = "slope"
+lvim.builtin.bufferline.options.separator_style = "thin"

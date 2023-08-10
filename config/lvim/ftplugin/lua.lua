@@ -8,6 +8,6 @@ local opts = {
   capabilities = capabilities,
 }
 
-require("lvim.lsp.manager").setup("sumneko_lua", opts)
+require("lvim.lsp.manager").setup("lua_ls", opts)
 
 -- vim.notify("lua loaded")

@@ -78,6 +78,27 @@ lvim.builtin.treesitter.ensure_installed = {
   "yaml",
 }
 
+lvim.lsp.installer.setup.ensure_installed = {
+  "angularls",
+  -- "luaformatter",
+  "tailwindcss",
+  "rust_analyzer",
+  "bashls",
+  "cssls",
+  "emmet_ls",
+  -- "erb-lint",
+  "html",
+  -- "htmlbeatifier",
+  "jsonls",
+  "lua_ls",
+  "pyright",
+  -- "rubocop",
+  "solargraph",
+  "tsserver",
+  "vimls",
+  "yamlls",
+}
+
 lvim.builtin.treesitter.ignore_install = { "haskell", "dart" }
 lvim.builtin.treesitter.highlight.enabled = true
 

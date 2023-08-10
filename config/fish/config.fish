@@ -135,3 +135,8 @@ end
 
 # funcsave cd
 # funcsave check_directory_for_new_repository
+
+# pnpm
+set -gx PNPM_HOME "/Users/dlani/Library/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH
+# pnpm end

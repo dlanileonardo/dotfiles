@@ -15,6 +15,7 @@ lvim.plugins = {
   -- { 'olivercederborg/poimandres.nvim' },
   -- PLUGINS
   { dir = '/usr/local/opt/fzf' },
+  -- { 'junegunn/fzf.vim' },
   -- { "junegunn/fzf",                    build = ":call fzf#install()" },
   -- {
   --   "linrongbin16/fzfx.nvim",

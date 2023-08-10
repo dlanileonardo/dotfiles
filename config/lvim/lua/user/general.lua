@@ -92,7 +92,7 @@ lvim.lsp.installer.setup.ensure_installed = {
   "jsonls",
   "lua_ls",
   "pyright",
-  "rubocop",
+  -- "rubocop",
   "solargraph",
   "tsserver",
   "vimls",
@@ -158,12 +158,12 @@ vim.cmd([[
 vim.g.clipboard = {
   name = 'cb',
   copy = {
-    ["+"] = { 'cb' },
-    ["*"] = { 'cb' },
+    ["+"] = { 'cb', 'copy' },
+    ["*"] = { 'cb', 'copy' },
   },
   paste = {
-    ["+"] = { 'cb' },
-    ["*"] = { 'cb' },
+    ["+"] = { 'cb', 'past' },
+    ["*"] = { 'cb', 'paste' },
   },
   -- cache_enabled = 1,
 }

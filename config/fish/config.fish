@@ -37,10 +37,10 @@ set -gx PATH $PATH "/Users/dlani/.local/bin/"
 set -gx PATH $PATH "/usr/local/sbin"
 set -gx PATH "$HOME/bin" $PATH
 set -gx GPG_TTY $(tty)
+
 # set -gx USE_LIMA 1
 # set -gx BAT_THEME "base16"
 # set -gx LS_COLORS $(gdircolors ~/.dir_colors | grep -o "\'.*\'" | grep -o '[0-9a-z:=;*.]\+')
-
 # set -gx LUA_PATH "/Users/dlani/.config/nvim/?.lua;/Users/dlani/.config/lvim/?.lua"
 
 set -gx FLUTTER_ROOT (asdf where flutter)
@@ -105,19 +105,23 @@ fzf_configure_bindings --directory=\cf
 # end
 # <<< conda initialize <<<
 
-direnv hook fish | source
+if type -q direnv
+  direnv hook fish | source
+end
 # starship init fish | source
 # dstask _completions fish | source
 # ng completion script | source
-zoxide init fish | source
+if type -q zoxide
+  zoxide init fish | source
+end
 
 for f in ~/.dotfiles/sources/*
   cat "$f" | source
 end
 
-# if command -v ngrok &>/dev/null; then
+if type -q ngrok
   eval "$(ngrok completion)"
-# fi
+end
 
 # function cd -w='cd'
 #   builtin cd $argv || return

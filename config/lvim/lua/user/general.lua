@@ -162,7 +162,7 @@ vim.g.clipboard = {
     ["*"] = { 'cb', 'copy' },
   },
   paste = {
-    ["+"] = { 'cb', 'past' },
+    ["+"] = { 'cb', 'paste' },
     ["*"] = { 'cb', 'paste' },
   },
   -- cache_enabled = 1,

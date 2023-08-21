@@ -131,3 +131,5 @@
              --preview 'git show --color {+1}' \
              --preview-window=up:50% \
              --prompt 'Select commit: '
+[merge "ours"]
+	driver = true

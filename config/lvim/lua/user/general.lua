@@ -153,6 +153,7 @@ vim.cmd([[
   let g:node_host_prog = systemlist("asdf which neovim-node-host")[0]
   let g:ruby_host_prog = systemlist("asdf which neovim-ruby-host")[0]
   let g:loaded_perl_provider = 0
+  colorscheme oxocarbon
 ]])
 
 vim.g.clipboard = {

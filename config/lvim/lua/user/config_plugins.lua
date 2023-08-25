@@ -214,10 +214,6 @@ local telescope = {
       show_scores = true,
       -- devicons_disabled = true,
       workspaces = {
-        ["conf"] = "/Users/dlani/.config/",
-        ["projects"] = "/Volumes/Workspace/",
-        ["achievemore"] = "/Volumes/Workspace/achievemore/",
-        ["crypto"] = "/Volumes/Workspace/crypto/"
       }
     },
     -- z = {

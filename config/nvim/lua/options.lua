@@ -41,3 +41,11 @@ vim.opt.whichwrap:append "<,>,[,],h,l"          -- keys allowed to move to the p
 vim.opt.iskeyword:append "-"                    -- treats words with `-` as single words
 vim.opt.formatoptions:remove { "c", "r", "o" }  -- This is a sequence of letters which describes how automatic formatting is to be done
 vim.opt.linebreak = true
+vim.opt.shell = "/bin/sh"
+vim.opt.relativenumber = true
+vim.opt.sessionoptions = "buffers,curdir,folds,tabpages,winsize,winpos,terminal,localoptions"
+-- lvim.log.level = "warn"
+-- lvim.format_on_save = true
+-- lvim.lint_on_save = true
+-- lvim.transparent_window = false
+-- lvim.colorscheme = "oxocarbon"

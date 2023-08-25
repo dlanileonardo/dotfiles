@@ -102,6 +102,7 @@ lvim.plugins = {
   -- ------------------------------------------------------------
   {
     'mg979/vim-visual-multi',
+    event = "BufEnter",
     branch = "master"
   },
 
@@ -384,6 +385,7 @@ lvim.plugins = {
   -- ------------------------------------------------------------
   {
     'rmagatti/auto-session',
+    cmd = { "SessionDelete", "SessionRestore", "SessionRestoreFromFile", "SessionSave" },
     opts = {
       auto_restore_enabled = true,
       log_level = "error",

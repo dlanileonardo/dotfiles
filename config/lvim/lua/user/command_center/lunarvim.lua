@@ -2,7 +2,7 @@ local commands = {
   {
     description = "Structural Search and Replace",
     cmd = "<CMD>lua require(\"ssr\").open()<CR>",
-    keybindings = {
+    keys = {
       { "n", "<M-f>" },
       { "x", "<M-f>" },
     },
@@ -11,7 +11,7 @@ local commands = {
   {
     description = "Move to down",
     cmd = "<CMD>m .+1<CR>==",
-    keybindings = {
+    keys = {
       { "n", "<C-M-j>" },
       { "n", "<S-Down>" },
     },
@@ -20,7 +20,7 @@ local commands = {
   {
     description = "Move to up",
     cmd = "<CMD>m .-2<CR>==",
-    keybindings = {
+    keys = {
       { "n", "<C-M-k>" },
       { "n", "<S-Up>" },
     },
@@ -29,7 +29,7 @@ local commands = {
   {
     description = "Check Health",
     cmd = "<cmd>:CheckHealth<cr>",
-    keybindings = { "n", "<leader>Lh" },
+    keys = { "n", "<leader>Lh" },
     category = "LunarVim",
   },
   {
@@ -50,7 +50,7 @@ local commands = {
   {
     description = "Toggle NvimTree",
     cmd = "<CMD>NvimTreeToggle<CR>",
-    -- keybindings = { "n", "<M-b>" },
+    -- keys = { "n", "<M-b>" },
     category = "LunarVim",
   },
   {

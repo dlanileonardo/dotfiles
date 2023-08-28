@@ -1,4 +1,4 @@
-local command_center = require("command_center")
+local commander = require("commander")
 local general = require "user.command_center.general"
 local buffers = require "user.command_center.buffer"
 local lsp = require "user.command_center.lsp"
@@ -11,27 +11,29 @@ local lunarvim = require "user.command_center.lunarvim"
 
 -- edit a default keymapping
 -- lvim.builtin.which_key.on_config_done = function()
-command_center.add(general)
-command_center.add(buffers)
-command_center.add(lsp)
-command_center.add(telescope)
-command_center.add(hop)
-command_center.add(lunarvim)
+commander.add(general)
+commander.add(buffers)
+commander.add(lsp)
+commander.add(telescope)
+commander.add(hop)
+commander.add(lunarvim)
 
 lvim.builtin.telescope.extensions.command_center = {
   components = {
-    command_center.component.CATEGORY,
-    command_center.component.DESCRIPTION,
-    command_center.component.KEYBINDINGS,
-    command_center.component.COMMAND,
+    "CAT", "DESC", "KEYS", "CMD",
   },
   sort_by = {
-    command_center.component.CATEGORY,
-    command_center.component.DESCRIPTION,
-    -- command_center.component.COMMAND,
-    -- command_center.component.KEYBINDINGS,
+    "CAT", "DESC", "CMD", "KEYS",
   },
   separator = "  ",
   auto_replace_desc_with_cmd = true,
   prompt_title = "Command Center",
+  integration = {
+    telescope = {
+      enable = true,
+    },
+    lazy = {
+      enable = true
+    }
+  },
 }

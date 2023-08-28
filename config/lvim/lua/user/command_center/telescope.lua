@@ -17,31 +17,31 @@ local commands = {
   {
     description = "Telescope Search Word",
     cmd = "<CMD>lua require('telescope.builtin').live_grep()<CR>",
-    keybindings = { "n", "<M-r>" },
+    keys = { "n", "<M-r>" },
     category = "Telescope",
   },
   {
     description = "Telescope Search Word Args",
     cmd = "<CMD>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
-    keybindings = { "n", "<M-o>" },
+    keys = { "n", "<M-o>" },
     category = "Telescope",
   },
   {
     description = "Telescope git Files",
     cmd = "<CMD>lua require('telescope.builtin').git_files()<CR>",
-    keybindings = { "n", "<C-S-p>" },
+    keys = { "n", "<C-S-p>" },
     category = "Telescope",
   },
   {
     description = "Telescope Files",
     cmd = "<CMD>lua require('telescope.builtin').find_files()<CR>",
-    keybindings = { "n", "<C-p>" },
+    keys = { "n", "<C-p>" },
     category = "Telescope",
   },
   {
     description = "Telescope Buffers",
     cmd = "<CMD>lua require('telescope.builtin').buffers()<CR>",
-    keybindings = { "n", "<M-b>" },
+    keys = { "n", "<M-b>" },
     category = "Telescope",
   },
   {
@@ -52,7 +52,7 @@ local commands = {
   {
     description = "Telescope Current Buffer",
     cmd = "<CMD>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>",
-    keybindings = { "n", "<M-p>" },
+    keys = { "n", "<M-p>" },
     category = "Telescope",
   },
   {
@@ -63,19 +63,19 @@ local commands = {
   {
     description = "Telescope Projects",
     cmd = "<cmd>Telescope projects<CR>",
-    keybindings = { "n", "<Leader>sP" },
+    keys = { "n", "<Leader>sP" },
     category = "Telescope",
   },
   {
     description = "Telescope Workspaces",
     cmd = "<cmd>Telescope workspaces<cr>",
-    keybindings = { "n", "<M-w>" },
+    keys = { "n", "<M-w>" },
     category = "Telescope",
   },
   {
     description = "Telescope Explorer",
     cmd = "<cmd>Telescope file_browser respect_gitignore=false<CR>",
-    keybindings = { { "n", "<M-x>" } },
+    keys = { { "n", "<M-x>" } },
     category = "Telescope",
   },
   {
@@ -83,7 +83,7 @@ local commands = {
     cmd = "<cmd>Telescope file_browser path=%:p:h respect_gitignore=false<CR>",
     -- cmd =
     -- "<CMD>lua require('telescope').extensions.file_browser.file_browser({path='%:p:h',respect_gitignore=false})<CR>",
-    keybindings = { "n", "<M-c>" },
+    keys = { "n", "<M-c>" },
     category = "Telescope",
   },
   {
@@ -99,7 +99,7 @@ local commands = {
   {
     description = "Telescope Treesiter",
     cmd = "<CMD>Telescope treesitter<CR>",
-    keybindings = { "n", "<M-t>" },
+    keys = { "n", "<M-t>" },
     category = "Telescope",
   },
   {

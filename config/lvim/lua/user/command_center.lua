@@ -18,7 +18,7 @@ commander.add(telescope)
 commander.add(hop)
 commander.add(lunarvim)
 
-lvim.builtin.telescope.extensions.command_center = {
+commander.setup({
   components = {
     "CAT", "DESC", "KEYS", "CMD",
   },
@@ -36,4 +36,4 @@ lvim.builtin.telescope.extensions.command_center = {
       enable = true
     }
   },
-}
+})

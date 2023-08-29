@@ -1,82 +1,82 @@
 local commands = {
   {
-    description = "Structural Search and Replace",
+    desc = "Structural Search and Replace",
     cmd = "<CMD>lua require(\"ssr\").open()<CR>",
-    keybindings = {
+    keys = {
       { "n", "<M-f>" },
       { "x", "<M-f>" },
     },
-    category = "LunarVim",
+    cat = "LunarVim",
   },
   {
-    description = "Move to down",
+    desc = "Move to down",
     cmd = "<CMD>m .+1<CR>==",
-    keybindings = {
+    keys = {
       { "n", "<C-M-j>" },
       { "n", "<S-Down>" },
     },
-    category = "LunarVim",
+    cat = "LunarVim",
   },
   {
-    description = "Move to up",
+    desc = "Move to up",
     cmd = "<CMD>m .-2<CR>==",
-    keybindings = {
+    keys = {
       { "n", "<C-M-k>" },
       { "n", "<S-Up>" },
     },
-    category = "LunarVim",
+    cat = "LunarVim",
   },
   {
-    description = "Check Health",
+    desc = "Check Health",
     cmd = "<cmd>:CheckHealth<cr>",
-    keybindings = { "n", "<leader>Lh" },
-    category = "LunarVim",
+    keys = { "n", "<leader>Lh" },
+    cat = "LunarVim",
   },
   {
-    description = "Update Core Packages",
+    desc = "Update Core Packages",
     cmd = "<CMD>LvimSyncCorePlugins<CR>",
-    category = "LunarVim",
+    cat = "LunarVim",
   },
   {
-    description = "Update Plugins",
+    desc = "Update Plugins",
     cmd = "<cmd>lua require(\"lazy\").update()<cr>",
-    category = "LunarVim",
+    cat = "LunarVim",
   },
   {
-    description = "Sync Plugins",
+    desc = "Sync Plugins",
     cmd = "<cmd>lua require(\"lazy\").sync()<cr>",
-    category = "LunarVim",
+    cat = "LunarVim",
   },
   {
-    description = "Toggle NvimTree",
+    desc = "Toggle NvimTree",
     cmd = "<CMD>NvimTreeToggle<CR>",
-    -- keybindings = { "n", "<M-b>" },
-    category = "LunarVim",
+    -- keys = { "n", "<M-b>" },
+    cat = "LunarVim",
   },
   {
-    description = "NvimTree - Find File",
+    desc = "NvimTree - Find File",
     cmd = "<CMD>NvimTreeFindFile<CR>",
-    category = "LunarVim",
+    cat = "LunarVim",
   },
   {
-    description = "Update LunarVim",
+    desc = "Update LunarVim",
     cmd = "<CMD>LvimUpdate<CR>",
-    category = "LunarVim",
+    cat = "LunarVim",
   },
   {
-    description = "Toggle Auto Format",
+    desc = "Toggle Auto Format",
     cmd = "<CMD>LvimToggleFormatOnSave<CR>",
-    category = "LunarVim",
+    cat = "LunarVim",
   },
   {
-    description = "Reload LunarVim's configuration",
+    desc = "Reload LunarVim's configuration",
     cmd = "<cmd>LvimReload<cr>",
-    category = "LunarVim",
+    cat = "LunarVim",
   },
   {
-    description = "Open Config File",
+    desc = "Open Config File",
     cmd = "<cmd>edit " .. get_config_dir() .. "/config.lua<cr>",
-    category = "LunarVim",
+    cat = "LunarVim",
   },
 };
 return commands;

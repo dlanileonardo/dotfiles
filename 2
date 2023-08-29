@@ -1,4 +1,4 @@
-local commander = require("commander")
+local command_center = require("commander")
 local general = require "user.command_center.general"
 local buffers = require "user.command_center.buffer"
 local lsp = require "user.command_center.lsp"
@@ -11,14 +11,14 @@ local lunarvim = require "user.command_center.lunarvim"
 
 -- edit a default keymapping
 -- lvim.builtin.which_key.on_config_done = function()
-commander.add(general)
-commander.add(buffers)
-commander.add(lsp)
-commander.add(telescope)
-commander.add(hop)
-commander.add(lunarvim)
+command_center.add(general)
+command_center.add(buffers)
+command_center.add(lsp)
+command_center.add(telescope)
+command_center.add(hop)
+command_center.add(lunarvim)
 
-commander.setup({
+command_center.setup({
   components = {
     "CAT",
     "DESC",

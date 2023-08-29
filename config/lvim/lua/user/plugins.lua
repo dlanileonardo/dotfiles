@@ -158,7 +158,7 @@ lvim.plugins = {
     "gfeiyou/command-center.nvim",
     lazy = false,
     keys = {
-      { "<C-M-p>", ":Telescope command_center<CR>", desc = "Command Center" }
+      { "<C-M-p>", "<cmd>lua require('commander').show()<cr>", desc = "Command Center" },
     },
     -- config = function()
     --   vim.api.nvim_set_keymap('n', '<C-M-p>', ":Telescope command_center<CR>", { silent = true })

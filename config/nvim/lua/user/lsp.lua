@@ -1,7 +1,8 @@
 local M = {
   "neovim/nvim-lspconfig",
   commit = "649137cbc53a044bffde36294ce3160cb18f32c7",
-  lazy = true,
+  lazy = false,
+  event = { "BufReadPre" },
   dependencies = {
     {
       "hrsh7th/cmp-nvim-lsp",
@@ -10,8 +11,9 @@ local M = {
   },
 }
 
-local cmp_nvim_lsp = require "cmp_nvim_lsp"
 function M.config()
+  local cmp_nvim_lsp = require "cmp_nvim_lsp"
+
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
@@ -37,14 +39,6 @@ function M.config()
 
   local lspconfig = require "lspconfig"
   local on_attach = function(client, bufnr)
-    if client.name == "tsserver" then
-      client.server_capabilities.documentFormattingProvider = false
-    end
-
-    if client.name == "sumneko_lua" then
-      client.server_capabilities.documentFormattingProvider = false
-    end
-
     lsp_keymaps(bufnr)
     require("illuminate").on_attach(client)
   end

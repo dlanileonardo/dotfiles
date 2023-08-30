@@ -1,19 +1,12 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-  commit = "203bf5609137600d73e8ed82703d6b0e320a5f36",
+  commit = "40c31fdde93bcd85aeb3447bb3e2a3208395a868",
   event = "Bufenter",
   cmd = { "Telescope" },
   dependencies = {
     {
       "ahmedkhalf/project.nvim",
       commit = "685bc8e3890d2feb07ccf919522c97f7d33b94e4",
-    },
-    {
-      "gfeiyou/command-center.nvim",
-      event = "VimEnter",
-      keys = {
-        { "<C-M-p>", ":Telescope command_center<CR>", desc = "Command Center" }
-      },
     },
     {
       'nvim-telescope/telescope-fzf-native.nvim',
@@ -27,9 +20,7 @@ local M = {
 function M.config()
   local telescope = require "telescope"
   local actions = require "telescope.actions"
-  local command_center = require('command_center')
 
-  telescope.load_extension("command_center")
   telescope.load_extension('fzf')
   telescope.load_extension('workspaces')
   telescope.load_extension("file_browser")
@@ -170,23 +161,6 @@ function M.config()
         override_file_sorter = true,    -- override the file sorter
         case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
       },
-      command_center = {
-        components = {
-          command_center.component.CATEGORY,
-          command_center.DESCRIPTION,
-          command_center.component.KEYBINDINGS,
-          command_center.component.COMMAND,
-        },
-        sort_by = {
-          command_center.component.CATEGORY,
-          command_center.component.DESCRIPTION,
-          -- command_center.component.COMMAND,
-        },
-        -- command_center.component.KEYBINDINGS,
-        separator = "  ",
-        auto_replace_desc_with_cmd = true,
-        prompt_title = "Command Center",
-      }
     },
   })
 end

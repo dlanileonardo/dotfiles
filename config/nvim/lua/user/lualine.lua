@@ -12,6 +12,8 @@ function M.config()
     return
   end
 
+  local components = require('user.lualine.components')
+
   local hide_in_width = function()
     return vim.fn.winwidth(0) > 80
   end
@@ -58,7 +60,7 @@ function M.config()
     sections = {
       lualine_a = { "mode" },
       lualine_b = { "branch" },
-      lualine_c = { "filename", diagnostics, { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }, },
+      lualine_c = { "filename", diagnostics, { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available } },
       lualine_x = { diff, spaces, "encoding", filetype },
       lualine_y = { location },
       lualine_z = { "progress" },

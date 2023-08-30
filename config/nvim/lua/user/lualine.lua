@@ -58,12 +58,15 @@ function M.config()
       always_divide_middle = true,
     },
     sections = {
-      lualine_a = { "mode" },
-      lualine_b = { "branch" },
-      lualine_c = { "filename", diagnostics, { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available } },
-      lualine_x = { diff, spaces, "encoding", filetype },
-      lualine_y = { location },
-      lualine_z = { "progress" },
+      lualine_a = { components.mode },
+      lualine_b = { components.branch },
+      -- lualine_c = { components.diff },
+      lualine_c = { components.diff, { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }, },
+      lualine_x = { components.diagnostics, components.lsp, components.spaces, components.filetype },
+      -- lualine_c = { "filename", diagnostics, { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available } },
+      -- lualine_x = { diff, components.lsp, spaces, "encoding", filetype },
+      lualine_y = { components.location },
+      lualine_z = { components.progress },
     },
   }
 end

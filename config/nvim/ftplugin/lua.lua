@@ -1,4 +1,4 @@
-vim.cmd("setlocal colorcolumn=120")
+-- vim.cmd("setlocal colorcolumn=120")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 

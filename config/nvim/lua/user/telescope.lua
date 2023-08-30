@@ -1,6 +1,6 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-  commit = "40c31fdde93bcd85aeb3447bb3e2a3208395a868",
+  -- commit = "40c31fdde93bcd85aeb3447bb3e2a3208395a868",
   event = "Bufenter",
   cmd = { "Telescope" },
   dependencies = {
@@ -30,14 +30,14 @@ function M.config()
   telescope.load_extension("yank_history")
 
   telescope.setup({
-    theme = "dropdown", ---@type telescope_themes
+    -- theme = "dropdown", ---@type telescope_themes
     defaults = {
       entry_prefix = "  ",
       initial_mode = "insert",
       selection_strategy = "reset",
-      sorting_strategy = nil,
+      sorting_strategy = 'ascending',
       layout_config = {
-        -- vertical = { width = 0.9 },
+        vertical = { width = 0.9 },
         height = 0.95,
         width = 0.95,
         prompt_position = "top",
@@ -59,15 +59,19 @@ function M.config()
       pickers = {
         find_files = {
           hidden = true,
+          -- theme = "dropdown",
         },
         live_grep = {
           --@usage don't include the filename in the search results
           only_sort_text = true,
+          -- theme = "dropdown",
         },
         grep_string = {
           only_sort_text = true,
+          -- theme = "dropdown",
         },
         buffers = {
+          -- theme = "dropdown",
           initial_mode = "normal",
           mappings = {
             i = {
@@ -81,21 +85,17 @@ function M.config()
         planets = {
           show_pluto = true,
           show_moon = true,
+          -- theme = "dropdown",
         },
         git_files = {
           hidden = true,
           show_untracked = true,
+          -- theme = "dropdown",
         },
         colorscheme = {
           enable_preview = true,
+          -- theme = "dropdown",
         },
-        git_files = {
-          hidden = true,
-          show_untracked = true,
-        },
-        live_grep = {
-
-        }
       },
       selection_caret = " ",
       path_display = { "smart" },

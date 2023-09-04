@@ -52,6 +52,11 @@ local commands = {
     cmd = "<CMD>LvimToggleFormatOnSave<CR>",
     cat = "NeoVim",
   },
+  {
+    desc = "Toggle Terminal",
+    cmd = "<CMD>ToggleTerm<CR>",
+    cat = "Terminal",
+  },
   -- {
   --   desc = "Open Config File",
   --   cmd = "<cmd>edit " .. get_config_dir() .. "/config.lua<cr>",

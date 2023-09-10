@@ -73,7 +73,7 @@ alias lazydocker="DOCKER_HOST=ssh://ubuntu /usr/local/bin/lazydocker"
 # alias task="dstask"
 
 if type -q exa
-  alias ll "exa -l -g --icons --group-directories-first"
+  alias ll "exa -l -g --icons --group-directories-first --tree --level=1"
   alias la "ll -a"
   alias lk "ll --grid"
 end

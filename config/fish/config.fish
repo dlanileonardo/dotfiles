@@ -1,3 +1,5 @@
+source /usr/local/opt/asdf/libexec/asdf.fish
+
 function __fish_complete_aws
     env COMP_LINE=(commandline -pc) aws_completer | tr -d ' '
 end
@@ -31,7 +33,6 @@ alias cat="bat"
 
 set -gx PATH $PATH "$HOME/.pub-cache/bin"
 set -gx PATH $PATH "/usr/local/opt/flutter/bin"
-set -gx FLUTTER_ROOT (asdf where flutter)
 set -gx PATH $PATH "/Users/dlani/.cargo/bin"
 set -gx PATH $PATH "/Users/dlani/.local/bin/"
 set -gx PATH $PATH "/usr/local/sbin"
@@ -56,8 +57,6 @@ set -U __done_notification_command "terminal-notifier -sender com.googlecode.ite
 set -U __done_min_cmd_duration 5000
 set -U __done_notify_sound 1
 # done
-
-source /usr/local/opt/asdf/libexec/asdf.fish
 
 alias work="cd /Volumes/Workspace/"
 alias mux="tmuxinator"

@@ -1,7 +1,7 @@
 local M = {}
 
-local tbl = require "lvim.utils.table"
-local Log = require "lvim.core.log"
+local tbl = require "user.utils.table"
+-- local Log = require "core.log"
 
 function M.is_client_active(name)
   local clients = vim.lsp.get_active_clients()
@@ -25,7 +25,7 @@ end
 function M.get_client_capabilities(client_id)
   local client = vim.lsp.get_client_by_id(tonumber(client_id))
   if not client then
-    Log:warn("Unable to determine client from client_id: " .. client_id)
+    -- Log:warn("Unable to determine client from client_id: " .. client_id)
     return
   end
 
@@ -77,7 +77,7 @@ end
 
 function M.setup_document_highlight(client, bufnr)
   if lvim.builtin.illuminate.active then
-    Log:debug "skipping setup for document_highlight, illuminate already active"
+    -- Log:debug "skipping setup for document_highlight, illuminate already active"
     return
   end
   local status_ok, highlight_supported = pcall(function()
@@ -116,7 +116,7 @@ function M.setup_document_symbols(client, bufnr)
   vim.g.navic_silence = false -- can be set to true to suppress error
   local symbols_supported = client.supports_method "textDocument/documentSymbol"
   if not symbols_supported then
-    Log:debug("skipping setup for document_symbols, method not supported by " .. client.name)
+    -- Log:debug("skipping setup for document_symbols, method not supported by " .. client.name)
     return
   end
   local status_ok, navic = pcall(require, "nvim-navic")

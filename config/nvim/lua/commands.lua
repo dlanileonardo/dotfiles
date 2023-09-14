@@ -20,7 +20,7 @@ M.defaults = {
   {
     name = "ToggleFormatOnSave",
     fn = function()
-      require("lvim.core.autocmds").toggle_format_on_save()
+      require("core.autocmds").toggle_format_on_save()
     end,
   },
 }

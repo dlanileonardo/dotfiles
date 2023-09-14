@@ -14,8 +14,7 @@ vim.opt.sessionoptions:append("localoptions")
 vim.g.lvim_log_level = "warn"
 
 -- Format and lint on save
-vim.g.lvim_format_on_save = 1
-vim.g.lvim_lint_on_save = 1
+vim.g.format_on_save = true
 
 -- Disable transparent window
 vim.g.lvim_transparent_window = 0

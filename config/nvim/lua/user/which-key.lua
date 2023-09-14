@@ -1,3 +1,5 @@
+local icons = require("user.utils.icons")
+
 local M = {
   "folke/which-key.nvim",
   -- commit = "5224c261825263f46f6771f1b644cae33cd06995",
@@ -35,11 +37,11 @@ function M.config()
       -- ["<cr>"] = "RET",
       -- ["<tab>"] = "TAB",
     },
-    -- icons = {
-    --   breadcrumb = lvim.icons.ui.DoubleChevronRight, -- symbol used in the command line area that shows your active key combo
-    --   separator = lvim.icons.ui.BoldArrowRight, -- symbol used between a key and it's label
-    --   group = lvim.icons.ui.Plus, -- symbol prepended to a group
-    -- },
+    icons = {
+      breadcrumb = icons.ui.DoubleChevronRight, -- symbol used in the command line area that shows your active key combo
+      separator = icons.ui.BoldArrowRight, -- symbol used between a key and it's label
+      group = icons.ui.Plus, -- symbol prepended to a group
+    },
     popup_mappings = {
       scroll_down = "<c-d>", -- binding to scroll down inside the popup
       scroll_up = "<c-u>", -- binding to scroll up inside the popup
@@ -183,7 +185,7 @@ function M.config()
       a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
       d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>", "Buffer Diagnostics" },
       w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
-      f = { "<cmd>lua require('lvim.lsp.utils').format()<cr>", "Format" },
+      -- f = { "<cmd>lua require('lvim.lsp.utils').format()<cr>", "Format" },
       i = { "<cmd>LspInfo<cr>", "Info" },
       I = { "<cmd>Mason<cr>", "Mason Info" },
       j = {

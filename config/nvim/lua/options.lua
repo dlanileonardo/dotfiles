@@ -44,12 +44,6 @@ vim.opt.linebreak = true
 vim.opt.shell = "/bin/sh"
 vim.opt.relativenumber = true
 vim.opt.sessionoptions = "buffers,curdir,folds,tabpages,winsize,winpos,terminal,localoptions"
--- lvim.log.level = "warn"
--- lvim.format_on_save = true
--- lvim.lint_on_save = true
--- lvim.transparent_window = false
--- lvim.colorscheme = "oxocarbon"
-
 vim.g.clipboard = {
   name = "cb",
   copy = {

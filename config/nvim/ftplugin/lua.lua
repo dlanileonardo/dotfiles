@@ -6,6 +6,11 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local opts = {
   capabilities = capabilities,
+  settings = {
+    Lua = {
+      diagnostics = { globals = {'vim'} }
+    }
+  },
 }
 
 require("lspconfig").lua_ls.setup(opts)

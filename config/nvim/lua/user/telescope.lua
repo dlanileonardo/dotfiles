@@ -9,11 +9,10 @@ local M = {
       commit = "685bc8e3890d2feb07ccf919522c97f7d33b94e4",
     },
     {
-      'nvim-telescope/telescope-fzf-native.nvim',
-      build =
-      'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
     },
-    { dir = '/home/linuxbrew/.linuxbrew/opt/fzf/' },
+    { dir = "/home/linuxbrew/.linuxbrew/opt/fzf/" },
   },
 }
 
@@ -21,21 +20,21 @@ function M.config()
   local telescope = require "telescope"
   local actions = require "telescope.actions"
 
-  telescope.load_extension('fzf')
-  telescope.load_extension('workspaces')
-  telescope.load_extension("file_browser")
-  telescope.load_extension("ui-select")
-  telescope.load_extension("live_grep_args")
-  telescope.load_extension("vim_bookmarks")
-  telescope.load_extension("yank_history")
+  telescope.load_extension "fzf"
+  telescope.load_extension "workspaces"
+  telescope.load_extension "file_browser"
+  telescope.load_extension "ui-select"
+  telescope.load_extension "live_grep_args"
+  telescope.load_extension "vim_bookmarks"
+  telescope.load_extension "yank_history"
 
-  telescope.setup({
+  telescope.setup {
     -- theme = "dropdown", ---@type telescope_themes
     defaults = {
       entry_prefix = "  ",
       initial_mode = "insert",
       selection_strategy = "reset",
-      sorting_strategy = 'ascending',
+      sorting_strategy = "ascending",
       layout_config = {
         vertical = { width = 0.9 },
         height = 0.95,
@@ -54,7 +53,7 @@ function M.config()
         "--hidden",
         "--glob=!.git/",
       },
-      layout_strategy = 'vertical',
+      layout_strategy = "vertical",
       prompt_prefix = " > ",
       pickers = {
         find_files = {
@@ -122,8 +121,6 @@ function M.config()
           end,
         },
       },
-      file_ignore_patterns = {},
-      path_display = { "smart" },
       winblend = 0,
       border = {},
       borderchars = nil,
@@ -137,7 +134,7 @@ function M.config()
       ["ui-select"] = {
         require("telescope.themes").get_dropdown {
           -- even more opts
-        }
+        },
       },
       file_browser = {
         -- theme = "ivy",
@@ -152,17 +149,16 @@ function M.config()
       frecency = {
         show_scores = true,
         -- devicons_disabled = true,
-        workspaces = {
-        }
+        workspaces = {},
       },
       fzf = {
-        fuzzy = true,                   -- false will only do exact matching
+        fuzzy = true, -- false will only do exact matching
         override_generic_sorter = true, -- override the generic sorter
-        override_file_sorter = true,    -- override the file sorter
-        case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
+        override_file_sorter = true, -- override the file sorter
+        case_mode = "smart_case", -- or "ignore_case" or "respect_case"
       },
     },
-  })
+  }
 end
 
 return M

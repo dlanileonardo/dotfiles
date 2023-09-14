@@ -33,11 +33,6 @@ local commands = {
     cat = "NeoVim",
   },
   {
-    desc = "Update Core Packages",
-    cmd = "<CMD>LvimSyncCorePlugins<CR>",
-    cat = "NeoVim",
-  },
-  {
     desc = "Update Plugins",
     cmd = "<cmd>lua require(\"lazy\").update()<cr>",
     cat = "NeoVim",

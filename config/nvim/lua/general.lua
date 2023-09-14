@@ -10,14 +10,8 @@ vim.opt.sessionoptions:append("winpos")
 vim.opt.sessionoptions:append("terminal")
 vim.opt.sessionoptions:append("localoptions")
 
--- Log level
-vim.g.lvim_log_level = "warn"
-
 -- Format and lint on save
 vim.g.format_on_save = true
-
--- Disable transparent window
-vim.g.lvim_transparent_window = 0
 
 -- Set color scheme
 vim.cmd("colorscheme oxocarbon")

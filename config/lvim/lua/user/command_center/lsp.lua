@@ -60,7 +60,7 @@ local commands = {
   {
     desc = "LSP - Buffers Diagnostics",
     cmd = "<CMD>Telescope diagnostics no_unlisted=true<CR>",
-    -- keys = {  },
+    keys = { "n", "gK" },
     cat = "LSP"
   },
   {
@@ -72,7 +72,7 @@ local commands = {
   {
     desc = "LSP - Show Diagnostic",
     cmd = "<CMD>lua vim.diagnostic.open_float()<CR>",
-    keys = { "n", "K" },
+    keys = { "n", "gk" },
     cat = "LSP",
   },
   {

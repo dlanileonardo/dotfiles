@@ -4,8 +4,6 @@ local M = {
   -- commit = "dafa11a6218c2296df044e00f88d9187222ba6b0",
 }
 
--- lvim.builtin.alpha.mode = "startify"
-
 function M.config()
   local alpha = require "alpha"
   local dashboard = require "alpha.themes.startify"

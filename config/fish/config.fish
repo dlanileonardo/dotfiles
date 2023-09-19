@@ -67,8 +67,8 @@ alias zev="zellij --layout dev"
 # alias docker="lima nerdctl"
 # alias task="dstask"
 
-if type -q exa
-  alias ll "exa -l -g --icons --group-directories-first"
+if type -q eza
+  alias ll "eza -l -g --icons --group-directories-first"
   alias la "ll -a"
   alias lk "ll --grid"
 end

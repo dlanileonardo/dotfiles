@@ -71,8 +71,8 @@ alias lazydocker="DOCKER_HOST=ssh://ubuntu /usr/local/bin/lazydocker"
 # alias docker="lima nerdctl"
 # alias task="dstask"
 
-if type -q exa
-  alias ll "exa -l -g --icons --group-directories-first --tree --level=1"
+if type -q eza
+  alias ll "eza -l -g --icons --group-directories-first --tree --level=1"
   alias la "ll -a"
   alias lk "ll --grid"
 end

@@ -1,4 +1,4 @@
-local icons = require("user.utils.icons")
+local icons = require "user.utils.icons"
 
 local M = {
   "folke/which-key.nvim",
@@ -80,7 +80,7 @@ function M.config()
     },
   }
 
-  local dir = vim.call("stdpath", "config");
+  local dir = vim.call("stdpath", "config")
 
   local mappings = {
     [";"] = { "<cmd>Alpha<CR>", "Dashboard" },
@@ -102,6 +102,14 @@ function M.config()
       name = "Buffers",
       ["0"] = { "<cmd>blast<cr>", "Last Buffer" },
       ["1"] = { "<cmd>bfirst<cr>", "First Buffer" },
+      ["2"] = { "<CMD>BufferLineGoToBuffer 2<CR>", "Go To Buffer 2" },
+      ["3"] = { "<CMD>BufferLineGoToBuffer 3<CR>", "Go To Buffer 3" },
+      ["4"] = { "<CMD>BufferLineGoToBuffer 4<CR>", "Go To Buffer 4" },
+      ["5"] = { "<CMD>BufferLineGoToBuffer 5<CR>", "Go To Buffer 5" },
+      ["6"] = { "<CMD>BufferLineGoToBuffer 6<CR>", "Go To Buffer 6" },
+      ["7"] = { "<CMD>BufferLineGoToBuffer 7<CR>", "Go To Buffer 7" },
+      ["8"] = { "<CMD>BufferLineGoToBuffer 8<CR>", "Go To Buffer 8" },
+      ["9"] = { "<CMD>BufferLineGoToBuffer 9<CR>", "Go To Buffer 9" },
       j = { "<cmd>BufferLinePick<cr>", "Jump" },
       f = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
       b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
@@ -241,20 +249,18 @@ function M.config()
       q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
       l = { "<cmd>Trouble loclist<cr>", "LocationList" },
       w = { "<cmd>Trouble workspace_diagnostics<cr>", "Wordspace Diagnostics" },
-      a = { "<cmd>TodoTrouble<cr>", "TODO" }
+      a = { "<cmd>TodoTrouble<cr>", "TODO" },
     },
-  };
+  }
 
-  require("which-key").register(mappings,
-    {
-      mode = "n", -- NORMAL mode
-      prefix = "<leader>",
-      buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-      silent = true, -- use `silent` when creating keymaps
-      noremap = true, -- use `noremap` when creating keymaps
-      nowait = true, -- use `nowait` when creating keymaps
-    }
-  );
+  require("which-key").register(mappings, {
+    mode = "n", -- NORMAL mode
+    prefix = "<leader>",
+    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+    silent = true, -- use `silent` when creating keymaps
+    noremap = true, -- use `noremap` when creating keymaps
+    nowait = true, -- use `nowait` when creating keymaps
+  })
 end
 
 return M

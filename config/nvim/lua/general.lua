@@ -1,20 +1,19 @@
 -- General Settings
 vim.opt.shell = "/bin/sh"
 vim.opt.relativenumber = true
-vim.opt.sessionoptions:append("buffers")
-vim.opt.sessionoptions:append("curdir")
-vim.opt.sessionoptions:append("folds")
-vim.opt.sessionoptions:append("tabpages")
-vim.opt.sessionoptions:append("winsize")
-vim.opt.sessionoptions:append("winpos")
-vim.opt.sessionoptions:append("terminal")
-vim.opt.sessionoptions:append("localoptions")
+vim.opt.sessionoptions:append "buffers"
+vim.opt.sessionoptions:append "curdir"
+vim.opt.sessionoptions:append "folds"
+vim.opt.sessionoptions:append "tabpages"
+vim.opt.sessionoptions:append "winsize"
+vim.opt.sessionoptions:append "winpos"
+vim.opt.sessionoptions:append "terminal"
+vim.opt.sessionoptions:append "localoptions"
 
 -- Format and lint on save
 vim.g.format_on_save = true
 
 -- Set color scheme
-vim.cmd("colorscheme oxocarbon")
 
 -- Key Mappings
 vim.g.mapleader = " "
@@ -57,11 +56,11 @@ vim.g.treesitter_ignore_install = { "haskell", "dart" }
 vim.g.treesitter_highlight_enabled = 1
 
 -- Autocommands
-vim.cmd("augroup custom_autocmds")
-vim.cmd("autocmd!")
-vim.cmd("autocmd BufWinEnter *.* setlocal foldmethod=indent")
-vim.cmd("autocmd BufWinEnter *.* set foldexpr=nvim_treesitter#foldexpr()")
-vim.cmd("augroup END")
+vim.cmd "augroup custom_autocmds"
+vim.cmd "autocmd!"
+vim.cmd "autocmd BufWinEnter *.* setlocal foldmethod=indent"
+vim.cmd "autocmd BufWinEnter *.* set foldexpr=nvim_treesitter#foldexpr()"
+vim.cmd "augroup END"
 
 -- Timeout length
 vim.opt.timeoutlen = 500
@@ -75,11 +74,11 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.smarttab = true
 
-vim.cmd("autocmd BufRead,BufNewFile *.* hi IndentBlanklineContextChar guifg=grey gui=nocombine")
+vim.cmd "autocmd BufRead,BufNewFile *.* hi IndentBlanklineContextChar guifg=grey gui=nocombine"
 
-vim.cmd("autocmd BufRead,BufNewFile Fastfile set filetype=ruby")
+vim.cmd "autocmd BufRead,BufNewFile Fastfile set filetype=ruby"
 vim.opt.cmdheight = 1
-vim.opt.rtp:append("/usr/local/opt/fzf")
+vim.opt.rtp:append "/usr/local/opt/fzf"
 vim.g.node_host_prog = vim.fn.systemlist("asdf which neovim-node-host")[1]
 vim.g.ruby_host_prog = vim.fn.systemlist("asdf which neovim-ruby-host")[1]
 vim.g.loaded_perl_provider = 0

@@ -1,4 +1,5 @@
 local M = {
+  enabled = true,
   "goolord/alpha-nvim",
   event = "VimEnter",
   -- commit = "dafa11a6218c2296df044e00f88d9187222ba6b0",
@@ -56,7 +57,7 @@ vim.api.nvim_create_autocmd("User", {
 
     if fallback_on_empty then
       -- require("neo-tree").close_all()
-      vim.cmd("Alpha")
+      vim.cmd "Alpha"
       vim.cmd(event.buf .. "bwipeout")
     end
   end,

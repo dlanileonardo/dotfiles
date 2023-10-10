@@ -1,6 +1,7 @@
 local M = {
+  enabled = true,
   "nyoom-engineering/oxocarbon.nvim",
-  lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+  lazy = false, -- make sure we load this during startup if it is your main colorscheme
   priority = 1000, -- make sure to load this before all the other start plugins
 }
 
@@ -11,5 +12,7 @@ function M.config()
     return
   end
 end
+
+-- vim.cmd "colorscheme oxocarbon"
 
 return M

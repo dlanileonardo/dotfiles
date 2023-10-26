@@ -44,17 +44,17 @@ vim.opt.linebreak = true
 vim.opt.shell = "/bin/sh"
 vim.opt.relativenumber = true
 vim.opt.sessionoptions = "buffers,curdir,folds,tabpages,winsize,winpos,terminal,localoptions"
-vim.g.clipboard = {
-  name = "cb",
-  copy = {
-    ["+"] = { "cb", "copy" },
-    ["*"] = { "cb", "copy" },
-  },
-  paste = {
-    ["+"] = { "cb", "paste" },
-    ["*"] = { "cb", "paste" },
-  },
-  -- cache_enabled = 1,
-}
+-- vim.g.clipboard = {
+--   name = "cb",
+--   copy = {
+--     ["+"] = { "cb", "copy" },
+--     ["*"] = { "cb", "copy" },
+--   },
+--   paste = {
+--     ["+"] = { "cb", "paste" },
+--     ["*"] = { "cb", "paste" },
+--   },
+--   -- cache_enabled = 1,
+-- }
 -- vim.opt.clipboard:append { 'unnamed', 'unnamedplus' }
 -- vim.opt.clipboard = 'unnamedplus'

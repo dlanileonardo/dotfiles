@@ -23,7 +23,7 @@ if status is-interactive
 	set -g fish_prompt_pwd_dir_length 0
 end
 
-alias vim="lvim"
+alias vim="nvim"
 # alias cat="batcat"
 
 fish_add_path -a "/home/linuxbrew/.linuxbrew/bin"

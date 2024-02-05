@@ -51,3 +51,35 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
     end
   end,
 })
+
+vim.cmd([[
+  set nofoldenable
+  set foldlevel=99
+]])
+
+vim.cmd([[
+  set tabstop     =2
+  set softtabstop =2
+  set shiftwidth  =2
+  set expandtab
+  set smarttab
+]])
+
+local aucmd_dict = {
+  BufWinEnter = {
+    {
+      pattern = { "*.*" },
+      command = "setlocal foldmethod=indent"
+    },
+    {
+      pattern = { "*.*" },
+      command = "set foldexpr=nvim_treesitter#foldexpr()"
+    },
+  }
+}
+
+for event, opt_tbls in pairs(aucmd_dict) do
+  for _, opt_tbl in pairs(opt_tbls) do
+    vim.api.nvim_create_autocmd(event, opt_tbl)
+  end
+end

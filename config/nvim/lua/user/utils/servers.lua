@@ -9,6 +9,8 @@ M.servers = {
   "bashls",
   "jsonls",
   "yamlls",
+  "solargraph",
+  "emmet_ls",
 }
 
 return M

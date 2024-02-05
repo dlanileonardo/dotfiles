@@ -1,6 +1,5 @@
 local M = {
   "akinsho/toggleterm.nvim",
-  commit = "19aad0f41f47affbba1274f05e3c067e6d718e1e",
   event = "VeryLazy",
 }
 
@@ -21,7 +20,7 @@ function M.config()
     persist_size = true,
     direction = "float",
     close_on_exit = true,
-    shell = vim.o.shell,
+    shell = "fish",
     float_opts = {
       border = "curved",
     },

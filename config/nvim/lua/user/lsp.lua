@@ -1,17 +1,17 @@
 local M = {
   "neovim/nvim-lspconfig",
-  commit = "649137cbc53a044bffde36294ce3160cb18f32c7",
-  lazy = true,
+  lazy = false,
+  event = { "BufReadPre" },
   dependencies = {
     {
       "hrsh7th/cmp-nvim-lsp",
-      commit = "0e6b2ed705ddcff9738ec4ea838141654f12eeef",
     },
   },
 }
 
-local cmp_nvim_lsp = require "cmp_nvim_lsp"
 function M.config()
+  local cmp_nvim_lsp = require "cmp_nvim_lsp"
+
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
@@ -37,19 +37,11 @@ function M.config()
 
   local lspconfig = require "lspconfig"
   local on_attach = function(client, bufnr)
-    if client.name == "tsserver" then
-      client.server_capabilities.documentFormattingProvider = false
-    end
-
-    if client.name == "sumneko_lua" then
-      client.server_capabilities.documentFormattingProvider = false
-    end
-
     lsp_keymaps(bufnr)
     require("illuminate").on_attach(client)
   end
 
-  for _, server in pairs(require("utils").servers) do
+  for _, server in pairs(require("user.utils.servers").servers) do
     Opts = {
       on_attach = on_attach,
       capabilities = capabilities,
@@ -105,6 +97,36 @@ function M.config()
 
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
     border = "rounded",
+  })
+
+  -- Function to check if a floating dialog exists and if not
+  -- then check for diagnostics under the cursor
+  function OpenDiagnosticIfNoFloat()
+    for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+      if vim.api.nvim_win_get_config(winid).zindex then
+        return
+      end
+    end
+    -- THIS IS FOR BUILTIN LSP
+    vim.diagnostic.open_float({
+      scope = "cursor",
+      focusable = false,
+      close_events = {
+        "CursorMoved",
+        "CursorMovedI",
+        "BufHidden",
+        "InsertCharPre",
+        "WinLeave",
+      },
+    })
+  end
+
+  -- Show diagnostics under the cursor when holding position
+  vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
+  vim.api.nvim_create_autocmd({ "CursorHold" }, {
+    pattern = "*",
+    command = "lua OpenDiagnosticIfNoFloat()",
+    group = "lsp_diagnostics_hold",
   })
 end
 

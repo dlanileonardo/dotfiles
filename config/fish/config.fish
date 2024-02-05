@@ -28,7 +28,7 @@ if status is-interactive
 	set -g fish_prompt_pwd_dir_length 0
 end
 
-# alias vim="lvim"
+alias vim="nvim"
 alias cat="bat"
 
 set -gx PATH $PATH "$HOME/.pub-cache/bin"
@@ -48,7 +48,7 @@ set -gx FLUTTER_ROOT (asdf where flutter)
 set -gx EDITOR "vim"
 set -gx HOMEBREW_NO_ENV_HINTS 1
 
-set -gx FORGIT_PAGER 'delta --side-by-side -w ${FZF_PREVIEW_COLUMNS:-$COLUMNS}' 
+set -gx FORGIT_PAGER 'delta --side-by-side -w ${FZF_PREVIEW_COLUMNS:-$COLUMNS}'
 
 # done
 set -U __done_enabled 1

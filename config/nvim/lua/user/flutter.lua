@@ -32,8 +32,8 @@ function M.config()
       run_via_dap = true,
     },
     lsp = {
-      -- on_attach = require("lspconfig").on_attach,
-      -- capabilities = require("lspconfig").capabilities,
+      on_attach = require('user.lsp.utils').on_attach,
+      capabilities = require("user.lsp.utils").capability(),
       color = {
         enabled = true, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
         background = false, -- highlight the background

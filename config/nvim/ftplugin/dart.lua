@@ -1,11 +1,10 @@
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+local capabilities = require("user.lsp.utils").capability()
 
 local opts = {
   capabilities = capabilities,
 }
 
--- require("lspconfig").dartls.setup(opts)
+require("flutter-tools.lsp").attach()
 require("telescope").load_extension("flutter")
 
 local command_center = require("command_center")

@@ -1,6 +1,6 @@
 -- vim.cmd("setlocal colorcolumn=120")
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require("user.lsp.utils").capability()
 -- local rspec = require('nvim-test.runners.rspec'):setup {}
 
 -- function rspec:build_test_args(args, tests)

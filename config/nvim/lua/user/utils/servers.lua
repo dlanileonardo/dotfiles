@@ -11,7 +11,6 @@ M.servers = {
   "yamlls",
   "solargraph",
   "emmet_ls",
-  "dartls",
 }
 
 return M

@@ -18,6 +18,19 @@ function M.config()
 
   configs.setup {
     ensure_installed = {
+      "astro",
+      "bicep",
+      "devicetree",
+      "gomod",
+      "groovy",
+      "kconfig",
+      "luadoc",
+      "luau",
+      "nim",
+      "odin",
+      "perl",
+      "slint",
+      "v",
       "markdown_inline",
       "bash",
       "c",
@@ -53,13 +66,13 @@ function M.config()
       "vimdoc",
       "vue",
       "yaml",
-    }, -- put the language you want in this array
+    },                       -- put the language you want in this array
     -- ensure_installed = "all", -- one of "all" or a list of languages
     ignore_install = { "" }, -- List of parsers to ignore installing
-    sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+    sync_install = false,    -- install languages synchronously (only applied to `ensure_installed`)
 
     highlight = {
-      enable = true, -- false will disable the whole extension
+      enable = true,       -- false will disable the whole extension
       disable = { "css" }, -- list of language that will be disabled
     },
     autopairs = {

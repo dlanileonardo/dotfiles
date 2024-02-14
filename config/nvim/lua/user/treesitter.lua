@@ -1,4 +1,5 @@
 local M = {
+
   "nvim-treesitter/nvim-treesitter",
   event = "BufReadPost",
   dependencies = {
@@ -18,6 +19,19 @@ function M.config()
 
   configs.setup {
     ensure_installed = {
+      "astro",
+      "bicep",
+      "devicetree",
+      "gomod",
+      "groovy",
+      "kconfig",
+      "luadoc",
+      "luau",
+      "nim",
+      "odin",
+      "perl",
+      "slint",
+      "v",
       "markdown_inline",
       "bash",
       "c",

@@ -19,7 +19,6 @@ function M.config()
 
   configs.setup {
     ensure_installed = {
-      "astro",
       "bicep",
       "devicetree",
       "gomod",

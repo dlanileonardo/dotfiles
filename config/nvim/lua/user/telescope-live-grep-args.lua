@@ -1,2 +1,2 @@
-local M = { "nvim-telescope/telescope-live-grep-args.nvim" }
+local M = {}
 return M

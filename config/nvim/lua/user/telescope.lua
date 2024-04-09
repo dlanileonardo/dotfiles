@@ -11,6 +11,12 @@ local M = {
       build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
     },
     { dir = "/home/linuxbrew/.linuxbrew/opt/fzf/" },
+    {
+      "nvim-telescope/telescope-live-grep-args.nvim",
+      -- This will not install any breaking changes.
+      -- For major updates, this must be adjusted manually.
+      version = "^1.0.0",
+    },
   },
 }
 
@@ -62,6 +68,9 @@ function M.config()
           --@usage don't include the filename in the search results
           only_sort_text = true,
           -- theme = "dropdown",
+        },
+        live_grep_args = {
+          auto_quoting = true, -- enable/disable auto-quoting
         },
         grep_string = {
           only_sort_text = true,

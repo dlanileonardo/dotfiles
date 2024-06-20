@@ -1,6 +1,6 @@
 local M = {}
 
-local tbl = require "user.utils.table"
+local tbl = require "plugins.utils.table"
 -- local Log = require "core.log"
 
 function M.is_client_active(name)

@@ -1,6 +1,6 @@
-local conditions = require("user.lualine.conditions")
-local icons = require("user.utils.icons")
-local colors = require("user.lualine.colors")
+local conditions = require "plugins.lualine.conditions"
+local icons = require "plugins.utils.icons"
+local colors = require "plugins.lualine.colors"
 
 local branch = icons.git.Branch
 
@@ -90,16 +90,6 @@ return {
         end
       end
 
-      -- add formatter
-      -- local formatters = require "user.lsp.lsp.null-ls.formatters"
-      -- local supported_formatters = formatters.list_registered(buf_ft)
-      -- vim.list_extend(buf_client_names, supported_formatters)
-
-      -- add linter
-      -- local linters = require "user.lsp.lsp.null-ls.linters"
-      -- local supported_linters = linters.list_registered(buf_ft)
-      -- vim.list_extend(buf_client_names, supported_linters)
-
       local unique_client_names = table.concat(buf_client_names, ", ")
       local language_servers = string.format("[%s]", unique_client_names)
 
@@ -114,7 +104,6 @@ return {
     fmt = function()
       return "%P/%L"
     end,
-    color = {},
   },
   spaces = {
     function()

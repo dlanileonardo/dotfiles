@@ -31,11 +31,6 @@ local commands = {
     cmd = "<leader>gg",
     cat = "git",
   },
-  -- {
-  --   desc = "Toggle Git - Blame",
-  --   cmd = "<CMD>GitBlameToggle<CR>",
-  --   cat = "git",
-  -- },
   {
     desc = "Split in Horizontal",
     cmd = "<CMD>sp<CR>",
@@ -48,32 +43,44 @@ local commands = {
   },
   {
     desc = "Toggle Trouble",
-    cmd = "<cmd>TroubleToggle<cr>",
+    cmd = "<cmd>Trouble<cr>",
     keys = { "n", "<leader>tt" },
     cat = "Trouble",
   },
   {
+    desc = "LSP References",
+    cmd = "<cmd>Trouble lsp_references toggle<cr>",
+    keys = { "n", "<leader>tr" },
+    cat = "Trouble",
+  },
+  {
+    desc = "LSP Definitions",
+    cmd = "<cmd>Trouble lsp_definitions toggle<cr>",
+    keys = { "n", "<leader>td" },
+    cat = "Trouble",
+  },
+  {
     desc = "Diagnostics",
-    cmd = "<cmd>Trouble document_diagnostics<cr>",
+    cmd = "<cmd>Trouble diagnostics toggle<cr>",
     keys = { "n", "<leader>td" },
     cat = "Trouble",
   },
   {
     desc = "QuickFix",
-    cmd = "<cmd>Trouble quickfix<cr>",
+    cmd = "<cmd>Trouble quickfix toggle<cr>",
     keys = { "n", "<leader>tq" },
     cat = "Trouble",
   },
   {
     desc = "LocationList",
-    cmd = "<cmd>Trouble loclist<cr>",
+    cmd = "<cmd>Trouble loclist toggle<cr>",
     keys = { "n", "<leader>tl" },
     cat = "Trouble",
   },
   {
-    desc = "Wordspace Diagnostics",
-    cmd = "<cmd>Trouble workspace_diagnostics<cr>",
-    keys = { "n", "<leader>tw" },
+    desc = "TODO",
+    cmd = "<cmd>Trouble todo<cr>",
+    keys = { "n", "<leader>ta" },
     cat = "Trouble",
   },
   {
@@ -98,12 +105,6 @@ local commands = {
     cmd = "<CMD>TestNearest<CR>",
     keys = { "n", "<leader>yn" },
     cat = "Tests",
-  },
-  {
-    desc = "Trouble TODO",
-    cmd = "<CMD>TodoTrouble<CR>",
-    keys = { "n", "<Leader>a" },
-    cat = "Trouble",
   },
   {
     desc = "Toggle Task Overseer",
@@ -133,7 +134,7 @@ local commands = {
     desc = "Toggle Context Virtual Line",
     cmd = "<CMD>NvimContextVtToggle<CR>",
     keys = { "n", "<C-;>" },
-    cat = "Treesitter"
+    cat = "Treesitter",
   },
   {
     desc = "Preview Definitions",
@@ -175,5 +176,5 @@ local commands = {
     cmd = "<cmd>lua require('telescope').extensions.vim_bookmarks.current_file()<CR>",
     cat = "Bookmarks",
   },
-};
-return commands;
+}
+return commands

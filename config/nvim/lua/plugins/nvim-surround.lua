@@ -9,6 +9,6 @@ local M = {
       delete = "sd",
       change = "sr",
     },
-  }
+  },
 }
 return M

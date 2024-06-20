@@ -1,4 +1,4 @@
-local icons = require "user.utils.icons"
+local icons = require "plugins.utils.icons"
 
 local M = {
   "folke/which-key.nvim",
@@ -242,14 +242,13 @@ function M.config()
     },
     t = {
       name = "Trouble",
-      t = { "<cmd>TroubleToggle<cr>", "Toggle" },
-      r = { "Trouble lsp_references<cr>", "References" },
-      f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
-      d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
-      q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
-      l = { "<cmd>Trouble loclist<cr>", "LocationList" },
-      w = { "<cmd>Trouble workspace_diagnostics<cr>", "Wordspace Diagnostics" },
-      a = { "<cmd>TodoTrouble<cr>", "TODO" },
+      -- t = { "<cmd>Trouble<cr>", "Toggle" },
+      -- r = { "<cmd>Trouble lsp_references toggle<cr>", "References" },
+      -- f = { "<cmd>Trouble lsp_definitions toggle<cr>", "Definitions" },
+      -- d = { "<cmd>Trouble diagnostics toggle<cr>", "Diagnostics" },
+      -- q = { "<cmd>Trouble quickfix toggle<cr>", "QuickFix" },
+      -- l = { "<cmd>Trouble loclist toggle<cr>", "LocationList" },
+      -- a = { "<cmd>TodoTrouble<cr>", "TODO" },
     },
   }
 

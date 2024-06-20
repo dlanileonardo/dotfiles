@@ -33,6 +33,50 @@ function M.config()
   telescope.load_extension "yank_history"
 
   telescope.setup {
+    pickers = {
+      find_files = {
+        hidden = true,
+        -- theme = "dropdown",
+      },
+      live_grep = {
+        --@usage don't include the filename in the search results
+        only_sort_text = true,
+        -- theme = "dropdown",
+      },
+      live_grep_args = {
+        auto_quoting = true, -- enable/disable auto-quoting
+      },
+      grep_string = {
+        only_sort_text = true,
+        -- theme = "dropdown",
+      },
+      buffers = {
+        -- theme = "dropdown",
+        initial_mode = "normal",
+        mappings = {
+          i = {
+            ["<C-d>"] = actions.delete_buffer,
+          },
+          n = {
+            ["dd"] = actions.delete_buffer,
+          },
+        },
+      },
+      planets = {
+        show_pluto = true,
+        show_moon = true,
+        -- theme = "dropdown",
+      },
+      git_files = {
+        hidden = true,
+        show_untracked = true,
+        -- theme = "dropdown",
+      },
+      colorscheme = {
+        enable_preview = true,
+        theme = "dropdown",
+      },
+    },
     -- theme = "dropdown", ---@type telescope_themes
     defaults = {
       entry_prefix = "  ",
@@ -59,50 +103,6 @@ function M.config()
       },
       layout_strategy = "vertical",
       prompt_prefix = " > ",
-      pickers = {
-        find_files = {
-          hidden = true,
-          -- theme = "dropdown",
-        },
-        live_grep = {
-          --@usage don't include the filename in the search results
-          only_sort_text = true,
-          -- theme = "dropdown",
-        },
-        live_grep_args = {
-          auto_quoting = true, -- enable/disable auto-quoting
-        },
-        grep_string = {
-          only_sort_text = true,
-          -- theme = "dropdown",
-        },
-        buffers = {
-          -- theme = "dropdown",
-          initial_mode = "normal",
-          mappings = {
-            i = {
-              ["<C-d>"] = actions.delete_buffer,
-            },
-            n = {
-              ["dd"] = actions.delete_buffer,
-            },
-          },
-        },
-        planets = {
-          show_pluto = true,
-          show_moon = true,
-          -- theme = "dropdown",
-        },
-        git_files = {
-          hidden = true,
-          show_untracked = true,
-          -- theme = "dropdown",
-        },
-        colorscheme = {
-          enable_preview = true,
-          -- theme = "dropdown",
-        },
-      },
       selection_caret = " ",
       path_display = { "smart" },
       file_ignore_patterns = { ".git/", "node_modules" },

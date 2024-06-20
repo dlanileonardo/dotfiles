@@ -4,7 +4,7 @@ local M = {}
 
 local function find_root_dir()
   local util = require "lspconfig/util"
-  local lsp_utils = require "user.lsp.utils"
+  local lsp_utils = require "plugins.lsp.utils"
 
   local ts_client = lsp_utils.is_client_active "typescript"
   if ts_client then
@@ -21,7 +21,7 @@ local function from_node_modules(command)
     return nil
   end
 
-  local join_paths = require("user.utils").join_paths
+  local join_paths = require("plugins.utils").join_paths
   return join_paths(root_dir, "node_modules", ".bin", command)
 end
 

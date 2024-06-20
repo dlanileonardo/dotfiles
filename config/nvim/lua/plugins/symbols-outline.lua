@@ -1,4 +1,4 @@
-local icons = require("user.utils.icons")
+local icons = require("plugins.utils.icons")
 
 local M = {
   enabled = true,

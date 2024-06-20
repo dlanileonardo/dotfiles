@@ -1,6 +1,3 @@
-# source ~/.asdf/asdf.fish
-source /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.fish
-
 if status is-interactive
 	# Commands to run in interactive sessions can go here
 	set -U fish_key_bindings fish_default_key_bindings
@@ -141,3 +138,6 @@ end
 if test -d (brew --prefix)"/share/fish/vendor_completions.d"
     set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
 end
+
+# source ~/.asdf/asdf.fish
+source /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.fish

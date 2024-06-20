@@ -1,6 +1,6 @@
 local M = {
-  enabled = true,
   "folke/trouble.nvim",
-  cmd = "TroubleToggle",
+  opts = {},
+  cmd = "Trouble",
 }
 return M

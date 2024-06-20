@@ -103,6 +103,11 @@ local commands = {
     cat = "Telescope",
   },
   {
+    desc = "Telescope themes",
+    cmd = "<CMD>Telescope colorscheme<CR>",
+    cat = "Telescope",
+  },
+  {
     desc = "Telescope Git Branches",
     cmd = "<CMD>Telescope git_branches<CR>",
     cat = "Telescope",
@@ -111,6 +116,6 @@ local commands = {
     desc = "Telescope Help",
     cmd = "<CMD>Telescope help_tags<CR>",
     cat = "Telescope",
-  }
-};
-return commands;
+  },
+}
+return commands

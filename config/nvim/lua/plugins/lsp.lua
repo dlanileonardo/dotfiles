@@ -41,7 +41,7 @@ function M.config()
     require("illuminate").on_attach(client)
   end
 
-  for _, server in pairs(require("user.utils.servers").servers) do
+  for _, server in pairs(require("plugins.utils.servers").servers) do
     Opts = {
       on_attach = on_attach,
       capabilities = capabilities,

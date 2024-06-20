@@ -13,8 +13,6 @@ vim.opt.sessionoptions:append "localoptions"
 -- Format and lint on save
 vim.g.format_on_save = true
 
--- Set color scheme
-
 -- Key Mappings
 vim.g.mapleader = " "
 vim.api.nvim_set_keymap("n", "<C-j>", "<cmd>Telescope down<CR>", { noremap = true })

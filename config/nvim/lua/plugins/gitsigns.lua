@@ -1,8 +1,9 @@
-local icons = require "user.utils.icons"
+local icons = require "plugins.utils.icons"
 
 local M = {
   "lewis6991/gitsigns.nvim",
   event = "BufReadPre",
+  enable = true,
 }
 
 M.opts = {
@@ -39,13 +40,15 @@ M.opts = {
     follow_files = true,
   },
   numhl = true,
+  auto_attach = true,
   attach_to_untracked = true,
-  current_line_blame = false,
+  current_line_blame = true,
   current_line_blame_opts = {
     virt_text = true,
     virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
     delay = 1000,
     ignore_whitespace = false,
+    virt_text_priority = 100,
   },
   current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
   sign_priority = 6,

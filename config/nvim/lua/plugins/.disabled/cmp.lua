@@ -1,4 +1,5 @@
 local M = {
+  enabled = true,
   "hrsh7th/nvim-cmp",
   dependencies = {
     {

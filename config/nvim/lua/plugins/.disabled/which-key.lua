@@ -97,6 +97,7 @@ function M.config()
         "Edit config.lua",
       },
     },
+    n = { "<CMD>Telescope notify<CR>", "Notifications" },
     b = {
       name = "Buffers",
       ["0"] = { "<cmd>blast<cr>", "Last Buffer" },

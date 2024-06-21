@@ -43,11 +43,6 @@ local commands = {
     cat = "NeoVim",
   },
   {
-    desc = "Toggle Auto Format",
-    cmd = "<CMD>ToggleFormatOnSave<CR>",
-    cat = "NeoVim",
-  },
-  {
     desc = "Toggle Terminal",
     cmd = "<CMD>ToggleTerm<CR>",
     cat = "Terminal",

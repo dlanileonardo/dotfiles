@@ -15,6 +15,7 @@ function M.config()
   local telescope = require "commander.telescope"
   local hop = require "commander.hop"
   local neovim = require "commander.neovim"
+  local lazyvim = require "commander.lazyvim"
 
   commander.add(general)
   commander.add(buffers)
@@ -22,7 +23,7 @@ function M.config()
   commander.add(telescope)
   commander.add(hop)
   commander.add(neovim)
-
+  commander.add(lazyvim)
 
   commander.setup({
     components = {

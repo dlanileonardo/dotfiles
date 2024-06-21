@@ -1,4 +1,5 @@
 local M = {
+  enabled = true,
   "windwp/nvim-autopairs",
   event = "InsertEnter",
   dependencies = {

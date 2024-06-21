@@ -4,17 +4,12 @@ local M = {
   lazy = false,
   keys = {
     {
-      "T",
-      function()
-        require("ts-node-action").node_action()
-      end,
+      "gT",
+      function() require("ts-node-action").node_action() end,
       desc = "Node Action",
     },
     {
-      "<leader>TT",
-      function()
-        require("ts-node-action").node_action()
-      end,
+      "<leader>TT", function() require("ts-node-action").node_action() end,
       desc = "Node Action",
     },
   },

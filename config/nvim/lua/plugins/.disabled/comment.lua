@@ -1,4 +1,5 @@
 local M = {
+  enabled = true,
   "numToStr/Comment.nvim",
   event = "BufRead",
 }

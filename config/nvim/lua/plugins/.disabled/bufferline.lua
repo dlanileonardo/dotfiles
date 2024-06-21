@@ -1,4 +1,5 @@
 local M = {
+  enabled = true,
   "akinsho/bufferline.nvim",
   event = { "BufReadPre", "BufAdd", "BufNew", "BufReadPost" },
   dependencies = {

@@ -18,12 +18,14 @@ require("lazy").setup({
   spec = {
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     { import = "plugins" },
+    -- { import = "lazyvim.plugins.extras.lsp.none-ls" },
   },
   defaults = {
     lazy = false,
     version = false,
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
+  debug = false,
   ui = { wrap = "true" },
   -- install = { colorscheme = { "oxocarbon", "horizon", "cyberdream", "gruvbox-baby", "nord", "tokyonight" } },
   checker = { enabled = true }, -- automatically check for plugin updates

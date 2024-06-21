@@ -7,5 +7,3 @@ require "config.general"
 
 local commands = require "config.commands"
 commands.load(commands.defaults)
-
-require("core.autocmds").configure_format_on_save()

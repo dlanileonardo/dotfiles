@@ -1,5 +1,5 @@
 local M = {
-  enabled = true,
+  enabled = false,
   "ray-x/lsp_signature.nvim",
   lazy = true,
   event = "BufRead",

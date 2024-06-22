@@ -7,6 +7,9 @@ local M = {
     defaults = {
       mode = { "n", "v" },
       ["<leader>d"] = { name = "+debug" },
+      ["<leader>y"] = { name = "+tests" },
+      ["<leader>t"] = { name = "+trouble" },
+      ["<leader>o"] = { name = "+overseer" },
     },
   },
 }

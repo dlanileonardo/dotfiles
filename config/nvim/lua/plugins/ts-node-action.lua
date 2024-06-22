@@ -9,7 +9,7 @@ local M = {
       desc = "Node Action",
     },
     {
-      "<leader>TT", function() require("ts-node-action").node_action() end,
+      "<leader>cT", function() require("ts-node-action").node_action() end,
       desc = "Node Action",
     },
   },

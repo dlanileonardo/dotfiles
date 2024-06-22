@@ -59,10 +59,6 @@ keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
 
--- Comment
-keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
-keymap("x", "<leader>/", "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", opts)
-
 -- DAP
 keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
 keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
@@ -74,12 +70,15 @@ keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
 keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
+-- Comment
+keymap("n", "<leader>\\", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", { desc = "Comment toggle current line" })
+keymap("x", "<leader>\\", "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", { desc = "Comment block" })
+-- keymap("n", "<leader>\\", "<Plug>(comment_toggle_linewise_current)", { desc = "Comment toggle current line" })
 
 keymap("n", "<leader>;", "<cmd>Alpha<CR>", { desc = "Dashboard" })
 keymap("n", "<leader>w", "<cmd>w!<CR>", { desc = "Save" })
 keymap("n", "<leader>q", "<cmd>confirm q<CR>", { desc = "Quit" })
-keymap("n", "<leader>\\", "<Plug>(comment_toggle_linewise_current)", { desc = "Comment toggle current line" })
-keymap("n", "<leader>c", "<cmd>BufferKill<CR>", { desc = "Close Buffer" })
+keymap("n", "<leader><Del>", "<cmd>BufferKill<CR>", { desc = "Close Buffer" })
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", { desc = "No Highlight" })
 keymap("n", "<leader>e", "<cmd>Telescope file_browser<CR>", { desc = "Telescope Explorer" })
 keymap("n", "<leader>n", "<cmd>Telescope notify<CR>", { desc = "Notifications" })

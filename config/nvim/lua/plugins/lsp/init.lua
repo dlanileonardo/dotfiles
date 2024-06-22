@@ -1,7 +1,7 @@
 local M = {}
-local Log = require "lvim.core.log"
-local utils = require "lvim.utils"
-local autocmds = require "lvim.core.autocmds"
+-- local Log = require "lvim.core.log"
+-- local utils = require "lvim.utils"
+-- local autocmds = require "lvim.core.autocmds"
 
 -- local function add_lsp_buffer_options(bufnr)
 --   for k, v in pairs(lvim.lsp.buffer_options) do

@@ -50,11 +50,6 @@ keymap("i", "jk", "<ESC>", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
--- Plugins --
-
--- NvimTree
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
-
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
@@ -78,6 +73,16 @@ keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
 keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
 keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
+
+
+keymap("n", "<leader>;", "<cmd>Alpha<CR>", { desc = "Dashboard" })
+keymap("n", "<leader>w", "<cmd>w!<CR>", { desc = "Save" })
+keymap("n", "<leader>q", "<cmd>confirm q<CR>", { desc = "Quit" })
+keymap("n", "<leader>\\", "<Plug>(comment_toggle_linewise_current)", { desc = "Comment toggle current line" })
+keymap("n", "<leader>c", "<cmd>BufferKill<CR>", { desc = "Close Buffer" })
+keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", { desc = "No Highlight" })
+keymap("n", "<leader>e", "<cmd>Telescope file_browser<CR>", { desc = "Telescope Explorer" })
+keymap("n", "<leader>n", "<cmd>Telescope notify<CR>", { desc = "Notifications" })
 
 -- Lsp
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)

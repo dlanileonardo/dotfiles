@@ -1,15 +1,8 @@
 local M = {
   enabled = true,
   "akinsho/bufferline.nvim",
+  commit = "99337f63f0a3c3ab9519f3d1da7618ca4f91cffe",
   event = { "BufReadPre", "BufAdd", "BufNew", "BufReadPost" },
-  dependencies = {
-    {
-      "nvim-tree/nvim-web-devicons",
-    },
-    {
-      "famiu/bufdelete.nvim",
-    },
-  },
 }
 
 function M.config()
@@ -23,7 +16,14 @@ function M.config()
       always_show_bufferline = true,
       close_command = "Bdelete! %d",       -- can be a string | function, see "Mouse actions"
       right_mouse_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
-      -- offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
+      offsets = {
+        {
+          filetype = "neo-tree",
+          text = "Neo-tree",
+          highlight = "Directory",
+          text_align = "left",
+        },
+      },
       -- name_formatter = function(buf) -- buf contains:
       --   -- name                | str        | the basename of the active file
       --   -- path                | str        | the full path of the active file

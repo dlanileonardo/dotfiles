@@ -1,7 +1,9 @@
 -- vim.cmd("setlocal colorcolumn=120")
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-local opts = {}
+-- local opts = {}
 
-require("lspconfig").rust_analyzer.setup(opts)
+-- require("lspconfig").rust_analyzer.setup(opts)
+
+vim.notify("rust loaded")

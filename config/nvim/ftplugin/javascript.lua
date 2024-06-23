@@ -1,26 +1,23 @@
--- vim.cmd("setlocal colorcolumn=120")
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
--- capabilities.textDocument.documentHighlight = true
--- capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- -- capabilities.textDocument.documentHighlight = true
+-- -- capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-vim.cmd("setlocal tabstop=4 shiftwidth=4")
 
-local opts = {
-  capabilities = capabilities,
-}
+-- local opts = {
+--   capabilities = capabilities,
+-- }
 
-require("lspconfig").tsserver.setup({
-  capabilities = capabilities,
-  init_options = {
-    provideFormatter = true
-  }
-})
+-- require("lspconfig").tsserver.setup({
+--   capabilities = capabilities,
+--   init_options = {
+--     provideFormatter = true
+--   }
+-- })
 
-require("lspconfig").tailwindcss.setup({
-  capabilities = capabilities,
-})
+-- require("lspconfig").tailwindcss.setup({
+--   capabilities = capabilities,
+-- })
 
 -- dap.adapters.chrome = {
 --   type = "executable",
@@ -54,4 +51,8 @@ require("lspconfig").tailwindcss.setup({
 --   },
 -- }
 
--- vim.notify("tsserver loaded")
+vim.cmd("setlocal colorcolumn=120")
+vim.cmd("setlocal tabstop=4 shiftwidth=4")
+
+vim.notify("javascript loaded")
+

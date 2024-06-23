@@ -1,16 +1,30 @@
 local M = {}
 
 M.servers = {
-  "lua_ls",
-  "cssls",
-  "html",
-  "tsserver",
-  "pyright",
-  "bashls",
-  "jsonls",
-  "yamlls",
+  -- CSS
+  "css-lsp",
+  -- LUA
+  "lua-language-server",
+  "stylua",
+  -- HTML
+  "html-lsp",
+  "emmet-ls",
+  -- RUBY
+  "rubocop",
+  "erb-formatter",
+  "erb-lint",
   "solargraph",
-  "emmet_ls",
+-- JAVASCRIPT
+  "typescript-language-server",
+  "node-debug2-adapter",
+  -- JSON
+  "json-lsp",
+  -- SHELL
+  "shfmt",
+-- MANY
+  "prettier",
+  -- YAML
+  "yaml-language-server",
 }
 
 return M

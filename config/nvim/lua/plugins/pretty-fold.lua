@@ -1,4 +1,5 @@
 local M =  {
+  enabled = false,
   'anuvyklack/pretty-fold.nvim',
   opts = {
     -- keep_indentation = true,

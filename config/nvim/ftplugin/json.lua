@@ -1,13 +1,13 @@
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-vim.cmd("setlocal tabstop=4 shiftwidth=4")
+-- vim.cmd("setlocal tabstop=4 shiftwidth=4")
 
-local opts = {
-  capabilities = capabilities,
-}
+-- local opts = {
+--   capabilities = capabilities,
+-- }
 
-require("lspconfig").jsonls.setup(opts)
+-- require("lspconfig").jsonls.setup(opts)
 
 vim.notify("json loaded")

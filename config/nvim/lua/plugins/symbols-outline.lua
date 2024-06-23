@@ -1,0 +1,50 @@
+local icons = require("plugins.utils.icons")
+
+local M = {
+  enabled = true,
+  'simrat39/symbols-outline.nvim',
+  lazy = true,
+  -- event = "BufRead",
+  keys = {
+    { "<leader>lo", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" },
+  },
+  opts = {
+    auto_preview = false,
+    preview_bg_highlight = "Pmenu",
+    highlight_hovered_item = true,
+    keymaps = { -- These keymaps can be a string or a table for multiple keys
+      close = { "q" },
+    },
+    symbols = {
+      File = { icon = icons.kind.File, hl = "@text.uri" },
+      Module = { icon = icons.kind.Module, hl = "@namespace" },
+      Namespace = { icon = icons.kind.Namespace, hl = "@namespace" },
+      Package = { icon = icons.kind.Package, hl = "@namespace" },
+      Class = { icon = icons.kind.Class, hl = "@constant" },
+      Method = { icon = icons.kind.Method, hl = "@method" },
+      Property = { icon = icons.kind.Property, hl = "@method" },
+      Field = { icon = icons.kind.Field, hl = "@field" },
+      Constructor = { icon = icons.kind.Constructor, hl = "@constructor" },
+      Enum = { icon = icons.kind.Enum, hl = "@type" },
+      Interface = { icon = icons.kind.Interface, hl = "@type" },
+      Function = { icon = icons.kind.Function, hl = "@function" },
+      Variable = { icon = icons.kind.Variable, hl = "Statement" },
+      Constant = { icon = icons.kind.Constant, hl = "Statement" },
+      String = { icon = icons.kind.String, hl = "@string" },
+      Number = { icon = icons.kind.Number, hl = "@number" },
+      Boolean = { icon = icons.kind.Boolean, hl = "@boolean" },
+      Array = { icon = icons.kind.Array, hl = "@constant" },
+      Object = { icon = icons.kind.Object, hl = "@constant" },
+      Key = { icon = icons.kind.Key, hl = "@type" },
+      Null = { icon = icons.kind.Null, hl = "@type" },
+      EnumMember = { icon = icons.kind.EnumMember, hl = "@field" },
+      Struct = { icon = icons.kind.Struct, hl = "@type" },
+      Event = { icon = icons.kind.Event, hl = "@type" },
+      Operator = { icon = icons.kind.Operator, hl = "@operator" },
+      TypeParameter = { icon = icons.kind.TypeParameter, hl = "@parameter" },
+      Component = { icon = icons.kind.Function, hl = "@function" },
+      Fragment = { icon = icons.kind.Constant, hl = "@constant" },
+    },
+  },
+}
+return M

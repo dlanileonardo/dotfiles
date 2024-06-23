@@ -1,11 +1,10 @@
-require "options"
-require "keymaps"
-require "Lazy"
-require "autocommands"
-require "neovide"
-require "general"
+require "config.options"
+require "config.keymaps"
+require "config.lazy"
+require "config.autocmds"
+require "config.neovide"
+require "config.general"
+require "config.highlight"
 
-local commands = require "commands"
+local commands = require "config.commands"
 commands.load(commands.defaults)
-
-require("core.autocmds").configure_format_on_save()

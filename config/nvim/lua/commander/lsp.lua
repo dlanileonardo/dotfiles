@@ -48,20 +48,26 @@ local commands = {
   {
     desc = "LSP - Workspace Symbols",
     cmd = "<cmd>Telescope lsp_workspace_symbols<cr>",
-    keys = { "n", "gW" },
+    keys = {
+      { "n", "gW" },
+      -- { "n", "<C-i>" },
+    },
     cat = "LSP",
   },
   {
     desc = "LSP - Document Symbols",
     cmd = "<CMD>Telescope lsp_document_symbols<CR>",
-    keys = { "n", "gS" },
+    keys = {
+      { "n", "gS" },
+      -- { "n", "<C-o>" },
+    },
     cat = "LSP",
   },
   {
     desc = "LSP - Buffers Diagnostics",
     cmd = "<CMD>Telescope diagnostics no_unlisted=true<CR>",
     keys = { "n", "gK" },
-    cat = "LSP"
+    cat = "LSP",
   },
   {
     desc = "LSP - Hover",
@@ -86,5 +92,5 @@ local commands = {
     cmd = "<cmd>LspRestart<cr>",
     cat = "LSP",
   },
-};
-return commands;
+}
+return commands

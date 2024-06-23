@@ -17,13 +17,13 @@ local commands = {
   {
     desc = "Telescope Search Word",
     cmd = "<CMD>lua require('telescope.builtin').live_grep()<CR>",
-    keys = { "n", "<M-r>" },
+    keys = { "n", "<M-l>" },
     cat = "Telescope",
   },
   {
     desc = "Telescope Search Word Args",
     cmd = "<CMD>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
-    keys = { "n", "<M-o>" },
+    keys = { "n", "<M-;>" },
     cat = "Telescope",
   },
   {
@@ -52,7 +52,7 @@ local commands = {
   {
     desc = "Telescope Current Buffer",
     cmd = "<CMD>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>",
-    keys = { "n", "<M-p>" },
+    keys = { "n", "<M-a>" },
     cat = "Telescope",
   },
   {
@@ -103,6 +103,11 @@ local commands = {
     cat = "Telescope",
   },
   {
+    desc = "Telescope themes",
+    cmd = "<CMD>Telescope colorscheme<CR>",
+    cat = "Telescope",
+  },
+  {
     desc = "Telescope Git Branches",
     cmd = "<CMD>Telescope git_branches<CR>",
     cat = "Telescope",
@@ -111,6 +116,6 @@ local commands = {
     desc = "Telescope Help",
     cmd = "<CMD>Telescope help_tags<CR>",
     cat = "Telescope",
-  }
-};
-return commands;
+  },
+}
+return commands

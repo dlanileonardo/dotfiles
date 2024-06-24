@@ -18,10 +18,23 @@ require("lazy").setup({
   spec = {
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     { import = "plugins" },
+    { "williamboman/mason.nvim",
+      opts = {
+        ensure_installed =  require("plugins.utils.servers").servers
+      }
+    },
     { import = "lazyvim.plugins.extras.lsp.none-ls" },
+
     { import = "lazyvim.plugins.extras.coding.yanky" },
     -- { import = "lazyvim.plugins.extras.coding.tabnine" },
     { import = "lazyvim.plugins.extras.coding.codeium" },
+
+    { import = "lazyvim.plugins.extras.lang.json" },
+    { import = "lazyvim.plugins.extras.lang.markdown" },
+    { import = "lazyvim.plugins.extras.lang.typescript" },
+
+    { import = "lazyvim.plugins.extras.dap.core" },
+    { import = "lazyvim.plugins.extras.dap.nlua" },
   },
   defaults = {
     lazy = false,

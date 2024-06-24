@@ -75,6 +75,7 @@ function M.config()
       colorscheme = {
         enable_preview = true,
         theme = "dropdown",
+        previewer = false,
       },
     },
     -- theme = "dropdown", ---@type telescope_themes

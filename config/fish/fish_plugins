@@ -1,15 +1,5 @@
-oh-my-fish/plugin-await
-danhper/fish-ssh-agent
-oh-my-fish/plugin-grc
-edc/bass
-nickeb96/puffer-fish
-jorgebucaran/autopair.fish
 jethrokuan/z
 jorgebucaran/fisher
 ilancosman/tide@v5
-joseluisq/gitnow@2.10.0
-halostatue/fish-direnv
-patrickf1/fzf.fish
 wfxr/forgit
-oh-my-fish/plugin-brew
-ankitsumitg/docker-fish-completions
+oh-my-fish/plugin-aws

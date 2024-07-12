@@ -21,7 +21,6 @@ if status is-interactive
 end
 
 alias vim="nvim"
-# alias cat="batcat"
 
 fish_add_path -a "/home/linuxbrew/.linuxbrew/bin"
 fish_add_path -a "$HOME/.pub-cache/bin"
@@ -32,17 +31,11 @@ fish_add_path -a "/usr/local/sbin"
 fish_add_path -a "$HOME/bin"
 fish_add_path -a "/home/linuxbrew/.linuxbrew/sbin"
 
-# set -gx USE_LIMA 1
-# set -gx BAT_THEME "base16"
-# set -gx LS_COLORS $(gdircolors ~/.dir_colors | grep -o "\'.*\'" | grep -o '[0-9a-z:=;*.]\+')
-# set -gx LUA_PATH "/Users/dlani/.config/nvim/?.lua;/Users/dlani/.config/lvim/?.lua"
-
 set -gx GPG_TTY $(tty)
-# set -gx FLUTTER_ROOT (asdf where flutter)
 set -gx EDITOR "vim"
 set -gx HOMEBREW_NO_ENV_HINTS 1
 
-set -gx FORGIT_PAGER 'delta --side-by-side -w ${FZF_PREVIEW_COLUMNS:-$COLUMNS}' 
+set -gx FORGIT_PAGER 'delta --side-by-side -w ${FZF_PREVIEW_COLUMNS:-$COLUMNS}'
 
 # done
 set -U __done_enabled 1
@@ -61,8 +54,6 @@ alias work="cd /Volumes/Workspace"
 alias serve="browser-sync start -s -f . --no-notify --host 0.0.0.0 --port 9000"
 alias colortest="curl -s https://gist.githubusercontent.com/HaleTom/89ffe32783f89f403bba96bd7bcd1263/raw/ | bash"
 alias zev="zellij --layout dev"
-# alias docker="lima nerdctl"
-# alias task="dstask"
 
 if type -q eza
   alias ll "eza -l -g --icons --group-directories-first"
@@ -81,55 +72,27 @@ if status is-interactive
     # zellij setup --generate-auto-start fish | source
 end
 
-
-# git-town completions fish | source
-
-# fzf_configure_bindings --directory=\cf
-
-# test -r ~/.dir_colors && eval $(/usr/local/Cellar/coreutils/9.1/libexec/gnubin/dircolors ~/.dir_colors -c)
-
-# fish_vi_key_bindings normal
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-# if test -f /usr/local/Caskroom/miniconda/base/bin/conda
-#     eval /usr/local/Caskroom/miniconda/base/bin/conda "shell.fish" "hook" $argv | source
-# end
-# <<< conda initialize <<<
-
 set DIRENV_CONFIG $XDG_CONFIG_HOME/direnv/direnv.toml
-direnv hook fish | source
-# starship init fish | source
-# dstask _completions fish | source
-# ng completion script | source
-zoxide init fish | source
+
+if type -q direnv
+	direnv hook fish | source
+end
+
+if type -q zoxide
+	zoxide init fish | source
+end
 
 for f in ~/.dotfiles/sources/*
   cat "$f" | source
 end
 
-# if command -v ngrok &>/dev/null; then
+if type -q ngrok
   eval "$(ngrok completion)"
-# fi
+end
 
-# function cd -w='cd'
-#   builtin cd $argv || return
-#   check_directory_for_new_repository
-# end
-
-# function check_directory_for_new_repository
-#   set current_repository (git rev-parse --show-toplevel 2> /dev/null)
-#   if [ "$current_repository" ] && \
-#     [ "$current_repository" != "$last_repository" ]
-#     onefetch
-#   end
-#   set -gx last_repository $current_repository
-# end
-
-# funcsave cd
-# funcsave check_directory_for_new_repository
-shadowenv init fish | source
+if type -q shadowenv
+	shadowenv init fish | source
+end
 
 if test -d (brew --prefix)"/share/fish/completions"
     set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
@@ -139,5 +102,13 @@ if test -d (brew --prefix)"/share/fish/vendor_completions.d"
     set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
 end
 
-# source ~/.asdf/asdf.fish
-source /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.fish
+if test -d (brew --prefix)"/share/fish/completions"
+	source (brew --prefix)/opt/asdf/libexec/asdf.fish
+end
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /usr/local/Caskroom/miniconda/base/bin/conda
+    eval /usr/local/Caskroom/miniconda/base/bin/conda "shell.fish" "hook" $argv | source
+end
+# <<< conda initialize <<<

@@ -136,7 +136,15 @@ namespace 'dot' do
     sp1 = @multi_spinner.register '[:spinner] Dependencies'
     sp1.auto_spin
 
+    run_apt_get 'asdf', lvl: 1
+    run_apt_get 'autoconf', lvl: 1
+    run_apt_get 'automake', lvl: 1
     run_apt_get 'asciinema', lvl: 1
+    run_apt_get 'cmake', lvl: 1
+    run_apt_get 'cmatrix', lvl: 1
+    run_apt_get 'git-delta', lvl: 1
+    run_apt_get 'git-fixup', lvl: 1
+    run_apt_get 'gitup', lvl: 1
     run_apt_get 'fzf', lvl: 1
     run_apt_get 'bat', lvl: 1
     run_apt_get 'fd', lvl: 1

@@ -1,24 +1,22 @@
-local M = {
-  enabled = true,
+return {
   "goolord/alpha-nvim",
   event = "VimEnter",
+  enabled = true,
   init = false,
   opts = function()
     local dashboard = require "alpha.themes.dashboard"
     local logo = [[
-    "                                      ",
-    "                  ▄                   ",
-    "                ▄▄▄▄▄                 ",
-    "              ▄▄▄▄▄▄▄▄▄               ",
-    "           ▗  ▄▄▄▄▄▄▄▄▄  ▖            ",
-    "          ▄▄▄   ▄▄▄▄▄   ▄▄▄           ",
-    "        ▄▄▄▄▄▄▄   ▄   ▄▄▄▄▄▄▄         ",
-    "      ▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄       ",
-    "    ▄▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄▄     ",
-    "  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ",
-    "                                      ",
-    "           C Y B E R D Y N E          ",
-    "               SYSTEMS                ",
+                  ▄
+                ▄▄▄▄▄  
+              ▄▄▄▄▄▄▄▄▄
+           ▗  ▄▄▄▄▄▄▄▄▄  ▖
+          ▄▄▄   ▄▄▄▄▄   ▄▄▄
+        ▄▄▄▄▄▄▄   ▄   ▄▄▄▄▄▄▄
+      ▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄
+    ▄▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄▄
+  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+          C Y B E R D Y N E
+               SYSTEMS
     ]]
 
     dashboard.section.header.val = vim.split(logo, "\n")
@@ -44,8 +42,7 @@ local M = {
     dashboard.opts.layout[1].val = 8
     return dashboard
   end,
-
-  config = function()
+  config = function(_, dashboard)
     -- close Lazy and re-open when the dashboard is ready
     if vim.o.filetype == "lazy" then
       vim.cmd.close()
@@ -95,5 +92,3 @@ local M = {
     })
   end,
 }
-
-return M

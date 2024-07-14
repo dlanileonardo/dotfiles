@@ -58,3 +58,4 @@ vim.opt.sessionoptions = "buffers,curdir,folds,tabpages,winsize,winpos,terminal,
 -- }
 -- vim.opt.clipboard:append { 'unnamed', 'unnamedplus' }
 -- vim.opt.clipboard = 'unnamedplus'
+--

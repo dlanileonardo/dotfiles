@@ -8,8 +8,6 @@
   name = Dlani Mendes
   email = dlanileonardo@gmail.com
 	signingkey = 680F3AC3BB7D2B45
-; [credential]
-;   helper = osxkeychain
 [alias]
   cl = clone
   co = checkout

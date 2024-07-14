@@ -77,6 +77,11 @@ vim.cmd "autocmd BufRead,BufNewFile *.* hi IndentBlanklineContextChar guifg=grey
 vim.cmd "autocmd BufRead,BufNewFile Fastfile set filetype=ruby"
 vim.opt.cmdheight = 1
 vim.opt.rtp:append "/usr/local/opt/fzf"
+
+vim.g.python_host_prog = vim.fn.systemlist("asdf which python")[1]
+vim.g.python3_host_prog = vim.fn.systemlist("asdf which python3")[1]
 vim.g.node_host_prog = vim.fn.systemlist("asdf which neovim-node-host")[1]
 vim.g.ruby_host_prog = vim.fn.systemlist("asdf which neovim-ruby-host")[1]
+
 vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0

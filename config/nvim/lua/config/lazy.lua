@@ -14,19 +14,20 @@ vim.opt.rtp:prepend(lazypath)
 -- example using a list of specs with the default options
 vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
 
-require("lazy").setup({
+require("lazy").setup {
   spec = {
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     { import = "plugins" },
-    { "williamboman/mason.nvim",
+    {
+      "williamboman/mason.nvim",
       opts = {
-        ensure_installed =  require("plugins.utils.servers").servers
-      }
+        ensure_installed = require("plugins.utils.servers").servers,
+      },
     },
-    { import = "lazyvim.plugins.extras.lsp.none-ls" },
-    { import = "lazyvim.plugins.extras.coding.yanky" },
+    -- { import = "lazyvim.plugins.extras.lsp.none-ls" },
+    -- { import = "lazyvim.plugins.extras.coding.yanky" },
+    -- { import = "lazyvim.plugins.extras.coding.codeium" },
     -- { import = "lazyvim.plugins.extras.coding.tabnine" },
-    { import = "lazyvim.plugins.extras.coding.codeium" },
   },
   defaults = {
     lazy = false,
@@ -52,7 +53,7 @@ require("lazy").setup({
       },
     },
   },
-})
+}
 
 -- load lazy
 -- require("lazy").setup("plugins", {

@@ -4,13 +4,13 @@ local M = {
   "folke/which-key.nvim",
   opts = {
     plugins = { spelling = true },
-    defaults = {
-      mode = { "n", "v" },
-      ["<leader>d"] = { name = "+debug" },
-      ["<leader>y"] = { name = "+tests" },
-      ["<leader>t"] = { name = "+trouble" },
-      ["<leader>o"] = { name = "+overseer" },
-    },
+    -- defaults = {
+    --   mode = { "n", "v" },
+    --   ["<leader>d"] = { name = "+debug" },
+    --   ["<leader>y"] = { name = "+tests" },
+    --   ["<leader>t"] = { name = "+trouble" },
+    --   ["<leader>o"] = { name = "+overseer" },
+    -- },
   },
 }
 

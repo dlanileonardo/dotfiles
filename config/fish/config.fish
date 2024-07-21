@@ -33,6 +33,10 @@ fish_add_path -a "/home/linuxbrew/.linuxbrew/sbin"
 fish_add_path -a "$HOME/.local/share/nvim/mason/bin"
 fish_add_path -a "$HOME/.asdf/shims/"
 
+# fzf --fish | source
+fzf_configure_bindings --directory=\cf
+
+
 set -gx GPG_TTY $(tty)
 set -gx EDITOR vim
 set -gx HOMEBREW_NO_ENV_HINTS 1

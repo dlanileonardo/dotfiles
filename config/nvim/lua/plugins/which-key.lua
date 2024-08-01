@@ -8,13 +8,14 @@ local M = {
       no_overlap = false,
     },
     plugins = { spelling = true },
-    -- defaults = {
-    --   mode = { "n", "v" },
-    --   { "<leader>d", group = "debug" },
-    --   { "<leader>o", group = "overseer" },
-    --   { "<leader>t", group = "trouble" },
-    --   { "<leader>y", group = "tests" },
-    -- },
+    spec = {
+      {
+        mode = { "n", "v" },
+        { "<leader>d", group = "debug" },
+        { "<leader>t", group = "trouble", icon = { icon = icons.diagnostics.BoldWarning, color = "red" } },
+        { "<leader>y", group = "tests" },
+      },
+    },
   },
 }
 

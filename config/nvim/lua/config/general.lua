@@ -76,7 +76,8 @@ vim.cmd "autocmd BufRead,BufNewFile *.* hi IndentBlanklineContextChar guifg=grey
 
 vim.cmd "autocmd BufRead,BufNewFile Fastfile set filetype=ruby"
 vim.opt.cmdheight = 1
-vim.opt.rtp:append "/usr/local/opt/fzf"
+-- vim.opt.rtp:append "/usr/local/opt/fzf"
+vim.opt.rtp:append "/home/linuxbrew/.linuxbrew/opt/fzf"
 
 vim.g.python_host_prog = vim.fn.systemlist("asdf which python")[1]
 vim.g.python3_host_prog = vim.fn.systemlist("asdf which python3")[1]

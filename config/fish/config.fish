@@ -99,9 +99,9 @@ fzf_configure_bindings --directory=\cf
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-if test -f /usr/local/Caskroom/miniconda/base/bin/conda
-    eval /usr/local/Caskroom/miniconda/base/bin/conda "shell.fish" hook $argv | source
-end
+# if test -f /usr/local/Caskroom/miniconda/base/bin/conda
+#     eval /usr/local/Caskroom/miniconda/base/bin/conda "shell.fish" hook $argv | source
+# end
 # <<< conda initialize <<<
 
 if type -q direnv

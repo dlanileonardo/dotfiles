@@ -1,0 +1,39 @@
+(proxy) {
+	reverse_proxy {args[0]} {
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+
+(vscode) {
+	rewrite * /proxy/443/{uri}
+    
+  request_header CF-Access-Client-Id 4f401faf01241c85809bc908e9549874.access
+  request_header CF-Access-Client-Secret 46e0db8dd5e20f7d3b08c13bbff0c839d8ba36bf167160feaf7681e2562d9522
+
+	reverse_proxy proxy.dlani.com.br:443 {
+		header_up Host {upstream_hostport}
+		header_up X-Virtual-Host {host}
+    header_up X-Forwarded-Proto https
+
+		transport http {
+		  tls
+		}
+	}
+}
+
+(logging) {
+	log {
+		# output file ./caddy.log
+		level INFO
+		# format json
+	}
+}
+
+*.achievemore.local {
+	# import logging
+	import proxy {$HOST:192.168.1.100:443}
+	# import vscode
+}

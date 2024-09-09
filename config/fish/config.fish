@@ -1,7 +1,7 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
     set -U fish_key_bindings fish_default_key_bindings
-
+    #
     set -g theme_display_ruby yes
     set -g theme_color_scheme dark
     set -g theme_nerd_fonts yes
@@ -9,7 +9,7 @@ if status is-interactive
     set -g theme_date_timezone America/Sao_Paulo
 
     set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
-    set -gx PROJECT_PATHS /Volumes/Workspace/
+    # set -gx PROJECT_PATHS /Volumes/Workspace/
     set --universal tide_right_prompt_items status cmd_duration context jobs vi_mode virtual_env time
 
     set -g theme_display_virtualenv no
@@ -19,6 +19,8 @@ if status is-interactive
 
     set -g fish_prompt_pwd_dir_length 0
 end
+
+source ~/.iterm2_shell_integration.fish
 
 alias vim="nvim"
 
@@ -43,13 +45,11 @@ set -gx HOMEBREW_NO_ENV_HINTS 1
 
 set -gx FORGIT_PAGER 'delta --side-by-side -w ${FZF_PREVIEW_COLUMNS:-$COLUMNS}'
 
-# done
 set -U __done_enabled 1
 set -U __done_initial_window_id com.googlecode.iterm2
 set -U __done_notification_command "terminal-notifier -sender com.googlecode.iterm2 -title \$title -message \$message"
 set -U __done_min_cmd_duration 5000
 set -U __done_notify_sound 1
-# done
 
 alias work="cd /Volumes/Workspace/"
 alias mux="tmuxinator"
@@ -63,14 +63,14 @@ alias zev="zellij --layout dev"
 
 if type -q eza
     alias ll "eza -l -g --icons --group-directories-first"
+    alias ll2 "eza -l -g --icons --group-directories-first --tree --level 2"
     alias la "ll -a"
     alias lk "ll --grid"
 end
 
 function fish_greeting
     if test -z "$DISABLE_GREETING"
-        # neofetch --ascii ~/.config/neofetch/cyberdyne
-        neofetch
+        neofetch --ascii ~/.config/neofetch/cyberdyne
     end
 end
 
@@ -100,16 +100,16 @@ if type -q shadowenv
     shadowenv init fish | source
 end
 
-if test -d (brew --prefix)"/share/fish/completions"
-    set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
+if test -d "/home/linuxbrew/.linuxbrew/share/fish/completions"
+    set -gx fish_complete_path $fish_complete_path /home/linuxbrew/.linuxbrew/share/fish/completions
 end
 
-if test -d (brew --prefix)"/share/fish/vendor_completions.d"
-    set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+if test -d "/home/linuxbrew/.linuxbrew/share/fish/vendor_completions.d"
+    set -gx fish_complete_path $fish_complete_path /home/linuxbrew/.linuxbrew/share/fish/vendor_completions.d
 end
 
-if test -d (brew --prefix)"/share/fish/completions"
-    source (brew --prefix)/opt/asdf/libexec/asdf.fish
+if test -d "/home/linuxbrew/.linuxbrew/share/fish/completions"
+    source /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.fish
 end
 
 # >>> conda initialize >>>

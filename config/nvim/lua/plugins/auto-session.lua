@@ -1,9 +1,9 @@
 local M = {
   enabled = true,
-  'rmagatti/auto-session',
+  "rmagatti/auto-session",
   lazy = false,
   opts = {
-    auto_restore_enabled = true,
+    auto_restore = true,
     log_level = "error",
   },
 }

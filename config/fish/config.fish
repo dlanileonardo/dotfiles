@@ -20,7 +20,7 @@ if status is-interactive
     set -g fish_prompt_pwd_dir_length 0
 end
 
-source ~/.iterm2_shell_integration.fish
+# source ~/.iterm2_shell_integration.fish
 
 alias vim="nvim"
 
@@ -51,12 +51,11 @@ set -U __done_notification_command "terminal-notifier -sender com.googlecode.ite
 set -U __done_min_cmd_duration 5000
 set -U __done_notify_sound 1
 
-alias work="cd /Volumes/Workspace/"
-alias mux="tmuxinator"
+# alias work="cd /Volumes/Workspace/"
+# alias mux="tmuxinator"
 alias top="htop"
 alias meuip="curl https://ipinfo.io/ip"
-alias workspace="cd /Volumes/Workspace"
-alias work="cd /Volumes/Workspace"
+# alias workspace="cd /Volumes/Workspace"
 alias serve="browser-sync start -s -f . --no-notify --host 0.0.0.0 --port 9000"
 alias colortest="curl -s https://gist.githubusercontent.com/HaleTom/89ffe32783f89f403bba96bd7bcd1263/raw/ | bash"
 alias zev="zellij --layout dev"

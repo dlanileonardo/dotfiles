@@ -14,6 +14,7 @@ local M = {
         { "<leader>d", group = "debug" },
         { "<leader>t", group = "trouble", icon = { icon = icons.diagnostics.BoldWarning, color = "red" } },
         { "<leader>y", group = "tests" },
+        { "<leader>m", group = "minimap" },
       },
     },
   },

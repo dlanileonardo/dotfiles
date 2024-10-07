@@ -106,24 +106,24 @@ local commands = {
     keys = { "n", "<leader>yn" },
     cat = "Tests",
   },
-  -- {
-  --   desc = "Toggle Task Overseer",
-  --   cmd = "<Leader>ot",
-  --   keys = { "n", "<Leader>ot" },
-  --   cat = "Task",
-  -- },
-  -- {
-  --   desc = "Task Overseer Run",
-  --   cmd = "<Leader>or",
-  --   keys = { "n", "<Leader>or" },
-  --   cat = "Task",
-  -- },
-  -- {
-  --   desc = "Task Overseer Tasks Action",
-  --   cmd = "<Leader>oa",
-  --   keys = { "n", "<Leader>oa" },
-  --   cat = "Task",
-  -- },
+  {
+    desc = "Toggle Task Overseer",
+    cmd = "<cmd>OverseerToggle<cr>",
+    keys = { "n", "<Leader>ot" },
+    cat = "Task",
+  },
+  {
+    desc = "Task Overseer Run",
+    cmd = "<cmd>OverseerRun<cr>",
+    keys = { "n", "<Leader>or" },
+    cat = "Task",
+  },
+  {
+    desc = "Task Overseer Tasks Action",
+    cmd = "<cmd>OverseerTaskAction<cr>",
+    keys = { "n", "<Leader>oa" },
+    cat = "Task",
+  },
   {
     desc = "Trigger Node Action",
     cmd = "T",

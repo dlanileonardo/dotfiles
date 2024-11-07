@@ -14,7 +14,7 @@ function M.config()
       show_close_icon = false,
       show_buffer_close_icons = false,
       always_show_bufferline = true,
-      close_command = "Bdelete! %d",       -- can be a string | function, see "Mouse actions"
+      close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
       right_mouse_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
       offsets = {
         {
@@ -51,11 +51,10 @@ function M.config()
             icon = "",
             matcher = function(buf)
               local path = buf.path
-              return path:match "controller[s]?/"
-                  or buf.name:match "[cC]ontroller"
+              return path:match "controller[s]?/" or buf.name:match "[cC]ontroller"
             end,
             separator = { -- Optional
-              style = require('bufferline.groups').separator.tab
+              style = require("bufferline.groups").separator.tab,
             },
           },
           {
@@ -67,7 +66,7 @@ function M.config()
               return name:match "view[s]?/"
             end,
             separator = { -- Optional
-              style = require('bufferline.groups').separator.tab
+              style = require("bufferline.groups").separator.tab,
             },
           },
           {
@@ -79,7 +78,7 @@ function M.config()
               return name:match "model[s]?/"
             end,
             separator = { -- Optional
-              style = require('bufferline.groups').separator.tab
+              style = require("bufferline.groups").separator.tab,
             },
           },
           {
@@ -91,7 +90,7 @@ function M.config()
               return name:match "lib[s]?/"
             end,
             separator = { -- Optional
-              style = require('bufferline.groups').separator.tab
+              style = require("bufferline.groups").separator.tab,
             },
           },
           {
@@ -100,12 +99,13 @@ function M.config()
             icon = "",
             matcher = function(buf)
               return buf.path:match "spec[s]?/"
-                  or buf.name:match "_spec"
-                  or buf.path:match "test[s]?/"
-                  or buf.name:match "_test"
+                or buf.name:match "_spec"
+                or buf.path:match "test[s]?/"
+                or buf.name:match "_test"
+                or buf.path:match "_spec.rb"
             end,
             separator = { -- Optional
-              style = require('bufferline.groups').separator.tab
+              style = require("bufferline.groups").separator.tab,
             },
           },
           {
@@ -117,11 +117,11 @@ function M.config()
               return name:match "%.md" or name:match "%.txt"
             end,
             separator = { -- Optional
-              style = require('bufferline.groups').separator.tab
+              style = require("bufferline.groups").separator.tab,
             },
           },
-        }
-      }
+        },
+      },
     },
   }
 end

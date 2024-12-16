@@ -25,7 +25,7 @@ local M = {
     LazyVim.lsp.words.setup(opts.document_highlight)
 
     -- diagnostics signs
-    if vim.fn.has("nvim-0.10.0") == 0 then
+    if vim.fn.has "nvim-0.10.0" == 0 then
       if type(opts.diagnostics.signs) ~= "boolean" then
         for severity, icon in pairs(opts.diagnostics.signs.text) do
           local name = vim.diagnostic.severity[severity]:lower():gsub("^%l", string.upper)
@@ -35,7 +35,7 @@ local M = {
       end
     end
 
-    if vim.fn.has("nvim-0.10") == 1 then
+    if vim.fn.has "nvim-0.10" == 1 then
       -- inlay hints
       if opts.inlay_hints.enabled then
         LazyVim.lsp.on_supports_method("textDocument/inlayHint", function(client, buffer)
@@ -62,7 +62,7 @@ local M = {
     end
 
     if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
-      opts.diagnostics.virtual_text.prefix = vim.fn.has("nvim-0.10.0") == 0 and "●"
+      opts.diagnostics.virtual_text.prefix = vim.fn.has "nvim-0.10.0" == 0 and "●"
         or function(diagnostic)
           local icons = LazyVim.config.icons.diagnostics
           for d, icon in pairs(icons) do
@@ -125,17 +125,17 @@ local M = {
     end
 
     if have_mason then
-      mlsp.setup({
+      mlsp.setup {
         ensure_installed = vim.tbl_deep_extend(
           "force",
           ensure_installed,
           LazyVim.opts("mason-lspconfig.nvim").ensure_installed or {}
         ),
         handlers = { setup },
-      })
+      }
     end
 
-    if LazyVim.lsp.is_enabled("denols") and LazyVim.lsp.is_enabled("vtsls") then
+    if LazyVim.lsp.is_enabled "denols" and LazyVim.lsp.is_enabled "vtsls" then
       local is_deno = require("lspconfig.util").root_pattern("deno.json", "deno.jsonc")
       LazyVim.lsp.disable("vtsls", is_deno)
       LazyVim.lsp.disable("denols", function(root_dir, config)
@@ -155,7 +155,7 @@ local M = {
         end
       end
       -- THIS IS FOR BUILTIN LSP
-      vim.diagnostic.open_float({
+      vim.diagnostic.open_float {
         scope = "cursor",
         focusable = false,
         close_events = {
@@ -165,17 +165,17 @@ local M = {
           "InsertCharPre",
           "WinLeave",
         },
-      })
+      }
     end
 
-  -- local signs = {
-  --   { name = "DiagnosticSignError", text = "" },
-  --   { name = "DiagnosticSignWarn", text = "" },
-  --   { name = "DiagnosticSignHint", text = "" },
-  --   { name = "DiagnosticSignInfo", text = "" },
-  -- }
+    -- local signs = {
+    --   { name = "DiagnosticSignError", text = "" },
+    --   { name = "DiagnosticSignWarn", text = "" },
+    --   { name = "DiagnosticSignHint", text = "" },
+    --   { name = "DiagnosticSignInfo", text = "" },
+    -- }
 
-  -- Show diagnostics under the cursor when holding position
+    -- Show diagnostics under the cursor when holding position
     vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
     vim.api.nvim_create_autocmd({ "CursorHold" }, {
       pattern = "*",
@@ -234,7 +234,6 @@ local M = {
 --   end
 
 --   local lspconfig = require "lspconfig"
-
 
 --   local on_attach = function(client, bufnr)
 --     lsp_keymaps(bufnr)
@@ -314,7 +313,5 @@ local M = {
 --       },
 --     })
 --   end
-
-
 
 return M

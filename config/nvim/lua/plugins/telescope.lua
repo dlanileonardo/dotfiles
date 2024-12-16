@@ -1,4 +1,5 @@
 local M = {
+  enabled = true,
   "nvim-telescope/telescope.nvim",
   event = "Bufenter",
   cmd = { "Telescope" },

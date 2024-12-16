@@ -1,5 +1,6 @@
 local M = {
   {
+    enabled = true,
     "mfussenegger/nvim-dap",
     event = "VeryLazy",
     config = function ()

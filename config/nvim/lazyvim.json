@@ -1,14 +1,12 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.coding.codeium",
     "lazyvim.plugins.extras.coding.mini-surround",
     "lazyvim.plugins.extras.coding.yanky",
     "lazyvim.plugins.extras.editor.inc-rename",
-    "lazyvim.plugins.extras.lsp.none-ls",
-    "lazyvim.plugins.extras.ui.alpha"
+    "lazyvim.plugins.extras.lsp.none-ls"
   ],
   "news": {
-    "NEWS.md": "6520"
+    "NEWS.md": "7429"
   },
-  "version": 6
+  "version": 7
 }

@@ -176,5 +176,10 @@ local commands = {
     cmd = "<cmd>lua require('telescope').extensions.vim_bookmarks.current_file()<CR>",
     cat = "Bookmarks",
   },
+  {
+    desc = "Dashboard",
+    cmd = "<cmd>lua Snacks.dashboard()<cr>",
+    cat = "Lazy",
+  },
 }
 return commands

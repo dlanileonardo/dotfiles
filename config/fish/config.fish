@@ -113,7 +113,13 @@ end
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-if test -f /usr/local/Caskroom/miniconda/base/bin/conda
-    eval /usr/local/Caskroom/miniconda/base/bin/conda "shell.fish" hook $argv | source
+if test -f /home/dlani/.asdf/installs/python/miniconda3-3.9-23.9.0-0/bin/conda
+    eval /home/dlani/.asdf/installs/python/miniconda3-3.9-23.9.0-0/bin/conda "shell.fish" "hook" $argv | source
+else
+    if test -f "/home/dlani/.asdf/installs/python/miniconda3-3.9-23.9.0-0/etc/fish/conf.d/conda.fish"
+        . "/home/dlani/.asdf/installs/python/miniconda3-3.9-23.9.0-0/etc/fish/conf.d/conda.fish"
+    else
+        set -x PATH "/home/dlani/.asdf/installs/python/miniconda3-3.9-23.9.0-0/bin" $PATH
+    end
 end
 # <<< conda initialize <<<

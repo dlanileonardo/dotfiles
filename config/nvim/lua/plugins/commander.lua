@@ -1,14 +1,17 @@
 local M = {
-    "gfeiyou/command-center.nvim",
-    event = "VimEnter",
-    lazy = false,
-    keys = {
-      { "<C-M-p>", "<cmd>lua require('commander').show()<cr>", desc = "Command Center" },
-    },
+  "gfeiyou/command-center.nvim",
+  event = "VimEnter",
+  lazy = false,
+  keys = {
+    { "<C-M-p>", "<cmd>lua require('commander').show()<cr>", desc = "Command Center" },
+  },
+  dependencies = {
+    "nvim-telescope/telescope.nvim"
+  }
 }
 
 function M.config()
-  local commander = require("commander")
+  local commander = require "commander"
   local general = require "commander.general"
   local buffers = require "commander.buffer"
   local lsp = require "commander.lsp"
@@ -25,7 +28,7 @@ function M.config()
   commander.add(neovim)
   commander.add(lazyvim)
 
-  commander.setup({
+  commander.setup {
     components = {
       "CAT",
       "DESC",
@@ -46,10 +49,10 @@ function M.config()
         enable = true,
       },
       lazy = {
-        enable = true
-      }
+        enable = true,
+      },
     },
-  })
+  }
 end
 
 return M

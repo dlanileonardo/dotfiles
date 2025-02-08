@@ -10,7 +10,7 @@ local M = {
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
     },
-    { dir = "/home/linuxbrew/.linuxbrew/opt/fzf/" },
+    { dir = "/usr/local/opt/fzf/" },
     {
       "nvim-telescope/telescope-live-grep-args.nvim",
       -- This will not install any breaking changes.

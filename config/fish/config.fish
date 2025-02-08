@@ -108,13 +108,13 @@ if test -d "/home/linuxbrew/.linuxbrew/share/fish/vendor_completions.d"
 end
 
 if test -d "/home/linuxbrew/.linuxbrew/share/fish/completions"
-    source /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.fish
+    source /home/linuxbrew/.linuxbrew/opt/asdf/share/fish/vendor_completions.d/asdf.fish
 end
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 if test -f /home/dlani/.asdf/installs/python/miniconda3-3.9-23.9.0-0/bin/conda
-    eval /home/dlani/.asdf/installs/python/miniconda3-3.9-23.9.0-0/bin/conda "shell.fish" "hook" $argv | source
+    eval /home/dlani/.asdf/installs/python/miniconda3-3.9-23.9.0-0/bin/conda "shell.fish" hook $argv | source
 else
     if test -f "/home/dlani/.asdf/installs/python/miniconda3-3.9-23.9.0-0/etc/fish/conf.d/conda.fish"
         . "/home/dlani/.asdf/installs/python/miniconda3-3.9-23.9.0-0/etc/fish/conf.d/conda.fish"
